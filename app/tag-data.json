@@ -1,8 +1,12 @@
 {
+  "nestjs": 1,
+  "typescript": 1,
+  "javascript": 1,
+  "design-patterns": 2,
   "database": 1,
   "machine-learning": 1,
   "algorithms": 1,
   "data-science": 1,
   "python": 1,
-  "ml-application": 1
+  "application": 1
 }
