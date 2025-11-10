@@ -1,9 +1,9 @@
 const siteMetadata = {
-  title: "N S Rawat - Data Science Portfolio",
+  title: "N S Rawat - Data Science & Machine Learning Portfolio",
   author: 'N S Rawat',
   fullName: 'Nagendra Singh Rawat',
-  headerTitle: "NSRawat's Data Science Journey",
-  description: 'Passionate data scientist exploring insights through machine learning, analytics, and visualization. Building intelligent solutions with Python, ML frameworks, and modern data tools.',
+  headerTitle: "Data Science Journey with N S Rawat",
+  description: 'Data Scientist specializing in Machine Learning, Deep Learning, Statistical Analysis, and Data Visualization. Transforming complex data into actionable insights using Python, TensorFlow, Scikit-learn, and modern analytics tools. Passionate about predictive modeling, business intelligence, and creating data-driven solutions.',
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://nsrawat.vercel.app',
@@ -61,5 +61,4 @@ const siteMetadata = {
     },
   },
 }
-
 module.exports = siteMetadata
