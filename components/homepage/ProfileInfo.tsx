@@ -12,9 +12,9 @@ const ProfileCardInfo = () => {
         <div className="flex items-center">
           <Briefcase size={20} strokeWidth={1} />
           <p className="px-2">
-            Data Scientist & ML Enthusiast 
+            Data Scientist & ML Enthusiast
             <a className="hover:underline" target="_blank" href="https://younetmedia.com/" rel="noreferrer">
-              Student/Learner 
+              Student/Learner
             </a>
           </p>
         </div>
