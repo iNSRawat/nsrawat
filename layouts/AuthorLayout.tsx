@@ -53,13 +53,13 @@ export default function AuthorLayout({ children, content }: Props) {
 
           <div className="prose max-w-none pb-8 dark:prose-dark xl:col-span-2">
             <h2>
-              Hello, folks! <Twemoji className="mx-2" emoji="waving-hand" /> I'm N S Rawat (aka NSRawat)
+              Hello, folks! <Twemoji className="mx-2" emoji="waving-hand" /> I'm Nagendra Singh Rawat (aka NSRawat)
             </h2>
             <p>
-              I have a passion for <strong>Data Science and Machine Learning</strong> and website development. I'm currently a
-              freelance Data Scientist & ML Engineer at <strong>YouNet Media</strong>, deeply engaged in the <strong>EcomHeat</strong>{' '}
+              I have a passion for <strong>Data Science and Machine Learning</strong> and data visualization. I'm currently a
+              freelance Data Scientist & ML Enthusiast at <strong>YouNet Media</strong>, deeply engaged in the <strong>EcomHeat</strong>{' '}
               project, which entails market share management, competitor research, and fostering e-commerce growth. I
-              work mainly with <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong>,{' '}
+              work mainly with <strong>Python</strong>, <strong>SQL</strong>, <strong>React</strong>,{' '}
               <strong>NodeJS</strong>, <strong>NestJS</strong>, and <strong>NextJS</strong>.
             </p>
             <h2>Why have this blog?</h2>
