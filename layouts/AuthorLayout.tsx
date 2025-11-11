@@ -56,11 +56,11 @@ export default function AuthorLayout({ children, content }: Props) {
               Hello, folks! <Twemoji className="mx-2" emoji="waving-hand" /> I'm Nagendra Singh Rawat (aka NSRawat)
             </h2>
             <p>
-              I have a passion for <strong>Data Science and Machine Learning</strong> and data visualization. I'm currently a
-              freelance Data Scientist & ML Enthusiast at <strong>YouNet Media</strong>, deeply engaged in the <strong>EcomHeat</strong>{' '}
-              project, which entails market share management, competitor research, and fostering e-commerce growth. I
-              work mainly with <strong>Python</strong>, <strong>SQL</strong>, <strong>React</strong>,{' '}
-              <strong>NodeJS</strong>, <strong>NestJS</strong>, and <strong>NextJS</strong>.
+              I have a passion for <strong>Data Science and Machine Learning</strong> and data visualization. I'm
+              currently a freelance Data Scientist & ML Enthusiast at <strong>YouNet Media</strong>, deeply engaged in
+              the <strong>EcomHeat</strong> project, which entails market share management, competitor research, and
+              fostering e-commerce growth. I work mainly with <strong>Python</strong>, <strong>SQL</strong>,{' '}
+              <strong>React</strong>, <strong>NodeJS</strong>, <strong>NestJS</strong>, and <strong>NextJS</strong>.
             </p>
             <h2>Why have this blog?</h2>
             <blockquote>
