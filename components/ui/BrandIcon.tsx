@@ -51,7 +51,7 @@ export const BrandIconsMap = {
   SQL,
   NLP,
   NumPy,
-    Pandas,
+  Pandas,
 };
 
 export type BrandIconType = keyof typeof BrandIconsMap;
