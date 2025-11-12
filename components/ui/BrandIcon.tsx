@@ -2,11 +2,9 @@ import Bash from 'public/static/icons/bash.svg';
 import Git from 'public/static/icons/git.svg';
 import GitHub from 'public/static/icons/github.svg';
 import Javascript from 'public/static/icons/javascript.svg';
-import Liquid from 'public/static/icons/liquid.svg';
 import Markdown from 'public/static/icons/markdown.svg';
 import NextJS from 'public/static/icons/nextjs.svg';
 import Node from 'public/static/icons/nodejs.svg';
-import Prisma from 'public/static/icons/prisma.svg';
 import Railway from 'public/static/icons/railway.svg';
 import React from 'public/static/icons/react.svg';
 import Remix from 'public/static/icons/remix.svg';
@@ -21,9 +19,19 @@ import Postgres from 'public/static/icons/postgres.svg';
 import Mongodb from 'public/static/icons/mongodb.svg';
 import Python from 'public/static/icons/python.svg';
 import SQL from 'public/static/icons/sql.svg';
-import NLP from 'public/static/icons/nlp.svg';
+import Matplotlib from 'public/static/icons/matplotlib.svg';
 import NumPy from 'public/static/icons/numpy.svg';
 import Pandas from 'public/static/icons/pandas.svg';
+import Seaborn from 'public/static/icons/seaborn.svg';
+import Plotly from 'public/static/icons/plotly.svg';
+import ScikitLearn from 'public/static/icons/scikit-learn.svg';
+import TensorFlow from 'public/static/icons/tensorflow.svg';
+import PyTorch from 'public/static/icons/pytorch.svg';
+import PowerBI from 'public/static/icons/powerbi.svg';
+import Jupyter from 'public/static/icons/jupyter.svg';
+import Tableau from 'public/static/icons/tableau.svg';
+import Anaconda from 'public/static/icons/anaconda.svg';
+import PyCharm from 'public/static/icons/pycharm.svg';
 
 export const BrandIconsMap = {
   React,
@@ -34,11 +42,9 @@ export const BrandIconsMap = {
   Typescript,
   Node,
   Bash,
-  Liquid,
   Markdown,
   NextJS,
   TailwindCSS,
-  Prisma,
   Umami,
   Vercel,
   Railway,
@@ -49,9 +55,19 @@ export const BrandIconsMap = {
   Mongodb,
   Python,
   SQL,
-  NLP,
+  Matplotlib,
   NumPy,
   Pandas,
+  Seaborn,
+  Plotly,
+  ScikitLearn,
+  TensorFlow,
+  PyTorch,
+  PowerBI,
+  Jupyter,
+  Tableau,
+  Anaconda,
+  PyCharm,
 };
 
 export type BrandIconType = keyof typeof BrandIconsMap;
