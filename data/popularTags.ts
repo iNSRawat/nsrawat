@@ -21,10 +21,10 @@ const popularTags: PopularTag[] = [
     title: 'SQL',
   },
   {
-    href: '/tags/nlp',
-    iconType: 'NLP', // Ensure an 'NLP' icon exists
-    slug: 'nlp',
-    title: 'NLP',
+    href: '/tags/matplotlib',
+    iconType: 'Matplotlib', // Ensure an 'Matplotlib' icon exists
+    slug: 'matplotlib',
+    title: 'matplotlib',
   },
   {
     href: '/tags/numpy',
