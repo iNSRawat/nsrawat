@@ -8,7 +8,6 @@ import headerNavLinks from '@/data/headerNavLinks';
 
 import Link from '@/components/ui/Link';
 
-import Logo from 'public/static/images/logo.svg';
 
 import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';
@@ -30,7 +29,7 @@ const Header = () => {
       <div className="mx-auto flex max-w-4xl items-center justify-between px-3 xl:max-w-5xl xl:px-0">
         <Link href="/" aria-label={siteMetadata.headerTitle} className="flex items-center">
           <div className="animate-wave">
-            <Logo className="fill-dark dark:fill-white" />
+            <img src="/static/images/logo.svg" alt="Logo" className="fill-dark dark:fill-white" />
           </div>
           <div className="group ml-2 text-xl font-bold transition duration-300">
             N S Rawat
