@@ -1,4 +1,3 @@
-import { map } from 'lodash';
 
 import popularTags from '@/data/popularTags';
 
@@ -18,7 +17,7 @@ const PopularTags = () => {
       </div>
 
       <div className="popular-tags grid grid-cols-3 gap-4 py-6 xl:grid-cols-6">
-        {map(popularTags, (popularTag) => {
+        {popularTags.map( (popularTag) => {
           const { slug, iconType, href, title } = popularTag;
 
           const className = `${slug} flex w-[128px] justify-center space-x-2 rounded-lg p-3`;
