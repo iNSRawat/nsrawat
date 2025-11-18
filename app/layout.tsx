@@ -1,4 +1,4 @@
-import 'css/tailwind.css';
+import @/'css/tailwind.css';
 import 'css/twemoji.css';
 import 'pliny/search/algolia.css';
 import 'react-medium-image-zoom/dist/styles.css';
