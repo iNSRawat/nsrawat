@@ -15,13 +15,13 @@
 
 <br>
 
-<p align="center">Loved the project? Please visit my <a href="https://nsrawat-ds.vercel.app/">Portfolio</a></p>
+<p align="center">Loved the project? Please visit my <a href="https://nsrawat.vercel.app/">Portfolio</a></p>
 
 <br>
 
 ## Portfolio Website
 
-[![NSRawat's Data Science Portfolio](https://nsrawat-ds.vercel.app/api/og)](https://nsrawat-ds.vercel.app/)
+[![NSRawat's Data Science Portfolio](https://nsrawat-ds.vercel.app/api/og)](https://nsrawat.vercel.app/)
 
 <br>
 
