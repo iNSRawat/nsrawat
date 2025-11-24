@@ -27,18 +27,13 @@ const TypedBios = () => {
         <li>
               I live in <b className="font-medium">Delhi NCR, India</b>.        </li>
         <li>
-          I was born in the beautiful <b className="font-medium">Quang Ngai</b> city.
-        </li>
+        I specialize in <b className="font-medium">Predictive Modeling & Data Visualization</b>.        </li>
         <li>
-          My first programming language I learned was <b className="font-medium">C++</b>.
-        </li>
-        <li>I love web development.</li>
+        I work with <b className="font-medium">Pandas, NumPy, Scikit-learn & TensorFlow</b>.        </li>
+      <li>I love transforming raw data into actionable insights.</li>        <li>
+        I'm focusing on building <b className="font-medium">ML models & Data Pipelines</b>.        </li>
         <li>
-          I'm focusing on building <b className="font-medium">Social Analytics Software</b>.
-        </li>
-        <li>
-          I work mostly with <b className="font-medium">Javascript/Typescript</b> technologies.
-        </li>
+        I create <b className="font-medium">interactive dashboards with Tableau & Power BI</b>.        </li>
         <li>
           I'm a dog-person <Twemoji emoji="dog" />.
         </li>
@@ -50,8 +45,7 @@ const TypedBios = () => {
           .
         </li>
         <li>
-          I love listening <Twemoji emoji="musical-keyboard" /> and rap music.
-        </li>
+        I enjoy <b className="font-medium">exploratory data analysis</b> and finding patterns.        </li>
         <li>
               I love playing <b className="font-medium">cricket</b> & <b className="font-medium">traveling</b> <Twemoji emoji="cricket-game" /> <Twemoji emoji="airplane" />.        </li>
       </ul>
