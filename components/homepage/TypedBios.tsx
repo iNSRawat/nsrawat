@@ -23,17 +23,23 @@ const TypedBios = () => {
     <div>
       <ul id="bios" className="hidden">
         <li>
-              I'm aliased as <b className="font-medium">N S Rawat</b> at work.        </li>
+          I'm aliased as <b className="font-medium">N S Rawat</b> at work.{' '}
+        </li>
         <li>
-              I live in <b className="font-medium">Delhi NCR, India</b>.        </li>
+          I live in <b className="font-medium">Delhi NCR, India</b>.{' '}
+        </li>
         <li>
-        I specialize in <b className="font-medium">Predictive Modeling & Data Visualization</b>.        </li>
+          I specialize in <b className="font-medium">Predictive Modeling & Data Visualization</b>.{' '}
+        </li>
         <li>
-        I work with <b className="font-medium">Pandas, NumPy, Scikit-learn & TensorFlow</b>.        </li>
-      <li>I love transforming raw data into actionable insights.</li>        <li>
-        I'm focusing on building <b className="font-medium">ML models & Data Pipelines</b>.        </li>
+          I work with <b className="font-medium">Pandas, NumPy, Scikit-learn & TensorFlow</b>.{' '}
+        </li>
+        <li>I love transforming raw data into actionable insights.</li> <li>
+          I'm focusing on building <b className="font-medium">ML models & Data Pipelines</b>.{' '}
+        </li>
         <li>
-        I create <b className="font-medium">interactive dashboards with Tableau & Power BI</b>.        </li>
+          I create <b className="font-medium">interactive dashboards with Tableau & Power BI</b>.{' '}
+        </li>
         <li>
           I'm a dog-person <Twemoji emoji="dog" />.
         </li>
@@ -45,9 +51,12 @@ const TypedBios = () => {
           .
         </li>
         <li>
-        I enjoy <b className="font-medium">exploratory data analysis</b> and finding patterns.        </li>
+          I enjoy <b className="font-medium">exploratory data analysis</b> and finding patterns.{' '}
+        </li>
         <li>
-              I love playing <b className="font-medium">cricket</b> & <b className="font-medium">traveling</b> <Twemoji emoji="cricket-game" /> <Twemoji emoji="airplane" />.        </li>
+          I love playing <b className="font-medium">cricket</b> & <b className="font-medium">traveling</b>{' '}
+          <Twemoji emoji="cricket-game" /> <Twemoji emoji="airplane" />.{' '}
+        </li>
       </ul>
       <span ref={el} className="text-neutral-900 dark:text-neutral-200" />
     </div>
