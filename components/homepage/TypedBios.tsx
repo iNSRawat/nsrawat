@@ -34,7 +34,8 @@ const TypedBios = () => {
         <li>
           I work with <b className="font-medium">Pandas, NumPy, Scikit-learn & TensorFlow</b>.{' '}
         </li>
-        <li>I love transforming raw data into actionable insights.</li> <li>
+        <li>I love transforming raw data into actionable insights.</li>
+        <li>
           I'm focusing on building <b className="font-medium">ML models & Data Pipelines</b>.{' '}
         </li>
         <li>
