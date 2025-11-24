@@ -14,6 +14,7 @@ import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';
 // import SearchButton from './SearchButton';
 import AnalyticsLink from './AnalyticsLink';
+import { GrowingUnderline } from '@/components/ui/GrowingUnderline';
 
 const Header = () => {
   const pathname = usePathname();
@@ -52,7 +53,12 @@ const Header = () => {
                       : 'hover:bg-gray-200 dark:hover:bg-primary-600'
                   )}
                 >
-                  <span data-umami-event={`nav-${link.href.replace('/', '')}`}>{link.title}</span>
+                                    <GrowingUnderline
+                    className={clsx(pathname.startsWith(link.href) && 'bg-size-[100%_50%]')}
+                    data-umami-event={`nav-${link.href.replace('/', '')}`}
+                  >
+                    {link.title}
+                  </GrowingUnderline>
                 </Link>
               ))}
           </div>
