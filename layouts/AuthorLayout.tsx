@@ -101,7 +101,7 @@ export default function AuthorLayout({ children, content }: Props) {
             </p>
 
             <p>
-              This blog site takes inspiration from leohuynh.dev. I appreciate{' '}
+              This blog site takes inspiration from karhdo.dev & leohuynh.dev. I appreciate{' '}
               <a target="_blank" href="https://twitter.com/hta218_">
                 Leo Huynh
               </a>{' '}
@@ -116,8 +116,8 @@ export default function AuthorLayout({ children, content }: Props) {
 
             <ul>
               <li>
-                <Twemoji className="!mr-2" emoji="atom-symbol" /> Upgrading to <strong>React 18</strong>,{' '}
-                <strong>Next 14</strong>.
+                <Twemoji className="!mr-2" emoji="atom-symbol" /> Upgrading to <strong>React 19</strong>,{' '}
+                <strong>Next 15</strong>.
               </li>
               <li>
                 <Twemoji className="!mr-2" emoji="party-popper" /> Adopting <strong>Typescript</strong>, committing with{' '}
@@ -154,7 +154,7 @@ export default function AuthorLayout({ children, content }: Props) {
 
             <p>
               See my{' '}
-              <a target="_blank" href="https://github.com/Karhdo/karhdo.dev">
+              <a target="_blank" href="https://github.com/iNSRawat/nsrawat_portfolio">
                 repository
               </a>{' '}
               for this blog.
