@@ -13,8 +13,7 @@ const popularTags: PopularTag[] = [
     href: '/tags/python',
     iconType: 'Python', // Make sure 'Python' icon exists!
     slug: 'python',
-    title: 'Python',,
-    bgColor: 'bg-yellow-500'
+    title: 'Python',    bgColor: 'bg-yellow-500'
   },
   {
     href: '/tags/sql',
