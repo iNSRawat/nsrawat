@@ -23,8 +23,6 @@
 
 [![NSRawat's Data Science Portfolio](https://nsrawat-ds.vercel.app/api/og)](https://nsrawat.vercel.app/)
 
-[![About Me - Tech Stack](https://nsrawat-ds.vercel.app/api/og)](https://nsrawat.vercel.app/about)
-
 <br>
 
 ## Tech Stack
