@@ -11,45 +11,66 @@ type PopularTag = {
 const popularTags: PopularTag[] = [
   {
     href: '/tags/python',
-    iconType: 'Python', // Make sure 'Python' icon exists!
+    iconType: 'Python',
     slug: 'python',
     title: 'Python',
-    bgColor: 'bg-yellow-500'
+    bgColor: 'bg-blue-600',
   },
   {
     href: '/tags/sql',
-    iconType: 'SQL', // Ensure an 'SQL' icon exists
+    iconType: 'SQL',
     slug: 'sql',
     title: 'SQL',
-    bgColor: 'bg-blue-500'
+    bgColor: 'bg-blue-500',
   },
   {
     href: '/tags/matplotlib',
-    iconType: 'Matplotlib', // Ensure an 'Matplotlib' icon exists
+    iconType: 'Matplotlib',
     slug: 'matplotlib',
     title: 'matplotlib',
-    bgColor: 'bg-purple-500'
+    bgColor: 'bg-blue-500',
   },
   {
     href: '/tags/numpy',
-    iconType: 'NumPy', // Use lowercase 'numpy' for slug
+    iconType: 'NumPy',
     slug: 'numpy',
     title: 'NumPy',
-    bgColor: 'bg-gray-600'
+    bgColor: 'bg-blue-700',
+  },
+  {
+    href: '/tags/pandas',
+    iconType: 'Pandas',
+    slug: 'pandas',
+    title: 'pandas',
+    bgColor: 'bg-purple-700',
+  },
+  {
+    href: '/tags/seaborn',
+    iconType: 'Seaborn',
+    slug: 'seaborn',
+    title: 'Seaborn',
+    bgColor: 'bg-blue-500',
+  },
+  {
+    href: '/tags/plotly',
+    iconType: 'Plotly',
+    slug: 'plotly',
+    title: 'Plotly',
+    bgColor: 'bg-blue-700',
   },
   {
     href: '/tags/database',
-    iconType: 'Mongodb', // Already included and matches your icon set
+    iconType: 'Mongodb',
     slug: 'database',
     title: 'Database',
-    bgColor: 'bg-green-600'
+    bgColor: 'bg-green-600',
   },
   {
     href: '/tags/devops',
     iconType: 'Docker',
     slug: 'devops',
     title: 'Devops',
-    bgColor: 'bg-cyan-500'
+    bgColor: 'bg-cyan-500',
   },
 ];
 
