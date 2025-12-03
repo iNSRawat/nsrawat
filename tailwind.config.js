@@ -13,6 +13,7 @@ module.exports = {
     './data/**/*.mdx',
   ],
   darkMode: 'class',
+    safelist: ['bg-blue-600', 'bg-orange-600', 'bg-indigo-600', 'bg-blue-700', 'bg-purple-700', 'bg-green-600'],
   theme: {
     extend: {
       keyframes: {
