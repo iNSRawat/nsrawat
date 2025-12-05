@@ -41,6 +41,14 @@ const projectsData: Project[] = [
     url: 'https://github.com/iNSRawat/Mathematics-Formulas-for-Data-Science-Machine-Learning',
     builtWith: ['Mathematics', 'Data Science', 'Machine Learning', 'Educational', 'Reference'],
   },
+    {
+    type: 'self',
+    title: 'Supermarket Loyalty Prediction',
+    description: 'DataCamp Data Scientist Associate Practical Exam project predicting customer spending in supermarket loyalty programs. Advanced feature engineering and predictive modeling with real-world retail data.',
+    imgSrc: '/static/images/projects/supermarket-loyalty.png',
+    url: 'https://github.com/iNSRawat/supermarket-loyalty-prediction',
+    builtWith: ['Python', 'Pandas', 'Scikit-learn', 'Feature Engineering', 'DataCamp'],
+  }
 ];
 
 export default projectsData;
