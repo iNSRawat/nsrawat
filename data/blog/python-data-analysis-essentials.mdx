@@ -4,7 +4,7 @@ date: '2024-11-13'
 tags: ['python', 'pandas', 'data-analysis', 'numpy', 'matplotlib']
 draft: false
 summary: 'Master the essential Python libraries and techniques for data analysis, from data loading to visualization.'
-images: ['/static/images/python-data-analysis.jpg']
+images: ['/static/images/projects/NSRawat-blog.png']
 authors: ['default']
 layout: 'PostLayout'
 ---
@@ -201,7 +201,7 @@ grouped = df.groupby('department')['salary'].agg(['mean', 'median', 'std'])
 print(grouped)
 
 # Pivot tables
-pivot = df.pivot_table(values='salary', index='department', 
+pivot = df.pivot_table(values='salary', index='department',
                        columns='experience_level', aggfunc='mean')
 print(pivot)
 ```
@@ -210,11 +210,11 @@ print(pivot)
 
 ```python
 # Create new features
-df['age_group'] = pd.cut(df['age'], bins=[0, 25, 35, 50, 100], 
+df['age_group'] = pd.cut(df['age'], bins=[0, 25, 35, 50, 100],
                          labels=['Young', 'Adult', 'Middle', 'Senior'])
 
 # Binning continuous variables
-df['salary_range'] = pd.qcut(df['salary'], q=4, 
+df['salary_range'] = pd.qcut(df['salary'], q=4,
                               labels=['Low', 'Medium', 'High', 'Very High'])
 
 # Date features
@@ -317,7 +317,7 @@ plt.tight_layout()
 plt.show()
 
 # Pair plot
-sns.pairplot(df[['age', 'experience', 'salary', 'department']], 
+sns.pairplot(df[['age', 'experience', 'salary', 'department']],
              hue='department')
 plt.show()
 ```
@@ -343,11 +343,11 @@ MISSING_VALUE_THRESHOLD = 0.3
 def calculate_metrics(df, column):
     """
     Calculate descriptive statistics for a column.
-    
+
     Args:
         df: pandas DataFrame
         column: column name to analyze
-        
+
     Returns:
         dict: Dictionary containing mean, median, std
     """
