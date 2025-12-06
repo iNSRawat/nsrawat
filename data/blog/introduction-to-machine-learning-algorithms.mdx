@@ -26,10 +26,12 @@ Regression algorithms are used when the output variable is continuous numerical 
 The "Hello World" of machine learning. It attempts to model the relationship between two or more variables by fitting a linear equation to observed data.
 
 **Key Concepts:**
+
 - **Best Fit Line:** Minimizes the sum of squared residuals / errors.
 - **Coefficients:** Represents the impact of each feature on the target.
 
 **Use Cases:**
+
 - Real estate price prediction.
 - Forecasting sales for next quarter.
 
@@ -59,6 +61,7 @@ Classification algorithms predict categorical outcomes (e.g., Yes/No, Spam/Not S
 Despite the name, it's a classification algorithm. It uses the sigmoid function to squeeze the output between 0 and 1, representing a probability.
 
 **Use Cases:**
+
 - Spam detection.
 - Predicting customer churn (Yes/No).
 
@@ -67,6 +70,7 @@ Despite the name, it's a classification algorithm. It uses the sigmoid function 
 **Decision Trees** split data into branches based on feature values to maximize information gain (or reduce impurity like Gini/Entropy). **Random Forests** are an ensemble of many decision trees, which reduces overfitting and improves accuracy.
 
 **Why use Random Forest?**
+
 - Handles non-linear relationships well.
 - Robust to outliers.
 - Provides **Feature Importance**.
@@ -87,6 +91,7 @@ importances = rf_model.feature_importances_
 SVM finds the optimal hyperplane that separates classes with the maximum margin. It uses **kernels** (linear, polynomial, RBF) to handle non-linear data by projecting it into higher dimensions.
 
 **Best for:**
+
 - High-dimensional data (e.g., text, gene expression).
 - Smaller, complex datasets.
 
@@ -101,6 +106,7 @@ Unsupervised learning deals with unlabeled data. The goal is to discover hidden 
 Partitions data into `K` distinct clusters based on distance to the centroid of a cluster.
 
 **Use Cases:**
+
 - Customer market segmentation.
 - Image compression.
 
@@ -120,6 +126,7 @@ centroids = kmeans.cluster_centers_
 A dimensionality reduction technique. It transforms correlated features into a set of linearly uncorrelated variables called principal components, preserving as much variance as possible.
 
 **Why use it?**
+
 - To visualize high-dimensional data (2D or 3D).
 - To reduce computational cost before training models.
 - To remove multicollinearity.
@@ -135,6 +142,7 @@ Gradient Boosting algorithms build models sequentially, where each new model cor
 These are the heavy hitters in structured/tabular data problems.
 
 **Advantages:**
+
 - **Speed & Performance:** Generally outperform Random Forests on tabular data.
 - **Regularization:** Built-in mechanisms to prevent overfitting.
 - **Handling Missing Values:** XGBoost can learn how to handle missing data automatically.
@@ -151,14 +159,14 @@ model.fit(X_train, y_train)
 
 ## cheat Sheet: Which Algorithm to Choose?
 
-| Data / Problem Type | Suggested Algorithms |
-| :--- | :--- |
-| **Structured Data (Tabular)** | XGBoost, LightGBM, Random Forest |
-| **Unstructured (Images)** | CNNs (Convolutional Neural Networks) |
-| **Unstructured (Text)** | Transformers (BERT, GPT), Naive Bayes, SVM |
-| **Small Dataset (<1k rows)** | Logistic/Linear Regression, Naive Bayes |
-| **High Dimensionality** | SVM, PCA |
-| **Clustering / Segmentation** | K-Means, DBSCAN, Hierarchical Clustering |
+| Data / Problem Type           | Suggested Algorithms                       |
+| :---------------------------- | :----------------------------------------- |
+| **Structured Data (Tabular)** | XGBoost, LightGBM, Random Forest           |
+| **Unstructured (Images)**     | CNNs (Convolutional Neural Networks)       |
+| **Unstructured (Text)**       | Transformers (BERT, GPT), Naive Bayes, SVM |
+| **Small Dataset (\<1k rows)** | Logistic/Linear Regression, Naive Bayes    |
+| **High Dimensionality**       | SVM, PCA                                   |
+| **Clustering / Segmentation** | K-Means, DBSCAN, Hierarchical Clustering   |
 
 ## Conclusion
 
