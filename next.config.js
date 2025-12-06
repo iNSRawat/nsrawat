@@ -59,11 +59,8 @@ module.exports = () => {
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
-    swcMinify: true,
-    compress: true,
     poweredByHeader: false,
     generateEtags: false,
-    optimizeFonts: true,
     images: {
       remotePatterns: [
         {
