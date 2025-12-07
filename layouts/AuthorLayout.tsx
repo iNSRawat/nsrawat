@@ -58,7 +58,7 @@ export default function AuthorLayout({ children, content }: Props) {
             <p>
               I have a passion for <strong>Data Science and Machine Learning</strong> and data visualization. I'm
               currently a freelance Data Scientist & ML Enthusiast at <strong>iNSRawat.com</strong>, deeply engaged in
-              the <strong>iNSRawat.com</strong> project, which entails market share management, competitor research, and
+              the <strong>CarEager</strong> project, which entails market share management, competitor research, and
               fostering e-commerce growth. I work mainly with <strong>Python</strong>, <strong>SQL</strong>,{' '}
               <strong>TensorFlow</strong>, <strong>PyTorch</strong>, <strong>Scikit-learn</strong>, and{' '}
               <strong>NumPy</strong>.
