@@ -17,7 +17,7 @@ const BuildWith = () => (
       <Link href="https://www.typescriptlang.org?ref=NSRawat">
         <BrandIcon type="Typescript" className="h-5 w-5" />
       </Link>
-      <Link href="https://umami.is?ref=karhdo.dev" className="pl-px">
+      <Link href="https://umami.is?ref=NSRawat" className="pl-px">
         <BrandIcon type="Umami" className="h-5 w-5" />
       </Link>
     </div>
