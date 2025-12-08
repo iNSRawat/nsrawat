@@ -19,27 +19,16 @@ import { GrowingUnderline } from '@/components/ui/GrowingUnderline';
 const Header = () => {
   const pathname = usePathname();
 
-  let headerClass =
-    'mx-auto w-full max-w-6xl supports-backdrop-blur fixed left-0 right-0 top-1 z-10 bg-white/75 py-2 backdrop-blur dark:bg-dark/75 md:rounded-2xl';
-
-  if (siteMetadata.stickyNav) {
-    headerClass += ' sticky top-0 z-50';
-  }
-
   return (
-    <header className={headerClass}>
-      <div className="mx-auto flex max-w-4xl items-center justify-between px-3 xl:max-w-5xl xl:px-0">
-        <Link href="/" aria-label={siteMetadata.headerTitle} className="flex items-center">
-          <div className="animate-wave">
-            <Logo className="fill-dark dark:fill-white" />
-          </div>
-          <div className="group ml-2 text-xl font-bold transition duration-300">
-            N S Rawat
-            <span className="block h-0.5 max-w-0 bg-black transition-all duration-500 group-hover:max-w-[85%] dark:bg-white"></span>
+    <header className="fixed left-1/2 top-6 z-50 w-full max-w-2xl -translate-x-1/2">
+      <div className="mx-4 flex items-center justify-between rounded-full border border-zinc-200/50 bg-white/70 px-4 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all dark:border-zinc-800/50 dark:bg-zinc-900/70 dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+        <Link href="/" aria-label={siteMetadata.headerTitle} className="flex items-center gap-2">
+          <div className="flex h-8 w-8 animate-wave items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
+            <Logo className="h-5 w-5 fill-zinc-800 dark:fill-zinc-200" />
           </div>
         </Link>
-        <div className="flex items-center gap-3 text-base leading-5">
-          <div className="hidden sm:block">
+        <div className="flex items-center gap-1">
+          <div className="hidden items-center gap-1 sm:flex">
             {headerNavLinks
               .filter((link) => link.href !== '/')
               .map((link) => (
@@ -47,30 +36,20 @@ const Header = () => {
                   key={link.title}
                   href={link.href}
                   className={clsx(
-                    'mx-1 rounded px-2 py-1 font-medium text-gray-900 dark:text-gray-100 sm:px-3 sm:py-2',
+                    'relative rounded-full px-3 py-1.5 text-sm font-medium transition-colors',
                     pathname.startsWith(link.href)
-                      ? 'bg-gray-200 dark:bg-primary-600'
-                      : 'hover:bg-gray-200 dark:hover:bg-primary-600'
+                      ? 'bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
+                      : 'text-zinc-600 hover:bg-zinc-100/50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-100'
                   )}
                 >
-                  <GrowingUnderline
-                    className={clsx(pathname.startsWith(link.href) && 'bg-size-[100%_50%]')}
-                    data-umami-event={`nav-${link.href.replace('/', '')}`}
-                  >
-                    {link.title}
-                  </GrowingUnderline>
+                  {link.title}
                 </Link>
               ))}
           </div>
-          <div
-            role="separator"
-            data-orientation="vertical"
-            className="hidden h-4 w-px shrink-0 bg-gray-200 dark:bg-gray-600 md:block"
-          />
-          <div className="flex items-center">
+          <div className="mx-2 hidden h-4 w-px bg-zinc-200 dark:bg-zinc-800 sm:block" />
+          <div className="flex items-center gap-2">
             <AnalyticsLink />
             <ThemeSwitch />
-            {/* <SearchButton /> */}
             <MobileNav />
           </div>
         </div>

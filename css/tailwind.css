@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #7aa2f7; /* Primary color */
+  color: #fff;
+}
+
 .task-list-item::before {
   @apply hidden;
 }

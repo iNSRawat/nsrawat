@@ -99,10 +99,7 @@ module.exports = () => {
           },
         ],
       });
-      if (!isServer) {
-        config.optimization.usedExports = true;
-        config.optimization.sideEffects = true;
-      }
+      // Removed optimization.usedExports and sideEffects as they conflict with Next.js 15
       return config;
     },
     async headers() {

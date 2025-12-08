@@ -13,7 +13,7 @@ module.exports = {
     './data/**/*.mdx',
   ],
   darkMode: 'class',
-    safelist: ['bg-blue-600', 'bg-orange-600', 'bg-indigo-600', 'bg-blue-700', 'bg-purple-700', 'bg-green-600'],
+  safelist: ['bg-blue-600', 'bg-orange-600', 'bg-indigo-600', 'bg-blue-700', 'bg-purple-700', 'bg-green-600'],
   theme: {
     extend: {
       keyframes: {
@@ -51,6 +51,22 @@ module.exports = {
           '50%': { transform: 'scale(1.18)' },
           '100%': { transform: 'scale(1)' },
         },
+        spotlight: {
+          '0%': { opacity: 0, transform: 'translate(-72%, -62%) scale(0.5)' },
+          '100%': { opacity: 1, transform: 'translate(-50%,-40%) scale(1)' },
+        },
+        shimmer: {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '-200% 0' },
+        },
+        meteor: {
+          '0%': { transform: 'rotate(215deg) translateX(0)', opacity: 1 },
+          '70%': { opacity: 1 },
+          '100%': {
+            transform: 'rotate(215deg) translateX(-500px)',
+            opacity: 0,
+          },
+        },
       },
       animation: {
         wave: 'wave-animation 2.5s linear infinite',
@@ -59,6 +75,9 @@ module.exports = {
         'music-bar-3': 'music-bar-3 .8s linear infinite',
         'music-bar-4': 'music-bar-4 .8s linear infinite',
         'scale-up': 'scale-up 150ms ease-in-out forwards',
+        spotlight: 'spotlight 2s ease .75s 1 forwards',
+        shimmer: 'shimmer 2s linear infinite',
+        meteor: 'meteor 5s linear infinite',
       },
       boxShadow: {
         nextjs: '0 8px 20px rgb(0,0,0,0.12)',
