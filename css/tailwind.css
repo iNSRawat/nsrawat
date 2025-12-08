@@ -121,3 +121,23 @@ input:-webkit-autofill:focus {
   background: #5c6370;
 }
 /* END: CSS Prose */
+
+/* Typed.js cursor blinking animation */
+.typed-cursor {
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  -webkit-animation: typedjsBlink 0.7s infinite;
+  animation: typedjsBlink 0.7s infinite;
+}
+
+@keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}

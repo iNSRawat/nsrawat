@@ -1,3 +1,5 @@
+'use client';
+
 import { Command } from 'lucide-react';
 
 import { AlgoliaButton } from 'pliny/search/AlgoliaButton';
@@ -17,6 +19,8 @@ const SearchButton = () => {
       </SearchButtonWrapper>
     );
   }
+
+  return null;
 };
 
 export default SearchButton;

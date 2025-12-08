@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import Image from '@/components/ui/Image';
-import ProfileInfo from '@/components/homepage/ProfileInfo';
 import SpotifyNowPlaying from '@/components/homepage/SpotifyNowPlaying';
+import ProfileInfo from '@/components/homepage/ProfileInfo';
 
 const ProfileCard = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -60,21 +60,18 @@ const ProfileCard = () => {
         style={style}
         className="overflow-hidden rounded shadow-lg shadow-slate-300 transition-all duration-200 ease-out dark:shadow-sky-700/50"
       >
-        <Image
-          src={'/static/images/avatar.jpg'}
-          alt="avatar"
-          width={550}
-          height={350}
-          style={{
-            objectPosition: '50% 0%',
-            objectFit: 'cover',
-            width: '100%',
-            aspectRatio: '20/16',
-          }}
-        />
+        <div className="relative h-64 sm:h-72 md:h-80 lg:h-96">
+          <Image
+            src="/static/images/avatar.png"
+            alt="avatar"
+            width={430}
+            height={430}
+            className="h-full w-full object-cover"
+          />
+        </div>
         <SpotifyNowPlaying />
-        <ProfileInfo />
         <div className="h-1.5 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></div>
+        <ProfileInfo />
       </div>
     </div>
   );

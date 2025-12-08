@@ -5,8 +5,6 @@ import { useTheme } from 'next-themes';
 import { Menu, RadioGroup, Transition } from '@headlessui/react';
 import { Monitor, MoonStar, Sun } from 'lucide-react';
 
-const Blank = () => <svg className="h-6 w-6" />;
-
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -14,20 +12,24 @@ const ThemeSwitch = () => {
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), []);
 
+  // Default to sun icon if not mounted yet
+  const getIcon = () => {
+    if (!mounted) {
+      return <Sun strokeWidth={1.5} size={22} className="text-gray-600 dark:text-gray-400" />;
+    }
+    return resolvedTheme === 'dark' ? (
+      <MoonStar strokeWidth={1.5} size={22} className="text-gray-600 dark:text-gray-400" />
+    ) : (
+      <Sun strokeWidth={1.5} size={22} className="text-gray-600 dark:text-gray-400" />
+    );
+  };
+
   return (
     <div className="mx-1 flex items-center">
       <Menu as="div" className="relative inline-block text-left">
         <div className="flex h-8 w-8 items-center justify-center rounded p-1 hover:bg-gray-200 dark:hover:bg-primary-600">
-          <Menu.Button aria-label="Theme switcher">
-            {mounted ? (
-              resolvedTheme === 'dark' ? (
-                <MoonStar strokeWidth={1.5} size={22} />
-              ) : (
-                <Sun strokeWidth={1.5} size={22} />
-              )
-            ) : (
-              <Blank />
-            )}
+          <Menu.Button aria-label="Theme switcher" className="flex items-center justify-center">
+            {getIcon()}
           </Menu.Button>
         </div>
         <Transition

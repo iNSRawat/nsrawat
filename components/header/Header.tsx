@@ -12,8 +12,7 @@ import Logo from 'public/static/images/logo.svg';
 
 import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';
-// import SearchButton from './SearchButton';
-import AnalyticsLink from './AnalyticsLink';
+import SearchButton from './SearchButton';
 import { GrowingUnderline } from '@/components/ui/GrowingUnderline';
 
 const Header = () => {
@@ -48,7 +47,7 @@ const Header = () => {
           </div>
           <div className="mx-2 hidden h-4 w-px bg-zinc-200 dark:bg-zinc-800 sm:block" />
           <div className="flex items-center gap-2">
-            <AnalyticsLink />
+            <SearchButton />
             <ThemeSwitch />
             <MobileNav />
           </div>

@@ -1,37 +1,35 @@
 import Link from '@/components/ui/Link';
-import Twemoji from '@/components/ui/Twemoji';
+import siteMetadata from '@/data/siteMetadata';
 
 const BlogLinks = () => {
   return (
-    <div className="flex justify-between">
-      <div className="flex flex-col space-y-1.5">
-        <Link href="/blog" className="hover:underline">
-          <Twemoji emoji="memo" />
-          <span data-umami-event="home-link-blog" className="ml-1.5">
-            My writings
-          </span>
-        </Link>
-        <Link href="/projects" className="hover:underline">
-          <Twemoji emoji="hammer-and-wrench" />
-          <span data-umami-event="home-link-projects" className="ml-1.5">
-            What have I built?
-          </span>
-        </Link>
-      </div>
-      <div className="flex flex-col space-y-1.5">
-        <Link href="/about" className="hover:underline">
-          <Twemoji emoji="face-with-monocle" />
-          <span data-umami-event="home-link-about" className="ml-1.5">
-            More about me and myself
-          </span>
-        </Link>
-        <Link href="/about" className="hover:underline">
-          <Twemoji emoji="briefcase" />
-          <span data-umami-event="home-link-resume" className="ml-1.5">
-            My career
-          </span>
-        </Link>
-      </div>
+    <div className="flex flex-col space-y-1.5">
+      <Link href="/projects" className="hover:underline" data-umami-event="home-link-projects">
+        <span className="mr-1.5">🧑‍💻</span>
+        <span>what have i built?</span>
+      </Link>
+      <Link href="/blog" className="hover:underline" data-umami-event="home-link-blog">
+        <span className="mr-1.5">📝</span>
+        <span>my writings</span>
+      </Link>
+      <Link href="/snippets" className="hover:underline" data-umami-event="home-link-snippets">
+        <span className="mr-1.5">🧬</span>
+        <span>snippets collection</span>
+      </Link>
+      <Link href="/about" className="hover:underline" data-umami-event="home-link-about">
+        <span className="mr-1.5">😎</span>
+        <span>about me & this blog</span>
+      </Link>
+      <Link
+        href={siteMetadata.analyticsURL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+        data-umami-event="home-link-analytics"
+      >
+        <span className="mr-1.5">📊</span>
+        <span>traffic and insights</span>
+      </Link>
     </div>
   );
 };

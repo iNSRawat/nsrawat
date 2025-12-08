@@ -13,6 +13,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import siteMetadata from '@/data/siteMetadata';
 import { SectionContainer, TiltedGridBackground } from '@/components/ui';
+import AnalyticsKBarAction from '@/components/search/AnalyticsKBarAction';
 
 import { ThemeProviders } from './theme-providers';
 import { UmamiAnalytics } from '@/components/analytics/umami';
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <UmamiAnalytics websiteId={siteMetadata.analytics?.umamiAnalytics?.umamiWebsiteId} />
           <SectionContainer>
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <AnalyticsKBarAction />
               <Header />
               <main className="mb-auto mt-16 sm:mt-20">{children}</main>
               <Footer />

@@ -1,4 +1,4 @@
-import { AreaChart } from 'lucide-react';
+import { Command } from 'lucide-react';
 
 import siteMetadata from '@/data/siteMetadata';
 
@@ -11,7 +11,7 @@ const AnalyticsLink = () => {
       data-umami-event="nav-analytics"
       onClick={() => window.open(siteMetadata.analyticsURL, '_blank')}
     >
-      <AreaChart strokeWidth={1.5} size={20} />
+      <Command strokeWidth={1.5} size={20} />
     </button>
   );
 };
