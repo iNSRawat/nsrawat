@@ -25,6 +25,7 @@ const Header = () => {
           <div className="flex h-8 w-8 animate-wave items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
             <Logo className="h-5 w-5 fill-zinc-800 dark:fill-zinc-200" />
           </div>
+          <span className="text-base font-bold text-zinc-900 dark:text-white">N S Rawat</span>
         </Link>
         <div className="flex items-center gap-1">
           <div className="hidden items-center gap-1 sm:flex">

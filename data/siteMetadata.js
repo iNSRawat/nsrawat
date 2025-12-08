@@ -32,6 +32,7 @@ const siteMetadata = {
   analytics: {
     umamiAnalytics: {
       umamiWebsiteId: process.env.UMAMI_WEBSITE_ID,
+      umamiScriptSrc: 'https://analytics.nsrawat-ds.vercel.app/script.js',
     },
   },
   newsletter: {

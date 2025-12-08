@@ -84,7 +84,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <ThemeProviders>
           {/* <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} /> */}
-          <UmamiAnalytics websiteId={siteMetadata.analytics?.umamiAnalytics?.umamiWebsiteId} />
+          <UmamiAnalytics
+            websiteId={siteMetadata.analytics?.umamiAnalytics?.umamiWebsiteId}
+            src={siteMetadata.analytics?.umamiAnalytics?.umamiScriptSrc}
+          />
           <SectionContainer>
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <AnalyticsKBarAction />
