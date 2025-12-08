@@ -7,9 +7,10 @@ import prisma from '@/servers/prisma.server';
 const getBlogStats = async (slug: string, type: StatsType): Promise<Stats> => {
   let result: Stats | null;
 
-  result = await prisma.stats.findUnique({
+  result = await prisma.stats.findFirst({
     where: {
-      type_slug: { slug, type },
+      type,
+      slug,
     },
   });
 
@@ -32,12 +33,24 @@ const updateBlogStats = async (type: StatsType, slug: string, updates: Partial<S
     }
   }
 
-  const updated = await prisma.stats.update({
+  await prisma.stats.updateMany({
     where: {
-      type_slug: { slug, type },
+      type,
+      slug,
     },
     data: updates,
   });
+
+  const updated = await prisma.stats.findFirst({
+    where: {
+      type,
+      slug,
+    },
+  });
+
+  if (!updated) {
+    throw new Error('Failed to update stats');
+  }
 
   return updated;
 };
