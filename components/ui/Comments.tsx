@@ -26,6 +26,12 @@ export default function Comments(props: CommentsProps) {
   } = { ...defaultConfigs, ...configs };
 
   const { theme: siteTheme, resolvedTheme } = useTheme();
+
+  // Don't render if giscus is not configured
+  if (!repo || !repositoryId || !category || !categoryId) {
+    return null;
+  }
+
   const commentsTheme =
     themeURL === '' ? (siteTheme === 'dark' || resolvedTheme === 'dark' ? darkTheme : theme) : themeURL;
 

@@ -1,4 +1,4 @@
-import { Link } from '@/components/ui';
+import Link from 'next/link';
 
 interface BlogNavProps {
   next?: { path: string; title: string };
@@ -7,42 +7,42 @@ interface BlogNavProps {
   prevLabel?: string;
 }
 
-const NavLabel = ({ label }: { label?: string }) => {
-  if (label) {
-    return <span className="tracking-wide text-gray-500 dark:text-gray-400">{label}</span>;
-  }
-
-  return null;
-};
-
 const PostNav = (props: BlogNavProps) => {
-  const { next, nextLabel = 'Next post', prev, prevLabel = 'Previous post' } = props;
+  const { next, prev } = props;
 
   if (!prev && !next) {
     return null;
   }
 
   return (
-    <div className="flex flex-col gap-2 py-4 md:flex-row md:justify-between md:gap-12 xl:py-8">
+    <div className="flex justify-between border-t border-gray-200 py-8 dark:border-gray-700">
       {prev && prev.path ? (
-        <div className="flex flex-col gap-1">
-          <NavLabel label={`←  ${prevLabel}`} />
-
-          <Link href={`/${prev.path}`}>
-            <div data-umami-event="post-nav-prev">{prev.title}</div>
-          </Link>
-        </div>
+        <Link
+          href={`/${prev.path}`}
+          className="group flex flex-col rounded-lg border border-gray-200 bg-white p-4 transition-all hover:border-gray-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600"
+          data-umami-event="post-nav-prev"
+        >
+          <span className="text-sm text-gray-500 dark:text-gray-400">Previous</span>
+          <span className="mt-1 font-semibold text-gray-900 group-hover:text-primary-600 dark:text-gray-100 dark:group-hover:text-primary-400">
+            {prev.title}
+          </span>
+        </Link>
       ) : (
         <div />
       )}
-      {next && next.path && (
-        <div className="flex flex-col items-end gap-1 text-right">
-          <NavLabel label={`${nextLabel}  →`} />
-
-          <Link href={`/${next.path}`}>
-            <div data-umami-event="post-nav-next">{next.title}</div>
-          </Link>
-        </div>
+      {next && next.path ? (
+        <Link
+          href={`/${next.path}`}
+          className="group flex flex-col rounded-lg border border-gray-200 bg-white p-4 transition-all hover:border-gray-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600"
+          data-umami-event="post-nav-next"
+        >
+          <span className="text-sm text-gray-500 dark:text-gray-400">Next</span>
+          <span className="mt-1 font-semibold text-gray-900 group-hover:text-primary-600 dark:text-gray-100 dark:group-hover:text-primary-400">
+            {next.title}
+          </span>
+        </Link>
+      ) : (
+        <div />
       )}
     </div>
   );

@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
+import Link from 'next/link';
 
 import { CoreContent } from 'pliny/utils/contentlayer';
 import type { Blog } from 'contentlayer/generated';
 
 import siteMetadata from '@/data/siteMetadata';
 
-import { BlogTags, BlogMeta } from '@/components/blog';
-import { Link, Comments, PageTitle, SectionContainer, ScrollTopAndComment } from '@/components/ui';
+import { BlogTags, BlogMeta, BlogNav } from '@/components/blog';
+import { Comments, PageTitle, SectionContainer, ScrollTopAndComment } from '@/components/ui';
 
 interface LayoutProps {
   content: CoreContent<Blog>;
@@ -26,6 +27,14 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
         <div>
           <header>
             <div className="dark:border-gray space-y-1 border-b border-gray-200 pb-10">
+              <div className="mb-4">
+                <Link
+                  href="/blog"
+                  className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                  ← Back to Blog
+                </Link>
+              </div>
               <div className="space-y-6">
                 <PageTitle>{title}</PageTitle>
                 <BlogTags tags={tags} />
@@ -50,30 +59,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
             )}
 
             <footer>
-              <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                {prev && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/${prev.path}`}
-                      className="text-primary hover:text-sky-600 dark:hover:text-sky-400"
-                      aria-label={`Previous post: ${prev.title}`}
-                    >
-                      &larr; {prev.title}
-                    </Link>
-                  </div>
-                )}
-                {next && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/${next.path}`}
-                      className="text-primary hover:text-sky-600 dark:hover:text-sky-400"
-                      aria-label={`Next post: ${next.title}`}
-                    >
-                      {next.title} &rarr;
-                    </Link>
-                  </div>
-                )}
-              </div>
+              <BlogNav next={next} prev={prev} />
             </footer>
           </div>
         </div>

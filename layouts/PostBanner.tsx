@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
+import Link from 'next/link';
 import Bleed from 'pliny/ui/Bleed';
 import { CoreContent } from 'pliny/utils/contentlayer';
 import type { Blog } from 'contentlayer/generated';
 
 import siteMetadata from '@/data/siteMetadata';
-import { Image, Comments, Link, PageTitle, SectionContainer, ScrollTopAndComment } from '@/components/ui';
+import { Image, Comments, PageTitle, SectionContainer, ScrollTopAndComment } from '@/components/ui';
+import { BlogNav } from '@/components/blog';
 
 interface LayoutProps {
   content: CoreContent<Blog>;
@@ -22,6 +24,14 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
       <ScrollTopAndComment />
       <article>
         <div>
+          <div className="mb-4 px-2 sm:px-0">
+            <Link
+              href="/blog"
+              className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            >
+              ← Back to Blog
+            </Link>
+          </div>
           <div className="space-y-1 pb-10 text-center dark:border-gray-700">
             <div className="w-full">
               <Bleed>
@@ -41,30 +51,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
             </div>
           )}
           <footer>
-            <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-              {prev && prev.path && (
-                <div className="pt-4 xl:pt-8">
-                  <Link
-                    href={`/${prev.path}`}
-                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    aria-label={`Previous post: ${prev.title}`}
-                  >
-                    &larr; {prev.title}
-                  </Link>
-                </div>
-              )}
-              {next && next.path && (
-                <div className="pt-4 xl:pt-8">
-                  <Link
-                    href={`/${next.path}`}
-                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    aria-label={`Next post: ${next.title}`}
-                  >
-                    {next.title} &rarr;
-                  </Link>
-                </div>
-              )}
-            </div>
+            <BlogNav next={next} prev={prev} />
           </footer>
         </div>
       </article>
