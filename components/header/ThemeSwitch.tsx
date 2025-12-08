@@ -15,19 +15,15 @@ const ThemeSwitch = () => {
   // Default to sun icon if not mounted yet
   const getIcon = () => {
     if (!mounted) {
-      return <Sun strokeWidth={1.5} size={22} className="text-gray-600 dark:text-gray-400" />;
+      return <Sun strokeWidth={1.5} size={20} />;
     }
-    return resolvedTheme === 'dark' ? (
-      <MoonStar strokeWidth={1.5} size={22} className="text-gray-600 dark:text-gray-400" />
-    ) : (
-      <Sun strokeWidth={1.5} size={22} className="text-gray-600 dark:text-gray-400" />
-    );
+    return resolvedTheme === 'dark' ? <MoonStar strokeWidth={1.5} size={20} /> : <Sun strokeWidth={1.5} size={20} />;
   };
 
   return (
     <div className="mx-1 flex items-center">
       <Menu as="div" className="relative inline-block text-left">
-        <div className="flex h-8 w-8 items-center justify-center rounded p-1 hover:bg-gray-200 dark:hover:bg-primary-600">
+        <div className="flex h-8 w-8 items-center justify-center rounded hover:bg-gray-200 dark:hover:bg-primary-600">
           <Menu.Button aria-label="Theme switcher" className="flex items-center justify-center">
             {getIcon()}
           </Menu.Button>
