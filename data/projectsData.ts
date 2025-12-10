@@ -14,7 +14,7 @@ const projectsData: Project[] = [
     title: 'Data Cleaning & Visualization',
     description: 'Comprehensive data cleaning and visualization project demonstrating ETL pipelines, data quality assessment, and stunning visual insights. Perfect for understanding data preparation workflows.',
     imgSrc: '/static/images/projects/data-cleaning.png',
-    url: 'https://github.com/iNSRawat/google_analytics_data_cleaning_visualization',
+    url: 'https://github.com/iNSRawat/google-analytics-data-cleaning-visualization',
     builtWith: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Data Visualization'],
   },
   {
