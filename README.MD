@@ -22,6 +22,7 @@
 ## Portfolio Website
 
 [![NSRawat's Data Science Portfolio](https://nsrawat-ds.vercel.app/api/og)](https://nsrawat.vercel.app/)
+[![NSRawat's Blog](public/static/images/projects/NSRawat-blog.png)](https://nsrawat.vercel.app/blog/)
 
 <br>
 
