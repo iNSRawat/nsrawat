@@ -3,7 +3,7 @@
   "short_name": "",
   "icons": [
     {
-      "src": "/tennis-racquet.png",
+      "src": "/static/favicons/nsrawat-fav.png",
       "sizes": "96x96",
       "type": "image/png"
     }
