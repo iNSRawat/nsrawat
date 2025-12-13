@@ -99,9 +99,10 @@ module.exports = () => {
           },
         ],
       });
-      // Removed optimization.usedExports and sideEffects as they conflict with Next.js 15
+      // Removed optimization.usedExports and sideEffects as they conflict with Next.js 16
       return config;
     },
+    // turbopack: {}, // Using webpack for SVG support
     async headers() {
       return [
         {

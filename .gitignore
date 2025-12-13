@@ -48,3 +48,67 @@ yarn-error.log*
 
 # TypeScript build info
 *.tsbuildinfo
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env*.local
+.env.production
+
+# Prisma
+prisma/migrations/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.vercel/
+
+# Testing
+coverage/
+.nyc_output/
+.jest/
+
+# Lock files (keep package-lock.json but ignore others if needed)
+# package-lock.json - KEEP THIS
+# yarn.lock - KEEP THIS if using yarn
+# pnpm-lock.yaml - KEEP THIS if using pnpm
+
+# Husky
+.husky/_/
+
+# Misc
+*.pem
+.eslintcache

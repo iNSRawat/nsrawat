@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <AnalyticsKBarAction />
               <Header />
-              <main className="mb-auto mt-16 sm:mt-20">{children}</main>
+              <main className="mb-4 mt-16 sm:mt-20">{children}</main>
               <Footer />
             </SearchProvider>
           </SectionContainer>

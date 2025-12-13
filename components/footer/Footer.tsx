@@ -2,7 +2,7 @@ import BuildWith from '@/components/footer/BuildWith';
 
 export default function Footer() {
   return (
-    <footer className="mt-12 py-8">
+    <footer className="mt-4 py-6">
       <div className="mx-auto flex max-w-4xl flex-col gap-6 px-4 sm:flex-row sm:items-center sm:justify-between">
         <BuildWith />
 

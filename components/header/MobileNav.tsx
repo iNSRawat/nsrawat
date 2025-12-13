@@ -8,6 +8,7 @@ import headerNavLinks from '@/data/headerNavLinks';
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const navRef = useRef(null);
 
   const onToggleNav = () => {
@@ -23,8 +24,9 @@ const MobileNav = () => {
   };
 
   useEffect(() => {
+    setMounted(true);
     return clearAllBodyScrollLocks;
-  });
+  }, []);
 
   return (
     <>
@@ -42,8 +44,9 @@ const MobileNav = () => {
           />
         </svg>
       </button>
-      <Transition appear show={navShow} as={Fragment} unmount={false}>
-        <Dialog as="div" onClose={onToggleNav} unmount={false}>
+      {mounted && (
+        <Transition appear show={navShow} as={Fragment} unmount={false}>
+          <Dialog as="div" onClose={onToggleNav} unmount={false}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -101,6 +104,7 @@ const MobileNav = () => {
           </Transition.Child>
         </Dialog>
       </Transition>
+      )}
     </>
   );
 };
