@@ -36,7 +36,7 @@ This blog is hosted on [Vercel](https://vercel.com/), built with [Next.js](https
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-This blog site takes inspiration from [lehuynh.dev](https://github.com/hta218/leohuynh.dev). I appreciate Leo Huynh and Timothy Lin for their contribution to this minimal, lightweight, and highly customizable blog starter.
+This blog site takes inspiration from [karhdo.dev](https://github.com/Karhdo/karhdo.dev) & [lehuynh.dev](https://github.com/hta218/leohuynh.dev). I appreciate Leo Huynh and Timothy Lin for their contribution to this minimal, lightweight, and highly customizable blog starter.
 
 <br>
 
