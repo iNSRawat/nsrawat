@@ -57,7 +57,7 @@ export default function AuthorLayout({ children, content }: Props) {
             </h2>
             <p>
               I have a passion for <strong>Data Science and Machine Learning</strong> and data visualization. I'm
-              currently a freelance Data Scientist & ML Enthusiast at <strong>NSRawat</strong>, deeply engaged in
+              currently a freelance/learner Data Scientist & ML Enthusiast at <strong>NSRawat</strong>, deeply engaged in
               transforming complex data into actionable insights, building predictive models, and deploying 
               scalable ML solutions. project, which entails market share management, and
               fostering e-commerce growth. I work mainly with <strong>Python</strong>, <strong>SQL</strong>,{' '}
