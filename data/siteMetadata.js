@@ -8,7 +8,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://www.nsrawat.in',
-  analyticsURL: 'https://analytics.nsrawat.in/share/CI0vATSfwoaX2xHB',
+  analyticsURL: 'https://analytics.nsrawat.in/share/CI0vATSfwoaX2xHB/nsrawat.in',
   siteRepo: 'https://github.com/iNSRawat/nsrawat_portfolio',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
