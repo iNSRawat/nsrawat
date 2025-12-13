@@ -8,7 +8,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://www.nsrawat.in',
-  analyticsURL: 'https://nsrawat.in/share/7INnZc4Dv9KbGumx',
+  analyticsURL: 'https://analytics.nsrawat.in/share/CI0vATSfwoaX2xHB',
   siteRepo: 'https://github.com/iNSRawat/nsrawat_portfolio',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
@@ -32,7 +32,7 @@ const siteMetadata = {
   analytics: {
     umamiAnalytics: {
       umamiWebsiteId: process.env.UMAMI_WEBSITE_ID,
-      umamiScriptSrc: 'https://cloud.umami.is/script.js',
+      umamiScriptSrc: 'https://analytics.nsrawat.in/script.js',
     },
   },
   newsletter: {
