@@ -56,9 +56,6 @@ module.exports = () => {
     basePath,
     reactStrictMode: true,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-    eslint: {
-      dirs: ['app', 'components', 'layouts', 'scripts'],
-    },
     poweredByHeader: false,
     generateEtags: false,
     images: {
@@ -102,7 +99,7 @@ module.exports = () => {
       // Removed optimization.usedExports and sideEffects as they conflict with Next.js 16
       return config;
     },
-    // turbopack: {}, // Using webpack for SVG support
+    turbopack: {}, // Empty config to silence Turbopack warning (webpack used for production builds)
     async headers() {
       return [
         {

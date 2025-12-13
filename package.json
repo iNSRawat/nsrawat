@@ -6,10 +6,10 @@
     "start": "next dev --webpack",
     "dev": "cross-env INIT_CWD=%cd% next dev --webpack",
     "postinstall": "npx prisma generate",
-    "build": "cross-env INIT_CWD=$PWD next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
+    "build": "cross-env INIT_CWD=$PWD next build --webpack && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "prepare": "husky install",
+    "prepare": "husky install || true",
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
     "migrate:postgres": "dotenv -e .env.local -- npx prisma migrate deploy"
   },
