@@ -57,8 +57,9 @@ export default function AuthorLayout({ children, content }: Props) {
             </h2>
             <p>
               I have a passion for <strong>Data Science and Machine Learning</strong> and data visualization. I'm
-              currently a freelance Data Scientist & ML Enthusiast at <strong>iNSRawat.com</strong>, deeply engaged in
-              the <strong>CarEager</strong> project, which entails market share management, competitor research, and
+              currently a freelance Data Scientist & ML Enthusiast at <strong>NSRawat</strong>, deeply engaged in
+              transforming complex data into actionable insights, building predictive models, and deploying 
+              scalable ML solutions. project, which entails market share management, and
               fostering e-commerce growth. I work mainly with <strong>Python</strong>, <strong>SQL</strong>,{' '}
               <strong>TensorFlow</strong>, <strong>PyTorch</strong>, <strong>Scikit-learn</strong>, and{' '}
               <strong>NumPy</strong>.
@@ -68,12 +69,12 @@ export default function AuthorLayout({ children, content }: Props) {
               <p>My desire to practice my skills and share my acquired knowledge fuels my endeavors.</p>
             </blockquote>
             <p>
-              I founded this blog as a means to document and share the knowledge and practical wisdom I've acquired
-              during my journey as a software engineer.
+              I founded this blog as a means to document and share the knowledge and practical wisdom I've acquired 
+              during my journey as a data scientist and machine learning enthusiast.
             </p>
             <p>
-              Writing and taking notes helps me solidify my understanding of new concepts and technologies. I hope my
-              blog can be a useful resource for fellow web developers.
+              Writing and taking notes helps me solidify my understanding of new concepts and technologies. I hope my blog can be a useful resource for 
+              fellow data scientists and aspiring ML practitioners.
             </p>
             <p>
               I would greatly appreciate your thoughts and comments on what I have written{' '}
@@ -117,7 +118,7 @@ export default function AuthorLayout({ children, content }: Props) {
 
             <ul>
               <li>
-                <Twemoji className="!mr-2" emoji="atom-symbol" /> Upgrading to <strong>React 19</strong>,{' '}
+                <Twemoji className="!mr-2" emoji="atom-symbol" /> Upgrad to <strong>React 19</strong>,{' '}
                 <strong>Next.js 16</strong>.
               </li>
               <li>
