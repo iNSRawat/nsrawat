@@ -82,4 +82,4 @@ Extending sincere thanks for these exceptional resources 🙏
 
 <br>
 
-Copyright © 2023 - N S Rawat (NSRawat)
+Copyright © 2025 - N S Rawat (NSRawat)
