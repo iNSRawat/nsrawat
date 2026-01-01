@@ -5,6 +5,9 @@ export default function Footer() {
   return (
     <footer className="mt-4 py-6">
       <div className="mx-auto flex max-w-4xl flex-col gap-6 px-4">
+        {/* Divider Line */}
+        <div className="border-t border-gray-200 dark:border-gray-700"></div>
+
         {/* Donation Section */}
         <div className="pt-2">
           <DonationButtons />
