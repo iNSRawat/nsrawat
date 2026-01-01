@@ -45,10 +45,10 @@ const popularTags: PopularTag[] = [
     bgColor: 'bg-purple-700',
   },
   {
-    href: '/tags/seaborn',
-    iconType: 'Seaborn',
-    slug: 'seaborn',
-    title: 'Seaborn',
+    href: '/tags/scikit-learn',
+    iconType: 'ScikitLearn',
+    slug: 'scikit-learn',
+    title: 'Scikit-learn',
     bgColor: 'bg-green-600',
   },
 ];
