@@ -5,7 +5,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import 'remark-github-blockquote-alert/alert.css';
 
 import { Metadata } from 'next';
-import { Outfit } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 import { SearchProvider, SearchConfig } from 'pliny/search';
 // import { Analytics, AnalyticsConfig } from 'pliny/analytics';
 
@@ -18,11 +18,11 @@ import AnalyticsKBarAction from '@/components/search/AnalyticsKBarAction';
 import { ThemeProviders } from './theme-providers';
 import { UmamiAnalytics } from '@/components/analytics/umami';
 
-const FONT_OUTFIT = Outfit({
+const FONT_MONO = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-outfit',
+  variable: '--font-mono',
 });
 
 export const metadata: Metadata = {
@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const basePath = process.env.BASE_PATH || '';
 
   return (
-    <html lang={siteMetadata.language} className={`${FONT_OUTFIT.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang={siteMetadata.language} className={`${FONT_MONO.variable} scroll-smooth`} suppressHydrationWarning>
       <link rel="apple-touch-icon" sizes="76x76" href={`${basePath}/static/favicons/apple-touch-icon.png`} />
       <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/nsrawat-fav.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/nsrawat-fav.png" />

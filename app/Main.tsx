@@ -26,18 +26,17 @@ export default function Home({ posts }: HomeProps) {
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       {/* Hero Section - Similar to leohuynh.dev */}
       <section className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 sm:space-y-5 sm:pb-12 sm:pt-10">
-          <div className="space-y-8 lg:grid lg:grid-cols-12 lg:gap-8 lg:space-y-0">
+        <div className="space-y-2 pb-2 pt-6 sm:space-y-5 sm:pb-4 sm:pt-10">
+          <div className="items-start space-y-8 lg:grid lg:grid-cols-12 lg:gap-8 lg:space-y-0">
             {/* Left Column - Text Content */}
             <div className="flex flex-col lg:col-span-7">
               <Greeting />
-              <div className="mt-6 flex flex-1 flex-col space-y-6">
+              <div className="mt-6 flex flex-col space-y-6">
                 <div className="space-y-2">
                   <Heading />
                   <TypedBios />
                 </div>
                 <ShortDescription />
-                <div className="flex-1" />
                 <div>
                   <BlogLinks />
                 </div>
@@ -45,7 +44,7 @@ export default function Home({ posts }: HomeProps) {
             </div>
 
             {/* Right Column - Profile Card */}
-            <div className="mt-8 flex items-start lg:col-span-5 lg:mt-0">
+            <div className="mt-8 self-start lg:col-span-5 lg:mt-0 lg:sticky lg:top-20">
               <ProfileCard />
             </div>
           </div>
@@ -53,7 +52,7 @@ export default function Home({ posts }: HomeProps) {
       </section>
 
       {/* Popular Tags Section */}
-      <section className="pt-6 pb-2 sm:pt-8 sm:pb-4">
+      <section className="pt-2 pb-2 sm:pt-4 sm:pb-4">
         <PopularTags />
       </section>
 

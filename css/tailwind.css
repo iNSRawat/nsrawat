@@ -7,7 +7,8 @@ html {
 }
 
 ::selection {
-  background-color: #7aa2f7; /* Primary color */
+  background-color: #7aa2f7;
+  /* Primary color */
   color: #fff;
 }
 
@@ -36,8 +37,10 @@ html {
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
@@ -92,20 +95,78 @@ input:-webkit-autofill:focus {
 .popular-tags .database {
   @apply bg-green-900;
 }
+
 /* END: CSS popular tags */
 
 /* START: CSS Prose */
+/* Responsive font sizing for monospace fonts - compact terminal style */
+html {
+  font-size: 12px;
+  /* Base size for mobile */
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 13px;
+    /* Tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 14px;
+    /* Desktop */
+  }
+}
+
+body {
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  /* Tighter for compact monospace */
+}
+
 .prose {
-  font-size: 18px;
+  font-size: 0.9375rem;
+  /* ~12px mobile, ~13px tablet, ~14px desktop */
+}
+
+@media (min-width: 640px) {
+  .prose {
+    font-size: 1rem;
+    /* ~14px on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .prose {
+    font-size: 1.0625rem;
+    /* ~16px on desktop */
+  }
 }
 
 .prose h2 {
-  font-size: 28px;
-  margin: 0 0 12px 0;
+  font-size: 1.375rem;
+  /* ~18px base */
+  margin: 0 0 10px 0;
+}
+
+@media (min-width: 1024px) {
+  .prose h2 {
+    font-size: 1.5rem;
+    /* ~22px on desktop */
+  }
 }
 
 .prose h3 {
-  font-size: 24px;
+  font-size: 1.125rem;
+  /* ~15px base */
+}
+
+@media (min-width: 1024px) {
+  .prose h3 {
+    font-size: 1.25rem;
+    /* ~19px on desktop */
+  }
 }
 
 .prose img {
@@ -120,6 +181,7 @@ input:-webkit-autofill:focus {
 .dark .dark\:prose-dark blockquote {
   background: #5c6370;
 }
+
 /* END: CSS Prose */
 
 /* Typed.js cursor blinking animation */

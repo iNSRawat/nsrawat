@@ -93,7 +93,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-outfit)', ...fontFamily.sans],
+        sans: ['var(--font-mono)', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', ...fontFamily.mono],
       },
       colors: {
         primary: {
