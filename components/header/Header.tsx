@@ -13,22 +13,30 @@ import Logo from 'public/static/images/logo.svg';
 import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';
 import SearchButton from './SearchButton';
-import { GrowingUnderline } from '@/components/ui/GrowingUnderline';
 
 const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="fixed left-1/2 top-6 z-50 w-full max-w-2xl -translate-x-1/2">
-      <div className="mx-4 flex items-center justify-between rounded-full border border-zinc-200/50 bg-white/70 px-4 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all dark:border-zinc-800/50 dark:bg-zinc-900/70 dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
-        <Link href="/" aria-label={siteMetadata.headerTitle} className="flex items-center gap-2">
-          <div className="flex h-8 w-8 animate-wave items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-            <Logo className="h-5 w-5 fill-zinc-800 dark:fill-zinc-200" />
+    <header className="fixed left-1/2 top-4 z-50 w-full max-w-4xl -translate-x-1/2 px-4">
+      <div className="flex items-center justify-between rounded-lg border border-zinc-700/50 bg-zinc-900/90 px-4 py-2.5 shadow-lg backdrop-blur-md">
+        {/* Logo + Name in terminal style */}
+        <Link
+          href="/"
+          aria-label={siteMetadata.headerTitle}
+          className="flex items-center gap-2 font-mono text-sm font-bold transition-colors hover:text-green-300"
+        >
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-800">
+            <Logo className="h-4 w-4 fill-green-400" />
           </div>
-          <span className="text-base font-bold text-zinc-900 dark:text-white">N S Rawat</span>
+          <span className="text-green-500">&gt;_</span>
+          <span className="text-zinc-500">://</span>
+          <span className="text-white">N S Rawat</span>
         </Link>
+
+        {/* Navigation Links */}
         <div className="flex items-center gap-1">
-          <div className="hidden items-center gap-1 sm:flex">
+          <nav className="hidden items-center gap-0 sm:flex">
             {headerNavLinks
               .filter((link) => link.href !== '/')
               .map((link) => (
@@ -36,18 +44,20 @@ const Header = () => {
                   key={link.title}
                   href={link.href}
                   className={clsx(
-                    'relative rounded-full px-3 py-1.5 text-sm font-medium transition-colors',
+                    'px-2 py-1 font-mono text-sm font-bold transition-colors',
                     pathname.startsWith(link.href)
-                      ? 'bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
-                      : 'text-zinc-600 hover:bg-zinc-100/50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-100'
+                      ? 'text-green-400'
+                      : 'text-zinc-400 hover:text-green-400'
                   )}
                 >
-                  {link.title}
+                  <span className="text-zinc-600">://</span>
+                  {link.title.toLowerCase()}
                 </Link>
               ))}
-          </div>
-          <div className="mx-2 hidden h-4 w-px bg-zinc-200 dark:bg-zinc-800 sm:block" />
-          <div className="flex items-center gap-2">
+          </nav>
+
+          {/* Utility buttons */}
+          <div className="ml-2 flex items-center gap-2 border-l border-zinc-700 pl-3">
             <SearchButton />
             <ThemeSwitch />
             <MobileNav />
