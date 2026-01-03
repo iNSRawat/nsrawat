@@ -1,29 +1,22 @@
 // NSRawat Wordmark - Simple text-based logotype
-// Using a simple, readable pixel-style text representation
+// Using a pixel-style path representation
 
 export function NSRawatWordmark(props: React.ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      viewBox="0 0 280 40"
+      viewBox="0 0 1088 160"
       {...props}
     >
-      <text
-        x="0"
-        y="32"
+      <path
         fill="currentColor"
-        fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
-        fontSize="32"
-        fontWeight="bold"
-        letterSpacing="-1"
-      >
-        NSRawat
-      </text>
+        d="M0 0h32v32h-32zM96 0h32v32h-32zM0 32h32v32h-32zM32 32h32v32h-32zM96 32h32v32h-32zM0 64h32v32h-32zM64 64h32v32h-32zM96 64h32v32h-32zM0 96h32v32h-32zM96 96h32v32h-32zM0 128h32v32h-32zM96 128h32v32h-32zM192 0h32v32h-32zM224 0h32v32h-32zM256 0h32v32h-32zM160 32h32v32h-32zM192 64h32v32h-32zM224 64h32v32h-32zM256 96h32v32h-32zM160 128h32v32h-32zM192 128h32v32h-32zM224 128h32v32h-32zM320 0h32v32h-32zM352 0h32v32h-32zM384 0h32v32h-32zM320 32h32v32h-32zM416 32h32v32h-32zM320 64h32v32h-32zM352 64h32v32h-32zM384 64h32v32h-32zM320 96h32v32h-32zM384 96h32v32h-32zM320 128h32v32h-32zM416 128h32v32h-32zM512 32h32v32h-32zM544 32h32v32h-32zM576 64h32v32h-32zM512 96h32v32h-32zM544 96h32v32h-32zM576 96h32v32h-32zM480 128h32v32h-32zM576 128h32v32h-32zM640 32h32v32h-32zM736 32h32v32h-32zM640 64h32v32h-32zM704 64h32v32h-32zM736 64h32v32h-32zM640 96h32v32h-32zM672 96h32v32h-32zM736 96h32v32h-32zM640 128h32v32h-32zM736 128h32v32h-32zM832 32h32v32h-32zM864 32h32v32h-32zM896 64h32v32h-32zM832 96h32v32h-32zM864 96h32v32h-32zM896 96h32v32h-32zM800 128h32v32h-32zM896 128h32v32h-32zM992 0h32v32h-32zM960 32h32v32h-32zM992 32h32v32h-32zM1024 32h32v32h-32zM992 64h32v32h-32zM992 96h32v32h-32zM992 128h32v32h-32zM1024 128h32v32h-32z"
+      />
     </svg>
   );
 }
 
 export function getWordmarkSVG(color: string) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 280 40"><text x="0" y="32" fill="${color}" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="32" font-weight="bold" letter-spacing="-1">NSRawat</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1088 160"><path fill="${color}" d="M0 0h32v32h-32zM96 0h32v32h-32zM0 32h32v32h-32zM32 32h32v32h-32zM96 32h32v32h-32zM0 64h32v32h-32zM64 64h32v32h-32zM96 64h32v32h-32zM0 96h32v32h-32zM96 96h32v32h-32zM0 128h32v32h-32zM96 128h32v32h-32zM192 0h32v32h-32zM224 0h32v32h-32zM256 0h32v32h-32zM160 32h32v32h-32zM192 64h32v32h-32zM224 64h32v32h-32zM256 96h32v32h-32zM160 128h32v32h-32zM192 128h32v32h-32zM224 128h32v32h-32zM320 0h32v32h-32zM352 0h32v32h-32zM384 0h32v32h-32zM320 32h32v32h-32zM416 32h32v32h-32zM320 64h32v32h-32zM352 64h32v32h-32zM384 64h32v32h-32zM320 96h32v32h-32zM384 96h32v32h-32zM320 128h32v32h-32zM416 128h32v32h-32zM512 32h32v32h-32zM544 32h32v32h-32zM576 64h32v32h-32zM512 96h32v32h-32zM544 96h32v32h-32zM576 96h32v32h-32zM480 128h32v32h-32zM576 128h32v32h-32zM640 32h32v32h-32zM736 32h32v32h-32zM640 64h32v32h-32zM704 64h32v32h-32zM736 64h32v32h-32zM640 96h32v32h-32zM672 96h32v32h-32zM736 96h32v32h-32zM640 128h32v32h-32zM736 128h32v32h-32zM832 32h32v32h-32zM864 32h32v32h-32zM896 64h32v32h-32zM832 96h32v32h-32zM864 96h32v32h-32zM896 96h32v32h-32zM800 128h32v32h-32zM896 128h32v32h-32zM992 0h32v32h-32zM960 32h32v32h-32zM992 32h32v32h-32zM1024 32h32v32h-32zM992 64h32v32h-32zM992 96h32v32h-32zM992 128h32v32h-32zM1024 128h32v32h-32z"/></svg>`;
 }
