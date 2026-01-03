@@ -36,7 +36,7 @@ This blog is hosted on [Vercel](https://vercel.com/), built with [Next.js](https
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-This blog site takes inspiration from [karhdo.dev](https://github.com/Karhdo/karhdo.dev), [lehuynh.dev](https://github.com/hta218/leohuynh.dev) & [chanhdai.com](https://github.com/ncdai/chanhdai.com). I appreciate Karhdo, Leo Huynh, Nguyen Chanh Dai and Timothy Lin for their contribution to this minimal, lightweight, and highly customizable blog starter.
+This blog site takes inspiration from [chanhdai.com](https://github.com/ncdai/chanhdai.com). I appreciate Nguyen Chanh Dai for their contribution to this minimal, lightweight, and highly customizable blog starter.
 
 <br>
 
@@ -45,7 +45,7 @@ This blog site takes inspiration from [karhdo.dev](https://github.com/Karhdo/kar
 - ⚛️ Upgrade to **React 19**, **Next.js 16**
 - 🎉 Adopting **TypeScript**, committing with [Conventional Commits](https://www.conventionalcommits.org/)
 - 👀 Theming in dark mode with [Tokyonight Neovim Theme](https://github.com/folke/tokyonight.nvim) colors for better contrast.
-- 👨‍💻 My website refers to the design and code from the [Karhdo.dev](https://github.com/Karhdo/karhdo.dev), [lehuynh.dev](https://github.com/hta218/leohuynh.dev) & [chanhdai.com](https://github.com/ncdai/chanhdai.com) repositories and incorporates the tailwind-nextjs-starter-blog template, version 1.0.
+- 👨‍💻 My website refers to the design and code from the [chanhdai.com](https://github.com/ncdai/chanhdai.com) repository and incorporates the tailwind-nextjs-starter-blog template, version 1.0.
 - 📥 Bumping up `mdx-bundler`, `rehype`/`remark` plugins and dependencies to the latest version
 
 <br>
@@ -78,7 +78,7 @@ Extending sincere thanks for these exceptional resources 🙏
 
 ---
 
-<p align="center">Inspired by <a href="https://github.com/Karhdo/karhdo.dev">Karhdo/karhdo.dev</a>, <a href="https://github.com/hta218/leohuynh.dev">hta218/leohuynh.dev</a> and <a href="https://github.com/ncdai/chanhdai.com">ncdai/chanhdai.com</a></p>
+<p align="center">Inspired by <a href="https://github.com/ncdai/chanhdai.com">ncdai/chanhdai.com</a></p>
 
 <br>
 
