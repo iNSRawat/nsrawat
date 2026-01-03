@@ -17,9 +17,9 @@ export type Project = {
   /** Tags/technologies for chips or filtering. */
   skills: string[];
   /** Optional rich description; Markdown and line breaks supported. */
-  description?: string;
+  description: string;
   /** Logo image URL (absolute or path under /public). */
-  logo?: string;
+  logo: string;
   /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean;
 };

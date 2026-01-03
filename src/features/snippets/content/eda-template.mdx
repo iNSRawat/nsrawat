@@ -1,0 +1,28 @@
+---
+title: EDA Quick Template
+description: Quick exploratory data analysis template for new datasets.
+language: python
+createdAt: 2025-01-05
+---
+
+```python
+import pandas as pd
+import numpy as np
+
+# Load and explore
+df = pd.read_csv('data.csv')
+print(f"Shape: {df.shape}")
+print(f"Columns: {df.columns.tolist()}")
+print(f"Missing values:\n{df.isnull().sum()}")
+print(f"Duplicates: {df.duplicated().sum()}")
+
+# Data types
+print(df.dtypes)
+
+# Numeric summary
+print(df.describe())
+
+# Categorical summary
+for col in df.select_dtypes(include='object').columns:
+    print(f"{col}: {df[col].nunique()} unique values")
+```

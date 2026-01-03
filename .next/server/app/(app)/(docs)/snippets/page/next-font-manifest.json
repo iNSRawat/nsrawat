@@ -1,0 +1,11 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/src/app/(app)/(docs)/snippets/page": [
+      "static/media/GeistMono_Variable.p.73882635.woff2",
+      "static/media/03fc1b4a8d284b5e-s.p.af4fcd24.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}

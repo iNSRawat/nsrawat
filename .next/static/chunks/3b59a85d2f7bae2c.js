@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,961663,t=>{"use strict";var e=t.i(533431);t.i(138961);var i=t.i(208558);function r(){return(0,e.jsx)(i.ShimmeringText,{className:"text-2xl font-medium",text:"Shimmering Text"})}t.s(["default",()=>r])}]);

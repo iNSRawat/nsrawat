@@ -1,0 +1,25 @@
+---
+title: Pandas DataFrame Cheatsheet
+description: Common Pandas operations for data manipulation and analysis.
+language: python
+createdAt: 2025-01-01
+---
+
+```python
+import pandas as pd
+
+# Read data
+df = pd.read_csv('data.csv')
+
+# Basic info
+df.head()
+df.info()
+df.describe()
+
+# Filter rows
+df[df['column'] > value]
+df.query('column > @value')
+
+# Group by
+df.groupby('category').agg({'value': ['mean', 'sum']})
+```

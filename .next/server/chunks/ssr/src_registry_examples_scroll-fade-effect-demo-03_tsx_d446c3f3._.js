@@ -1,0 +1,3 @@
+module.exports=[673817,a=>{"use strict";var b=a.i(732681),c=a.i(761835),d=a.i(269876),e=a.i(505084),f=a.i(368114);let g=Array.from({length:50}).map((a,b,c)=>`v1.2.0-beta.${c.length-b}`);function h(){return(0,b.jsx)(d.ScrollArea,{className:(0,f.cn)("h-72 w-48 rounded-lg border","**:data-[slot=scroll-area-viewport]:scroll-fade-effect-y"),children:(0,b.jsxs)("div",{className:"p-4",children:[(0,b.jsx)("h4",{className:"mb-4 text-sm leading-none font-medium",children:"Tags"}),g.map(a=>(0,b.jsxs)(c.Fragment,{children:[(0,b.jsx)("div",{className:"text-sm",children:a}),(0,b.jsx)(e.Separator,{className:"my-2"})]},a))]})})}a.s(["default",()=>h])}];
+
+//# sourceMappingURL=src_registry_examples_scroll-fade-effect-demo-03_tsx_d446c3f3._.js.map

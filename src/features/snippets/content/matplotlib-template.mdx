@@ -1,0 +1,23 @@
+---
+title: Matplotlib Plot Template
+description: Professional-looking plot template for data visualization.
+language: python
+createdAt: 2025-01-03
+---
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(10, 6))
+plt.style.use('seaborn-v0_8-whitegrid')
+
+plt.plot(x, y, marker='o', linewidth=2, color='#2563eb')
+plt.fill_between(x, y, alpha=0.3)
+
+plt.title('Chart Title', fontsize=14, fontweight='bold')
+plt.xlabel('X Label')
+plt.ylabel('Y Label')
+plt.tight_layout()
+plt.savefig('plot.png', dpi=300, bbox_inches='tight')
+```

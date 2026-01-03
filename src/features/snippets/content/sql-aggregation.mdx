@@ -1,0 +1,19 @@
+---
+title: SQL Aggregation Queries
+description: Common SQL patterns for data aggregation and analysis.
+language: sql
+createdAt: 2025-01-04
+---
+
+```sql
+-- Basic aggregation with window functions
+SELECT 
+    category,
+    date,
+    value,
+    SUM(value) OVER (PARTITION BY category ORDER BY date) as running_total,
+    AVG(value) OVER (PARTITION BY category) as category_avg,
+    RANK() OVER (PARTITION BY category ORDER BY value DESC) as rank
+FROM sales
+WHERE date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY);
+```

@@ -1,0 +1,25 @@
+---
+title: Model Evaluation Metrics
+description: Comprehensive model evaluation for classification problems.
+language: python
+createdAt: 2025-01-06
+---
+
+```python
+from sklearn.metrics import (
+    accuracy_score, precision_score, recall_score, 
+    f1_score, confusion_matrix, classification_report
+)
+
+# All metrics at once
+print(classification_report(y_true, y_pred))
+
+# Individual metrics
+accuracy = accuracy_score(y_true, y_pred)
+precision = precision_score(y_true, y_pred, average='weighted')
+recall = recall_score(y_true, y_pred, average='weighted')
+f1 = f1_score(y_true, y_pred, average='weighted')
+
+# Confusion matrix
+cm = confusion_matrix(y_true, y_pred)
+```

@@ -1,0 +1,3 @@
+module.exports=[961498,a=>{"use strict";var b=a.i(732681);a.i(740063);var c=a.i(52843);function d(){return(0,b.jsx)(c.ShimmeringText,{className:"font-medium [--color:#fbbf24] [--shimmering-color:#ca8a04] dark:[--color:#f59e0b] dark:[--shimmering-color:#fcd34d]",text:"Processing your request with AI ..."})}a.s(["default",()=>d])}];
+
+//# sourceMappingURL=src_registry_examples_shimmering-text-demo-02_tsx_aef9331d._.js.map

@@ -1,0 +1,9 @@
+{
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
+  "/(app)/(root)/page": "app/(app)/(root)/page.js",
+  "/(app)/(docs)/blog/[slug]/page": "app/(app)/(docs)/blog/[slug]/page.js",
+  "/(app)/(docs)/blog/page": "app/(app)/(docs)/blog/page.js",
+  "/(app)/(docs)/snippets/page": "app/(app)/(docs)/snippets/page.js",
+  "/(app)/(docs)/snippets/[slug]/page": "app/(app)/(docs)/snippets/[slug]/page.js",
+  "/(app)/(docs)/about/page": "app/(app)/(docs)/about/page.js"
+}
