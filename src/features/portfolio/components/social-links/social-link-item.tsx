@@ -1,32 +1,30 @@
 import { ArrowUpRightIcon } from "lucide-react";
-import Image from "next/image";
 
+import { getIcon } from "@/components/icons";
 import type { SocialLink } from "@/features/portfolio/types/social-links";
 import { cn } from "@/lib/utils";
 
 export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
+  const IconComponent = getIcon(icon);
+
   return (
     <a
       className={cn(
         "group/link flex cursor-pointer items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent2",
         "max-sm:screen-line-before max-sm:screen-line-after",
-        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
+        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after",
       )}
       href={href}
       target="_blank"
       rel="noopener"
     >
-      <div className="relative size-12 shrink-0">
-        <Image
-          className="rounded-xl select-none corner-squircle supports-corner-shape:rounded-[50%]"
-          src={icon}
-          alt={title}
-          width={48}
-          height={48}
-          quality={100}
-          unoptimized
-        />
-        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 corner-squircle ring-inset dark:ring-white/15 supports-corner-shape:rounded-[50%]" />
+      <div className="relative size-12 shrink-0 flex items-center justify-center rounded-xl bg-background border border-border/50">
+        {IconComponent ? (
+          <div className="size-6 text-foreground">{IconComponent}</div>
+        ) : (
+          // Fallback if icon not found
+          <div className="size-6 bg-muted rounded-full" />
+        )}
       </div>
 
       <div className="flex-1">
