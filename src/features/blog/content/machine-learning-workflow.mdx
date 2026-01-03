@@ -1,0 +1,138 @@
+---
+title: "Machine Learning Workflow: From Data to Deployment"
+description: "A complete guide to the machine learning workflow, covering data preparation, model training, evaluation, and deployment."
+category: "blog"
+image: "/static/images/blog/machine-learning-workflow.png"
+createdAt: "2025-11-15"
+updatedAt: "2025-11-15"
+---
+
+## The ML Workflow
+
+Every machine learning project follows a systematic workflow. Understanding this process is crucial for success.
+
+---
+
+## 1. Problem Definition
+
+Before writing any code, clearly define:
+
+- What problem are you solving?
+- What is the target variable?
+- What metrics will define success?
+
+---
+
+## 2. Data Collection & Preparation
+
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Load data
+df = pd.read_csv('dataset.csv')
+
+# Split features and target
+X = df.drop('target', axis=1)
+y = df['target']
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+```
+
+---
+
+## 3. Feature Engineering
+
+```python
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+
+# Define preprocessing
+numeric_features = ['age', 'income']
+categorical_features = ['category', 'region']
+
+preprocessor = ColumnTransformer([
+    ('num', StandardScaler(), numeric_features),
+    ('cat', OneHotEncoder(), categorical_features)
+])
+```
+
+---
+
+## 4. Model Training
+
+```python
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
+
+# Create pipeline
+pipeline = Pipeline([
+    ('preprocessor', preprocessor),
+    ('classifier', RandomForestClassifier(n_estimators=100))
+])
+
+# Train
+pipeline.fit(X_train, y_train)
+```
+
+---
+
+## 5. Model Evaluation
+
+```python
+from sklearn.metrics import classification_report, confusion_matrix
+
+# Predictions
+y_pred = pipeline.predict(X_test)
+
+# Evaluation
+print(classification_report(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
+```
+
+---
+
+## 6. Hyperparameter Tuning
+
+```python
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    'classifier__n_estimators': [50, 100, 200],
+    'classifier__max_depth': [5, 10, None]
+}
+
+grid_search = GridSearchCV(pipeline, param_grid, cv=5)
+grid_search.fit(X_train, y_train)
+
+print(f"Best params: {grid_search.best_params_}")
+```
+
+---
+
+## 7. Model Deployment
+
+```python
+import joblib
+
+# Save model
+joblib.dump(pipeline, 'model.pkl')
+
+# Load model
+loaded_model = joblib.load('model.pkl')
+predictions = loaded_model.predict(new_data)
+```
+
+---
+
+## Key Takeaways
+
+1. **Iterate** - ML is iterative, not linear
+2. **Validate** - Always use cross-validation
+3. **Document** - Track experiments and results
+4. **Monitor** - Models degrade over time
+
+Happy Building! 🚀

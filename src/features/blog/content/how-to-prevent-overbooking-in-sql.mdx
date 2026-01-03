@@ -1,0 +1,149 @@
+---
+title: "How to Prevent Overbooking in SQL"
+description: "Multiple methods to prevent overbooking scenarios in SQL databases, from locking to optimistic concurrency."
+category: "blog"
+image: "/static/images/blog/how-to-prevent-overbooking-in-sql.png"
+createdAt: "2025-09-20"
+updatedAt: "2025-09-20"
+---
+
+## The Overbooking Problem
+
+Overbooking occurs when multiple transactions try to book the same resource simultaneously. This is a classic concurrency problem.
+
+---
+
+## Method 1: Pessimistic Locking
+
+Lock the row before reading to prevent other transactions from modifying it.
+
+```sql
+-- Start transaction
+BEGIN TRANSACTION;
+
+-- Lock the row for update
+SELECT available_seats
+FROM flights
+WHERE flight_id = 123
+FOR UPDATE;
+
+-- Check availability and book
+UPDATE flights
+SET available_seats = available_seats - 1
+WHERE flight_id = 123
+  AND available_seats > 0;
+
+COMMIT;
+```
+
+---
+
+## Method 2: Optimistic Concurrency
+
+Use version numbers to detect concurrent modifications.
+
+```sql
+-- Read current version
+SELECT available_seats, version
+FROM flights
+WHERE flight_id = 123;
+-- Returns: available_seats=10, version=5
+
+-- Update with version check
+UPDATE flights
+SET available_seats = available_seats - 1,
+    version = version + 1
+WHERE flight_id = 123
+  AND version = 5
+  AND available_seats > 0;
+
+-- Check if update succeeded (rows affected = 1)
+```
+
+---
+
+## Method 3: CHECK Constraints
+
+Prevent negative values at the database level.
+
+```sql
+-- Add constraint
+ALTER TABLE flights
+ADD CONSTRAINT check_seats
+CHECK (available_seats >= 0);
+
+-- This will fail if seats go negative
+UPDATE flights
+SET available_seats = available_seats - 1
+WHERE flight_id = 123;
+```
+
+---
+
+## Method 4: Stored Procedure
+
+Encapsulate the logic in a stored procedure.
+
+```sql
+CREATE PROCEDURE book_seat(@flight_id INT, @success BIT OUTPUT)
+AS
+BEGIN
+    SET @success = 0;
+
+    BEGIN TRANSACTION;
+
+    UPDATE flights
+    SET available_seats = available_seats - 1
+    WHERE flight_id = @flight_id
+      AND available_seats > 0;
+
+    IF @@ROWCOUNT > 0
+        SET @success = 1;
+
+    COMMIT;
+END;
+```
+
+---
+
+## Method 5: Serializable Isolation
+
+Use the strictest isolation level.
+
+```sql
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+BEGIN TRANSACTION;
+
+SELECT available_seats
+FROM flights
+WHERE flight_id = 123;
+
+-- Business logic here
+
+UPDATE flights
+SET available_seats = available_seats - 1
+WHERE flight_id = 123;
+
+COMMIT;
+```
+
+---
+
+## Comparison
+
+| Method           | Pros               | Cons                  |
+| :--------------- | :----------------- | :-------------------- |
+| Pessimistic Lock | Strong consistency | Reduced concurrency   |
+| Optimistic       | High concurrency   | Retry logic needed    |
+| CHECK Constraint | Simple             | Error handling needed |
+| Stored Procedure | Encapsulated       | Vendor-specific       |
+| Serializable     | Guaranteed safety  | Performance impact    |
+
+---
+
+## Best Practice
+
+For most applications, **Optimistic Concurrency** with proper retry logic offers the best balance of consistency and performance.
+
+Happy querying! 🗄️

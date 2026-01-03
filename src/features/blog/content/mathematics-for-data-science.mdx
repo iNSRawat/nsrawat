@@ -1,0 +1,144 @@
+---
+title: "Mathematics for Data Science & Machine Learning"
+description: "Essential mathematical concepts every data scientist should know: linear algebra, calculus, probability, and statistics."
+category: "blog"
+image: "/static/images/blog/mathematics-for-data-science.png"
+createdAt: "2025-12-01"
+updatedAt: "2025-12-01"
+---
+
+## Why Math Matters in ML
+
+Understanding the math behind algorithms helps you:
+
+- Debug models effectively
+- Choose the right algorithm
+- Tune hyperparameters intelligently
+
+---
+
+## 1. Linear Algebra
+
+### Vectors and Matrices
+
+```python
+import numpy as np
+
+# Vectors
+v1 = np.array([1, 2, 3])
+v2 = np.array([4, 5, 6])
+
+# Dot product
+dot = np.dot(v1, v2)  # 32
+
+# Matrix operations
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+# Matrix multiplication
+C = np.matmul(A, B)
+```
+
+### Key Concepts
+
+- **Eigenvalues & Eigenvectors**: Used in PCA, spectral clustering
+- **Matrix Decomposition**: SVD for dimensionality reduction
+- **Transpose & Inverse**: Essential for linear regression
+
+---
+
+## 2. Calculus
+
+### Derivatives in Machine Learning
+
+Derivatives are the foundation of gradient descent optimization.
+
+```python
+# Gradient Descent (simplified)
+def gradient_descent(X, y, learning_rate=0.01, epochs=1000):
+    m, n = X.shape
+    theta = np.zeros(n)
+
+    for _ in range(epochs):
+        predictions = X @ theta
+        errors = predictions - y
+        gradient = (2/m) * X.T @ errors
+        theta -= learning_rate * gradient
+
+    return theta
+```
+
+### Key Concepts
+
+- **Partial Derivatives**: Gradient calculation
+- **Chain Rule**: Backpropagation in neural networks
+- **Optimization**: Finding minima/maxima
+
+---
+
+## 3. Probability & Statistics
+
+### Probability Distributions
+
+```python
+from scipy import stats
+
+# Normal distribution
+mean, std = 0, 1
+normal = stats.norm(mean, std)
+
+# Probability of x < 1.96
+prob = normal.cdf(1.96)  # ~0.975
+
+# Binomial distribution
+n, p = 10, 0.5
+binomial = stats.binom(n, p)
+```
+
+### Key Concepts
+
+- **Bayes' Theorem**: Foundation of Naive Bayes
+- **Maximum Likelihood Estimation**: Parameter estimation
+- **Central Limit Theorem**: Why normal distributions matter
+
+---
+
+## 4. Statistics for ML
+
+### Hypothesis Testing
+
+```python
+from scipy import stats
+
+# T-test
+group_a = [85, 90, 88, 92, 87]
+group_b = [78, 82, 85, 80, 79]
+
+t_stat, p_value = stats.ttest_ind(group_a, group_b)
+print(f"P-value: {p_value:.4f}")
+```
+
+### Key Metrics
+
+- **Mean, Median, Mode**: Central tendency
+- **Variance, Std Deviation**: Spread
+- **Correlation**: Relationship between variables
+
+---
+
+## Quick Reference
+
+| Math Area      | ML Application                |
+| :------------- | :---------------------------- |
+| Linear Algebra | PCA, Matrix Factorization     |
+| Calculus       | Gradient Descent, Backprop    |
+| Probability    | Naive Bayes, Bayesian Models  |
+| Statistics     | Hypothesis Testing, A/B Tests |
+
+---
+
+## Conclusion
+
+You don't need a PhD in math, but understanding these fundamentals will make you a better data scientist.
+
+Keep learning! 📐🧮

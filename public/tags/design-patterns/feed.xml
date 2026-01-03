@@ -1,0 +1,34 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>N S Rawat - Data Science &amp; Machine Learning Portfolio</title>
+      <link>https://nsrawat-ds.vercel.app/blog</link>
+      <description>Data Scientist specializing in Machine Learning, Deep Learning, Statistical Analysis, and Data Visualization. Transforming complex data into actionable insights using Python, TensorFlow, Scikit-learn, and modern analytics tools. Passionate about predictive modeling, business intelligence, and creating data-driven solutions.</description>
+      <language>en-us</language>
+      <managingEditor>digital@nsrawat.in (N S Rawat)</managingEditor>
+      <webMaster>digital@nsrawat.in (N S Rawat)</webMaster>
+      <lastBuildDate>Sun, 10 Dec 2023 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://nsrawat-ds.vercel.app/tags/design-patterns/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://nsrawat-ds.vercel.app/blog/exploring-module-in-nestjs</guid>
+    <title>Exploring module in NestJS</title>
+    <link>https://nsrawat-ds.vercel.app/blog/exploring-module-in-nestjs</link>
+    <description>Modules are crucial components at the center of NestJS. In this post, we will take a closer look at what modules are in NestJS.</description>
+    <pubDate>Sun, 10 Dec 2023 00:00:00 GMT</pubDate>
+    <author>digital@nsrawat.in (N S Rawat)</author>
+    <category>nestjs</category><category>typescript</category><category>javascript</category><category>design-patterns</category>
+  </item>
+
+  <item>
+    <guid>https://nsrawat-ds.vercel.app/blog/problems-when-the-application-develops</guid>
+    <title>Problems when the application develops at medium and large levels</title>
+    <link>https://nsrawat-ds.vercel.app/blog/problems-when-the-application-develops</link>
+    <description>From medium to large-scale applications, challenges like architecture maintenance and scalability hinder progress.</description>
+    <pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate>
+    <author>digital@nsrawat.in (N S Rawat)</author>
+    <category>application</category><category>design patterns</category>
+  </item>
+
+    </channel>
+  </rss>

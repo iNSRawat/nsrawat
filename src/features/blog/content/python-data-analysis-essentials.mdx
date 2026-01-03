@@ -1,0 +1,126 @@
+---
+title: "Python Data Analysis Essentials"
+description: "Master the essential Python libraries and techniques for data analysis, from data loading to visualization."
+category: "blog"
+image: "/static/images/blog/python-data-analysis-essentials.png"
+createdAt: "2025-10-13"
+updatedAt: "2025-10-13"
+---
+
+## Introduction
+
+Python has become the de facto language for data analysis. Let's explore the essential libraries and techniques.
+
+---
+
+## Essential Libraries
+
+### Pandas: Data Manipulation
+
+```python
+import pandas as pd
+import numpy as np
+
+data = {
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'salary': [50000, 60000, 75000]
+}
+df = pd.DataFrame(data)
+```
+
+### NumPy: Numerical Computing
+
+```python
+arr = np.array([1, 2, 3, 4, 5])
+print(f"Mean: {np.mean(arr)}")
+print(f"Std: {np.std(arr)}")
+```
+
+---
+
+## Data Loading
+
+```python
+# CSV files
+df = pd.read_csv('data.csv')
+
+# Excel files
+df = pd.read_excel('data.xlsx')
+
+# Quick inspection
+print(df.info())
+print(df.describe())
+print(df.isnull().sum())
+```
+
+---
+
+## Data Cleaning
+
+### Handling Missing Values
+
+```python
+# Fill with mean
+df['column'] = df['column'].fillna(df['column'].mean())
+
+# Drop rows
+df_clean = df.dropna()
+```
+
+### Removing Duplicates
+
+```python
+df_unique = df.drop_duplicates()
+```
+
+### Handling Outliers (IQR Method)
+
+```python
+Q1 = df['column'].quantile(0.25)
+Q3 = df['column'].quantile(0.75)
+IQR = Q3 - Q1
+
+lower = Q1 - 1.5 * IQR
+upper = Q3 + 1.5 * IQR
+
+df_clean = df[(df['column'] >= lower) & (df['column'] <= upper)]
+```
+
+---
+
+## Data Visualization
+
+### Matplotlib
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.hist(df['age'], bins=20, edgecolor='black')
+plt.title('Age Distribution')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.show()
+```
+
+### Seaborn
+
+```python
+import seaborn as sns
+
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+plt.title('Correlation Heatmap')
+plt.show()
+```
+
+---
+
+## Best Practices
+
+1. **Start with data quality** - Clean data leads to better insights
+2. **Visualize early and often** - Plots reveal hidden patterns
+3. **Document your process** - Your future self will thank you
+4. **Use vectorized operations** - Avoid loops when possible
+
+Happy analyzing! 🐍📊

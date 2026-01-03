@@ -1,118 +1,44 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
-/.yarn/*
-!/.yarn/releases
-!/.yarn/plugins
-!/.yarn/sdks
+node_modules
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
 # testing
-/coverage
+coverage
 
 # next.js
-/.next/
-/out/
-public/sitemap.xml
-.vercel
+.next/
+out/
 
 # production
-/build
-*.xml
-
-# rss feed
-/public/feed.xml
-
-# search
-/public/search.json
+build
 
 # misc
 .DS_Store
+*.pem
 
 # debug
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
-# local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# env files (can opt-in for committing if needed)
+.env*
 
-# Contentlayer
-.contentlayer
+# vercel
+.vercel
 
-# TypeScript build info
+# typescript
 *.tsbuildinfo
+next-env.d.ts
 
-# IDE and Editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# Environment variables
-.env
-.env*.local
-.env.production
-
-# Prisma
-prisma/migrations/
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# OS files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Desktop.ini
-
-# Temporary files
-*.tmp
-*.temp
-.cache/
-
-# Build outputs
-dist/
-build/
-.next/
-out/
-.vercel/
-
-# Testing
-coverage/
-.nyc_output/
-.jest/
-
-# Lock files (keep package-lock.json but ignore others if needed)
-# package-lock.json - KEEP THIS
-# yarn.lock - KEEP THIS if using yarn
-# pnpm-lock.yaml - KEEP THIS if using pnpm
-
-# Husky
-.husky/_/
-
-# Misc
-*.pem
-.eslintcache
-
-# Local convenience scripts (OS-specific development scripts)
-start-dev.ps1
-start-server.bat
+# ncdai
+.ncdai
