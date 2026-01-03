@@ -17,15 +17,10 @@ export function ProfileHeader() {
           />
         </div>
 
-        <a
-          href="https://www.india.gov.in/"
-          target="_blank"
-          rel="noreferrer"
-          className="absolute top-0 -left-px"
-        >
+        <div className="absolute top-0 -left-px" title="Flag of India">
           {/* Flag of India */}
           <svg
-            className="h-8 sm:h-9"
+            className="h-5 sm:h-6"
             viewBox="0 0 30 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -47,7 +42,7 @@ export function ProfileHeader() {
             />
             <circle cx="15" cy="10" r="0.3" fill="#000080" />
           </svg>
-        </a>
+        </div>
       </div>
 
       <div className="flex flex-1 flex-col">
