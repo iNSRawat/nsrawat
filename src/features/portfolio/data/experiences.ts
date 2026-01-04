@@ -3,30 +3,29 @@ import type { Experience } from "../types/experiences";
 export const EXPERIENCES: Experience[] = [
   {
     id: "freelance",
-    companyName: "NSRawat.in",
+    companyName: "Freelancer",
     companyLogo: "/static/images/avatar.png",
     positions: [
       {
-        id: "freelance-data-scientist",
-        title: "Freelance Data Scientist & ML Engineer",
+        id: "freelance-data-analyst",
+        title: "Freelance Data Analyst & Marketing Specialist",
         employmentPeriod: {
           start: "04.2023",
         },
         employmentType: "Freelance",
         icon: "code",
-        description: `- Building data dashboards to analyze KPIs and optimize marketing performance.
-- Improved ROI by 25% using analytical insights and performance metrics.
-- Conducting consumer and sales data analysis to support strategic decision-making.
-- Developing machine learning models for predictive analytics.`,
+        description: `- Built automated looker studio dashboards analyzing 15+ KPIs across channels, improving decisions and increasing client ROI by **25%** through statistical analysis.
+- Developed Python automation scripts for ETL processes, reducing manual data collection by **35%** and improving data quality through validation workflows.
+- Conducted consumer behavior analysis using EDA on 50,000+ records, identifying key purchase patterns and churn indicators.
+- Implemented A/B testing framework with hypothesis testing (p-values, confidence intervals) resulting in **18%** conversion improvement.`,
         skills: [
           "Python",
           "SQL",
-          "Pandas",
-          "Scikit-learn",
-          "TensorFlow",
-          "Data Visualization",
-          "Machine Learning",
-          "Dashboard Development",
+          "Looker Studio",
+          "ETL",
+          "Hypothesis Testing",
+          "EDA",
+          "Statistical Analysis",
         ],
       },
     ],
@@ -46,13 +45,15 @@ export const EXPERIENCES: Experience[] = [
         },
         employmentType: "Full-time",
         icon: "design",
-        description: `- Utilized data analytics to identify growth trends, increasing sales by 25%.
-- Created custom Excel and Google Analytics dashboards for management reporting.`,
+        description: `- Analyzed sales funnel data using data-driven strategies resulting in **25% sales increase** through predictive modeling and segmentation.
+- Designed custom Excel dashboards with advanced formulas and pivot tables for management reporting, integrating Google Analytics for real-time KPI tracking.
+- Performed cohort analysis on customer acquisition, calculating retention rates and lifetime value metrics.`,
         skills: [
-          "Data Analytics",
+          "Predictive Modeling",
           "Google Analytics",
           "Excel",
-          "Dashboard Reporting",
+          "Cohort Analysis",
+          "Funnel Analysis",
         ],
       },
     ],
@@ -70,41 +71,45 @@ export const EXPERIENCES: Experience[] = [
           end: "03.2023",
         },
         employmentType: "Full-time",
-        icon: "design",
-        description: `- Managed e-commerce analytics using Google Analytics for real-time data monitoring.
-- Conducted user funnel and behavioral analysis to optimize customer acquisition.
-- Achieved 6x ROI through data-driven advertising and budgeting.`,
+        icon: "business",
+        description: `- Achieved **6x ROI** through data-driven budget optimization using statistical analysis to allocate Rs.5L+ monthly spend across channels (Google Ads, Facebook, Instagram).
+- Managed comprehensive e-commerce analytics using Google Analytics/SQL, implementing real-time dashboards tracking 20+ metrics.
+- Conducted funnel analysis identifying 3 critical drop-off points, implementing A/B tested solutions improving checkout completion by **22%**.
+- Performed customer segmentation using RFM analysis and clustering, identifying 4 personas enabling personalized campaigns with **30% higher engagement**.`,
         skills: [
-          "Google Analytics",
+          "Budget Optimization",
+          "SQL",
+          "A/B Testing",
+          "RFM Analysis",
+          "Clustering",
           "E-commerce Analytics",
-          "User Funnel Analysis",
-          "Data-driven Marketing",
         ],
       },
     ],
   },
   {
     id: "digital-marketing-experience",
-    companyName: "Multiple Roles",
+    companyName: "Multiple Organizations",
     companyLogo: "",
     positions: [
       {
-        id: "digital-marketing-exec",
-        title: "Digital Marketing Executive / Intern",
+        id: "digital-marketing-exec-intern",
+        title: "Digital Marketing Executive/Intern",
         employmentPeriod: {
-          start: "2017",
+          start: "2020",
           end: "2021",
         },
         employmentType: "Full-time",
         icon: "design",
-        description: `- Managed SEO, PPC, and analytics-driven campaigns for various clients.
-- Built reports and dashboards to track ROI, traffic, and engagement metrics.`,
+        description: `- Managed multi-channel campaigns for 5+ clients, analyzing performance data using Google Analytics/Excel to optimize SEO, PPC, social strategies.
+- Developed comprehensive ROI dashboards tracking 10+ metrics using pivot tables for client presentations.
+- Improved data validation processes, implementing systematic workflows reducing errors by **40%**.`,
         skills: [
           "SEO",
           "PPC",
-          "Analytics",
-          "Dashboard Development",
-          "Reporting",
+          "Google Analytics",
+          "Data Validation",
+          "ROI Analysis",
         ],
       },
     ],
@@ -132,6 +137,18 @@ export const EXPERIENCES: Experience[] = [
           "Deep Learning",
           "DataCamp Certification",
         ],
+      },
+      {
+        id: "bachelor-science",
+        title: "Bachelor of Science",
+        employmentPeriod: {
+          start: "2017",
+          end: "2017",
+        },
+        icon: "education",
+        description: `**H.N.B. Garhwal University**
+Dehradun, India`,
+        skills: ["Science", "Research"],
       },
     ],
     isCurrentEmployer: true,
