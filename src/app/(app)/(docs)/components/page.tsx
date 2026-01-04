@@ -41,6 +41,33 @@ export default function ComponentsPage() {
       <Separator />
 
       <div className="grid gap-6 p-4 md:grid-cols-2 lg:grid-cols-3">
+        {/* Registry Components */}
+        {components.map((component) => (
+          <Link
+            key={component.name}
+            href={`/components/${component.name}`}
+            className="group block"
+          >
+            <div className="flex h-full flex-col overflow-hidden rounded-lg border border-edge bg-card transition-colors hover:border-foreground/20 hover:bg-accent/5">
+              <div className="border-b border-edge bg-accent/30 p-4 transition-colors group-hover:bg-accent/40">
+                <h2 className="font-semibold group-hover:text-primary">
+                  {component.title}
+                </h2>
+                <div className="mt-2 flex items-center gap-2">
+                  <span className="rounded bg-accent px-2 py-0.5 font-mono text-xs uppercase text-foreground">
+                    DS Component
+                  </span>
+                </div>
+              </div>
+              <div className="flex-1 p-4">
+                <p className="text-sm text-muted-foreground">
+                  {component.description}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
+
         {/* Snippets */}
         {snippets.map((snippet) => (
           <Link
@@ -65,33 +92,6 @@ export default function ComponentsPage() {
               <div className="p-4">
                 <p className="text-sm text-muted-foreground">
                   {snippet.metadata.description}
-                </p>
-              </div>
-            </div>
-          </Link>
-        ))}
-
-        {/* Registry Components */}
-        {components.map((component) => (
-          <Link
-            key={component.name}
-            href={`/components/${component.name}`}
-            className="group block"
-          >
-            <div className="flex h-full flex-col overflow-hidden rounded-lg border border-edge bg-card transition-colors hover:border-foreground/20 hover:bg-accent/5">
-              <div className="border-b border-edge bg-accent/30 p-4 transition-colors group-hover:bg-accent/40">
-                <h2 className="font-semibold group-hover:text-primary">
-                  {component.title}
-                </h2>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="rounded bg-accent px-2 py-0.5 font-mono text-xs uppercase text-foreground">
-                    DS Component
-                  </span>
-                </div>
-              </div>
-              <div className="flex-1 p-4">
-                <p className="text-sm text-muted-foreground">
-                  {component.description}
                 </p>
               </div>
             </div>
