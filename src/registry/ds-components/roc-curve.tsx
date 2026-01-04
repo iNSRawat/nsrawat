@@ -86,7 +86,9 @@ export default function ROCCurve() {
                 borderRadius: "8px",
               }}
               itemStyle={{ fontSize: "12px" }}
-              formatter={(value: number) => value.toFixed(3)}
+              formatter={(value: number) =>
+                typeof value === "number" ? value.toFixed(3) : "0"
+              }
             />
             <ReferenceLine
               segment={[
