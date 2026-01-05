@@ -101,6 +101,18 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+              href="https://huggingface.co/nsrawat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icons.huggingface className="size-4" />
+              <span className="sr-only">Hugging Face</span>
+            </a>
+
+            <Separator />
+
+            <a
+              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
               href="https://www.linkedin.com/in/insrawat"
               target="_blank"
               rel="noopener noreferrer"
