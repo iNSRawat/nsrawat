@@ -7,7 +7,8 @@ import { components } from "@/registry/registry-components";
 
 export const metadata: Metadata = {
   title: "Components",
-  description: "A collection of components and snippets for data science.",
+  description:
+    "My personal stash of data science components & code snippets that make my life easier. They're simple and reusable. Feel free to copy, tweak, and use them as you like.",
 };
 
 function Separator({ className }: { className?: string }) {
@@ -35,6 +36,10 @@ export default function ComponentsPage() {
       <div className="p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
           {metadata.description}
+        </p>
+        <p className="mt-2 font-mono text-sm italic text-muted-foreground/70">
+          *Some components & snippets written by me, some are from the internet
+          (Thanks to the open source community).
         </p>
       </div>
 
