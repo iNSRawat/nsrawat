@@ -264,12 +264,12 @@ export default function AboutPage() {
                 <span>
                   Adopting <strong>TypeScript</strong>, committing with{" "}
                   <a
-                    href="https://www.conventionalcommits.org/"
+                    href="https://tailwindcss.com"
                     className="link font-medium"
                     target="_blank"
                     rel="noopener"
                   >
-                    Conventional Commits
+                    Tailwind CSS
                   </a>
                 </span>
               </li>
@@ -278,12 +278,12 @@ export default function AboutPage() {
                 <span>
                   Theming in dark mode with{" "}
                   <a
-                    href="https://github.com/folke/tokyonight.nvim"
+                    href="https://ui.shadcn.com/docs/dark-mode/next"
                     className="link font-medium"
                     target="_blank"
                     rel="noopener"
                   >
-                    Tokyonight Neovim Theme
+                    shadcn/ui Dark Mode
                   </a>{" "}
                   colors for better contrast.
                 </span>

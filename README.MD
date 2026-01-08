@@ -43,8 +43,8 @@ This blog site takes inspiration from [chanhdai.com](https://github.com/ncdai/ch
 ### A few major over-engineering-changes from the original repo:
 
 - ⚛️ Upgrade to **React 19**, **Next.js 16**
-- 🎉 Adopting **TypeScript**, committing with [Conventional Commits](https://www.conventionalcommits.org/)
-- 👀 Theming in dark mode with [Tokyonight Neovim Theme](https://github.com/folke/tokyonight.nvim) colors for better contrast.
+- 🎉 Adopting **TypeScript**, committing with [Tailwind CSS](https://tailwindcss.com)
+- 👀 Theming in dark mode with [shadcn/ui Dark Mode](https://ui.shadcn.com/docs/dark-mode/next) colors for better contrast.
 - 👨‍💻 My website refers to the design and code from the [chanhdai.com](https://github.com/ncdai/chanhdai.com) repository and incorporates [shadcn/ui](https://ui.shadcn.com/).
 - 📥 Bumping up `mdx-bundler`, `rehype`/`remark` plugins and dependencies to the latest version
 
