@@ -2,6 +2,26 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "recipe-site-traffic-prediction",
+    title: "Recipe Site Traffic Prediction",
+    period: {
+      start: "2026",
+    },
+    link: "https://github.com/iNSRawat/recipe-site-traffic-prediction",
+    skills: [
+      "Data Science",
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "Machine Learning",
+      "Streamlit",
+    ],
+    description: `Machine learning model to predict high-traffic recipes for content optimization.
+- Business Goal: Achieve 80%+ correct predictions
+- Live demo on Streamlit`,
+    logo: "/static/images/projects/recipe-site-traffic.png",
+  },
+  {
     id: "customer-behavior-prediction",
     title: "Customer Behavior Prediction",
     period: {
