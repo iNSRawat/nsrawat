@@ -36,6 +36,12 @@ This portfolio is hosted on [Vercel](https://vercel.com/), built with [Next.js](
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
+[![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcn%2Fui&logoColor=white)](https://ui.shadcn.com/)
+
+[![Umami](https://img.shields.io/badge/Umami-000000?style=for-the-badge&logo=umami&logoColor=white)](https://umami.is/)
+
+[![c15t](https://img.shields.io/badge/c15t-000000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRleHQgeD0iNSIgeT0iMjAiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIj5jPC90ZXh0Pjwvc3ZnPg==)](https://c15t.io/)
+
 This blog site takes inspiration from [chanhdai.com](https://github.com/ncdai/chanhdai.com). I appreciate Nguyen Chanh Dai for their contribution to this minimal, lightweight, and highly customizable [shadcn/ui](https://ui.shadcn.com/).
 
 <br>
