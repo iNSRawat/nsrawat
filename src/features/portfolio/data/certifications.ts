@@ -34,7 +34,7 @@ export const CERTIFICATIONS: Certification[] = [
     issueDate: "2025-06-01",
     credentialID: "027667726c659aea0120df0a266a1df2",
     credentialURL:
-      "https://coursera.org/share/027667726c659aea0120df0a266a1df2",
+      "https://www.coursera.org/account/accomplishments/professional-cert/3I97MQJU5BH7",
   },
   {
     title: "IBM SkillsBuild Getting Started with Data",
