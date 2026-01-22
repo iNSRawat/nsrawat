@@ -22,8 +22,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     icon: "x",
     title: "X (formerly Twitter)",
-    description: "@NSRawattt",
-    href: "https://twitter.com/NSRawattt",
+    description: "@NSRawat_in",
+    href: "https://twitter.com/NSRawat_in",
   },
   {
     icon: "peerlist", // Need ensure supported

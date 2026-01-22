@@ -18,7 +18,7 @@ export function SiteFooter() {
           Built by{" "}
           <a
             className="link"
-            href="https://twitter.com/NSRawattt"
+            href="https://twitter.com/NSRawat_in"
             target="_blank"
             rel="noopener"
           >
@@ -77,7 +77,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://twitter.com/NSRawattt"
+              href="https://twitter.com/NSRawat_in"
               target="_blank"
               rel="noopener noreferrer"
             >

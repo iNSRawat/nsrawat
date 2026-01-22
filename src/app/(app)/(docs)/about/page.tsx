@@ -148,7 +148,7 @@ export default function AboutPage() {
             </a>
             , or{" "}
             <a
-              href="https://twitter.com/NSRawattt"
+              href="https://twitter.com/NSRawat_in"
               className="link font-medium"
               target="_blank"
               rel="noopener"
