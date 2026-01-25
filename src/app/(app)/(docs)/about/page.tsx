@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">About Me</h1>
+      <div className="screen-line-after px-2 sm:px-4">
+        <h1 className="text-2xl sm:text-3xl font-semibold">About Me</h1>
       </div>
 
-      <div className="p-4">
+      <div className="p-2 sm:p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
           {USER.bio}
         </p>
@@ -26,21 +26,25 @@ export default function AboutPage() {
       <Separator />
 
       {/* About Content */}
-      <div className="space-y-6 p-4">
+      <div className="space-y-3 sm:space-y-6 p-2 sm:p-4">
         {/* Avatar Section */}
-        <div className="flex flex-col items-center gap-6 sm:flex-row">
+        <div className="flex flex-col items-center gap-3 sm:gap-6 sm:flex-row">
           <div className="relative">
             <Image
               src="/static/images/avatar.png"
               alt={USER.displayName}
-              width={150}
-              height={150}
-              className="rounded-full border-4 border-edge"
+              width={120}
+              height={120}
+              className="rounded-full border-4 border-edge sm:w-[150px] sm:h-[150px]"
             />
           </div>
           <div>
-            <h2 className="text-2xl font-bold">{USER.displayName}</h2>
-            <p className="font-mono text-muted-foreground">{USER.jobTitle}</p>
+            <h2 className="text-xl sm:text-2xl font-bold">
+              {USER.displayName}
+            </h2>
+            <p className="font-mono text-sm text-muted-foreground">
+              {USER.jobTitle}
+            </p>
             <p className="mt-1 text-sm text-muted-foreground">
               📍 {USER.address}
             </p>
@@ -55,8 +59,10 @@ export default function AboutPage() {
             toward leveraging data for meaningful insights.
           </p>
 
-          <h2 className="mt-8 mb-4 text-xl font-semibold">🎯 What I Do</h2>
-          <ul className="list-inside list-disc space-y-2 text-muted-foreground">
+          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
+            🎯 What I Do
+          </h2>
+          <ul className="list-inside list-disc space-y-1 sm:space-y-2 text-sm sm:text-base text-muted-foreground">
             <li>
               Build <strong>predictive models</strong> and machine learning
               solutions
@@ -79,10 +85,10 @@ export default function AboutPage() {
             </li>
           </ul>
 
-          <h2 className="mt-8 mb-4 text-xl font-semibold">
+          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
             🛠️ Technical Skills
           </h2>
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-1.5 sm:gap-2 md:grid-cols-3">
             {[
               "Python",
               "SQL",
@@ -99,15 +105,17 @@ export default function AboutPage() {
             ].map((skill) => (
               <span
                 key={skill}
-                className="rounded-md bg-accent px-3 py-1 font-mono text-sm"
+                className="rounded-md bg-accent px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-xs sm:text-sm"
               >
                 {skill}
               </span>
             ))}
           </div>
 
-          <h2 className="mt-8 mb-4 text-xl font-semibold">📚 Background</h2>
-          <p className="leading-relaxed text-muted-foreground">
+          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
+            📚 Background
+          </h2>
+          <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
             My journey into Data Science began after recognizing the power of
             data in making informed decisions during my marketing career.
             I&apos;ve since dedicated myself to mastering tools like Python,
@@ -115,10 +123,10 @@ export default function AboutPage() {
             transform complex datasets into actionable insights.
           </p>
 
-          <h2 className="mt-8 mb-4 text-xl font-semibold">
+          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
             🌐 Connect With Me
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground">
             You can find me on{" "}
             <a
               href="https://github.com/iNSRawat"
@@ -157,18 +165,18 @@ export default function AboutPage() {
             </a>
             .
           </p>
-          <h2 className="mt-4 mb-2 text-xl font-semibold">
+          <h2 className="mt-3 sm:mt-4 mb-1.5 sm:mb-2 text-lg sm:text-xl font-semibold">
             Express Your Support
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground">
             If you find my data science projects helpful, show your appreciation
             with a ⭐
           </p>
 
-          <h2 className="mt-4 mb-2 text-xl font-semibold">
+          <h2 className="mt-3 sm:mt-4 mb-1.5 sm:mb-2 text-lg sm:text-xl font-semibold">
             💰 You can help me by Donating
           </h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             <a
               href="https://buymeacoffee.com/nsrawat?ref=NSRawat"
               target="_blank"
@@ -206,9 +214,11 @@ export default function AboutPage() {
       <Separator />
 
       {/* Experience Section */}
-      <div className="p-4">
-        <h2 className="mb-4 text-xl font-semibold">💼 Experience</h2>
-        <div className="space-y-6">
+      <div className="p-2 sm:p-4">
+        <h2 className="mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
+          💼 Experience
+        </h2>
+        <div className="space-y-3 sm:space-y-6">
           {EXPERIENCES.slice(0, 5).map((exp) => (
             <div key={exp.id} className="border-l-2 border-edge pl-4">
               <h3 className="font-semibold">{exp.companyName}</h3>
@@ -231,12 +241,12 @@ export default function AboutPage() {
       <Separator />
 
       {/* Tech Stack Section */}
-      <div className="p-4">
-        <h2 className="mb-4 text-xl font-semibold text-primary">
+      <div className="p-2 sm:p-4">
+        <h2 className="mb-2 sm:mb-4 text-lg sm:text-xl font-semibold text-primary">
           🛠️ Tech stack
         </h2>
-        <div className="space-y-4">
-          <p className="leading-relaxed text-muted-foreground">
+        <div className="space-y-3 sm:space-y-4">
+          <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
             This portfolio is built with{" "}
             <a
               href="https://nextjs.org/"
@@ -258,7 +268,7 @@ export default function AboutPage() {
             using <strong>Tailwind Nextjs Minimal Portfolio</strong>.
           </p>
 
-          <p className="leading-relaxed text-muted-foreground">
+          <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
             This blog site takes inspiration from{" "}
             <a
               href="https://chanhdai.com/"
@@ -290,11 +300,11 @@ export default function AboutPage() {
             .
           </p>
 
-          <div className="mt-4">
+          <div className="mt-3 sm:mt-4">
             <p className="mb-3 font-medium text-muted-foreground">
               A few major over-engineering-changes from the original repo:
             </p>
-            <ul className="space-y-2 text-muted-foreground">
+            <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-muted-foreground">
               <li className="flex items-start gap-2">
                 <span>⚛️</span>
                 <span>
@@ -378,7 +388,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="h-4" />
+      <div className="h-2 sm:h-4" />
     </div>
   );
 }
