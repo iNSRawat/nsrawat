@@ -157,6 +157,49 @@ export default function AboutPage() {
             </a>
             .
           </p>
+          <h2 className="mt-4 mb-2 text-xl font-semibold">
+            Express Your Support
+          </h2>
+          <p className="text-muted-foreground">
+            If you find my data science projects helpful, show your appreciation
+            with a ⭐
+          </p>
+
+          <h2 className="mt-4 mb-2 text-xl font-semibold">
+            💰 You can help me by Donating
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href="https://buymeacoffee.com/nsrawat?ref=NSRawat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black"
+                alt="Buy Me A Coffee"
+              />
+            </a>
+            <a
+              href="https://paypal.me/NRawat710?ref=NSRawat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white"
+                alt="PayPal"
+              />
+            </a>
+            <a
+              href="https://withupi.com/@nsrawat?ref=NSRawat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://img.shields.io/badge/UPI-21b573?style=for-the-badge&logo=upi&logoColor=white"
+                alt="UPI"
+              />
+            </a>
+          </div>
         </div>
       </div>
 
