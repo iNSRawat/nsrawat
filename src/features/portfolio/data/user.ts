@@ -37,7 +37,7 @@ export const USER = {
 `,
   avatar: "/static/images/avatar.png",
   ogImage: "/static/images/og-image.png",
-  namePronunciationUrl: "",
+  namePronunciationUrl: "/audio/pronunciation.mp3",
   timeZone: "Asia/Kolkata",
   keywords: [
     "nsrawat",
