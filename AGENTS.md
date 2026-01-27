@@ -155,6 +155,7 @@ See `.env.example` for required variables:
 **Analytics & Tracking**:
 
 - `UMAMI_WEBSITE_ID` - Umami Website ID for analytics (e.g., `123-abc-789-xyz`)
+- `NEXT_PUBLIC_C15T_URL` - C15T Instance URL (e.g., `https://your-instance.c15t.dev/`)
 
 ### Analytics Events
 The project uses Umami for analytics tracking. The script is loaded from `https://analytics.nsrawat.in/script.js` with the website ID configured via environment variables.
