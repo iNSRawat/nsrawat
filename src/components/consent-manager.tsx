@@ -14,7 +14,7 @@ export function ConsentManager({ children }: { children: React.ReactNode }) {
     <ConsentManagerProvider
       options={{
         mode: "c15t",
-        backendURL: process.env.NEXT_PUBLIC_C15T_URL,
+        backendURL: process.env.NEXT_PUBLIC_C15T_URL || "",
         consentCategories: ["necessary", "measurement"],
         // ignoreGeoLocation: process.env.NODE_ENV === "development", // Useful for development to always view the banner.
       }}
