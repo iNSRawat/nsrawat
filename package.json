@@ -2,23 +2,23 @@
   "name": "nsrawat.in",
   "version": "0.1.0",
   "description": "A minimal, pixel-perfect dev portfolio, component registry, and blog.",
-  "homepage": "https://chanhdai.com",
+  "homepage": "https://nsrawat.in",
   "license": "MIT",
   "author": {
-    "name": "Nguyen Chanh Dai",
-    "email": "dai@chanhdai.com",
-    "url": "https://github.com/ncdai"
+    "name": "N S Rawat",
+    "email": "digital@nsrawat.in",
+    "url": "https://github.com/iNSRawat"
   },
   "contributors": [
     {
-      "name": "Nguyen Chanh Dai",
-      "email": "dai@chanhdai.com",
-      "url": "https://github.com/ncdai"
+      "name": "N S Rawat",
+      "email": "digital@nsrawat.in",
+      "url": "https://github.com/iNSRawat"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ncdai/chanhdai.com.git"
+    "url": "git+https://github.com/iNSRawat/nsrawat.git"
   },
   "scripts": {
     "dev": "next dev -p 1408 --webpack",

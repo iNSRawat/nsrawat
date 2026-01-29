@@ -40,7 +40,7 @@ ${EXPERIENCES.map((item) =>
       const skills = position.skills?.map((skill) => skill).join(", ") || "N/A";
       return `### ${position.title} | ${item.companyName}\n\nDuration: ${position.employmentPeriod.start} - ${position.employmentPeriod.end || "Present"}\n\nSkills: ${skills}\n\n${position.description?.trim()}`;
     })
-    .join("\n\n")
+    .join("\n\n"),
 ).join("\n\n")}
 `;
 
@@ -61,18 +61,18 @@ async function getBlogContent() {
   const text = await Promise.all(
     allPosts.map(
       async (item) =>
-        `---\ntitle: "${item.metadata.title}"\ndescription: "${item.metadata.description}"\nlast_updated: "${format(new Date(item.metadata.updatedAt), "MMMM d, yyyy")}"\nsource: "${SITE_INFO.url}/blog/${item.slug}"\n---\n\n${await getLLMText(item)}`
-    )
+        `---\ntitle: "${item.metadata.title}"\ndescription: "${item.metadata.description}"\nlast_updated: "${format(new Date(item.metadata.updatedAt), "MMMM d, yyyy")}"\nsource: "${SITE_INFO.url}/blog/${item.slug}"\n---\n\n${await getLLMText(item)}`,
+    ),
   );
   return text.join("\n\n");
 }
 
 async function getContent() {
-  return `<SYSTEM>This document contains comprehensive information about ${USER.displayName}'s professional profile, portfolio, and blog content. It includes personal details, work experience, projects, achievements, certifications, and all published blog posts. This data is formatted for consumption by Large Language Models (LLMs) to provide accurate and up-to-date information about ${USER.displayName}'s background, skills, and expertise as a Design Engineer.</SYSTEM>
+  return `<SYSTEM>This document contains comprehensive information about ${USER.displayName}'s professional profile, portfolio, and blog content. It includes personal details, work experience, projects, achievements, certifications, and all published blog posts. This data is formatted for consumption by Large Language Models (LLMs) to provide accurate and up-to-date information about ${USER.displayName}'s background, skills, and expertise as a Data Scientist & ML Enthusiast.</SYSTEM>
 
-# chanhdai.com
+# nsrawat.in
 
-> A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Design Engineer.
+> A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Data Scientist & ML Enthusiast.
 
 ${aboutText}
 ${experienceText}

@@ -193,7 +193,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
         router.push(href);
       }
     },
-    [router]
+    [router],
   );
 
   const handleCopyText = useCallback((text: string, message: string) => {
@@ -233,7 +233,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
       // document.startViewTransition(() => setTheme(theme));
     },
-    [playClick, setTheme]
+    [playClick, setTheme],
   );
 
   const { componentLinks, blogLinks } = useMemo(
@@ -243,14 +243,14 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
         .sort((a, b) =>
           a.metadata.title.localeCompare(b.metadata.title, "en", {
             sensitivity: "base",
-          })
+          }),
         )
         .map(postToCommandLinkItem),
       blogLinks: posts
         .filter((post) => post.metadata?.category !== "components")
         .map(postToCommandLinkItem),
     }),
-    [posts]
+    [posts],
   );
 
   return (
@@ -328,7 +328,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
               onSelect={() => {
                 handleCopyText(
                   getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff"),
-                  "Copied Mark as SVG"
+                  "Copied Mark as SVG",
                 );
               }}
             >
@@ -340,7 +340,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
               onSelect={() => {
                 handleCopyText(
                   getWordmarkSVG(resolvedTheme === "light" ? "#000" : "#fff"),
-                  "Copied Logotype as SVG"
+                  "Copied Logotype as SVG",
                 );
               }}
             >
@@ -348,15 +348,13 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
               Copy Logotype as SVG
             </CommandItem>
 
-            <CommandItem
-              onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
-            >
+            <CommandItem onSelect={() => handleOpenLink("/blog/nsrawat-brand")}>
               <TriangleDashedIcon />
               Brand Guidelines
             </CommandItem>
 
             <CommandItem asChild>
-              <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
+              <a href="https://nsrawat.in/nsrawat-brand.zip" download>
                 <DownloadIcon />
                 Download Brand Assets
               </a>
@@ -517,7 +515,7 @@ const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
 
 function CommandMenuFooter() {
   const selectedCommandKind = useCommandState(
-    (state) => COMMAND_META_MAP.get(state.value)?.commandKind ?? "page"
+    (state) => COMMAND_META_MAP.get(state.value)?.commandKind ?? "page",
   );
 
   return (
