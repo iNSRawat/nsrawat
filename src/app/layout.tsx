@@ -5,9 +5,9 @@ import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { WebSite, WithContext } from "schema-dts";
 
+import { Analytics } from "@/components/analytics";
 import { ConsentManager } from "@/components/consent-manager";
 import { Providers } from "@/components/providers";
-import { Analytics } from "@/components/analytics";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
 import { USER } from "@/features/portfolio/data/user";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -111,6 +111,17 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Preconnect to external resources for faster loading */}
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://api.github.com" />
+        <link rel="preconnect" href="https://analytics.nsrawat.in" />
+        <link rel="dns-prefetch" href="https://analytics.nsrawat.in" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}

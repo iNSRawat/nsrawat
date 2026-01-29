@@ -5,6 +5,19 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
 
+  // Performance optimizations
+  experimental: {
+    // Optimize package imports for better tree-shaking
+    optimizePackageImports: [
+      "lucide-react",
+      "recharts",
+      "motion",
+      "date-fns",
+      "@radix-ui/react-icons",
+      "react-use",
+    ],
+  },
+
   devIndicators: false,
   images: {
     remotePatterns: [
