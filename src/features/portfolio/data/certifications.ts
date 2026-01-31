@@ -2,6 +2,14 @@ import type { Certification } from "../types/certifications";
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    title: "Data Scientist",
+    issuer: "DataCamp",
+    issuerLogoURL: "/static/images/certifications/datacamp-data-scientist.png",
+    issueDate: "2025-01-31",
+    credentialID: "DS0025950063730",
+    credentialURL: "https://www.datacamp.com/certificate/DS0025950063730",
+  },
+  {
     title: "Data Scientist Associate",
     issuer: "DataCamp",
     issuerIconName: "datacamp",
