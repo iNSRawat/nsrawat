@@ -1,13 +1,35 @@
 import {
+  ActivityIcon,
+  BarChart2Icon,
+  BarChartIcon,
+  BrainCircuitIcon,
   BriefcaseBusinessIcon,
+  CheckCircleIcon,
+  ClipboardCheckIcon,
+  CodeIcon,
+  DatabaseIcon,
+  FileCodeIcon,
   FileIcon,
+  FileTextIcon,
   GalleryHorizontalEndIcon,
   GalleryVerticalIcon,
+  GitMergeIcon,
+  Grid3x3Icon,
+  LayoutGridIcon,
+  LineChartIcon,
+  ListIcon,
   MoonStarIcon,
+  SearchIcon,
+  SettingsIcon,
+  SplineIcon,
+  TableIcon,
+  TerminalIcon,
   TerminalSquareIcon,
+  TrendingUpIcon,
   ZapIcon,
 } from "lucide-react";
 
+// ... (keep existing imports and Icons object)
 import { cn } from "@/lib/utils";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
@@ -524,9 +546,53 @@ type ComponentIconProps = React.ComponentProps<"svg"> & {
 
 export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
   switch (variant) {
+    // Registry Components
+    case "confusion-matrix":
+      return <Grid3x3Icon {...props} />;
+    case "model-metrics":
+      return <BarChart2Icon {...props} />;
+    case "training-progress":
+      return <TrendingUpIcon {...props} />;
+    case "roc-curve":
+      return <ActivityIcon {...props} />;
+    case "feature-importance":
+      return <ListIcon {...props} />;
+    case "data-distribution":
+      return <BarChartIcon {...props} />;
+    case "correlation-heatmap":
+      return <LayoutGridIcon {...props} />;
+
+    // Snippets
+    case "eda-template":
+    case "eda-quick-template":
+      return <SearchIcon {...props} />;
+    case "markdown-code-block":
+    case "markdown-code-block-syntax":
+      return <FileCodeIcon {...props} />;
+    case "matplotlib-template":
+    case "matplotlib-plot-template":
+      return <LineChartIcon {...props} />;
+    case "model-evaluation":
+    case "model-evaluation-metrics":
+      return <ClipboardCheckIcon {...props} />;
+    case "pandas-cheatsheet":
+    case "pandas-dataframe-cheatsheet":
+      return <TableIcon {...props} />;
+    case "pnpm-aliases":
+      return <TerminalIcon {...props} />;
+    case "sklearn-pipeline":
+    case "scikit-learn-ml-pipeline":
+      return <GitMergeIcon {...props} />;
+    case "sql-aggregation":
+    case "sql-aggregation-queries":
+      return <DatabaseIcon {...props} />;
+    case "vscode-settings":
+    case "vscode-settings-and-shortcuts":
+      return <SettingsIcon {...props} />;
+
+    // Existing / Reference
     case "work-experience":
       return <BriefcaseBusinessIcon {...props} />;
-
     case "react-wheel-picker":
       return (
         <svg
@@ -540,10 +606,8 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
           />
         </svg>
       );
-
     case "theme-switcher":
       return <MoonStarIcon {...props} />;
-
     case "apple-hello-effect":
       const { className, ...restProps } = props;
       return (
@@ -552,10 +616,8 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
           {...restProps}
         />
       );
-
     case "shimmering-text":
       return <ZapIcon {...props} />;
-
     case "slide-to-unlock":
       return (
         <svg
@@ -569,16 +631,12 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
           />
         </svg>
       );
-
     case "testimonials-marquee":
       return <GalleryHorizontalEndIcon {...props} />;
-
     case "github-stars":
       return <Icons.github {...props} />;
-
     case "scroll-fade-effect":
       return <GalleryVerticalIcon {...props} />;
-
     case "consent-manager":
       return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
@@ -590,7 +648,6 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
           />
         </svg>
       );
-
     default:
       return <Icons.react {...props} />;
   }

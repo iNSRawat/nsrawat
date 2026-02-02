@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ComponentCommand } from "@/components/component-command";
+import { ComponentIcon } from "@/components/icons";
 import { getAllSnippets } from "@/features/snippets/data/snippets";
 import { cn } from "@/lib/utils";
 import { components } from "@/registry/registry-components";
@@ -29,12 +31,11 @@ export default function ComponentsPage() {
 
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Components</h1>
-      </div>
-
-      <div className="p-4">
-        <p className="font-mono text-sm text-balance text-muted-foreground">
+      <div className="screen-line-after px-4 pt-10 pb-6">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+          Components
+        </h1>
+        <p className="mt-4 text-base text-muted-foreground">
           {metadata.description}
         </p>
         <p className="mt-2 font-mono text-sm italic text-muted-foreground/70">
@@ -43,68 +44,76 @@ export default function ComponentsPage() {
         </p>
       </div>
 
+      <div className="px-4 pb-10">
+        <ComponentCommand />
+      </div>
+
       <Separator />
 
-      <div className="grid gap-6 p-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 border-t border-edge md:grid-cols-2">
         {/* Registry Components */}
-        {components.map((component) => (
+        {components.map((component, i) => (
           <Link
             key={component.name}
             href={`/components/${component.name}`}
-            className="group block"
+            className={cn(
+              "group flex items-center gap-3 border-b border-edge bg-background/50 px-6 py-4 transition-colors hover:bg-muted/50",
+              i % 2 === 0
+                ? "border-r border-edge md:border-r"
+                : "md:border-none",
+            )}
           >
-            <div className="flex h-full flex-col overflow-hidden rounded-lg border border-edge bg-card transition-colors hover:border-foreground/20 hover:bg-accent/5">
-              <div className="border-b border-edge bg-accent/30 p-4 transition-colors group-hover:bg-accent/40">
-                <h2 className="font-semibold group-hover:text-primary">
-                  {component.title}
-                </h2>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="rounded bg-accent px-2 py-0.5 font-mono text-xs uppercase text-foreground">
-                    DS Component
-                  </span>
-                </div>
-              </div>
-              <div className="flex-1 p-4">
-                <p className="text-sm text-muted-foreground">
-                  {component.description}
-                </p>
-              </div>
+            <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={component.name} className="size-5" />
             </div>
+            <span className="font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+              {component.title}
+            </span>
           </Link>
         ))}
 
         {/* Snippets */}
-        {snippets.map((snippet) => (
+        {snippets.map((snippet, i) => (
           <Link
             key={snippet.slug}
             href={`/components/${snippet.slug}`}
-            className="group block"
+            className={cn(
+              "group flex items-center gap-3 border-b border-edge bg-background/50 px-6 py-4 transition-colors hover:bg-muted/50",
+              // Continue the parity check from the previous list
+              (i + components.length) % 2 === 0
+                ? "border-r border-edge md:border-r"
+                : "md:border-none",
+            )}
           >
-            <div className="h-full overflow-hidden rounded-lg border border-edge bg-card transition-colors hover:border-foreground/20 hover:bg-accent/5">
-              <div className="border-b border-edge bg-accent/30 p-4 transition-colors group-hover:bg-accent/40">
-                <h2 className="font-semibold group-hover:text-primary">
-                  {snippet.metadata.title}
-                </h2>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="rounded bg-accent px-2 py-0.5 font-mono text-xs uppercase text-foreground">
-                    Snippet
-                  </span>
-                  <span className="rounded bg-accent px-2 py-0.5 font-mono text-xs uppercase text-foreground">
-                    {snippet.metadata.language}
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-sm text-muted-foreground">
-                  {snippet.metadata.description}
-                </p>
-              </div>
+            <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={snippet.slug} className="size-5" />
+            </div>
+            <div className="flex flex-1 items-center justify-between">
+              <span className="font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+                {snippet.metadata.title}
+              </span>
             </div>
           </Link>
         ))}
+
+        {/* Fill empty grid cell if total is odd */}
+        {(components.length + snippets.length) % 2 !== 0 && (
+          <div className="hidden border-b border-r border-edge md:block" />
+        )}
       </div>
 
-      <div className="h-4" />
+      <div className="py-10 text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-edge bg-background px-3 py-1 text-xs text-muted-foreground">
+          <span>Built for</span>
+          <span className="flex items-center gap-1 font-medium text-foreground">
+            <ComponentIcon variant="react" className="size-3" /> React 19
+          </span>
+          <span className="flex items-center gap-1 font-medium text-foreground">
+            <ComponentIcon variant="tailwindcss" className="size-3" /> Tailwind
+            CSS v4
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
