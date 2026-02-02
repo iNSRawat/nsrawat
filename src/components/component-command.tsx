@@ -1,10 +1,24 @@
 "use client";
 
-import { CheckIcon, CopyIcon, TerminalSquareIcon } from "lucide-react";
+import {
+  CheckIcon,
+  CopyIcon,
+  DatabaseIcon,
+  TerminalSquareIcon,
+} from "lucide-react";
 import * as React from "react";
 
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 export function ComponentCommand() {
@@ -54,9 +68,23 @@ export function ComponentCommand() {
     setHasCopied(true);
   }, [command]);
 
+  const mcpConfig = `{
+  "registries": {
+    "@iNSRawat": "https://nsrawat.in/r/{name}.json"
+  }
+}`;
+
+  const [hasCopiedConfig, setHasCopiedConfig] = React.useState(false);
+
+  const copyConfig = React.useCallback(() => {
+    navigator.clipboard.writeText(mcpConfig);
+    setHasCopiedConfig(true);
+    setTimeout(() => setHasCopiedConfig(false), 2000);
+  }, [mcpConfig]);
+
   return (
-    <div className="relative rounded-lg border border-edge bg-[#0c0c0c]">
-      <div className="flex items-center justify-between border-b border-white/10 px-4 pt-2.5 pb-0">
+    <div className="relative rounded-lg border bg-background">
+      <div className="flex items-center justify-between border-b px-4 pt-2.5 pb-0">
         <div className="flex items-center gap-4">
           <TerminalSquareIcon className="size-4 mb-2.5 text-muted-foreground" />
           <div className="flex gap-1">
@@ -77,20 +105,80 @@ export function ComponentCommand() {
           </div>
         </div>
         <div className="flex items-center gap-2 mb-2.5">
-          {/* MCP Button - Placeholder functionality or link */}
-          <Button
-            size="sm"
-            variant="outline"
-            className="h-6 gap-1.5 px-2 text-xs"
-          >
-            <Icons.json className="size-3" />
-            MCP
-          </Button>
+          {/* MCP Configuration Dialog */}
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                size="sm"
+                variant="outline"
+                className="h-6 gap-1.5 px-2 text-xs"
+              >
+                <DatabaseIcon className="size-3" />
+                MCP
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Configure MCP</DialogTitle>
+                <DialogDescription>
+                  Copy and paste the following code into your project&apos;s
+                  components.json.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="relative mt-4 rounded-md border bg-muted p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <div className="flex items-center justify-center w-4 h-4 rounded-full border bg-background">
+                      <Icons.json className="w-2.5 h-2.5" />
+                    </div>
+                    components.json
+                  </div>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-6 w-6 text-muted-foreground hover:bg-accent hover:text-foreground"
+                    onClick={copyConfig}
+                  >
+                    {hasCopiedConfig ? (
+                      <CheckIcon className="size-3" />
+                    ) : (
+                      <CopyIcon className="size-3" />
+                    )}
+                    <span className="sr-only">Copy config</span>
+                  </Button>
+                </div>
+                <pre className="overflow-x-auto text-xs font-mono leading-relaxed">
+                  <code>{mcpConfig}</code>
+                </pre>
+              </div>
+              <div className="flex items-center justify-between mt-4">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-xs text-muted-foreground hover:text-foreground p-0 h-auto"
+                  asChild
+                >
+                  <a
+                    href="https://ui.shadcn.com/docs/mcp"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Read the docs
+                  </a>
+                </Button>
+                <DialogClose asChild>
+                  <Button size="sm" className="h-8 text-xs">
+                    Done
+                  </Button>
+                </DialogClose>
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <Button
             size="icon"
             variant="ghost"
-            className="h-6 w-6 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+            className="h-6 w-6 text-muted-foreground hover:bg-accent hover:text-foreground"
             onClick={copyCommand}
           >
             {hasCopied ? (

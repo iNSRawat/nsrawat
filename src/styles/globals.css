@@ -120,11 +120,11 @@
   /* white */
   --background: oklch(1 0 0);
 
-  /* zinc-950 */
-  --foreground: oklch(0.141 0.005 285.823);
+  /* zinc-950 - Darkened */
+  --foreground: oklch(0.1 0.005 285.823);
 
-  /* zinc-950 */
-  --primary: oklch(0.141 0.005 285.823);
+  /* zinc-950 - Darkened */
+  --primary: oklch(0.1 0.005 285.823);
 
   /* zinc-50 */
   --primary-foreground: oklch(0.985 0 0);
@@ -132,26 +132,26 @@
   /* zinc-100 */
   --secondary: oklch(0.967 0.001 286.375);
 
-  /* zinc-950 */
-  --secondary-foreground: oklch(0.141 0.005 285.823);
+  /* zinc-950 - Darkened */
+  --secondary-foreground: oklch(0.1 0.005 285.823);
 
   /* zinc-100 */
   --muted: oklch(0.967 0.001 286.375);
 
-  /* zinc-500 */
-  --muted-foreground: oklch(0.552 0.016 285.938);
+  /* zinc-600 - Darkened from zinc-500 */
+  --muted-foreground: oklch(0.4 0.016 285.938);
 
   /* white */
   --card: oklch(1 0 0);
 
-  /* zinc-950 */
-  --card-foreground: oklch(0.141 0.005 285.823);
+  /* zinc-950 - Darkened */
+  --card-foreground: oklch(0.1 0.005 285.823);
 
   /* white */
   --popover: oklch(1 0 0);
 
-  /* zinc-950 */
-  --popover-foreground: oklch(0.141 0.005 285.823);
+  /* zinc-950 - Darkened */
+  --popover-foreground: oklch(0.1 0.005 285.823);
 
   --popover-border: color-mix(in oklab, var(--color-black) 15%, transparent);
 
@@ -160,8 +160,8 @@
 
   --accent2: color-mix(in oklab, var(--accent) 50%, transparent);
 
-  /* zinc-900 */
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  /* zinc-900 -> Darkened to match foreground */
+  --accent-foreground: oklch(0.1 0.005 285.823);
 
   /* zinc-200 */
   --border: oklch(0.92 0.004 286.32);
