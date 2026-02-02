@@ -20,6 +20,7 @@ export const PROJECTS: Project[] = [
 - Business Goal: Achieve 80%+ correct predictions
 - Live demo on Streamlit`,
     logo: "/static/images/projects/recipe-site-traffic.png",
+    isExpanded: true,
   },
   {
     id: "customer-behavior-prediction",
@@ -41,7 +42,6 @@ export const PROJECTS: Project[] = [
 - Predictive modeling for customer segmentation
 - Live demo on Streamlit`,
     logo: "/static/images/projects/customer-behavior.png",
-    isExpanded: true,
   },
   {
     id: "data-cleaning-visualization",
