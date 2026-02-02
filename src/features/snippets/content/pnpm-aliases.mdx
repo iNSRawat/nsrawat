@@ -1,0 +1,56 @@
+---
+title: Pnpm Aliases
+description: How to install pnpm, create shell aliases, and upgrade dependencies efficiently.
+language: bash
+createdAt: 2025-02-01
+---
+
+## Install & Upgrade pnpm
+
+Install pnpm globally using npm:
+
+```bash
+npm i -g pnpm
+```
+
+Upgrade to the latest version:
+
+```bash
+npm i -g pnpm@latest
+```
+
+## Add Shell Alias
+
+Open your shell profile file:
+
+```bash
+code ~/.zprofile  # or code ~/.bash_profile
+```
+
+Add the following line:
+
+```bash
+alias pn=pnpm
+```
+
+Reload it:
+
+```bash
+source ~/.zprofile  # or source ~/.bash_profile
+```
+
+Now you can use `pn` instead of `pnpm`:
+
+```bash
+pn -v  # Check pnpm version
+```
+
+## Upgrade Project Dependencies
+
+Interactively upgrade all dependencies to the latest version:
+
+```bash
+pnpm up -i -L
+```
+
+This shows a list of packages that can be upgraded and lets you select which ones to update.

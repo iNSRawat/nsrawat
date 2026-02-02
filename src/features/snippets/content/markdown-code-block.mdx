@@ -1,0 +1,64 @@
+---
+title: Markdown Code Block Syntax
+description: Basic and advanced syntaxes for Markdown code blocks including line highlighting.
+language: markdown
+createdAt: 2025-02-01
+---
+
+## Basic Syntax
+
+Use triple backticks to create a code block:
+
+````markdown
+```language
+your code goes here
+```
+````
+
+Example:
+
+```js
+function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+```
+
+## Filename
+
+Add `:filename.ext` after language to show filename label:
+
+````markdown
+```java:GetRowValue.java
+private String[] getRowValue(Integer i) {
+  // code here
+}
+```
+````
+
+## Line Highlighting and Line Numbers
+
+- Add `{numbers}` to highlight specific lines
+- Add `showLineNumbers` to display line numbers
+
+````markdown
+```html:index.html {1,4-6,10} showLineNumbers
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+  </head>
+  <body>
+    <h1>Hello world</h1>
+  </body>
+</html>
+```
+````
+
+This will highlight lines 1, 4-6, and 10, while showing line numbers.

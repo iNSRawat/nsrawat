@@ -1,0 +1,70 @@
+---
+title: VSCode Settings and Shortcuts
+description: Personal VSCode configurations, settings, and keyboard shortcuts.
+language: json
+createdAt: 2025-02-01
+---
+
+## Launch Code from Command Line
+
+Open VSCode's Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and type `shell command`, then select **Install 'code' command in PATH**.
+
+Now you can open files or folders:
+
+```bash
+code ~/.bash_profile  # Open a file
+code .                # Open current directory
+```
+
+## VSCode Settings
+
+```json
+{
+  "editor.fontFamily": "JetBrains Mono, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 17,
+  "editor.tabSize": 2,
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.autoIndent": "full",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.inlineSuggest.enabled": true,
+  "terminal.integrated.fontSize": 15,
+  "git.autofetch": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+## Keyboard Shortcuts
+
+```json
+[
+  { "key": "cmd+j", "command": "workbench.action.terminal.toggleTerminal" },
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+r",
+    "command": "editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+  },
+  { "key": "shift+cmd+d", "command": "duplicate.execute" },
+  { "key": "cmd+l", "command": "turboConsoleLog.displayLogMessage" },
+  { "key": "shift+cmd+l", "command": "turboConsoleLog.deleteAllLogMessages" },
+  { "key": "shift+cmd+g", "command": "workbench.view.scm" },
+  { "key": "alt+p", "command": "git.push" },
+  { "key": "shift+alt+p", "command": "git.pullFrom" }
+]
+```
