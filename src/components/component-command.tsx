@@ -83,17 +83,17 @@ export function ComponentCommand() {
   }, [mcpConfig]);
 
   return (
-    <div className="relative rounded-lg border bg-background">
-      <div className="flex flex-wrap items-center justify-between gap-y-2 border-b px-4 pt-2.5 pb-0">
+    <div className="relative">
+      <div className="flex flex-wrap items-center justify-between gap-y-2 border-b -mx-4 px-4 pt-1 pb-0">
         <div className="flex items-center gap-4">
-          <TerminalSquareIcon className="size-4 mb-2.5 text-muted-foreground" />
+          <TerminalSquareIcon className="size-4 mb-2 text-muted-foreground" />
           <div className="flex gap-1">
             {(["pnpm", "yarn", "npm", "bun"] as const).map((pm) => (
               <button
                 key={pm}
                 onClick={() => setPackageManager(pm)}
                 className={cn(
-                  "relative px-4 pb-2.5 text-sm font-medium transition-colors hover:text-foreground",
+                  "relative px-4 pb-2 text-sm font-medium transition-colors hover:text-foreground",
                   packageManager === pm
                     ? "text-foreground after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-foreground"
                     : "text-muted-foreground",
@@ -104,7 +104,7 @@ export function ComponentCommand() {
             ))}
           </div>
         </div>
-        <div className="flex items-center gap-2 mb-2.5">
+        <div className="flex items-center gap-2 mb-2">
           {/* MCP Configuration Dialog */}
           <Dialog>
             <DialogTrigger asChild>
@@ -190,7 +190,7 @@ export function ComponentCommand() {
           </Button>
         </div>
       </div>
-      <div className="px-4 py-3 font-mono text-sm text-muted-foreground">
+      <div className="-mx-4 px-4 py-2 border-b font-mono text-sm text-muted-foreground">
         <span className="text-foreground/50">$</span> {command}
       </div>
     </div>

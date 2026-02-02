@@ -44,7 +44,7 @@ export default function ComponentsPage() {
         </p>
       </div>
 
-      <div className="px-4 pb-10">
+      <div className="px-4 pb-0">
         <ComponentCommand />
       </div>
 
