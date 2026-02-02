@@ -30,7 +30,7 @@ export default function ComponentsPage() {
   const snippets = getAllSnippets();
 
   return (
-    <div className="min-h-svh">
+    <div className="min-h-svh overflow-hidden">
       <div className="screen-line-after px-4 pt-10 pb-6">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
           Components
@@ -58,9 +58,7 @@ export default function ComponentsPage() {
             href={`/components/${component.name}`}
             className={cn(
               "group flex items-center gap-3 border-b border-edge bg-background/50 px-6 py-4 transition-colors hover:bg-muted/50",
-              i % 2 === 0
-                ? "border-r border-edge md:border-r"
-                : "md:border-none",
+              i % 2 === 0 ? "md:border-r" : "",
             )}
           >
             <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
@@ -80,9 +78,7 @@ export default function ComponentsPage() {
             className={cn(
               "group flex items-center gap-3 border-b border-edge bg-background/50 px-6 py-4 transition-colors hover:bg-muted/50",
               // Continue the parity check from the previous list
-              (i + components.length) % 2 === 0
-                ? "border-r border-edge md:border-r"
-                : "md:border-none",
+              (i + components.length) % 2 === 0 ? "md:border-r" : "",
             )}
           >
             <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">

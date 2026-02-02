@@ -84,7 +84,7 @@ export function ComponentCommand() {
 
   return (
     <div className="relative rounded-lg border bg-background">
-      <div className="flex items-center justify-between border-b px-4 pt-2.5 pb-0">
+      <div className="flex flex-wrap items-center justify-between gap-y-2 border-b px-4 pt-2.5 pb-0">
         <div className="flex items-center gap-4">
           <TerminalSquareIcon className="size-4 mb-2.5 text-muted-foreground" />
           <div className="flex gap-1">
