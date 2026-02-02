@@ -1,14 +1,26 @@
 import { promises as fs } from "fs";
 import { getTableOfContents } from "fumadocs-core/content/toc";
-import { ArrowLeftIcon, CodeXmlIcon, EyeIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CodeXmlIcon,
+  EyeIcon,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import path from "path";
 
+import {
+  TooltipContent,
+  TooltipProvider,
+  TooltipRoot,
+  TooltipTrigger,
+} from "@/components/base/ui/tooltip";
 import { InlineTOC } from "@/components/inline-toc";
 import { MDX } from "@/components/mdx";
 import { Button } from "@/components/ui/button";
+import { Kbd } from "@/components/ui/kbd";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Prose } from "@/components/ui/typography";
 import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions";
@@ -62,6 +74,16 @@ export default async function ComponentPage({
 }) {
   const slug = (await params).slug;
 
+  // Get all slugs for navigation
+  const allSlugs = [
+    ...components.map((c) => c.name),
+    ...getAllSnippets().map((s) => s.slug),
+  ];
+  const currentIndex = allSlugs.indexOf(slug);
+  const previous = currentIndex > 0 ? allSlugs[currentIndex - 1] : null;
+  const next =
+    currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null;
+
   // Check if it's a registry component
   const component = components.find((c) => c.name === slug);
 
@@ -111,6 +133,55 @@ export default async function ComponentPage({
               title={component.title ?? component.name}
               url={`/components/${slug}`}
             />
+            <TooltipProvider>
+              {previous && (
+                <TooltipRoot>
+                  <TooltipTrigger
+                    render={
+                      <Button variant="secondary" size="icon-sm" asChild>
+                        <Link href={`/components/${previous}`} />
+                      </Button>
+                    }
+                  >
+                    <ArrowLeftIcon />
+                    <span className="sr-only">Previous</span>
+                  </TooltipTrigger>
+
+                  <TooltipContent className="pr-2 pl-3">
+                    <div className="flex items-center gap-3">
+                      Previous
+                      <Kbd>
+                        <ArrowLeftIcon />
+                      </Kbd>
+                    </div>
+                  </TooltipContent>
+                </TooltipRoot>
+              )}
+
+              {next && (
+                <TooltipRoot>
+                  <TooltipTrigger
+                    render={
+                      <Button variant="secondary" size="icon-sm" asChild>
+                        <Link href={`/components/${next}`} />
+                      </Button>
+                    }
+                  >
+                    <span className="sr-only">Next</span>
+                    <ArrowRightIcon />
+                  </TooltipTrigger>
+
+                  <TooltipContent className="pr-2 pl-3">
+                    <div className="flex items-center gap-3">
+                      Next
+                      <Kbd>
+                        <ArrowRightIcon />
+                      </Kbd>
+                    </div>
+                  </TooltipContent>
+                </TooltipRoot>
+              )}
+            </TooltipProvider>
           </div>
         </div>
 
@@ -201,6 +272,55 @@ export default async function ComponentPage({
               title={snippet.metadata.title}
               url={`/components/${slug}`}
             />
+            <TooltipProvider>
+              {previous && (
+                <TooltipRoot>
+                  <TooltipTrigger
+                    render={
+                      <Button variant="secondary" size="icon-sm" asChild>
+                        <Link href={`/components/${previous}`} />
+                      </Button>
+                    }
+                  >
+                    <ArrowLeftIcon />
+                    <span className="sr-only">Previous</span>
+                  </TooltipTrigger>
+
+                  <TooltipContent className="pr-2 pl-3">
+                    <div className="flex items-center gap-3">
+                      Previous
+                      <Kbd>
+                        <ArrowLeftIcon />
+                      </Kbd>
+                    </div>
+                  </TooltipContent>
+                </TooltipRoot>
+              )}
+
+              {next && (
+                <TooltipRoot>
+                  <TooltipTrigger
+                    render={
+                      <Button variant="secondary" size="icon-sm" asChild>
+                        <Link href={`/components/${next}`} />
+                      </Button>
+                    }
+                  >
+                    <span className="sr-only">Next</span>
+                    <ArrowRightIcon />
+                  </TooltipTrigger>
+
+                  <TooltipContent className="pr-2 pl-3">
+                    <div className="flex items-center gap-3">
+                      Next
+                      <Kbd>
+                        <ArrowRightIcon />
+                      </Kbd>
+                    </div>
+                  </TooltipContent>
+                </TooltipRoot>
+              )}
+            </TooltipProvider>
           </div>
         </div>
 
