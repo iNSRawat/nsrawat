@@ -57,7 +57,7 @@ export function Components() {
               >
                 <ComponentIcon
                   className="pointer-events-none size-4 text-muted-foreground"
-                  variant="default"
+                  variant={comp.slug}
                 />
               </div>
 
