@@ -1,14 +1,18 @@
 import { promises as fs } from "fs";
+import { getTableOfContents } from "fumadocs-core/content/toc";
 import { ArrowLeftIcon, CodeXmlIcon, EyeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import path from "path";
 
+import { InlineTOC } from "@/components/inline-toc";
 import { MDX } from "@/components/mdx";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Prose } from "@/components/ui/typography";
+import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions";
+import { PostShareMenu } from "@/features/blog/components/post-share-menu";
 import {
   getAllSnippets,
   getSnippetBySlug,
@@ -82,67 +86,89 @@ export default async function ComponentPage({
       }
     }
 
-    return (
-      <div className="relative py-10">
-        <Button
-          variant="ghost"
-          asChild
-          className="mb-8 h-8 px-0 text-muted-foreground hover:bg-transparent hover:text-foreground"
-        >
-          <Link href="/components" className="flex items-center gap-2">
-            <ArrowLeftIcon className="h-4 w-4" />
-            Back to Components
-          </Link>
-        </Button>
+    const toc = getTableOfContents(code);
 
-        <div className="mb-8">
-          <div className="flex items-start justify-between">
-            <div>
-              <h1 className="mb-2 text-3xl font-bold tracking-tight">
-                {component.title}
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                {component.description}
-              </p>
-            </div>
+    return (
+      <>
+        <div className="flex items-center justify-between p-2 pl-4">
+          <Button
+            className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
+            variant="link"
+            asChild
+          >
+            <Link href="/components">
+              <ArrowLeftIcon />
+              Components
+            </Link>
+          </Button>
+
+          <div className="flex items-center gap-2">
+            <LLMCopyButtonWithViewOptions
+              markdownUrl={`/components/${slug}.mdx`}
+              isComponent
+            />
+            <PostShareMenu
+              title={component.title ?? component.name}
+              url={`/components/${slug}`}
+            />
           </div>
         </div>
 
-        <Tabs defaultValue="preview" className="gap-4">
-          <TabsList>
-            <TabsTrigger
-              className="px-2.5"
-              value="preview"
-              disabled={!DemoComponent}
-            >
-              <EyeIcon className="mr-2 h-4 w-4" />
-              Preview
-            </TabsTrigger>
-            <TabsTrigger className="px-2.5" value="code">
-              <CodeXmlIcon className="mr-2 h-4 w-4" />
-              Code
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="preview">
-            <div className="flex min-h-[350px] w-full items-center justify-center rounded-xl border border-edge bg-background p-10">
-              {DemoComponent ? (
-                <DemoComponent />
-              ) : (
-                <div className="text-sm text-muted-foreground">
-                  No preview available.
-                </div>
-              )}
-            </div>
-          </TabsContent>
-          <TabsContent value="code">
-            <div className="rounded-xl border border-edge p-4">
-              <Prose>
+        <div className="screen-line-before screen-line-after">
+          <div
+            className={cn(
+              "h-8",
+              "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
+              "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
+            )}
+          />
+        </div>
+
+        <Prose className="px-4">
+          <h1 className="screen-line-after text-3xl font-semibold">
+            {component.title}
+          </h1>
+
+          <p className="text-muted-foreground">{component.description}</p>
+
+          <InlineTOC items={toc} />
+
+          <Tabs defaultValue="preview" className="gap-4">
+            <TabsList>
+              <TabsTrigger
+                className="px-2.5"
+                value="preview"
+                disabled={!DemoComponent}
+              >
+                <EyeIcon className="mr-2 h-4 w-4" />
+                Preview
+              </TabsTrigger>
+              <TabsTrigger className="px-2.5" value="code">
+                <CodeXmlIcon className="mr-2 h-4 w-4" />
+                Code
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="preview">
+              <div className="flex min-h-[350px] w-full items-center justify-center rounded-xl border border-edge bg-background p-10">
+                {DemoComponent ? (
+                  <DemoComponent />
+                ) : (
+                  <div className="text-sm text-muted-foreground">
+                    No preview available.
+                  </div>
+                )}
+              </div>
+            </TabsContent>
+            <TabsContent value="code">
+              <div className="rounded-xl border border-edge p-4">
                 <MDX code={code} />
-              </Prose>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </Prose>
+
+        <div className="screen-line-before h-4 w-full" />
+      </>
     );
   }
 
@@ -150,53 +176,62 @@ export default async function ComponentPage({
   const snippet = getSnippetBySlug(slug);
 
   if (snippet) {
-    return (
-      <div className="relative py-10">
-        <Button
-          variant="ghost"
-          asChild
-          className="mb-8 h-8 px-0 text-muted-foreground hover:bg-transparent hover:text-foreground"
-        >
-          <Link href="/components" className="flex items-center gap-2">
-            <ArrowLeftIcon className="h-4 w-4" />
-            Back to Components
-          </Link>
-        </Button>
+    const toc = getTableOfContents(snippet.content);
 
-        <div className="mb-8">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight">
-            {snippet.metadata.title}
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            {snippet.metadata.description}
-          </p>
+    return (
+      <>
+        <div className="flex items-center justify-between p-2 pl-4">
+          <Button
+            className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
+            variant="link"
+            asChild
+          >
+            <Link href="/components">
+              <ArrowLeftIcon />
+              Components
+            </Link>
+          </Button>
+
+          <div className="flex items-center gap-2">
+            <LLMCopyButtonWithViewOptions
+              markdownUrl={`/components/${slug}.mdx`}
+              isComponent
+            />
+            <PostShareMenu
+              title={snippet.metadata.title}
+              url={`/components/${slug}`}
+            />
+          </div>
         </div>
 
-        <Tabs defaultValue="code" className="gap-4">
-          <TabsList>
-            <TabsTrigger className="px-2.5" value="preview" disabled>
-              <EyeIcon className="mr-2 h-4 w-4" />
-              Preview
-            </TabsTrigger>
-            <TabsTrigger className="px-2.5" value="code">
-              <CodeXmlIcon className="mr-2 h-4 w-4" />
-              Code
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="preview">
-            <div className="flex min-h-[350px] w-full items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground">
-              No preview available for this snippet.
-            </div>
-          </TabsContent>
-          <TabsContent value="code">
-            <div className="rounded-xl border border-edge p-4">
-              <Prose>
-                <MDX code={snippet.content} />
-              </Prose>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
+        <div className="screen-line-before screen-line-after">
+          <div
+            className={cn(
+              "h-8",
+              "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
+              "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
+            )}
+          />
+        </div>
+
+        <Prose className="px-4">
+          <h1 className="screen-line-after text-3xl font-semibold">
+            {snippet.metadata.title}
+          </h1>
+
+          <p className="text-muted-foreground">
+            {snippet.metadata.description}
+          </p>
+
+          <InlineTOC items={toc} />
+
+          <div>
+            <MDX code={snippet.content} />
+          </div>
+        </Prose>
+
+        <div className="screen-line-before h-4 w-full" />
+      </>
     );
   }
 
