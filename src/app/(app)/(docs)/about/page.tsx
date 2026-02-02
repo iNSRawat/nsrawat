@@ -128,6 +128,13 @@ export default function AboutPage() {
           <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
             🌐 Connect With Me
           </h2>
+          <p className="mb-3 text-sm sm:text-base text-muted-foreground">
+            Reach out to me at{" "}
+            <a href="mailto:digital@nsrawat.in" className="link font-medium">
+              digital@nsrawat.in
+            </a>{" "}
+            or find me on social media:
+          </p>
           {/* Social Icons Row */}
           <div className="inline-flex items-center gap-2">
             <a
