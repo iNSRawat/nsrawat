@@ -117,7 +117,7 @@ export function ComponentCommand() {
                 MCP
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="w-[90%] sm:max-w-md rounded-lg">
               <DialogHeader>
                 <DialogTitle>Configure MCP</DialogTitle>
                 <DialogDescription>
@@ -125,7 +125,7 @@ export function ComponentCommand() {
                   components.json.
                 </DialogDescription>
               </DialogHeader>
-              <div className="relative mt-4 rounded-md border bg-muted p-4">
+              <div className="relative mt-4 rounded-md border bg-muted p-3">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <div className="flex items-center justify-center w-4 h-4 rounded-full border bg-background">
