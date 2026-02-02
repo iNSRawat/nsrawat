@@ -191,7 +191,7 @@ export function ComponentCommand() {
         </div>
       </div>
       <div className="-mx-4 px-4 py-2 border-b font-mono text-sm text-muted-foreground">
-        <span className="text-foreground/50">$</span> {command}
+        {command}
       </div>
     </div>
   );
