@@ -37,6 +37,7 @@ export default function AboutPage() {
               alt={USER.displayName}
               width={120}
               height={120}
+              priority
               className="rounded-full border-4 border-edge sm:w-[150px] sm:h-[150px]"
             />
           </div>
@@ -197,31 +198,25 @@ export default function AboutPage() {
               href="https://buymeacoffee.com/nsrawat?ref=NSRawat"
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-md bg-[#ffdd00] px-3 py-1.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
             >
-              <img
-                src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black"
-                alt="Buy Me A Coffee"
-              />
+              ☕ Buy Me a Coffee
             </a>
             <a
               href="https://paypal.me/NRawat710?ref=NSRawat"
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-md bg-[#00457C] px-3 py-1.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
-              <img
-                src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white"
-                alt="PayPal"
-              />
+              💳 PayPal
             </a>
             <a
               href="https://withupi.com/@nsrawat?ref=NSRawat"
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-md bg-[#21b573] px-3 py-1.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
-              <img
-                src="https://img.shields.io/badge/UPI-21b573?style=for-the-badge&logo=upi&logoColor=white"
-                alt="UPI"
-              />
+              💸 UPI
             </a>
           </div>
         </div>
