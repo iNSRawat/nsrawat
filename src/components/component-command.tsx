@@ -34,10 +34,10 @@ export function ComponentCommand() {
   const currentComponent = components[componentIndex];
 
   const commandMap = {
-    pnpm: `pnpm dlx shadcn add @iNSRawat/${currentComponent}`,
-    npm: `npx shadcn add @iNSRawat/${currentComponent}`,
-    yarn: `npx shadcn add @iNSRawat/${currentComponent}`,
-    bun: `bun x shadcn add @iNSRawat/${currentComponent}`,
+    pnpm: `pnpm dlx shadcn@latest add @iNSRawat/${currentComponent}`,
+    npm: `npx shadcn@latest add @iNSRawat/${currentComponent}`,
+    yarn: `npx shadcn@latest add @iNSRawat/${currentComponent}`,
+    bun: `bun x shadcn@latest add @iNSRawat/${currentComponent}`,
   };
 
   const command = commandMap[packageManager];
