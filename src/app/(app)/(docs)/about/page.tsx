@@ -1,6 +1,8 @@
+import { Mail } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { Icons } from "@/components/icons";
 import { EXPERIENCES } from "@/features/portfolio/data/experiences";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
@@ -126,45 +128,52 @@ export default function AboutPage() {
           <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
             🌐 Connect With Me
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
-            You can find me on{" "}
+          {/* Social Icons Row */}
+          <div className="inline-flex items-center gap-2">
             <a
               href="https://github.com/iNSRawat"
-              className="link font-medium"
+              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
             >
-              GitHub
+              <Icons.github className="size-6" />
             </a>
-            ,{" "}
-            <a
-              href="https://www.linkedin.com/in/insrawat"
-              className="link font-medium"
-              target="_blank"
-              rel="noopener"
-            >
-              LinkedIn
-            </a>
-            ,{" "}
-            <a
-              href="https://www.kaggle.com/nsrawat"
-              className="link font-medium"
-              target="_blank"
-              rel="noopener"
-            >
-              Kaggle
-            </a>
-            , or{" "}
             <a
               href="https://twitter.com/NSRawat_in"
-              className="link font-medium"
+              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
+              aria-label="Twitter/X"
             >
-              Twitter/X
+              <Icons.x className="size-6" />
             </a>
-            .
-          </p>
+            <a
+              href="https://www.linkedin.com/in/insrawat"
+              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Icons.linkedin className="size-6" />
+            </a>
+            <a
+              href="https://www.kaggle.com/nsrawat"
+              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Kaggle"
+            >
+              <Icons.kaggle className="size-6" />
+            </a>
+            <a
+              href="mailto:digital@nsrawat.in"
+              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              aria-label="Email"
+            >
+              <Mail className="size-6" />
+            </a>
+          </div>
           <h2 className="mt-3 sm:mt-4 mb-1.5 sm:mb-2 text-lg sm:text-xl font-semibold">
             Express Your Support
           </h2>
