@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
-import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -24,34 +23,37 @@ import { cn } from "@/lib/utils";
 export function ComponentCommand() {
   const [hasCopied, setHasCopied] = React.useState(false);
   const [packageManager, setPackageManager] = React.useState<
-    "pnpm" | "npm" | "yarn" | "bun"
-  >("pnpm");
+    "pip" | "conda" | "poetry" | "uv" | "pipx" | "mamba" | "pdm" | "hatch"
+  >("pip");
   const [componentIndex, setComponentIndex] = React.useState(0);
 
-  const components = [
-    "confusion-matrix",
-    "model-metrics",
-    "training-progress",
-    "roc-curve",
-    "feature-importance",
-    "data-distribution",
-    "correlation-heatmap",
+  const dsLibraries = [
+    "streamlit",
+    "pandas",
+    "scikit-learn",
+    "transformers",
+    "mlflow",
+    "jupyterlab",
   ];
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setComponentIndex((prev) => (prev + 1) % components.length);
-    }, 3000); // Change component every 3 seconds
+      setComponentIndex((prev) => (prev + 1) % dsLibraries.length);
+    }, 3000); // Change library every 3 seconds
     return () => clearInterval(interval);
   }, []);
 
-  const currentComponent = components[componentIndex];
+  const currentLibrary = dsLibraries[componentIndex];
 
   const commandMap = {
-    pnpm: `pnpm dlx shadcn@latest add @iNSRawat/${currentComponent}`,
-    npm: `npx shadcn@latest add @iNSRawat/${currentComponent}`,
-    yarn: `npx shadcn@latest add @iNSRawat/${currentComponent}`,
-    bun: `bun x shadcn@latest add @iNSRawat/${currentComponent}`,
+    pip: `pip install ${currentLibrary}`,
+    conda: `conda install -c conda-forge ${currentLibrary}`,
+    poetry: `poetry add ${currentLibrary}`,
+    uv: `uv pip install ${currentLibrary}`,
+    pipx: `pipx install ${currentLibrary}`,
+    mamba: `mamba install -c conda-forge ${currentLibrary}`,
+    pdm: `pdm add ${currentLibrary}`,
+    hatch: `hatch add ${currentLibrary}`,
   };
 
   const command = commandMap[packageManager];
@@ -68,19 +70,45 @@ export function ComponentCommand() {
     setHasCopied(true);
   }, [command]);
 
-  const mcpConfig = `{
-  "registries": {
-    "@iNSRawat": "https://nsrawat.in/r/{name}.json"
-  }
-}`;
-
-  const [hasCopiedConfig, setHasCopiedConfig] = React.useState(false);
-
-  const copyConfig = React.useCallback(() => {
-    navigator.clipboard.writeText(mcpConfig);
-    setHasCopiedConfig(true);
-    setTimeout(() => setHasCopiedConfig(false), 2000);
-  }, [mcpConfig]);
+  // Data Science MCP Servers
+  const dsMCPServers = [
+    {
+      name: "Streamlit",
+      description: "Build data apps in Python",
+      url: "https://github.com/streamlit/streamlit",
+      color: "from-red-500 to-pink-500",
+    },
+    {
+      name: "Hugging Face",
+      description: "ML models & datasets hub",
+      url: "https://github.com/huggingface/huggingface_hub",
+      color: "from-yellow-500 to-orange-500",
+    },
+    {
+      name: "Jupyter",
+      description: "Interactive notebooks",
+      url: "https://github.com/jupyter/jupyter",
+      color: "from-orange-500 to-amber-500",
+    },
+    {
+      name: "MLflow",
+      description: "ML lifecycle platform",
+      url: "https://github.com/mlflow/mlflow",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      name: "DVC",
+      description: "Data version control",
+      url: "https://github.com/iterative/dvc",
+      color: "from-purple-500 to-violet-500",
+    },
+    {
+      name: "W&B",
+      description: "ML experiment tracking",
+      url: "https://github.com/wandb/wandb",
+      color: "from-amber-500 to-yellow-500",
+    },
+  ];
 
   return (
     <div className="relative">
@@ -88,7 +116,18 @@ export function ComponentCommand() {
         <div className="flex items-center gap-4">
           <TerminalSquareIcon className="size-4 mb-2 text-muted-foreground" />
           <div className="flex gap-1">
-            {(["pnpm", "yarn", "npm", "bun"] as const).map((pm) => (
+            {(
+              [
+                "pip",
+                "conda",
+                "poetry",
+                "uv",
+                "pipx",
+                "mamba",
+                "pdm",
+                "hatch",
+              ] as const
+            ).map((pm) => (
               <button
                 key={pm}
                 onClick={() => setPackageManager(pm)}
@@ -117,39 +156,39 @@ export function ComponentCommand() {
                 MCP
               </Button>
             </DialogTrigger>
-            <DialogContent className="w-[90%] sm:max-w-md rounded-lg">
+            <DialogContent className="w-[90%] sm:max-w-lg rounded-lg">
               <DialogHeader>
-                <DialogTitle>Configure MCP</DialogTitle>
+                <DialogTitle>Data Science MCP Servers</DialogTitle>
                 <DialogDescription>
-                  Copy and paste the following code into your project&apos;s
-                  components.json.
+                  Open source tools that integrate with the Model Context
+                  Protocol for data science workflows.
                 </DialogDescription>
               </DialogHeader>
-              <div className="relative mt-4 rounded-md border bg-muted p-3">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <div className="flex items-center justify-center w-4 h-4 rounded-full border bg-background">
-                      <Icons.json className="w-2.5 h-2.5" />
-                    </div>
-                    components.json
-                  </div>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-6 w-6 text-muted-foreground hover:bg-accent hover:text-foreground"
-                    onClick={copyConfig}
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                {dsMCPServers.map((server) => (
+                  <a
+                    key={server.name}
+                    href={server.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group relative overflow-hidden rounded-lg border bg-card p-3 transition-all hover:border-primary hover:shadow-md"
                   >
-                    {hasCopiedConfig ? (
-                      <CheckIcon className="size-3" />
-                    ) : (
-                      <CopyIcon className="size-3" />
-                    )}
-                    <span className="sr-only">Copy config</span>
-                  </Button>
-                </div>
-                <pre className="overflow-x-auto text-xs font-mono leading-relaxed">
-                  <code>{mcpConfig}</code>
-                </pre>
+                    <div
+                      className={cn(
+                        "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-gradient-to-br",
+                        server.color,
+                      )}
+                    />
+                    <div className="relative">
+                      <h4 className="font-semibold text-sm mb-1">
+                        {server.name}
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        {server.description}
+                      </p>
+                    </div>
+                  </a>
+                ))}
               </div>
               <div className="flex items-center justify-between mt-4">
                 <Button
@@ -159,16 +198,16 @@ export function ComponentCommand() {
                   asChild
                 >
                   <a
-                    href="https://ui.shadcn.com/docs/mcp"
+                    href="https://modelcontextprotocol.io/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Read the docs
+                    Learn about MCP
                   </a>
                 </Button>
                 <DialogClose asChild>
                   <Button size="sm" className="h-8 text-xs">
-                    Done
+                    Close
                   </Button>
                 </DialogClose>
               </div>
