@@ -126,7 +126,7 @@ export default async function ComponentPage({
 
           <div className="flex items-center gap-2">
             <LLMCopyButtonWithViewOptions
-              markdownUrl={`/components/${slug}.mdx`}
+              markdownUrl={`/components.mdx/${slug}`}
               isComponent
             />
             <PostShareMenu
@@ -265,7 +265,7 @@ export default async function ComponentPage({
 
           <div className="flex items-center gap-2">
             <LLMCopyButtonWithViewOptions
-              markdownUrl={`/components/${slug}.mdx`}
+              markdownUrl={`/components.mdx/${slug}`}
               isComponent
             />
             <PostShareMenu
