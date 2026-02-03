@@ -121,12 +121,16 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
   },
 ];
 
-const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
-  title: item.title,
-  href: item.href,
-  iconImage: item.icon,
-  openInNewTab: true,
-}));
+const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => {
+  const iconName = item.icon as keyof typeof Icons;
+  const IconComponent = Icons[iconName];
+  return {
+    title: item.title,
+    href: item.href,
+    icon: IconComponent,
+    openInNewTab: true,
+  };
+});
 
 const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   {
