@@ -113,9 +113,9 @@ export function ComponentCommand() {
   return (
     <div className="relative">
       <div className="flex flex-wrap items-center justify-between gap-y-2 border-b -mx-4 px-4 pt-1 pb-0">
-        <div className="flex items-center gap-4">
-          <TerminalSquareIcon className="size-4 mb-2 text-muted-foreground" />
-          <div className="flex gap-1">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
+          <TerminalSquareIcon className="size-4 mb-2 text-muted-foreground hidden sm:block" />
+          <div className="flex gap-0.5 sm:gap-1 overflow-x-auto no-scrollbar pb-2 -mb-2">
             {(
               [
                 "pip",
@@ -132,7 +132,7 @@ export function ComponentCommand() {
                 key={pm}
                 onClick={() => setPackageManager(pm)}
                 className={cn(
-                  "relative px-4 pb-2 text-sm font-medium transition-colors hover:text-foreground",
+                  "relative px-2 sm:px-4 pb-2 text-xs sm:text-sm font-medium transition-colors hover:text-foreground whitespace-nowrap flex-shrink-0",
                   packageManager === pm
                     ? "text-foreground after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-foreground"
                     : "text-muted-foreground",
