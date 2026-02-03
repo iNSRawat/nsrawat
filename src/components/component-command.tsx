@@ -1,13 +1,9 @@
 "use client";
 
-import {
-  CheckIcon,
-  CopyIcon,
-  DatabaseIcon,
-  TerminalSquareIcon,
-} from "lucide-react";
+import { CheckIcon, CopyIcon, TerminalSquareIcon } from "lucide-react";
 import * as React from "react";
 
+import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -152,7 +148,7 @@ export function ComponentCommand() {
                 variant="outline"
                 className="h-6 gap-1.5 px-2 text-xs"
               >
-                <DatabaseIcon className="size-3" />
+                <Icons.mcp className="size-3" />
                 MCP
               </Button>
             </DialogTrigger>
