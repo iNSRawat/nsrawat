@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/google-analytics-data-cleaning-visualization",
+    link: "https://github.com/iNSRawat/data-cleaning-visualization",
     skills: [
       "Data Science",
       "Python",
