@@ -3,5 +3,6 @@ export type Bookmark = {
   url: string;
   author?: string;
   iconName?: string;
+  category?: string;
   bookmarkedAt: string;
 };

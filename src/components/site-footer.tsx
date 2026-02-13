@@ -37,8 +37,8 @@ export function SiteFooter() {
         </p>
 
         <div className="screen-line-before flex justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
-          <Link className="font-medium" href="/about">
-            About
+          <Link className="font-medium" href="/bookmarks">
+            Bookmarks
           </Link>
 
           <span className="opacity-50">•</span>
@@ -57,9 +57,9 @@ export function SiteFooter() {
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-edge bg-background px-4">
             <Link
               className="flex font-mono text-xs font-medium text-muted-foreground max-sm:hidden"
-              href="/about"
+              href="/bookmarks"
             >
-              About
+              Bookmarks
             </Link>
 
             <Separator className="max-sm:hidden" />
