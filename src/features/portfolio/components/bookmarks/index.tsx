@@ -1,7 +1,8 @@
 import { compareDesc } from "date-fns";
+import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
-import { CollapsibleList } from "@/components/collapsible-list";
+import { Button } from "@/components/ui/button";
 
 import { BOOKMARKS } from "../../data/bookmarks";
 import { Panel, PanelHeader, PanelTitle } from "../panel";
@@ -18,19 +19,21 @@ export function Bookmarks() {
         <PanelTitle>Bookmarks</PanelTitle>
       </PanelHeader>
 
-      <CollapsibleList
-        items={SORTED_BOOKMARKS}
-        max={6}
-        renderItem={(item) => <BookmarkItem bookmark={item} />}
-      />
+      {SORTED_BOOKMARKS.slice(0, 6).map((item) => (
+        <BookmarkItem
+          key={item.url}
+          bookmark={item}
+          className="border-b border-edge"
+        />
+      ))}
 
-      <div className="flex h-12 items-center justify-center border-t border-edge">
-        <Link
-          href="/bookmarks"
-          className="font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          View All →
-        </Link>
+      <div className="flex h-12 items-center justify-center pb-px">
+        <Button asChild variant="default">
+          <Link href="/bookmarks">
+            View All
+            <ArrowRightIcon aria-hidden />
+          </Link>
+        </Button>
       </div>
     </Panel>
   );
