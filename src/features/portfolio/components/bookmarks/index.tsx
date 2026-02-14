@@ -8,10 +8,10 @@ import { BOOKMARKS } from "../../data/bookmarks";
 import { Panel, PanelHeader, PanelTitle } from "../panel";
 import { BookmarkItem } from "./bookmark-item";
 
-const HOMEPAGE_EXCLUDED_CATEGORIES = ["Datasets", "Tools & Libraries"];
+const HOMEPAGE_CATEGORIES = ["Research & Papers", "Blogs & Communities"];
 
 const SORTED_BOOKMARKS = [...BOOKMARKS]
-  .filter((b) => !HOMEPAGE_EXCLUDED_CATEGORIES.includes(b.category || ""))
+  .filter((b) => HOMEPAGE_CATEGORIES.includes(b.category || ""))
   .sort((a, b) => {
     return compareDesc(new Date(a.bookmarkedAt), new Date(b.bookmarkedAt));
   });
