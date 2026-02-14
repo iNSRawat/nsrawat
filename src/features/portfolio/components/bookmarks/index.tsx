@@ -8,9 +8,13 @@ import { BOOKMARKS } from "../../data/bookmarks";
 import { Panel, PanelHeader, PanelTitle } from "../panel";
 import { BookmarkItem } from "./bookmark-item";
 
-const SORTED_BOOKMARKS = [...BOOKMARKS].sort((a, b) => {
-  return compareDesc(new Date(a.bookmarkedAt), new Date(b.bookmarkedAt));
-});
+const HOMEPAGE_EXCLUDED_CATEGORIES = ["Datasets", "Tools & Libraries"];
+
+const SORTED_BOOKMARKS = [...BOOKMARKS]
+  .filter((b) => !HOMEPAGE_EXCLUDED_CATEGORIES.includes(b.category || ""))
+  .sort((a, b) => {
+    return compareDesc(new Date(a.bookmarkedAt), new Date(b.bookmarkedAt));
+  });
 
 export function Bookmarks() {
   return (
