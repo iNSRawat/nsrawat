@@ -17,6 +17,8 @@ const CATEGORY_ORDER = [
   "Research & Papers",
   "Visualization & Tools",
   "Blogs & Communities",
+  "Datasets",
+  "Tools & Libraries",
 ];
 
 function groupByCategory(bookmarks: typeof BOOKMARKS) {
