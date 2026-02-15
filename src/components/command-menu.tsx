@@ -62,9 +62,19 @@ type CommandLinkItem = {
 
 const MENU_LINKS: CommandLinkItem[] = [
   {
-    title: "Portfolio",
+    title: "Home",
     href: "/",
     icon: NSRMark,
+  },
+  {
+    title: "Certifications",
+    href: "/certifications",
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: "Bookmarks",
+    href: "/bookmarks",
+    icon: BookmarkIcon,
   },
   {
     title: "Components",
@@ -104,16 +114,7 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#projects",
     icon: BoxIcon,
   },
-  {
-    title: "Certifications",
-    href: "/#certs",
-    icon: ShieldCheckIcon,
-  },
-  {
-    title: "Bookmarks",
-    href: "/#bookmarks",
-    icon: BookmarkIcon,
-  },
+
   {
     title: "Download vCard",
     href: "/vcard",

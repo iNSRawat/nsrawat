@@ -33,6 +33,7 @@ export const USER = {
 - Building **predictive models**, **data pipelines**, and **interactive dashboards** with Tableau & Power BI.
 - Currently building skills in Python, machine learning, and data analysis for my new path.
 - Creator of data science projects on [GitHub](https://github.com/iNSRawat).
+- Earned [8+ Certifications](/certifications) from DataCamp, Google, and IBM.
 - I have a passion for exploratory data analysis and finding patterns in data.
 `,
   avatar: "/static/images/avatar.png",

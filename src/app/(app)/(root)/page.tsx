@@ -3,9 +3,7 @@ import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 import { About } from "@/features/portfolio/components/about";
 // import { Awards } from "@/features/portfolio/components/awards"; // Removed for now
 import { Blog } from "@/features/portfolio/components/blog";
-import { Bookmarks } from "@/features/portfolio/components/bookmarks";
 import { Brand } from "@/features/portfolio/components/brand";
-import { Certifications } from "@/features/portfolio/components/certifications";
 import { Components } from "@/features/portfolio/components/components";
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
@@ -13,7 +11,6 @@ import { Overview } from "@/features/portfolio/components/overview";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 import { Projects } from "@/features/portfolio/components/projects";
-import { SocialLinks } from "@/features/portfolio/components/social-links";
 import { TeckStack } from "@/features/portfolio/components/teck-stack";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
@@ -34,9 +31,6 @@ export default function Page() {
         <Separator />
 
         <Overview />
-        <Separator />
-
-        <SocialLinks />
         <Separator />
 
         <About />
@@ -65,12 +59,6 @@ export default function Page() {
         {/* Awards section removed for now */}
         {/* <Awards /> */}
         {/* <Separator /> */}
-
-        <Certifications />
-        <Separator />
-
-        <Bookmarks />
-        <Separator />
 
         <Brand />
         <Separator />
@@ -101,7 +89,7 @@ function Separator({ className }: { className?: string }) {
         "relative flex h-8 w-full border-x border-edge",
         "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
         "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className
+        className,
       )}
     />
   );

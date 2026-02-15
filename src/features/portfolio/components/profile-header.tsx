@@ -1,3 +1,5 @@
+import { getIcon } from "@/components/icons";
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 import { USER } from "@/features/portfolio/data/user";
 import { FlipSentences } from "@/registry/flip-sentences";
 
@@ -15,33 +17,6 @@ export function ProfileHeader() {
             src={USER.avatar}
             fetchPriority="high"
           />
-        </div>
-
-        <div className="absolute top-0 -left-px" title="Flag of India">
-          {/* Flag of India */}
-          <svg
-            className="h-5 sm:h-6"
-            viewBox="0 0 30 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Flag of India</title>
-            {/* Saffron stripe */}
-            <rect width="30" height="6.67" fill="#FF9933" />
-            {/* White stripe */}
-            <rect y="6.67" width="30" height="6.67" fill="#FFFFFF" />
-            {/* Green stripe */}
-            <rect y="13.33" width="30" height="6.67" fill="#138808" />
-            {/* Ashoka Chakra (simplified) */}
-            <circle
-              cx="15"
-              cy="10"
-              r="2.5"
-              fill="none"
-              stroke="#000080"
-              strokeWidth="0.4"
-            />
-            <circle cx="15" cy="10" r="0.3" fill="#000080" />
-          </svg>
         </div>
       </div>
 
@@ -84,6 +59,21 @@ export function ProfileHeader() {
             >
               {USER.flipSentences}
             </FlipSentences>
+          </div>
+
+          <div className="flex items-center gap-2 border-t border-edge p-2 pl-4">
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-accent2 hover:text-foreground"
+                target={link.title === "Email" ? undefined : "_blank"}
+                rel={link.title === "Email" ? undefined : "noopener noreferrer"}
+                title={link.title}
+              >
+                <div className="size-4">{getIcon(link.icon)}</div>
+              </a>
+            ))}
           </div>
         </div>
       </div>
