@@ -49,7 +49,8 @@ const projectsText = `## Projects
 ${PROJECTS.map((item) => {
   const skills = `\n\nSkills: ${item.skills.join(", ")}`;
   const description = item.description ? `\n\n${item.description.trim()}` : "";
-  return `### ${item.title}\n\nProject URL: ${item.link}${skills}${description}`;
+  const projectUrl = item.demoUrl ? `\n\nDemo URL: ${item.demoUrl}` : "";
+  return `### ${item.title}\n\nRepository: ${item.repoUrl}${projectUrl}${skills}${description}`;
 }).join("\n\n")}
 `;
 
