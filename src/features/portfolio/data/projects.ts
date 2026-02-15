@@ -7,7 +7,8 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2026",
     },
-    link: "https://github.com/iNSRawat/recipe-site-traffic-prediction",
+    repoUrl: "https://github.com/iNSRawat/recipe-site-traffic-prediction",
+    demoUrl: "https://recipe-site-traffic-prediction.streamlit.app/",
     skills: [
       "Data Science",
       "Python",
@@ -28,7 +29,8 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/customer-behavior-prediction",
+    repoUrl: "https://github.com/iNSRawat/customer-behavior-prediction",
+    demoUrl: "https://customer-behavior-prediction.streamlit.app/",
     skills: [
       "Data Science",
       "Python",
@@ -49,7 +51,9 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/data-cleaning-visualization",
+    repoUrl: "https://github.com/iNSRawat/data-cleaning-visualization",
+    demoUrl:
+      "https://huggingface.co/spaces/nsrawat/data-cleaning-visualization",
     skills: [
       "Data Science",
       "Python",
@@ -69,7 +73,8 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/marketing-analytics-dashboard",
+    repoUrl: "https://github.com/iNSRawat/marketing-analytics-dashboard",
+    demoUrl: "https://marketing-analytics-dashboard.streamlit.app/",
     skills: [
       "Data Science",
       "Python",
@@ -89,7 +94,9 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/supermarket-loyalty-prediction",
+    repoUrl: "https://github.com/iNSRawat/supermarket-loyalty-prediction",
+    demoUrl:
+      "https://github.com/iNSRawat/supermarket-loyalty-prediction/blob/main/workspace/notebook.ipynb",
     skills: [
       "Data Science",
       "Python",
@@ -109,7 +116,9 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/predicting-house-sale-prices",
+    repoUrl: "https://github.com/iNSRawat/predicting-house-sale-prices",
+    demoUrl:
+      "https://github.com/iNSRawat/predicting-house-sale-prices/blob/main/workspace/notebook.ipynb",
     skills: [
       "Data Science",
       "Python",
@@ -129,7 +138,10 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/Mathematics-Formulas-for-Data-Science-Machine-Learning",
+    repoUrl:
+      "https://github.com/iNSRawat/Mathematics-Formulas-for-Data-Science-Machine-Learning",
+    demoUrl:
+      "https://insrawat.github.io/Mathematics-Formulas-for-Data-Science-Machine-Learning/",
     skills: [
       "Mathematics",
       "Data Science",
@@ -148,7 +160,8 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/nsrawat",
+    repoUrl: "https://github.com/iNSRawat/nsrawat",
+    demoUrl: "https://nsrawat.in",
     skills: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel", "MDX"],
     description: `My personal portfolio and blog built with Next.js and Tailwind CSS.
 - Features clean, responsive design with dark mode
@@ -161,7 +174,7 @@ export const PROJECTS: Project[] = [
     period: {
       start: "2025",
     },
-    link: "https://github.com/iNSRawat/Zenith---AI-Meditation-Chat",
+    repoUrl: "https://github.com/iNSRawat/Zenith---AI-Meditation-Chat",
     skills: ["React", "TypeScript", "AI/LLM", "Chat API", "Full Stack"],
     description: `Full-stack web application combining AI-powered meditation guidance with intelligent chat.
 - Built with modern web technologies

@@ -53,7 +53,7 @@ export default function Page() {
         <Experiences />
         <Separator />
 
-        <Projects />
+        <Projects projectItemVariant="compact" />
         <Separator />
 
         {/* Awards section removed for now */}

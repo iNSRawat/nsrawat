@@ -4,7 +4,11 @@ import { PROJECTS } from "../../data/projects";
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "../panel";
 import { ProjectItem } from "./project-item";
 
-export function Projects() {
+export function Projects({
+  projectItemVariant,
+}: {
+  projectItemVariant?: React.ComponentProps<typeof ProjectItem>["variant"];
+}) {
   return (
     <Panel id="projects">
       <PanelHeader>
@@ -17,7 +21,9 @@ export function Projects() {
       <CollapsibleList
         items={PROJECTS}
         max={4}
-        renderItem={(item) => <ProjectItem project={item} />}
+        renderItem={(item) => (
+          <ProjectItem project={item} variant={projectItemVariant} />
+        )}
       />
     </Panel>
   );
