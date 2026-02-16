@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "customer-behavior-prediction",
-    title: "Customer Behavior Prediction",
+    title: "Customer Behavior Prediction - E-commerce Dataset Churn Predictor",
     period: {
       start: "2025",
     },
@@ -47,7 +47,8 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "data-cleaning-visualization",
-    title: "Data Cleaning & Visualization",
+    title:
+      "Data Cleaning & Visualization, ETL Pipeline for Google Analytics Data",
     period: {
       start: "2025",
     },
@@ -69,7 +70,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "marketing-analytics-dashboard",
-    title: "Marketing Analytics Dashboard",
+    title: "Marketing Analytics Dashboard - Automated KPI Tracking",
     period: {
       start: "2025",
     },
