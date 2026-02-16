@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
 import { getAllSnippets } from "@/features/snippets/data/snippets";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Snippets",
@@ -16,7 +16,7 @@ function Separator({ className }: { className?: string }) {
         "relative flex h-8 w-full",
         "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
         "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className
+        className,
       )}
     />
   );
@@ -27,11 +27,11 @@ export default function SnippetsPage() {
 
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Snippets</h1>
+      <div className="screen-line-after px-2 sm:px-4">
+        <h1 className="text-2xl font-semibold sm:text-3xl">Snippets</h1>
       </div>
 
-      <div className="p-4">
+      <div className="p-2 sm:p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
           {metadata.description}
         </p>
@@ -39,7 +39,7 @@ export default function SnippetsPage() {
 
       <Separator />
 
-      <div className="grid gap-6 p-4 md:grid-cols-2">
+      <div className="grid gap-4 p-2 sm:gap-6 sm:p-4 md:grid-cols-2">
         {snippets.map((snippet) => (
           <Link
             key={snippet.slug}

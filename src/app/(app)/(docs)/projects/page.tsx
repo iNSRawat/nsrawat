@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Projects</h1>
+      <div className="screen-line-after px-2 sm:px-4">
+        <h1 className="text-2xl font-semibold sm:text-3xl">Projects</h1>
       </div>
 
-      <div className="p-4">
+      <div className="p-2 sm:p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
           {metadata.description}
         </p>
@@ -26,7 +26,7 @@ export default function ProjectsPage() {
 
       <Separator />
 
-      <div className="grid grid-cols-1 gap-4 p-4">
+      <div className="grid grid-cols-1 gap-3 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">
         {PROJECTS.map((project) => (
           <ProjectItem key={project.id} project={project} variant="card" />
         ))}

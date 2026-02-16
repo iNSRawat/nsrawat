@@ -61,12 +61,12 @@ export function ProfileHeader() {
             </FlipSentences>
           </div>
 
-          <div className="flex items-center gap-2 border-t border-edge p-2 pl-4">
+          <div className="flex flex-wrap items-center gap-1.5 border-t border-edge p-2 pl-4 sm:gap-2">
             {SOCIAL_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-accent2 hover:text-foreground"
+                className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-accent2 hover:text-foreground sm:size-8"
                 target={link.title === "Email" ? undefined : "_blank"}
                 rel={link.title === "Email" ? undefined : "noopener noreferrer"}
                 title={link.title}

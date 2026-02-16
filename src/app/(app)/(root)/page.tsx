@@ -7,6 +7,7 @@ import { Brand } from "@/features/portfolio/components/brand";
 import { Components } from "@/features/portfolio/components/components";
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
+import { LetsTalk } from "@/features/portfolio/components/lets-talk";
 import { Overview } from "@/features/portfolio/components/overview";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
@@ -59,6 +60,9 @@ export default function Page() {
         {/* Awards section removed for now */}
         {/* <Awards /> */}
         {/* <Separator /> */}
+
+        <LetsTalk />
+        <Separator />
 
         <Brand />
         <Separator />

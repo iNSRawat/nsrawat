@@ -47,11 +47,11 @@ export default function BookmarksPage() {
 
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Bookmarks</h1>
+      <div className="screen-line-after px-2 sm:px-4">
+        <h1 className="text-2xl font-semibold sm:text-3xl">Bookmarks</h1>
       </div>
 
-      <div className="p-4">
+      <div className="p-2 sm:p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
           {metadata.description as string}
         </p>
@@ -65,8 +65,8 @@ export default function BookmarksPage() {
 
         return (
           <div key={category}>
-            <div className="screen-line-after px-4 pt-2">
-              <h2 className="text-lg font-semibold">{category}</h2>
+            <div className="screen-line-after px-2 pt-2 sm:px-4">
+              <h2 className="text-base font-semibold sm:text-lg">{category}</h2>
             </div>
 
             <div>

@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 export default function CertificationsPage() {
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Certifications</h1>
+      <div className="screen-line-after px-2 sm:px-4">
+        <h1 className="text-2xl font-semibold sm:text-3xl">Certifications</h1>
       </div>
 
-      <div className="p-4">
+      <div className="p-2 sm:p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
           {metadata.description as string}
         </p>
@@ -25,8 +25,8 @@ export default function CertificationsPage() {
 
       <Separator />
 
-      <div className="p-4">
-        <div className="grid gap-4 md:grid-cols-1">
+      <div className="p-2 sm:p-4">
+        <div className="grid gap-3 sm:gap-4">
           {CERTIFICATIONS.map((cert) => (
             <CertificationItem
               key={cert.credentialID || cert.title}

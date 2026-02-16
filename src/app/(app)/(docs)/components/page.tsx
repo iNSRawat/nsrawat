@@ -31,8 +31,8 @@ export default function ComponentsPage() {
 
   return (
     <div className="min-h-svh overflow-hidden">
-      <div className="screen-line-after px-4 pt-10 pb-6">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+      <div className="screen-line-after px-2 pt-10 pb-6 sm:px-4">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Components
         </h1>
         <p className="mt-4 text-base text-muted-foreground">
@@ -44,7 +44,7 @@ export default function ComponentsPage() {
         </p>
       </div>
 
-      <div className="px-4 pb-0">
+      <div className="px-2 pb-0 sm:px-4">
         <ComponentCommand />
       </div>
 
@@ -57,7 +57,7 @@ export default function ComponentsPage() {
             key={component.name}
             href={`/components/${component.name}`}
             className={cn(
-              "group flex items-center gap-3 border-b border-edge bg-background/50 px-6 py-4 transition-colors hover:bg-muted/50",
+              "group flex items-center gap-3 border-b border-edge bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
               i % 2 === 0 ? "md:border-r" : "",
             )}
           >
@@ -76,7 +76,7 @@ export default function ComponentsPage() {
             key={snippet.slug}
             href={`/components/${snippet.slug}`}
             className={cn(
-              "group flex items-center gap-3 border-b border-edge bg-background/50 px-6 py-4 transition-colors hover:bg-muted/50",
+              "group flex items-center gap-3 border-b border-edge bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
               // Continue the parity check from the previous list
               (i + components.length) % 2 === 0 ? "md:border-r" : "",
             )}

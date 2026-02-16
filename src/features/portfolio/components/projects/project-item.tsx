@@ -176,12 +176,12 @@ export function ProjectItem({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 gap-4 rounded-xl border bg-card p-4 text-card-foreground shadow-sm md:grid-cols-[280px_1fr]",
+        "grid grid-cols-1 gap-3 rounded-xl border bg-card p-3 text-card-foreground shadow-sm sm:gap-4 sm:p-4",
         className,
       )}
     >
       {project.logo ? (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted md:h-full">
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted">
           <Image
             src={project.logo}
             alt={project.title}
@@ -195,7 +195,7 @@ export function ProjectItem({
         </div>
       ) : (
         <div
-          className="flex aspect-video w-full shrink-0 select-none items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background md:h-full"
+          className="flex aspect-video w-full shrink-0 select-none items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background"
           aria-hidden="true"
         >
           <BoxIcon className="size-12" />
@@ -203,56 +203,19 @@ export function ProjectItem({
       )}
 
       <div className="flex flex-col gap-3">
-        <div className="flex flex-col justify-between gap-2 md:flex-row md:items-start">
-          <div className="space-y-1">
-            <h3 className="text-xl font-bold leading-none tracking-tight hover:underline">
-              <a
-                href={addQueryParams(project.repoUrl, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {project.title}
-              </a>
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              {project.period.start} - {project.period.end ?? "Present"}
-            </p>
-          </div>
-
-          <div className="hidden flex-shrink-0 gap-2 md:flex">
-            {project.demoUrl && (
-              <Button
-                variant="secondary"
-                size="sm"
-                className="h-7 px-3 text-xs"
-                asChild
-              >
-                <a
-                  href={addQueryParams(project.demoUrl, UTM_PARAMS)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="mr-1.5 size-3" />
-                  Live
-                </a>
-              </Button>
-            )}
-            <Button
-              variant="secondary"
-              size="sm"
-              className="h-7 px-3 text-xs"
-              asChild
+        <div className="space-y-1">
+          <h3 className="text-lg font-bold leading-none tracking-tight hover:underline sm:text-xl">
+            <a
+              href={addQueryParams(project.repoUrl, UTM_PARAMS)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <a
-                href={addQueryParams(project.repoUrl, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icons.github className="mr-1.5 size-3" />
-                GitHub
-              </a>
-            </Button>
-          </div>
+              {project.title}
+            </a>
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            {project.period.start} - {project.period.end ?? "Present"}
+          </p>
         </div>
 
         {project.description && (
@@ -279,7 +242,7 @@ export function ProjectItem({
             Technologies Used:
           </span>
           {project.skills.length > 0 && (
-            <ul className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-1.5 sm:gap-2">
               {project.skills.map((skill, index) => (
                 <li key={index}>
                   <Tag className="text-xs px-2 py-0.5">{skill}</Tag>
@@ -289,39 +252,27 @@ export function ProjectItem({
           )}
         </div>
 
-        <div className="flex gap-2 pt-1 md:hidden">
-          {project.demoUrl && (
-            <Button
-              variant="secondary"
-              size="sm"
-              className="h-7 px-3 text-xs"
-              asChild
-            >
-              <a
-                href={addQueryParams(project.demoUrl, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink className="mr-1.5 size-3" />
-                Live
-              </a>
-            </Button>
-          )}
-          <Button
-            variant="secondary"
-            size="sm"
-            className="h-7 px-3 text-xs"
-            asChild
+        <div className="flex items-center gap-4 border-t border-edge pt-3">
+          <a
+            href={addQueryParams(project.repoUrl, UTM_PARAMS)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
+            <Icons.github className="size-4" />
+            Code
+          </a>
+          {project.demoUrl && (
             <a
-              href={addQueryParams(project.repoUrl, UTM_PARAMS)}
+              href={addQueryParams(project.demoUrl, UTM_PARAMS)}
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <Icons.github className="mr-1.5 size-3" />
-              GitHub
+              <ExternalLink className="size-4" />
+              Demo
             </a>
-          </Button>
+          )}
         </div>
       </div>
     </div>
