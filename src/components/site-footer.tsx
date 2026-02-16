@@ -22,7 +22,7 @@ export function SiteFooter() {
             target="_blank"
             rel="noopener"
           >
-            NSRawat
+            NSRawat_in
           </a>
           . The source code is available on{" "}
           <a
@@ -36,7 +36,10 @@ export function SiteFooter() {
           .
         </p>
 
-        <div className="flex flex-wrap justify-center gap-2 px-4 pb-4">
+        <div className="flex flex-wrap items-center justify-center gap-2 px-4 pb-4">
+          <span className="font-mono text-xs text-muted-foreground">
+            Support me
+          </span>
           <a
             href="https://buymeacoffee.com/nsrawat?ref=NSRawat"
             target="_blank"
