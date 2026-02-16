@@ -21,10 +21,10 @@
     "url": "git+https://github.com/iNSRawat/nsrawat.git"
   },
   "scripts": {
-    "dev": "next dev -p 1408 --webpack",
+    "dev": "next dev -p 1360 --webpack",
     "build": "next build",
     "start": "next start",
-    "preview": "next build && next start -p 1408",
+    "preview": "next build && next start -p 1360",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "check-types": "tsc --noEmit --pretty",

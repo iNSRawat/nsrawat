@@ -41,7 +41,7 @@ Then, update the necessary environment variables inside `.env.local`.
 pnpm dev
 ```
 
-The application should now be available at http://localhost:1408
+The application should now be available at http://localhost:1360
 
 ## Building for Production
 

@@ -85,7 +85,7 @@ Auto-generated files (DO NOT EDIT):
 pnpm install
 
 # Start development server
-pnpm dev  # Runs on port 1408
+pnpm dev  # Runs on port 1360
 
 # Build for production
 pnpm build
