@@ -143,6 +143,18 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+              href="https://peerlist.io/nsrawat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icons.peerlist className="size-4" />
+              <span className="sr-only">Peerlist</span>
+            </a>
+
+            <Separator />
+
+            <a
+              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
               href="https://huggingface.co/nsrawat"
               target="_blank"
               rel="noopener noreferrer"
