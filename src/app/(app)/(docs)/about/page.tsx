@@ -276,7 +276,16 @@ export default function AboutPage() {
             >
               Tailwind CSS
             </a>{" "}
-            using <strong>Tailwind Nextjs Minimal Portfolio</strong>.
+            using <strong>Tailwind Nextjs</strong> &{" "}
+            <a
+              href="https://ui.shadcn.com/"
+              className="link font-medium"
+              target="_blank"
+              rel="noopener"
+            >
+              ui.shadcn.com
+            </a>
+            .
           </p>
 
           <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">

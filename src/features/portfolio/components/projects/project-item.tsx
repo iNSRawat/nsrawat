@@ -260,7 +260,7 @@ export function ProjectItem({
             className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <Icons.github className="size-4" />
-            Code
+            GitHub
           </a>
           {project.demoUrl && (
             <a
@@ -270,7 +270,7 @@ export function ProjectItem({
               className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ExternalLink className="size-4" />
-              Demo
+              Live
             </a>
           )}
         </div>

@@ -36,6 +36,33 @@ export function SiteFooter() {
           .
         </p>
 
+        <div className="flex flex-wrap justify-center gap-2 px-4 pb-4">
+          <a
+            href="https://buymeacoffee.com/nsrawat?ref=NSRawat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-3 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+          >
+            ☕ Buy Me a Coffee
+          </a>
+          <a
+            href="https://paypal.me/NRawat710?ref=NSRawat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-3 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+          >
+            💳 PayPal
+          </a>
+          <a
+            href="https://withupi.com/@nsrawat?ref=NSRawat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-3 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+          >
+            💸 UPI
+          </a>
+        </div>
+
         <div className="screen-line-before flex justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
           <Link className="font-medium" href="/bookmarks">
             Bookmarks
