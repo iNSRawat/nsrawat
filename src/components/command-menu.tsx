@@ -262,7 +262,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     <>
       <Button
         variant="secondary"
-        className="h-8 gap-1.5 rounded-full border border-input bg-white px-2.5 text-muted-foreground shadow-xs select-none hover:bg-white dark:bg-input/30 dark:hover:bg-input/30"
+        className="h-7 gap-1 rounded-full border border-input bg-white px-2 text-muted-foreground shadow-xs select-none hover:bg-white dark:bg-input/30 dark:hover:bg-input/30 sm:h-8 sm:gap-1.5 sm:px-2.5"
         onClick={() => {
           setOpen(true);
           trackEvent({
@@ -273,9 +273,9 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
           });
         }}
       >
-        <Icons.search aria-hidden />
+        <Icons.search className="size-3.5 sm:size-4" aria-hidden />
 
-        <span className="font-sans text-sm/4 font-medium sm:hidden">
+        <span className="font-sans text-[10px] font-medium sm:hidden">
           Search
         </span>
 

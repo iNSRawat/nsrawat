@@ -30,7 +30,7 @@ export function ExperiencePositionItem({
         <CollapsibleTrigger
           className={cn(
             "block w-full text-left",
-            "relative before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7 before:-z-1 before:rounded-lg before:transition-[background-color] before:ease-out hover:before:bg-accent2"
+            "relative before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7 before:-z-1 before:rounded-lg before:transition-[background-color] before:ease-out hover:before:bg-accent2",
           )}
         >
           <div className="relative z-1 mb-1 flex items-center gap-3">
@@ -38,7 +38,7 @@ export function ExperiencePositionItem({
               className={cn(
                 "flex size-6 shrink-0 items-center justify-center rounded-lg",
                 "bg-muted text-muted-foreground",
-                "border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background"
+                "border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background",
               )}
               aria-hidden
             >
@@ -57,7 +57,7 @@ export function ExperiencePositionItem({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 pl-9 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-2 pl-9 text-sm text-muted-foreground">
             {position.employmentType && (
               <>
                 <dl>
