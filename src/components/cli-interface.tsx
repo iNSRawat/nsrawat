@@ -105,11 +105,15 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       ? []
       : ASCII_ART.split("\n").filter((line) => line.trim().length > 0);
 
+    const welcomeMsg = isMobile
+      ? "Welcome to nsrawat.in CLI! 👋"
+      : "Welcome to my portfolio CLI! 👋";
+
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOutput([
       ...artLines,
       "",
-      "Welcome to my portfolio CLI! 👋",
+      welcomeMsg,
       'Type "help" or "?" to see available commands.',
       "",
     ]);
