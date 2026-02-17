@@ -27,7 +27,7 @@
 
 ## Tech Stack
 
-This portfolio is hosted on [Vercel](https://vercel.com/), built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) using **Tailwind Nextjs** & [ui.shadcn.com](https://ui.shadcn.com/).
+This portfolio is hosted on [Vercel](https://vercel.com/), built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) using [Shadcn/UI](https://ui.shadcn.com/).
 
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![MDX](https://img.shields.io/badge/MDX-1B1F24?style=for-the-badge&logo=mdx&logoColor=white)](https://mdxjs.com/)
@@ -45,11 +45,11 @@ This portfolio site takes inspiration from [chanhdai.com](https://github.com/ncd
 
 ### A few major over-engineering-changes from the original repo:
 
-- ⚛️ Upgrade to **React 19**, **Next.js 16**
+- ⚛️ Upgrade to **React 19**, **Next.js 16**, **Tailwind CSS v4**, **Shadcn/UI**
 - 🎉 Adopting **TypeScript**, committing with [Tailwind CSS](https://tailwindcss.com)
 - 👀 Theming in dark mode with [shadcn/ui Dark Mode](https://ui.shadcn.com/docs/dark-mode/next) colors for better contrast.
 - 👨‍💻 My website refers to the design and code from the [chanhdai.com](https://github.com/ncdai/chanhdai.com) repository and incorporates [shadcn/ui](https://ui.shadcn.com/).
-- 📥 Bumping up `mdx-bundler`, `rehype`/`remark` plugins and dependencies to the latest version
+- 📝 Blog Supports MDX & Markdown, raw `.mdx` endpoints for AI readability, syntax highlighting, dynamic OG images, and RSS feed
 
 <br>
 

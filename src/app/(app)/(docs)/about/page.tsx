@@ -276,14 +276,14 @@ export default function AboutPage() {
             >
               Tailwind CSS
             </a>{" "}
-            using <strong>Tailwind Nextjs</strong> &{" "}
+            using{" "}
             <a
               href="https://ui.shadcn.com/"
               className="link font-medium"
               target="_blank"
               rel="noopener"
             >
-              ui.shadcn.com
+              Shadcn/UI
             </a>
             .
           </p>
@@ -329,7 +329,8 @@ export default function AboutPage() {
                 <span>⚛️</span>
                 <span>
                   Upgrade to <strong>React 19</strong>,{" "}
-                  <strong>Next.js 16</strong>.
+                  <strong>Next.js 16</strong>, <strong>Tailwind CSS v4</strong>,{" "}
+                  <strong>Shadcn/UI</strong>
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -386,21 +387,14 @@ export default function AboutPage() {
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span>📥</span>
+                <span>📝</span>
                 <span>
-                  Bumping up{" "}
+                  Blog Supports MDX &amp; Markdown, raw{" "}
                   <code className="rounded bg-accent px-1 py-0.5 font-mono text-sm">
-                    mdx-bundler
-                  </code>
-                  ,{" "}
-                  <code className="rounded bg-accent px-1 py-0.5 font-mono text-sm">
-                    rehype
-                  </code>
-                  /
-                  <code className="rounded bg-accent px-1 py-0.5 font-mono text-sm">
-                    remark
+                    .mdx
                   </code>{" "}
-                  plugins and dependencies to the latest version
+                  endpoints for AI readability, syntax highlighting, dynamic OG
+                  images, and RSS feed
                 </span>
               </li>
             </ul>
