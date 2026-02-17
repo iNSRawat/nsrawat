@@ -69,14 +69,20 @@ export default function BookmarksPage() {
               <h2 className="text-base font-semibold sm:text-lg">{category}</h2>
             </div>
 
-            <div>
-              {items.map((bookmark) => (
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {items.map((bookmark, i) => (
                 <BookmarkItem
                   key={bookmark.url}
                   bookmark={bookmark}
-                  className="border-b border-edge"
+                  className={cn(
+                    "border-b border-edge",
+                    i % 2 === 0 ? "md:border-r" : "",
+                  )}
                 />
               ))}
+              {items.length % 2 !== 0 && (
+                <div className="hidden border-b border-edge md:block" />
+              )}
             </div>
 
             <Separator />

@@ -16,8 +16,8 @@ export function BookmarkItem({
   return (
     <a
       className={cn(
-        "group/bookmark flex items-center pr-2 hover:bg-accent2",
-        className
+        "group/bookmark flex items-center gap-3 bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
+        className,
       )}
       href={bookmark.url}
       target="_blank"
@@ -25,21 +25,22 @@ export function BookmarkItem({
     >
       <div
         className={cn(
-          "mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg select-none",
-          "border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background",
-          "bg-muted text-muted-foreground [&_svg]:size-4"
+          "flex size-10 shrink-0 items-center justify-center rounded-lg select-none",
+          "border border-edge bg-background/50 text-muted-foreground transition-colors",
+          "group-hover/bookmark:border-foreground/20 group-hover/bookmark:text-foreground",
+          "[&_svg]:size-5",
         )}
         aria-hidden
       >
         {getIcon(bookmark.iconName) ?? <BookmarkIcon />}
       </div>
 
-      <div className="flex-1 space-y-1 border-l border-dashed border-edge p-4 pr-2">
-        <h3 className="leading-snug font-medium text-balance underline-offset-4 group-hover/bookmark:underline">
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold text-foreground/80 transition-colors group-hover/bookmark:text-foreground truncate">
           {bookmark.title}
         </h3>
 
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-muted-foreground mt-0.5">
           {bookmark.author && (
             <>
               <dl>
@@ -48,7 +49,7 @@ export function BookmarkItem({
               </dl>
 
               <Separator
-                className="data-[orientation=vertical]:h-4"
+                className="data-[orientation=vertical]:h-3"
                 orientation="vertical"
               />
             </>
@@ -65,7 +66,10 @@ export function BookmarkItem({
         </div>
       </div>
 
-      <ArrowUpRightIcon className="size-4 text-muted-foreground" aria-hidden />
+      <ArrowUpRightIcon
+        className="size-4 shrink-0 text-muted-foreground transition-colors group-hover/bookmark:text-foreground"
+        aria-hidden
+      />
     </a>
   );
 }
