@@ -85,7 +85,7 @@ export const COMMANDS: Record<string, string | (() => string)> = {
   certs: () =>
     "Certifications:\n" +
     CERTIFICATIONS.map((c) => `\n▸ ${c.title} (${c.issuer})`).join("") +
-    `\n\nView credentials: ${USER.website}/about`,
+    `\n\nView credentials: ${USER.website}/certifications`,
 
   contact: () =>
     `Email: ${atob(USER.email)}\n` +

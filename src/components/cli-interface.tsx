@@ -1,17 +1,11 @@
 "use client";
 
-import { ArrowLeft, Copy } from "lucide-react";
+import { ArrowLeft, Check, Copy } from "lucide-react";
 import { motion } from "motion/react";
-import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import {
-  ALIASES,
-  ASCII_ART,
-  COMMANDS,
-  MOBILE_ASCII_ART,
-} from "@/features/portfolio/data/cli";
+import { ALIASES, ASCII_ART, COMMANDS } from "@/features/portfolio/data/cli";
 
 function makeLinkClickable(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -64,6 +58,8 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isMounted, setIsMounted] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [copiedAll, setCopiedAll] = useState(false);
+
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
@@ -112,6 +108,8 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOutput([
       ...artLines,
+      "",
+      "",
       "",
       welcomeMsg,
       'Type "help" or "?" to see available commands.',
@@ -231,6 +229,17 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     }
   };
 
+  const copyAll = async () => {
+    try {
+      const textToCopy = output.join("\n");
+      await navigator.clipboard.writeText(textToCopy);
+      setCopiedAll(true);
+      setTimeout(() => setCopiedAll(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  };
+
   if (!isMounted) return null;
 
   return (
@@ -245,7 +254,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       <div className="pointer-events-none fixed inset-0 z-50 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.03)_0px,rgba(0,0,0,0.03)_1px,transparent_1px,transparent_2px)] opacity-50" />
 
       {/* Back Button */}
-      <div className="absolute right-4 top-3 z-50 md:left-8 md:right-auto">
+      <div className="absolute left-4 top-3 z-50">
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -255,7 +264,25 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
           title="Back to GUI"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-          <span className="hidden text-sm font-medium md:inline">Back</span>
+          <span className="text-sm font-medium">Back</span>
+        </button>
+      </div>
+
+      {/* Global Copy Button */}
+      <div className="absolute right-4 top-3 z-50">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            copyAll();
+          }}
+          className="group flex items-center justify-center rounded-md border border-zinc-800/50 bg-zinc-900/50 p-2.5 text-zinc-400 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700/50 hover:bg-zinc-800/50 hover:text-zinc-200"
+          title="Copy all output"
+        >
+          {copiedAll ? (
+            <Check className="h-4 w-4 text-emerald-400" />
+          ) : (
+            <Copy className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+          )}
         </button>
       </div>
 
