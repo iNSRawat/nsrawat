@@ -1,5 +1,6 @@
 "use client";
 
+import { TerminalIcon } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
@@ -26,7 +28,7 @@ export function MobileNav({
           variant="ghost"
           className={cn(
             "group/toggle flex flex-col gap-1 data-[state=open]:bg-accent",
-            className
+            className,
           )}
           size="icon"
         >
@@ -42,6 +44,13 @@ export function MobileNav({
             <Link href={link.href}>{link.title}</Link>
           </DropdownMenuItem>
         ))}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Link href="/cli" className="flex items-center gap-2">
+            <TerminalIcon className="h-4 w-4" />
+            CLI
+          </Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

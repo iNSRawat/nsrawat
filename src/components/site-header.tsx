@@ -1,3 +1,4 @@
+import { TerminalIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -12,15 +13,15 @@ import { SiteHeaderWrapper } from "./site-header-wrapper";
 import { ThemeToggle } from "./theme-toggle";
 
 const BrandContextMenu = dynamic(() =>
-  import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
+  import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu),
 );
 
 const CommandMenu = dynamic(() =>
-  import("@/components/command-menu").then((mod) => mod.CommandMenu)
+  import("@/components/command-menu").then((mod) => mod.CommandMenu),
 );
 
 const MobileNav = dynamic(() =>
-  import("@/components/mobile-nav").then((mod) => mod.MobileNav)
+  import("@/components/mobile-nav").then((mod) => mod.MobileNav),
 );
 
 export function SiteHeader() {
@@ -32,7 +33,7 @@ export function SiteHeader() {
         "sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2",
         "data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]",
         "not-dark:data-[affix=true]:**:data-header-container:after:bg-border",
-        "transition-shadow duration-300"
+        "transition-shadow duration-300",
       )}
     >
       <div
@@ -54,6 +55,14 @@ export function SiteHeader() {
         <DesktopNav items={MAIN_NAV} />
 
         <div className="flex items-center *:first:mr-2">
+          <Link
+            href="/cli"
+            className="mr-2 inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            title="CLI Mode"
+            aria-label="CLI Mode"
+          >
+            <TerminalIcon className="h-4 w-4" />
+          </Link>
           <CommandMenu posts={posts} />
           <NavItemGitHub />
           <span className="mx-2 flex h-4 w-px bg-border" />
