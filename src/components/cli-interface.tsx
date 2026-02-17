@@ -108,7 +108,8 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOutput([
       ...artLines,
-      "Welcome to nsrawat.in CLI! 👋",
+      "",
+      "Welcome to my portfolio CLI! 👋",
       'Type "help" or "?" to see available commands.',
       "",
     ]);
