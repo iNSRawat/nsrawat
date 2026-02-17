@@ -53,7 +53,9 @@ export const COMMANDS: Record<string, string | (() => string)> = {
   about: () =>
     `\n${USER.displayName}\n${USER.jobTitle}\n\n` +
     `${USER.bio}\n\n` +
-    `For more details, visit: ${USER.website}/about`,
+    `For more details, visit:\n` +
+    `  ${USER.website}/#about\n` +
+    `  ${USER.website}/about`,
 
   skills: () => {
     const skillsList = TECH_STACK.map((t) => t.title).join(", ");
@@ -75,7 +77,9 @@ export const COMMANDS: Record<string, string | (() => string)> = {
           `\n▸ ${e.companyName} - ${e.positions[0].title} (${e.positions[0].employmentPeriod.start} - ${e.positions[0].employmentPeriod.end || "Present"})`,
       )
       .join("") +
-    `\n\nFull history: ${USER.website}/about`,
+    `\n\nFull history:\n` +
+    `  ${USER.website}/#experience\n` +
+    `  ${USER.website}/about`,
 
   certs: () =>
     "Certifications:\n" +
