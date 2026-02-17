@@ -52,62 +52,40 @@ export const COMMANDS: Record<string, string | (() => string)> = {
 
   about: () =>
     `\n${USER.displayName}\n${USER.jobTitle}\n\n` +
-    `${USER.about.trim()}\n\n` +
-    `📍 ${USER.address}\n` +
-    `🌐 ${USER.website}`,
+    `${USER.bio}\n\n` +
+    `For more details, visit: ${USER.website}/about`,
 
   skills: () => {
-    const categories = [
-      "Language",
-      "Framework",
-      "Library",
-      "Tools",
-      "Database",
-      "AI",
-    ];
-    let output = "Tech Stack:\n";
-
-    categories.forEach((cat) => {
-      const skills = TECH_STACK.filter(
-        (t) =>
-          t.categories.includes(cat) ||
-          (cat === "Tools" && t.categories.includes("Platform")),
-      );
-      if (skills.length > 0) {
-        output += `\n[${cat}s]\n`;
-        output += skills.map((t) => `  • ${t.title}`).join("\n") + "\n";
-      }
-    });
-    return output;
+    const skillsList = TECH_STACK.map((t) => t.title).join(", ");
+    return `\nTechnical Skills:\n${skillsList}\n\nView details: ${USER.website}/about`;
   },
 
   projects: () =>
+    "My Projects:\n" +
     PROJECTS.map(
-      (p) =>
-        `\n▸ ${p.title}\n  ${p.description.replace(/\n/g, "\n  ")}\n\n  Tech: ${p.skills.join(", ")}` +
-        (p.repoUrl ? `\n  Repo: ${p.repoUrl}` : "") +
-        (p.demoUrl ? `\n  Demo: ${p.demoUrl}` : ""),
-    ).join("\n"),
+      (p) => `\n▸ ${p.title} - ${p.description.split(".")[0]}.`,
+    ).join("") +
+    `\n\nView all projects: ${USER.website}/projects`,
 
   exp: () =>
+    "Experience:\n" +
     EXPERIENCES.filter((e) => e.id !== "education")
-      .map((e) =>
-        e.positions
-          .map(
-            (pos) =>
-              `\n▸ ${pos.title}\n  ${e.companyName} · ${pos.employmentType || ""}\n  ${pos.employmentPeriod.start} – ${pos.employmentPeriod.end || "Present"}\n\n  ${pos.description ? pos.description.replace(/\n/g, "\n  ") : ""}`,
-          )
-          .join("\n"),
+      .map(
+        (e) =>
+          `\n▸ ${e.companyName} - ${e.positions[0].title} (${e.positions[0].employmentPeriod.start} - ${e.positions[0].employmentPeriod.end || "Present"})`,
       )
-      .join("\n"),
+      .join("") +
+    `\n\nFull history: ${USER.website}/about`,
 
   certs: () =>
     "Certifications:\n" +
-    CERTIFICATIONS.map(
-      (c) => `\n▸ ${c.title}\n  Issuer: ${c.issuer}\n  URL: ${c.credentialURL}`,
-    ).join("\n"),
+    CERTIFICATIONS.map((c) => `\n▸ ${c.title} (${c.issuer})`).join("") +
+    `\n\nView credentials: ${USER.website}/about`,
 
-  contact: () => `Email: ${atob(USER.email)}\n` + `Website: ${USER.website}`,
+  contact: () =>
+    `Email: ${atob(USER.email)}\n` +
+    `Website: ${USER.website}\n` +
+    `Location: ${USER.address}`,
 
   social: () =>
     "Social Links:\n\n" +
