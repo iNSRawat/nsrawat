@@ -1,6 +1,6 @@
 "use client";
 
-import { useMotionValueEvent, useScroll } from "motion/react";
+import { useScroll } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -18,9 +18,11 @@ function NSRMarkMotion() {
   const [visible, setVisible] = useState(false);
   const distanceRef = useRef(160);
 
-  useMotionValueEvent(scrollY, "change", (latestValue) => {
-    setVisible(latestValue >= distanceRef.current);
-  });
+  useEffect(() => {
+    return scrollY.on("change", (latestValue) => {
+      setVisible(latestValue >= distanceRef.current);
+    });
+  }, [scrollY]);
 
   useEffect(() => {
     const coverMark = document.getElementById("js-cover-mark");

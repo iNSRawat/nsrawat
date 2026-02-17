@@ -1,16 +1,18 @@
 "use client";
 
-import { useMotionValueEvent, useScroll } from "motion/react";
-import { useState } from "react";
+import { useScroll } from "motion/react";
+import { useEffect, useState } from "react";
 
 export function SiteHeaderWrapper(props: React.ComponentProps<"header">) {
   const { scrollY } = useScroll();
 
   const [affix, setAffix] = useState(false);
 
-  useMotionValueEvent(scrollY, "change", (latestValue) => {
-    setAffix(latestValue >= 8);
-  });
+  useEffect(() => {
+    return scrollY.on("change", (latestValue) => {
+      setAffix(latestValue >= 8);
+    });
+  }, [scrollY]);
 
   return <header data-affix={affix} {...props} />;
 }

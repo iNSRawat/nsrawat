@@ -57,7 +57,7 @@ export function SiteHeader() {
         <div className="flex items-center *:first:mr-2">
           <Link
             href="/cli"
-            className="mr-2 inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="mr-2 hidden h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground sm:inline-flex"
             title="CLI Mode"
             aria-label="CLI Mode"
           >
