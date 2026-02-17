@@ -322,15 +322,14 @@ export default function AboutPage() {
 
           <div className="mt-3 sm:mt-4">
             <p className="mb-3 font-medium text-muted-foreground">
-              A few major over-engineering-changes from the original repo:
+              Tech &amp; Features
             </p>
             <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-muted-foreground">
               <li className="flex items-start gap-2">
                 <span>⚛️</span>
                 <span>
                   Upgrade to <strong>React 19</strong>,{" "}
-                  <strong>Next.js 16</strong>, <strong>Tailwind CSS v4</strong>,{" "}
-                  <strong>Shadcn/UI</strong>
+                  <strong>Next.js 16</strong>, <strong>Shadcn/UI</strong>
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -343,7 +342,7 @@ export default function AboutPage() {
                     target="_blank"
                     rel="noopener"
                   >
-                    Tailwind CSS
+                    Tailwind CSS v4
                   </a>
                 </span>
               </li>
@@ -360,6 +359,21 @@ export default function AboutPage() {
                     shadcn/ui Dark Mode
                   </a>{" "}
                   colors for better contrast.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span>📊</span>
+                <span>
+                  Website analytics with{" "}
+                  <a
+                    href="https://umami.is/"
+                    className="link font-medium"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    umami
+                  </a>
+                  .
                 </span>
               </li>
               <li className="flex items-start gap-2">
