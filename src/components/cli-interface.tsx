@@ -101,8 +101,9 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
   }, []);
 
   useEffect(() => {
-    const art = isMobile ? MOBILE_ASCII_ART : ASCII_ART;
-    const artLines = art.split("\n").filter((line) => line.trim().length > 0);
+    const artLines = isMobile
+      ? []
+      : ASCII_ART.split("\n").filter((line) => line.trim().length > 0);
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOutput([
