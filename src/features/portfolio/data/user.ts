@@ -7,9 +7,9 @@ export const USER = {
   username: "iNSRawat",
   gender: "male",
   pronouns: "he/him",
-  bio: "Data Scientist & ML Enthusiast. Transforming data into insights.",
+  bio: "Data Scientist | Specializing in Marketing Analytics. Transforming data into insights.",
   flipSentences: [
-    "Data Scientist & ML Enthusiast",
+    "Data Scientist | Specializing in Marketing Analytics",
     "Transforming data into insights",
     "Building ML models & Data Pipelines",
     "Passionate about predictive modeling",
@@ -18,7 +18,7 @@ export const USER = {
   phoneNumber: "", // Not provided
   email: "ZGlnaXRhbEBuc3Jhd2F0Lmlu", // base64 encoded: digital@nsrawat.in
   website: "https://www.nsrawat.in",
-  jobTitle: "Data Scientist & ML Enthusiast",
+  jobTitle: "Data Scientist | Specializing in Marketing Analytics",
   jobs: [
     {
       title: "Freelance Data Scientist",
@@ -27,7 +27,7 @@ export const USER = {
     },
   ],
   about: `
-- I'm Nagendra Singh Rawat - a dedicated **Data Scientist & ML Enthusiast** with a passion for transforming complex data into actionable insights.
+- I'm Nagendra Singh Rawat - a dedicated **Data Scientist | Specializing in Marketing Analytics** with a passion for transforming complex data into actionable insights.
 - After 5 years in Digital Marketing, I began my Data Science journey in Sep 2025 to shift my career.
 - Skilled in **Python**, **SQL**, **TensorFlow**, **PyTorch**, **Scikit-learn**, and modern data science tools.
 - Building **predictive models**, **data pipelines**, and **interactive dashboards** with Tableau & Power BI.

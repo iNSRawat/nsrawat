@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `Learn more about ${USER.displayName} - Data Scientist & ML Enthusiast based in ${USER.address}.`,
+  description: `Learn more about ${USER.displayName} - Data Scientist | Specializing in Marketing Analytics based in ${USER.address}.`,
 };
 
 export default function AboutPage() {

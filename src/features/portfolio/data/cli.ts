@@ -52,7 +52,7 @@ export const COMMANDS: Record<string, string | (() => string)> = {
 
   about: () =>
     `\n${USER.displayName}\n${USER.jobTitle}\n\n` +
-    `I'm Nagendra Singh Rawat - a dedicated Data Scientist & ML Enthusiast with a passion for transforming complex data into actionable insights.\n` +
+    `I'm Nagendra Singh Rawat - a dedicated Data Scientist | Specializing in Marketing Analytics with a passion for transforming complex data into actionable insights.\n` +
     `After 5 years in Digital Marketing, I began my Data Science journey in Sep 2025 to shift my career.\n\n` +
     `For more details, visit:\n` +
     `  ${USER.website}/#about\n` +
