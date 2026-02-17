@@ -89,6 +89,7 @@ export const COMMANDS: Record<string, string | (() => string)> = {
 
   contact: () =>
     `Email: ${atob(USER.email)}\n` +
+    `       nsrawatdigital@gmail.com\n` +
     `Website: ${USER.website}\n` +
     `Location: ${USER.address}`,
 
