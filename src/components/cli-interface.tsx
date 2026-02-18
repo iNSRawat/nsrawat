@@ -288,7 +288,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
 
       {/* Terminal Content */}
       <div className="flex-1 overflow-y-auto" ref={outputRef}>
-        <div className="mx-auto max-w-3xl space-y-1 p-4 pb-2 pt-14 md:px-8">
+        <div className="mx-auto max-w-3xl space-y-1 p-4 pb-2 pt-14 md:pt-32 md:px-8">
           {output.map((line, i) => (
             <div
               key={i}
