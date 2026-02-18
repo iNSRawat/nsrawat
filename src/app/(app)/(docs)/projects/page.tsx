@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { ProjectItem } from "@/features/portfolio/components/projects/project-item";
 import { PROJECTS } from "@/features/portfolio/data/projects";

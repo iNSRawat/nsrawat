@@ -21,7 +21,6 @@ import {
   IntroItemLink,
 } from "./intro-item";
 import { JobItem } from "./job-item";
-import { PhoneItem } from "./phone-item";
 
 export function Overview() {
   return (

@@ -37,7 +37,7 @@ export function ComponentCommand() {
       setComponentIndex((prev) => (prev + 1) % dsLibraries.length);
     }, 3000); // Change library every 3 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [dsLibraries.length]);
 
   const currentLibrary = dsLibraries[componentIndex];
 

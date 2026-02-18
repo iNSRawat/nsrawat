@@ -3,7 +3,6 @@
 import { useCommandState } from "cmdk";
 import type { LucideProps } from "lucide-react";
 import {
-  AwardIcon,
   BookmarkIcon,
   BoxIcon,
   BriefcaseBusinessIcon,

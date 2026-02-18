@@ -1,12 +1,11 @@
 "use client";
 
-import { BoxIcon, ExternalLink, InfinityIcon, LinkIcon } from "lucide-react";
+import { BoxIcon, ExternalLink, InfinityIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
 import { Icons } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
-import { Button } from "@/components/ui/button";
 import {
   CollapsibleChevronsIcon,
   CollapsibleContent,

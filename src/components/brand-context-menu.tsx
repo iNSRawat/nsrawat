@@ -1,6 +1,6 @@
 "use client";
 
-import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
+import { TriangleDashedIcon, TypeIcon } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { toast } from "sonner";
@@ -38,7 +38,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
         <ContextMenuItem
           onClick={() => {
             const svg = getWordmarkSVG(
-              resolvedTheme === "light" ? "#000" : "#fff"
+              resolvedTheme === "light" ? "#000" : "#fff",
             );
             copyText(svg);
             toast.success("Copied Logotype as SVG");
