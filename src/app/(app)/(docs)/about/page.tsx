@@ -67,16 +67,49 @@ export default function AboutPage() {
           </h2>
           <ul className="list-inside list-disc space-y-1 sm:space-y-2 text-sm sm:text-base text-muted-foreground">
             <li>
-              Build <strong>predictive models</strong> and machine learning
-              solutions
+              Build <strong>predictive models</strong> (
+              <a
+                href="https://github.com/iNSRawat/recipe-site-traffic-prediction"
+                className="link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Recipe Predictor
+              </a>
+              ) and machine learning solutions
             </li>
             <li>
-              Develop <strong>data pipelines</strong> for processing and
-              analysis
+              Develop <strong>data pipelines</strong> (
+              <a
+                href="https://github.com/iNSRawat/customer-behavior-prediction"
+                className="link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Customer Analytics
+              </a>{" "}
+              &{" "}
+              <a
+                href="https://github.com/iNSRawat/data-cleaning-visualization"
+                className="link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ETL Pipeline
+              </a>
+              ) for processing and analysis
             </li>
             <li>
-              Create <strong>interactive dashboards</strong> with Tableau &
-              Power BI
+              Create <strong>interactive dashboards</strong> (
+              <a
+                href="https://github.com/iNSRawat/marketing-analytics-dashboard"
+                className="link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Marketing KPI Dashboard
+              </a>
+              ) with Tableau & Power BI
             </li>
             <li>
               Perform <strong>exploratory data analysis</strong> to uncover
@@ -121,9 +154,35 @@ export default function AboutPage() {
           <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
             My journey into Data Science began after recognizing the power of
             data in making informed decisions during my marketing career.
-            I&apos;ve since dedicated myself to mastering tools like Python,
-            machine learning algorithms, and data visualization techniques to
-            transform complex datasets into actionable insights.
+            I&apos;ve since dedicated myself to mastering tools like{" "}
+            <strong>Python</strong>, machine learning algorithms (
+            <a
+              href="https://github.com/iNSRawat/recipe-site-traffic-prediction"
+              className="link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Recipe Predictor
+            </a>
+            ), and data visualization techniques (
+            <a
+              href="https://github.com/iNSRawat/marketing-analytics-dashboard"
+              className="link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Marketing KPI
+            </a>
+            ) to transform complex datasets into actionable insights (
+            <a
+              href="https://github.com/iNSRawat/customer-behavior-prediction"
+              className="link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Customer Analytics
+            </a>
+            ).
           </p>
 
           <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
