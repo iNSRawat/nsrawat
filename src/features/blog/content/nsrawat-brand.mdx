@@ -2,6 +2,7 @@
 title: "NSRawat Brand"
 description: "Key elements of the NSRawat visual identity, including the mark, logotype, clear space, and more."
 category: "blog"
+image: "/static/images/nsrawat-brand-cover.svg"
 createdAt: "2025-01-15"
 updatedAt: "2025-01-15"
 ---
@@ -10,14 +11,14 @@ updatedAt: "2025-01-15"
 
 The NSRawat mark is a pixel-style representation of "NSR" designed on a 32-unit grid. It can be used as a standalone logo or favicon.
 
-<div className="not-prose my-8 flex items-center justify-center rounded-xl border bg-card p-8 sm:p-16">
-  <NSRMark className="h-12 w-auto sm:h-20 text-foreground" />
-</div>
+<BrandShowcase className="my-8 h-64 w-full sm:h-96">
+  <NSRMark className="h-24 w-auto text-white sm:h-32" />
+</BrandShowcase>
 
 <div className="not-prose flex justify-center">
   <a
     href="/static/images/nsrawat-mark.svg"
-    download="nsrawat-mark.svg"
+    target="_blank"
     className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
   >
     Download Mark
@@ -30,14 +31,14 @@ The NSRawat mark is a pixel-style representation of "NSR" designed on a 32-unit 
 
 The NSRawat logotype spells out "NSRawat" in the same pixel-style design, providing a clear and recognizable brand identity.
 
-<div className="not-prose my-8 flex items-center justify-center rounded-xl border bg-card p-8 sm:p-16">
-  <NSRawatWordmark className="h-8 w-auto sm:h-16 text-foreground" />
-</div>
+<BrandShowcase className="my-8 h-48 w-full sm:h-64">
+  <NSRawatWordmark className="h-10 w-auto text-white sm:h-16" />
+</BrandShowcase>
 
 <div className="not-prose flex justify-center">
   <a
     href="/static/images/nsrawat-logotype.svg"
-    download="nsrawat-logotype.svg"
+    target="_blank"
     className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
   >
     Download Logotype
@@ -50,15 +51,17 @@ The NSRawat logotype spells out "NSRawat" in the same pixel-style design, provid
 
 Maintain a clear space of 1/2 the height of the Mark on all sides of the logo, except in limited cases where the logo remains clearly recognizable and legible.
 
-<div className="not-prose my-8 flex items-center justify-center rounded-xl border bg-card p-8">
-  <div className="relative border-2 border-dashed border-muted-foreground/30 p-8">
-    <NSRMark className="h-12 w-auto text-foreground" />
-    <div className="absolute -left-0.5 top-1/2 h-full w-0.5 -translate-y-1/2 bg-muted-foreground/30" />
-    <div className="absolute -right-0.5 top-1/2 h-full w-0.5 -translate-y-1/2 bg-muted-foreground/30" />
-    <div className="absolute left-1/2 -top-0.5 h-0.5 w-full -translate-x-1/2 bg-muted-foreground/30" />
-    <div className="absolute left-1/2 -bottom-0.5 h-0.5 w-full -translate-x-1/2 bg-muted-foreground/30" />
+<BrandShowcase className="my-8 h-64 w-full sm:h-80">
+  <div className="relative border border-dashed border-neutral-700 p-12">
+    <NSRMark className="h-24 w-auto text-white" />
   </div>
-</div>
+</BrandShowcase>
+
+<BrandShowcase className="my-8 h-48 w-full sm:h-64">
+  <div className="relative border border-dashed border-neutral-700 p-8">
+    <NSRawatWordmark className="h-10 w-auto text-white sm:h-16" />
+  </div>
+</BrandShowcase>
 
 ---
 

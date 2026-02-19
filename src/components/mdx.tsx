@@ -44,6 +44,7 @@ import {
 } from "@/registry/testimonials-marquee";
 import type { NpmCommands } from "@/types/unist";
 
+import { BrandShowcase } from "./brand-showcase";
 import { CodeBlockCommand } from "./code-block-command";
 import { CodeTabs } from "./code-tabs";
 import { ComponentPreviewV2 as ComponentPreview } from "./component-preview-v2";
@@ -180,6 +181,7 @@ const components: MDXRemoteProps["components"] = {
   TestimonialVerifiedBadge,
   NSRMark,
   NSRawatWordmark,
+  BrandShowcase,
 };
 
 const options: MDXRemoteProps["options"] = {
