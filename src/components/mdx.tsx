@@ -50,7 +50,7 @@ import { CodeTabs } from "./code-tabs";
 import { ComponentPreviewV2 as ComponentPreview } from "./component-preview-v2";
 import { CopyButton } from "./copy-button";
 import { FramedImage, IframeEmbed, YouTubeEmbed } from "./embed";
-import { getIconForLanguageExtension, Icons } from "./icons";
+import { getIconForLanguageExtension } from "./icons";
 import { NSRCombinedLogotype } from "./nsr-combined-logotype";
 import { NSRMark } from "./nsr-mark";
 import { NSRawatWordmark } from "./nsr-wordmark";
