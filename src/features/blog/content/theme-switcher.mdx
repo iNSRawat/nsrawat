@@ -1,0 +1,58 @@
+---
+title: "Theme Switcher"
+description: "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes."
+category: "blog"
+image: "/static/images/theme-switcher-cover.svg"
+createdAt: "2025-02-19"
+updatedAt: "2025-02-19"
+---
+
+A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.
+
+<BrandShowcase
+  className="relative my-8 h-[250px] sm:h-[350px] w-full bg-white dark:bg-zinc-950 border-zinc-200 dark:border-zinc-800"
+  showGrid={false}
+>
+  <div className="absolute top-4 right-4 z-20">
+    <a
+      href="https://v0.app/chat/api/open?url=https://chanhdai.com/r/theme-switcher.json"
+      target="_blank"
+      className="inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs border transition-colors bg-white text-zinc-950 border-zinc-200 hover:bg-zinc-100 dark:bg-zinc-950 dark:text-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
+    >
+      <span className="text-zinc-500 dark:text-zinc-400">Open in</span>
+      <span className="font-bold font-sans">v0</span>
+    </a>
+  </div>
+  <ThemeSwitcher />
+</BrandShowcase>
+
+```tsx
+import { ThemeSwitcher } from "@/components/theme-switcher";
+
+export function ThemeSwitcherDemo() {
+  return <ThemeSwitcher />;
+}
+```
+
+## Installation
+
+```bash
+pnpm dlx shadcn add @ncdai/theme-switcher
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcher } from "@/components/theme-switcher";
+```
+
+```tsx
+<ThemeSwitcher />
+```
+
+## References
+
+- [https://ui.shadcn.com/docs/registry](https://ui.shadcn.com/docs/registry)
+- [https://ui.shadcn.com/docs/dark-mode/next](https://ui.shadcn.com/docs/dark-mode/next)
+- [https://github.com/pacocoursey/next-themes](https://github.com/pacocoursey/next-themes)
+- [https://motion.dev/docs/react-motion-component](https://motion.dev/docs/react-motion-component)

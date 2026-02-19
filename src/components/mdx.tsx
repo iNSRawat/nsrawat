@@ -54,6 +54,7 @@ import { getIconForLanguageExtension, Icons } from "./icons";
 import { NSRCombinedLogotype } from "./nsr-combined-logotype";
 import { NSRMark } from "./nsr-mark";
 import { NSRawatWordmark } from "./nsr-wordmark";
+import { ThemeSwitcher } from "./theme-switcher";
 
 const components: MDXRemoteProps["components"] = {
   h1: (props: React.ComponentProps<"h1">) => <Heading as="h1" {...props} />,
@@ -184,6 +185,7 @@ const components: MDXRemoteProps["components"] = {
   NSRawatWordmark,
   BrandShowcase,
   NSRCombinedLogotype,
+  ThemeSwitcher,
 };
 
 const options: MDXRemoteProps["options"] = {
