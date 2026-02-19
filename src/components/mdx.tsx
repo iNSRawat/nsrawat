@@ -54,7 +54,6 @@ import { getIconForLanguageExtension, Icons } from "./icons";
 import { NSRCombinedLogotype } from "./nsr-combined-logotype";
 import { NSRMark } from "./nsr-mark";
 import { NSRawatWordmark } from "./nsr-wordmark";
-import { ThemeSwitcher } from "./theme-switcher";
 
 const components: MDXRemoteProps["components"] = {
   h1: (props: React.ComponentProps<"h1">) => <Heading as="h1" {...props} />,
@@ -139,6 +138,7 @@ const components: MDXRemoteProps["components"] = {
   code: Code,
   ComponentPreview,
   ComponentSource,
+  CodeBlockCommand,
   CodeCollapsibleWrapper,
   CodeTabs,
   Steps: (props) => (
@@ -157,9 +157,8 @@ const components: MDXRemoteProps["components"] = {
   TabsContent,
   TabsListInstallType: () => (
     <TabsList>
-      <TabsTrigger className="pr-2.5 pl-2" value="cli">
-        <Icons.shadcn />
-        CLI
+      <TabsTrigger className="px-2.5" value="command">
+        Command
       </TabsTrigger>
 
       <TabsTrigger className="px-2.5" value="manual">
@@ -185,7 +184,6 @@ const components: MDXRemoteProps["components"] = {
   NSRawatWordmark,
   BrandShowcase,
   NSRCombinedLogotype,
-  ThemeSwitcher,
 };
 
 const options: MDXRemoteProps["options"] = {

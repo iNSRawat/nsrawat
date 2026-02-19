@@ -36,7 +36,7 @@ export function CodeBlockCommand({
   }, [__pnpm__, __yarn__, __npm__, __bun__]);
 
   return (
-    <div className="relative overflow-hidden rounded-xl bg-code">
+    <div className="relative overflow-hidden rounded-xl bg-code text-code-foreground">
       <Tabs
         className="gap-0"
         value={packageManager}
@@ -55,7 +55,7 @@ export function CodeBlockCommand({
               return (
                 <TabsTrigger
                   key={key}
-                  className="h-7 rounded-lg p-0 px-2 font-mono"
+                  className="h-7 rounded-lg p-0 px-2 font-mono text-muted-foreground data-[state=active]:text-foreground data-[state=active]:bg-background"
                   value={key}
                 >
                   {key}
@@ -70,11 +70,11 @@ export function CodeBlockCommand({
         {Object.entries(tabs).map(([key, value]) => {
           return (
             <TabsContent key={key} value={key}>
-              <pre>
+              <pre className="p-4">
                 <code
                   data-slot="code-block"
                   data-language="bash"
-                  className="font-mono text-sm leading-none text-code-foreground"
+                  className="bg-transparent font-mono text-sm leading-none text-code-foreground"
                 >
                   {value}
                 </code>
@@ -85,7 +85,7 @@ export function CodeBlockCommand({
       </Tabs>
 
       <CopyButton
-        className="absolute top-2 right-2"
+        className="absolute top-2 right-2 text-muted-foreground hover:bg-background hover:text-foreground"
         value={tabs[packageManager] || ""}
         event="copy_npm_command"
       />
