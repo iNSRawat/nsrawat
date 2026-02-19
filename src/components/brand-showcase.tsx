@@ -16,7 +16,7 @@ export function BrandShowcase({
   return (
     <div
       className={cn(
-        "not-prose relative overflow-hidden rounded-xl border bg-neutral-950",
+        "not-prose relative overflow-hidden rounded-xl border bg-white text-black dark:bg-neutral-950 dark:text-white",
         className,
       )}
     >
@@ -40,7 +40,7 @@ export function BrandShowcase({
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1"
-                  className="text-neutral-500"
+                  className="text-neutral-200 dark:text-neutral-800"
                 />
               </pattern>
             </defs>
