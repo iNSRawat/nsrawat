@@ -10,6 +10,7 @@
 [![Issues Badge](https://img.shields.io/github/issues/iNSRawat/nsrawat)](https://github.com/iNSRawat/nsrawat/issues)
 [![GitHub contributors](https://img.shields.io/github/contributors/iNSRawat/nsrawat?color=2b9348)](https://github.com/iNSRawat/nsrawat/graphs/contributors)
 [![License Badge](https://img.shields.io/github/license/iNSRawat/nsrawat?color=2b9348)](https://github.com/iNSRawat/nsrawat/blob/main/LICENSE)
+![Views](https://komarev.com/ghpvc/?username=iNSRawat&label=Views&color=blue&style=flat)
 
 </div>
 

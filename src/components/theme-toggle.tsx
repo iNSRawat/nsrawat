@@ -6,7 +6,6 @@ import { useHotkeys } from "react-hotkeys-hook";
 
 import { META_THEME_COLORS } from "@/config/site";
 import { useMetaColor } from "@/hooks/use-meta-color";
-import { useSound } from "@/hooks/use-sound";
 
 import { MoonIcon } from "./animated-icons/moon";
 import { SunMediumIcon } from "./animated-icons/sun-medium";
@@ -19,17 +18,14 @@ export function ThemeToggle() {
 
   const { setMetaColor } = useMetaColor();
 
-  const playClick = useSound("/audio/ui-sounds/click.wav");
-
   const switchTheme = useCallback(() => {
-    playClick(0.5);
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
     setMetaColor(
       resolvedTheme === "dark"
         ? META_THEME_COLORS.light
-        : META_THEME_COLORS.dark
+        : META_THEME_COLORS.dark,
     );
-  }, [resolvedTheme, setTheme, setMetaColor, playClick]);
+  }, [resolvedTheme, setTheme, setMetaColor]);
 
   useHotkeys("d", switchTheme);
 
