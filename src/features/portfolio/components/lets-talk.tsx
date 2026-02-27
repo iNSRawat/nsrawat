@@ -7,7 +7,8 @@ export function LetsTalk() {
     <Panel>
       <div className="flex flex-col items-center justify-center gap-6 px-4 py-12 sm:py-16">
         <p className="text-center text-lg text-muted-foreground sm:text-xl">
-          I&apos;d love to hear from you.
+          I&apos;m actively looking for Data Science opportunities &mdash;
+          let&apos;s connect!
         </p>
 
         <a

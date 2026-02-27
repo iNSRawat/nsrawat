@@ -27,13 +27,7 @@ export const USER = {
     },
   ],
   about: `
-- I'm Nagendra Singh Rawat - a dedicated **Data Scientist | Specializing in Marketing Analytics** with a passion for transforming complex data into actionable insights.
-- After 5 years in Digital Marketing, I began my Data Science journey in Sep 2025 to shift my career.
-- Skilled in **Python**, **SQL**, **TensorFlow**, **PyTorch**, **Scikit-learn**, and modern data science tools.
-- Building **predictive models** ([Recipe Predictor](https://github.com/iNSRawat/recipe-site-traffic-prediction)), **data pipelines** ([Customer Analytics](https://github.com/iNSRawat/customer-behavior-prediction) & [ETL Pipeline](https://github.com/iNSRawat/data-cleaning-visualization)), and **interactive dashboards** ([Marketing KPI](https://github.com/iNSRawat/marketing-analytics-dashboard)) with Tableau & Power BI.
-- Currently building skills in Python, machine learning, and data analysis for my new path. Earned [8+ Certifications](/certifications) from DataCamp, Google, and IBM.
-- Creator of data science projects on [GitHub](https://github.com/iNSRawat).
-- I have a passion for exploratory data analysis and finding patterns in data.
+I'm Nagendra Singh Rawat, a **Data Scientist | Specializing in Marketing Analytics** who transitioned from 5 years in Digital Marketing to building data-driven solutions. I work with **Python**, **SQL**, **TensorFlow**, **PyTorch**, and **Scikit-learn** to build [predictive models](https://github.com/iNSRawat/recipe-site-traffic-prediction), [data pipelines](https://github.com/iNSRawat/customer-behavior-prediction), and [interactive dashboards](https://github.com/iNSRawat/marketing-analytics-dashboard). With [8+ certifications](/certifications) from DataCamp, Google, and IBM, I'm passionate about turning complex datasets into actionable insights.
 `,
   avatar: "/static/images/avatar.png",
   ogImage: "/static/images/og-image.png",

@@ -17,9 +17,9 @@ export const PROJECTS: Project[] = [
       "Machine Learning",
       "Streamlit",
     ],
-    description: `Machine learning model to predict high-traffic recipes for content optimization.
-- Business Goal: Achieve 80%+ correct predictions
-- Live demo on Streamlit`,
+    description: `Problem: A recipe site needed to predict which recipes would drive high traffic to optimize homepage content placement.
+- Approach: Built classification models (Logistic Regression, Random Forest, XGBoost) on recipe attributes like category, servings, and nutritional data
+- Result: Achieved 81% precision on high-traffic predictions, exceeding the 80% business target. Live interactive demo on Streamlit`,
     logo: "/static/images/projects/recipe-site-traffic.png",
     isExpanded: true,
   },
@@ -39,10 +39,9 @@ export const PROJECTS: Project[] = [
       "Machine Learning",
       "Data Analysis",
     ],
-    description: `Real-world data science project featuring customer behavior prediction with advanced machine learning algorithms.
-- Complete dataset and implementation with end-to-end analysis pipeline
-- Predictive modeling for customer segmentation
-- Live demo on Streamlit`,
+    description: `Problem: E-commerce businesses lose revenue from customer churn, but lack early identification of at-risk users.
+- Approach: End-to-end ML pipeline with EDA, feature engineering (RFM analysis, behavioral signals), and model comparison across Logistic Regression, Decision Tree, and Random Forest
+- Result: Built a churn predictor that helps segment high-risk customers for targeted retention campaigns. Live demo on Streamlit`,
     logo: "/static/images/projects/customer-behavior.png",
   },
   {
@@ -63,9 +62,9 @@ export const PROJECTS: Project[] = [
       "Seaborn",
       "Data Visualization",
     ],
-    description: `Comprehensive data cleaning and visualization project demonstrating ETL pipelines.
-- Data quality assessment and stunning visual insights
-- Perfect for understanding data preparation workflows`,
+    description: `Problem: Raw Google Analytics exports contain missing values, inconsistent formats, and noisy data — making analysis unreliable.
+- Approach: Built a full ETL pipeline handling null imputation, type casting, outlier detection, and automated visual reporting with Matplotlib and Seaborn
+- Result: Transformed messy GA data into clean, analysis-ready datasets with 15+ automated visualizations. Deployed on Hugging Face Spaces`,
     logo: "/static/images/projects/data-cleaning.png",
   },
   {
@@ -84,9 +83,9 @@ export const PROJECTS: Project[] = [
       "Business Intelligence",
       "Dashboard",
     ],
-    description: `Interactive marketing analytics dashboard showcasing campaign performance.
-- ROI analysis and customer insights
-- Complete with real-world datasets`,
+    description: `Problem: Marketing teams manually track campaign KPIs across spreadsheets, leading to delayed reporting and missed optimization opportunities.
+- Approach: Built an interactive Streamlit dashboard with SQL-powered data aggregation, real-time filtering by campaign/channel, and automated ROI calculations
+- Result: Dashboard consolidates key marketing metrics (CTR, CPA, ROAS) into a single view, reducing manual reporting time. Live demo available`,
     logo: "/static/images/projects/marketing-analytics.png",
   },
   {
@@ -106,9 +105,9 @@ export const PROJECTS: Project[] = [
       "Feature Engineering",
       "DataCamp",
     ],
-    description: `DataCamp Data Scientist Associate Practical Exam project.
-- Predicting customer spending in supermarket loyalty programs
-- Advanced feature engineering with real-world retail data`,
+    description: `Problem: Supermarket loyalty programs lack data-driven spending predictions to personalize customer offers effectively.
+- Approach: DataCamp Associate Practical Exam project — applied advanced feature engineering on retail transaction data, compared multiple regression models
+- Result: Delivered a predictive model for customer spending patterns with actionable insights for loyalty program optimization`,
     logo: "/static/images/projects/supermarket-loyalty.png",
   },
   {
@@ -128,9 +127,9 @@ export const PROJECTS: Project[] = [
       "Regression Models",
       "Data Analysis",
     ],
-    description: `Data science project to predict house sale prices using real-world residential data.
-- Exploratory analysis and regression models
-- Helps real estate teams set smarter listing prices`,
+    description: `Problem: Real estate teams rely on intuition for pricing, often leading to overpriced or undervalued listings.
+- Approach: Explored 80+ features from residential property data, performed correlation analysis and feature selection, then trained Ridge and Lasso regression models
+- Result: Built a price prediction model that helps agents set data-informed listing prices, reducing pricing guesswork`,
     logo: "/static/images/projects/house-price-prediction.png",
   },
   {
@@ -150,9 +149,9 @@ export const PROJECTS: Project[] = [
       "Educational",
       "Reference",
     ],
-    description: `Comprehensive collection of essential mathematics formulas for data science and machine learning.
-- Complete reference guide with implementations
-- Practical examples for every concept`,
+    description: `Problem: Data science learners often struggle to find a single, organized reference for the math behind ML algorithms.
+- Approach: Curated and organized essential formulas across linear algebra, calculus, probability, and statistics with clear explanations and Python implementations
+- Result: Open-source reference guide with 50+ formulas, deployed as a searchable static site on GitHub Pages`,
     logo: "/static/images/projects/mathematics-formulas.png",
   },
   {
@@ -164,9 +163,9 @@ export const PROJECTS: Project[] = [
     repoUrl: "https://github.com/iNSRawat/nsrawat",
     demoUrl: "https://nsrawat.in",
     skills: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel", "MDX"],
-    description: `My personal portfolio and blog built with Next.js and Tailwind CSS.
-- Features clean, responsive design with dark mode
-- SEO optimized for discoverability`,
+    description: `A developer portfolio and blog built with Next.js 16, Tailwind CSS v4, and shadcn/ui.
+- Features: Dark mode, MDX blog with syntax highlighting, component registry, GitHub contribution graph, SEO optimization, and analytics
+- Deployed on Vercel with perfect Lighthouse scores in performance and accessibility`,
     logo: "/static/images/projects/NSRawat-blog.png",
   },
   {
@@ -177,9 +176,9 @@ export const PROJECTS: Project[] = [
     },
     repoUrl: "https://github.com/iNSRawat/Zenith---AI-Meditation-Chat",
     skills: ["React", "TypeScript", "AI/LLM", "Chat API", "Full Stack"],
-    description: `Full-stack web application combining AI-powered meditation guidance with intelligent chat.
-- Built with modern web technologies
-- Seamless user experience and real-time interactions`,
+    description: `Problem: Most meditation apps lack personalized, conversational guidance that adapts to user mood and preferences.
+- Approach: Built a full-stack React + TypeScript app integrating LLM-powered chat for real-time, context-aware meditation coaching
+- Result: Delivers personalized meditation sessions with natural conversation flow and real-time AI responses`,
     logo: "/static/images/projects/zenith-ai.png",
   },
 ];
