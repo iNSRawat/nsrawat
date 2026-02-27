@@ -1,3 +1,5 @@
+import { DownloadIcon } from "lucide-react";
+
 import { getIcon } from "@/components/icons";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 import { USER } from "@/features/portfolio/data/user";
@@ -48,7 +50,7 @@ export function ProfileHeader() {
             )}
           </div>
 
-          <div className="h-12.5 border-t border-edge py-1 pl-4 sm:h-9">
+          <div className="min-h-12.5 overflow-hidden border-t border-edge py-1 pl-4 sm:h-9 sm:min-h-0">
             <FlipSentences
               className="font-mono text-sm text-balance text-muted-foreground"
               variants={{
@@ -59,6 +61,25 @@ export function ProfileHeader() {
             >
               {USER.flipSentences}
             </FlipSentences>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1.5 border-t border-edge px-2 py-1.5 pl-3 sm:gap-2 sm:pl-4">
+            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-600 sm:gap-1.5 sm:px-2.5 sm:text-xs dark:text-emerald-400">
+              <span className="relative flex size-1.5 sm:size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex size-full rounded-full bg-emerald-500" />
+              </span>
+              Open to Data Science roles
+            </span>
+            <a
+              href="https://github.com/iNSRawat/resume/blob/main/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 rounded-full border border-border bg-accent2 px-2 py-0.5 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-accent2/80 hover:text-foreground sm:px-2.5 sm:text-xs"
+            >
+              <DownloadIcon className="size-3" />
+              Resume
+            </a>
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5 border-t border-edge p-2 pl-4 sm:gap-2">

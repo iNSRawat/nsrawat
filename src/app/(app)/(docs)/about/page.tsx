@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { DownloadIcon, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -51,6 +51,24 @@ export default function AboutPage() {
             <p className="mt-1 text-sm text-muted-foreground">
               📍 {USER.address}
             </p>
+            <div className="mt-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-600 sm:gap-1.5 sm:px-2.5 sm:text-xs dark:text-emerald-400">
+                <span className="relative flex size-1.5 sm:size-2">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex size-full rounded-full bg-emerald-500" />
+                </span>
+                Open to Data Science roles
+              </span>
+              <a
+                href="https://github.com/iNSRawat/resume/blob/main/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full border border-border bg-accent px-2 py-0.5 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground sm:px-2.5 sm:text-xs"
+              >
+                <DownloadIcon className="size-3" />
+                Resume
+              </a>
+            </div>
           </div>
         </div>
 
