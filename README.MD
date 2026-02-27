@@ -22,7 +22,7 @@
 
 ## Portfolio Website
 
-[![NSRawat's Blog](public/static/images/projects/NSRawat-blog.png)](https://nsrawat.in/)
+[![NSRawat's Blog](public/static/images/projects/NSRawat-blog.png)]
 
 <br>
 
