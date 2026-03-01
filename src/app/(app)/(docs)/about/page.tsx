@@ -173,35 +173,72 @@ export default function AboutPage() {
             My journey into Data Science began after recognizing the power of
             data in making informed decisions during my marketing career.
             I&apos;ve since dedicated myself to mastering tools like{" "}
-            <strong>Python</strong>, machine learning algorithms (
+            <strong>Python</strong>, <strong>SQL</strong>, and modern data
+            science frameworks to build{" "}
             <a
               href="https://github.com/iNSRawat/recipe-site-traffic-prediction"
               className="link"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Recipe Predictor
+              predictive models
             </a>
-            ), and data visualization techniques (
-            <a
-              href="https://github.com/iNSRawat/marketing-analytics-dashboard"
-              className="link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Marketing KPI
-            </a>
-            ) to transform complex datasets into actionable insights (
+            ,{" "}
             <a
               href="https://github.com/iNSRawat/customer-behavior-prediction"
               className="link"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Customer Analytics
+              data pipelines
             </a>
-            ).
+            , and{" "}
+            <a
+              href="https://github.com/iNSRawat/marketing-analytics-dashboard"
+              className="link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              interactive dashboards
+            </a>
+            . With{" "}
+            <a href="/certifications" className="link font-medium">
+              8+ certifications
+            </a>{" "}
+            and a growing portfolio of hands-on projects, I&apos;m committed to
+            transforming complex datasets into actionable insights.
           </p>
+          <ul className="mt-3 list-inside list-disc space-y-1.5 sm:space-y-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
+            <li>
+              Skilled in <strong>Python</strong>, <strong>SQL</strong>,{" "}
+              <strong>TensorFlow</strong>, <strong>PyTorch</strong>,{" "}
+              <strong>Scikit-learn</strong>, and modern data science tools.
+            </li>
+            <li>
+              Building predictive models, data pipelines, and interactive
+              dashboards with Tableau &amp; Power BI.
+            </li>
+            <li>
+              Currently deepening skills in Python, machine learning, and data
+              analysis for my new career path.
+            </li>
+            <li>
+              Creator of data science projects on{" "}
+              <a
+                href="https://github.com/iNSRawat"
+                className="link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              .
+            </li>
+            <li>
+              Passionate about exploratory data analysis and finding patterns in
+              data.
+            </li>
+          </ul>
 
           <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
             🌐 Connect With Me
