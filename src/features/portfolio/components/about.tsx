@@ -15,6 +15,14 @@ export function About() {
         <ProseMono>
           <Markdown>{USER.about}</Markdown>
         </ProseMono>
+        <a
+          href="/about"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          Read more about me →
+        </a>
       </PanelContent>
     </Panel>
   );
