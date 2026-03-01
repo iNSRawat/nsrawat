@@ -210,11 +210,6 @@ export default function AboutPage() {
           </p>
           <ul className="mt-3 list-inside list-disc space-y-1.5 sm:space-y-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
             <li>
-              Skilled in <strong>Python</strong>, <strong>SQL</strong>,{" "}
-              <strong>TensorFlow</strong>, <strong>PyTorch</strong>,{" "}
-              <strong>Scikit-learn</strong>, and modern data science tools.
-            </li>
-            <li>
               Building predictive models, data pipelines, and interactive
               dashboards with Tableau &amp; Power BI.
             </li>
