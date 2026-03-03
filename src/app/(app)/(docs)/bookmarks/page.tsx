@@ -19,6 +19,7 @@ const CATEGORY_ORDER = [
   "Blogs & Communities",
   "Datasets",
   "Tools & Libraries",
+  "GitHub Repos",
 ];
 
 function groupByCategory(bookmarks: typeof BOOKMARKS) {
