@@ -58,7 +58,6 @@ export const COMMANDS: Record<string, string | (() => string)> = {
     `Building: Models (Recipe Predictor), Pipelines (Customer Analytics, ETL), and Dashboards (Marketing KPI) with Tableau & Power BI.\n` +
     `Learning: Currently earning 8+ certifications (DataCamp, Google, IBM) while mastering ML/EDA for actionable insights.\n\n` +
     `For more details, visit:\n` +
-    `  ${USER.website}/#about\n` +
     `  ${USER.website}/about`,
 
   skills: () => {
@@ -81,9 +80,7 @@ export const COMMANDS: Record<string, string | (() => string)> = {
           `\n▸ ${e.companyName} - ${e.positions[0].title} (${e.positions[0].employmentPeriod.start} - ${e.positions[0].employmentPeriod.end || "Present"})`,
       )
       .join("") +
-    `\n\nFull history:\n` +
-    `  ${USER.website}/#experience\n` +
-    `  ${USER.website}/about`,
+    `\n\nFull history: ${USER.website}/about`,
 
   certs: () =>
     "Certifications:\n" +

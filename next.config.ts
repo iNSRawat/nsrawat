@@ -14,11 +14,27 @@ const nextConfig: NextConfig = {
       "date-fns",
       "@radix-ui/react-icons",
       "react-use",
+      "radix-ui",
+      "react-hook-form",
+      "zod",
+      "sonner",
+      "cmdk",
+      "react-fast-marquee",
+      "jotai",
     ],
+    // Cache client-side navigations to reduce refetches
+    staleTimes: {
+      dynamic: 30, // 30 seconds for dynamic pages
+      static: 300, // 5 minutes for static pages
+    },
   },
+
+  // Prevent sharp from being bundled (faster builds)
+  serverExternalPackages: ["sharp"],
 
   devIndicators: false,
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
