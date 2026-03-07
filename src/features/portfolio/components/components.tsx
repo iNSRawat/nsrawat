@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel";
 
-export function Components() {
+export function Snippets() {
   const dsComponents = [
     { title: "Confusion Matrix", slug: "confusion-matrix", icon: "chart-area" },
     { title: "Model Metrics", slug: "model-metrics", icon: "calculator" },
@@ -26,10 +26,10 @@ export function Components() {
   ];
 
   return (
-    <Panel id="components">
+    <Panel id="snippets">
       <PanelHeader>
         <PanelTitle>
-          Components
+          Snippets
           <PanelTitleSup>({dsComponents.length})</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
@@ -44,7 +44,7 @@ export function Components() {
           {dsComponents.map((comp) => (
             <Link
               key={comp.slug}
-              href={`/components/${comp.slug}`}
+              href={`/snippets/${comp.slug}`}
               className={cn(
                 "group/post flex items-center gap-4 p-4 transition-[background-color] ease-out hover:bg-accent2",
                 "max-sm:screen-line-before max-sm:screen-line-after",
@@ -71,8 +71,8 @@ export function Components() {
 
       <div className="screen-line-before flex justify-center py-2">
         <Button variant="default" asChild>
-          <Link href="/components">
-            View All Components
+          <Link href="/snippets">
+            View All Snippets
             <ArrowRightIcon />
           </Link>
         </Button>

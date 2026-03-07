@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Data Science Components",
+  title: "Data Science Snippets",
   description:
     "Interactive data science components showcasing visualizations, model metrics, and ML concepts.",
 };
@@ -131,11 +131,11 @@ const DS_COMPONENTS = [
   },
 ];
 
-export default function DSComponentsPage() {
+export default function DSSnippetsPage() {
   return (
     <div className="min-h-svh">
       <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Data Science Components</h1>
+        <h1 className="text-3xl font-semibold">Data Science Snippets</h1>
       </div>
 
       <div className="p-4">
@@ -195,7 +195,7 @@ function Separator({ className }: { className?: string }) {
         "relative flex h-8 w-full",
         "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
         "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className
+        className,
       )}
     />
   );

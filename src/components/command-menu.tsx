@@ -76,8 +76,8 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: BookmarkIcon,
   },
   {
-    title: "Components",
-    href: "/components",
+    title: "Snippets",
+    href: "/snippets",
     icon: Icons.react,
   },
   {
@@ -243,7 +243,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
   const { componentLinks, blogLinks } = useMemo(
     () => ({
       componentLinks: posts
-        .filter((post) => post.metadata?.category === "components")
+        .filter((post) => post.metadata?.category === "snippets")
         .sort((a, b) =>
           a.metadata.title.localeCompare(b.metadata.title, "en", {
             sensitivity: "base",
@@ -251,7 +251,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
         )
         .map(postToCommandLinkItem),
       blogLinks: posts
-        .filter((post) => post.metadata?.category !== "components")
+        .filter((post) => post.metadata?.category !== "snippets")
         .map(postToCommandLinkItem),
     }),
     [posts],
@@ -308,7 +308,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
           />
 
           <CommandLinkGroup
-            heading="Components"
+            heading="Snippets"
             links={componentLinks}
             fallbackIcon={Icons.react}
             onLinkSelect={handleOpenLink}
@@ -547,7 +547,7 @@ function CommandMenuFooter() {
 }
 
 function postToCommandLinkItem(post: Post): CommandLinkItem {
-  const isComponent = post.metadata?.category === "components";
+  const isComponent = post.metadata?.category === "snippets";
 
   const IconComponent = isComponent
     ? (props: LucideProps) => (
@@ -557,8 +557,8 @@ function postToCommandLinkItem(post: Post): CommandLinkItem {
 
   return {
     title: post.metadata.title,
-    href: isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`,
-    keywords: isComponent ? ["component"] : undefined,
+    href: isComponent ? `/snippets/${post.slug}` : `/blog/${post.slug}`,
+    keywords: isComponent ? ["snippet"] : undefined,
     icon: IconComponent,
   };
 }

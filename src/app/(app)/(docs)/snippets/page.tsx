@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ComponentCommand } from "@/components/component-command";
+import { ComponentIcon } from "@/components/icons";
 import { getAllSnippets } from "@/features/snippets/data/snippets";
 import { cn } from "@/lib/utils";
+import { components } from "@/registry/registry-components";
 
 export const metadata: Metadata = {
   title: "Snippets",
-  description: "Useful code snippets for data science and machine learning.",
+  description:
+    "My personal stash of data science components & code snippets that make my life easier. They're simple and reusable. Feel free to copy, tweak, and use them as you like.",
 };
 
 function Separator({ className }: { className?: string }) {
@@ -26,48 +30,86 @@ export default function SnippetsPage() {
   const snippets = getAllSnippets();
 
   return (
-    <div className="min-h-svh">
-      <div className="screen-line-after px-2 sm:px-4">
-        <h1 className="text-2xl font-semibold sm:text-3xl">Snippets</h1>
-      </div>
-
-      <div className="p-2 sm:p-4">
-        <p className="font-mono text-sm text-balance text-muted-foreground">
+    <div className="min-h-svh overflow-hidden">
+      <div className="screen-line-after px-2 pt-10 pb-6 sm:px-4">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          Snippets
+        </h1>
+        <p className="mt-4 text-base text-muted-foreground">
           {metadata.description}
         </p>
+        <p className="mt-2 font-mono text-sm italic text-muted-foreground/70">
+          *Some components & snippets written by me, some are from the internet
+          (Thanks to the open source community).
+        </p>
+      </div>
+
+      <div className="px-2 pb-0 sm:px-4">
+        <ComponentCommand />
       </div>
 
       <Separator />
 
-      <div className="grid gap-4 p-2 sm:gap-6 sm:p-4 md:grid-cols-2">
-        {snippets.map((snippet) => (
+      <div className="grid grid-cols-1 border-t border-edge md:grid-cols-2">
+        {/* Registry Components */}
+        {components.map((component, i) => (
+          <Link
+            key={component.name}
+            href={`/snippets/${component.name}`}
+            className={cn(
+              "group flex items-center gap-3 border-b border-edge bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
+              i % 2 === 0 ? "md:border-r" : "",
+            )}
+          >
+            <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={component.name} className="size-5" />
+            </div>
+            <span className="font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+              {component.title}
+            </span>
+          </Link>
+        ))}
+
+        {/* Snippets */}
+        {snippets.map((snippet, i) => (
           <Link
             key={snippet.slug}
             href={`/snippets/${snippet.slug}`}
-            className="group block"
+            className={cn(
+              "group flex items-center gap-3 border-b border-edge bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
+              // Continue the parity check from the previous list
+              (i + components.length) % 2 === 0 ? "md:border-r" : "",
+            )}
           >
-            <div className="h-full overflow-hidden rounded-lg border border-edge bg-card transition-colors hover:border-foreground/20 hover:bg-accent/5">
-              <div className="border-b border-edge bg-accent/30 p-4 transition-colors group-hover:bg-accent/40">
-                <h2 className="font-semibold group-hover:text-primary">
-                  {snippet.metadata.title}
-                </h2>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="rounded bg-accent px-2 py-0.5 font-mono text-xs uppercase text-foreground">
-                    {snippet.metadata.language}
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-sm text-muted-foreground">
-                  {snippet.metadata.description}
-                </p>
-              </div>
+            <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={snippet.slug} className="size-5" />
+            </div>
+            <div className="flex flex-1 items-center justify-between">
+              <span className="font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+                {snippet.metadata.title}
+              </span>
             </div>
           </Link>
         ))}
+
+        {/* Fill empty grid cell if total is odd */}
+        {(components.length + snippets.length) % 2 !== 0 && (
+          <div className="hidden border-b border-r border-edge md:block" />
+        )}
       </div>
 
-      <div className="h-4" />
+      <div className="py-10 text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-edge bg-background px-3 py-1 text-xs text-muted-foreground">
+          <span>Built for</span>
+          <span className="flex items-center gap-1 font-medium text-foreground">
+            <ComponentIcon variant="react" className="size-3" /> React 19
+          </span>
+          <span className="flex items-center gap-1 font-medium text-foreground">
+            <ComponentIcon variant="tailwindcss" className="size-3" /> Tailwind
+            CSS v4
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
