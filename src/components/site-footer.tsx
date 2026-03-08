@@ -64,9 +64,23 @@ export function SiteFooter() {
           >
             💸 UPI
           </a>
+          <a
+            href="https://github.com/sponsors/iNSRawat?ref=nsrawat.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-3 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+          >
+            💖 Sponsor
+          </a>
         </div>
 
-        <div className="screen-line-before flex justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
+        <div className="screen-line-before flex flex-wrap justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
+          <Link className="font-medium" href="/sponsors" target="_blank">
+            Sponsors
+          </Link>
+
+          <span className="opacity-50">•</span>
+
           <Link className="font-medium" href="/bookmarks">
             Bookmarks
           </Link>
@@ -85,6 +99,16 @@ export function SiteFooter() {
 
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-edge bg-background px-4">
+            <Link
+              className="flex font-mono text-xs font-medium text-muted-foreground max-sm:hidden"
+              href="/sponsors"
+              target="_blank"
+            >
+              Sponsors
+            </Link>
+
+            <Separator className="max-sm:hidden" />
+
             <Link
               className="flex font-mono text-xs font-medium text-muted-foreground max-sm:hidden"
               href="/bookmarks"
