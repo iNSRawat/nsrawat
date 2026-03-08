@@ -30,17 +30,6 @@ export default function SponsorsPage() {
           </p>
 
           <div className="flex flex-col items-center gap-6 py-4">
-            {/* GitHub Sponsor Card */}
-            <div className="w-full max-w-[600px] overflow-hidden rounded-xl border border-edge bg-card shadow-sm">
-              <iframe
-                src="https://github.com/sponsors/iNSRawat/card?target=_blank"
-                title="Sponsor iNSRawat"
-                height="225"
-                width="100%"
-                style={{ border: 0 }}
-              />
-            </div>
-
             {/* GitHub Sponsor Button */}
             <div className="flex flex-wrap items-center justify-center gap-4 text-center">
               <span className="text-sm font-medium text-muted-foreground whitespace-nowrap">
@@ -120,7 +109,7 @@ function SponsorCard({
   isCta?: boolean;
 }) {
   return (
-    <Link
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
@@ -153,7 +142,7 @@ function SponsorCard({
           )}
         </>
       )}
-    </Link>
+    </a>
   );
 }
 
