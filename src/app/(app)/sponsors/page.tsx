@@ -1,6 +1,5 @@
 import { PlusIcon } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { SPONSORSHIP_URL } from "@/config/site";
 import {
