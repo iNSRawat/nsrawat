@@ -34,13 +34,14 @@ export default function SponsorsPage() {
               <span className="text-sm font-medium text-muted-foreground whitespace-nowrap">
                 Quick Support:
               </span>
-              <iframe
-                src="https://github.com/sponsors/iNSRawat/button?target=_blank"
-                title="Sponsor iNSRawat"
-                height="32"
-                width="114"
-                style={{ border: 0, borderRadius: "6px" }}
-              />
+              <a
+                href="https://github.com/sponsors/iNSRawat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-md border border-edge bg-background px-3 py-1.5 font-mono text-sm text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+              >
+                💖 Sponsor
+              </a>
             </div>
           </div>
 
