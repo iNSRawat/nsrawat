@@ -31,11 +31,12 @@ export default function SnippetsPage() {
 
   return (
     <div className="min-h-svh overflow-hidden">
-      <div className="screen-line-after px-2 pt-10 pb-6 sm:px-4">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Snippets
-        </h1>
-        <p className="mt-4 text-base text-muted-foreground">
+      <div className="screen-line-after px-2 sm:px-4">
+        <h1 className="text-2xl font-semibold sm:text-3xl">Snippets</h1>
+      </div>
+
+      <div className="p-2 sm:p-4">
+        <p className="font-mono text-sm text-balance text-muted-foreground">
           {metadata.description}
         </p>
         <p className="mt-2 font-mono text-sm italic text-muted-foreground/70">
