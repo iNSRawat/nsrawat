@@ -41,7 +41,7 @@ export function SiteFooter() {
             Support me
           </span>
           <a
-            href="https://buymeacoffee.com/nsrawat?ref=NSRawat"
+            href="https://buymeacoffee.com/nsrawat?ref=NSRawat.in"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-3 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
@@ -49,7 +49,7 @@ export function SiteFooter() {
             ☕ Buy Me a Coffee
           </a>
           <a
-            href="https://paypal.me/NRawat710?ref=NSRawat"
+            href="https://paypal.me/NRawat710?ref=NSRawat.in"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-3 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
@@ -57,7 +57,7 @@ export function SiteFooter() {
             💳 PayPal
           </a>
           <a
-            href="https://withupi.com/@nsrawat?ref=NSRawat"
+            href="https://withupi.com/@nsrawat?ref=NSRawat.in"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-3 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
