@@ -3,7 +3,6 @@ import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 import { About } from "@/features/portfolio/components/about";
 // import { Awards } from "@/features/portfolio/components/awards"; // Removed for now
 import { Blog } from "@/features/portfolio/components/blog";
-import { Brand } from "@/features/portfolio/components/brand";
 import { Snippets } from "@/features/portfolio/components/components";
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
@@ -62,9 +61,6 @@ export default function Page() {
         {/* <Separator /> */}
 
         <LetsTalk />
-        <Separator />
-
-        <Brand />
         <Separator />
       </div>
     </>
