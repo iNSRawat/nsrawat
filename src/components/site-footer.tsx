@@ -75,7 +75,7 @@ export function SiteFooter() {
         </div>
 
         <div className="screen-line-before flex flex-wrap justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
-          <Link className="font-medium" href="/sponsors" target="_blank">
+          <Link className="font-medium" href="/sponsors">
             Sponsors
           </Link>
 
@@ -102,7 +102,6 @@ export function SiteFooter() {
             <Link
               className="flex font-mono text-xs font-medium text-muted-foreground max-sm:hidden"
               href="/sponsors"
-              target="_blank"
             >
               Sponsors
             </Link>
