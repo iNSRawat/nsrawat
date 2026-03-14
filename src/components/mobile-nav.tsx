@@ -56,7 +56,10 @@ export function MobileNav({
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="right" className="w-56 px-0 pt-12 sm:w-64">
+      <SheetContent
+        side="right"
+        className="h-fit bottom-auto w-56 px-0 pt-12 pb-6 sm:w-64 rounded-bl-3xl border-t-0 border-r-0 shadow-2xl"
+      >
         <SheetHeader className="sr-only">
           <SheetTitle>Navigation</SheetTitle>
         </SheetHeader>
