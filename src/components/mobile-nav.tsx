@@ -1,18 +1,37 @@
 "use client";
 
-import { TerminalIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  BracesIcon,
+  FolderOpenIcon,
+  HomeIcon,
+  MenuIcon,
+  NewspaperIcon,
+  TerminalIcon,
+  UserIcon,
+} from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/types/nav";
+
+const NAV_ICONS: Record<string, LucideIcon> = {
+  "/": HomeIcon,
+  "/about": UserIcon,
+  "/projects": FolderOpenIcon,
+  "/blog": NewspaperIcon,
+  "/snippets": BracesIcon,
+};
 
 export function MobileNav({
   items,
@@ -21,37 +40,76 @@ export function MobileNav({
   items: NavItem[];
   className?: string;
 }) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className={cn(
-            "group/toggle flex flex-col gap-1 data-[state=open]:bg-accent",
-            className,
-          )}
           size="icon"
+          className={cn("flex flex-col gap-1", className)}
         >
-          <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]/toggle:translate-y-0.75 group-data-[state=open]/toggle:rotate-45" />
-          <span className="flex h-0.5 w-4 transform rounded-[1px] bg-foreground transition-transform group-data-[state=open]/toggle:-translate-y-0.75 group-data-[state=open]/toggle:-rotate-45" />
+          <MenuIcon className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
-      </DropdownMenuTrigger>
+      </SheetTrigger>
 
-      <DropdownMenuContent className="w-64" align="end" sideOffset={8}>
-        {items.map((link) => (
-          <DropdownMenuItem key={link.href} asChild>
-            <Link href={link.href}>{link.title}</Link>
-          </DropdownMenuItem>
-        ))}
-        <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/cli" className="flex items-center gap-2">
-            <TerminalIcon className="h-4 w-4" />
+      <SheetContent side="right" className="w-56 px-0 pt-12 sm:w-64">
+        <SheetHeader className="sr-only">
+          <SheetTitle>Navigation</SheetTitle>
+        </SheetHeader>
+
+        <nav className="flex flex-col">
+          {items.map((link) => {
+            const Icon = NAV_ICONS[link.href];
+            const isActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "relative flex items-center gap-3 px-6 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {isActive && (
+                  <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-foreground" />
+                )}
+                {Icon && <Icon className="h-4 w-4 shrink-0" />}
+                {link.title}
+              </Link>
+            );
+          })}
+
+          <div className="my-2 mx-6 border-t border-border" />
+
+          <Link
+            href="/cli"
+            onClick={() => setOpen(false)}
+            className={cn(
+              "relative flex items-center gap-3 px-6 py-2 text-sm font-medium transition-colors",
+              pathname === "/cli"
+                ? "text-foreground"
+                : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            {pathname === "/cli" && (
+              <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-foreground" />
+            )}
+            <TerminalIcon className="h-4 w-4 shrink-0" />
             CLI
           </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </nav>
+      </SheetContent>
+    </Sheet>
   );
 }

@@ -12,6 +12,7 @@ import {
   HeartIcon,
   LayersIcon,
   MoonStarIcon,
+  NewspaperIcon,
   QuoteIcon,
   RssIcon,
   ShieldCheckIcon,
@@ -38,6 +39,7 @@ import {
 } from "@/components/ui/command";
 import type { Post } from "@/features/blog/types/post";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
+import type { Snippet } from "@/features/snippets/types/snippet";
 import { useSound } from "@/hooks/use-sound";
 import { trackEvent } from "@/lib/events";
 import { copyText } from "@/utils/copy";
@@ -66,11 +68,6 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: NSRMark,
   },
   {
-    title: "Certifications",
-    href: "/certifications",
-    icon: ShieldCheckIcon,
-  },
-  {
     title: "Bookmarks",
     href: "/bookmarks",
     icon: BookmarkIcon,
@@ -83,7 +80,12 @@ const MENU_LINKS: CommandLinkItem[] = [
   {
     title: "Blog",
     href: "/blog",
-    icon: RssIcon,
+    icon: NewspaperIcon,
+  },
+  {
+    title: "Sponsors",
+    href: "/sponsors",
+    icon: HeartIcon,
   },
 ];
 
@@ -113,7 +115,11 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#projects",
     icon: BoxIcon,
   },
-
+  {
+    title: "Certifications",
+    href: "/certifications",
+    icon: ShieldCheckIcon,
+  },
   {
     title: "Download vCard",
     href: "/vcard",
@@ -134,11 +140,6 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => {
 
 const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   {
-    title: "Sponsors",
-    href: "/sponsors",
-    icon: HeartIcon,
-  },
-  {
     title: "llms.txt",
     href: "/llms.txt",
     icon: FileTextIcon,
@@ -152,7 +153,13 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   },
 ];
 
-export function CommandMenu({ posts }: { posts: Post[] }) {
+export function CommandMenu({
+  posts,
+  snippets,
+}: {
+  posts: Post[];
+  snippets: Snippet[];
+}) {
   const router = useRouter();
 
   const { setTheme, resolvedTheme } = useTheme();
@@ -257,6 +264,19 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     [posts],
   );
 
+  const snippetLinks = useMemo(
+    () =>
+      snippets.map((s) => ({
+        title: s.metadata.title,
+        href: `/snippets/${s.slug}`,
+        keywords: ["snippet", s.metadata.language],
+        icon: (props: React.ComponentProps<"svg">) => (
+          <ComponentIcon variant={s.slug} {...props} />
+        ),
+      })),
+    [snippets],
+  );
+
   return (
     <>
       <Button
@@ -309,7 +329,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
           <CommandLinkGroup
             heading="Snippets"
-            links={componentLinks}
+            links={[...componentLinks, ...snippetLinks]}
             fallbackIcon={Icons.react}
             onLinkSelect={handleOpenLink}
           />

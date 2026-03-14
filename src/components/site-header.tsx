@@ -6,6 +6,7 @@ import { DesktopNav } from "@/components/desktop-nav";
 import { NavItemGitHub } from "@/components/nav-item-github";
 import { MAIN_NAV } from "@/config/site";
 import { getAllPosts } from "@/features/blog/data/posts";
+import { getAllSnippets } from "@/features/snippets/data/snippets";
 import { cn } from "@/lib/utils";
 
 import { SiteHeaderMark } from "./site-header-mark";
@@ -26,6 +27,7 @@ const MobileNav = dynamic(() =>
 
 export function SiteHeader() {
   const posts = getAllPosts();
+  const snippets = getAllSnippets().slice(0, 4);
 
   return (
     <SiteHeaderWrapper
@@ -63,7 +65,7 @@ export function SiteHeader() {
           >
             <TerminalIcon className="h-4 w-4" />
           </Link>
-          <CommandMenu posts={posts} />
+          <CommandMenu posts={posts} snippets={snippets} />
           <NavItemGitHub />
           <span className="mx-2 flex h-4 w-px bg-border" />
           <ThemeToggle />
