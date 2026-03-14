@@ -49,9 +49,13 @@ export function MobileNav({
         <Button
           variant="ghost"
           size="icon"
-          className={cn("flex flex-col gap-1", className)}
+          className={cn(
+            "flex flex-col items-center justify-center gap-1",
+            className,
+          )}
         >
-          <MenuIcon className="h-5 w-5" />
+          <span className="h-0.5 w-4 rounded-full bg-foreground" />
+          <span className="h-0.5 w-4 rounded-full bg-foreground" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
