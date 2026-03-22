@@ -122,20 +122,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        <script
-          type="text/javascript"
+        <Script
+          id="dark-mode"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
         />
-        {/*
-          Thanks @tailwindcss. We inject the script via the `<Script/>` tag again,
-          since we found the regular `<script>` tag to not execute when rendering a not-found page.
-         */}
         <Script
-          src={`data:text/javascript;base64,${Buffer.from(
-            darkModeScript,
-          ).toString("base64")}`}
-        />
-        <script
+          id="schema-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
