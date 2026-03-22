@@ -99,13 +99,7 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Containerization"],
     color: "#2496ED",
   },
-  {
-    key: "mysql",
-    title: "MySQL",
-    href: "https://www.mysql.com/",
-    categories: ["Database"],
-    color: "#4479A1",
-  },
+
   {
     key: "mongodb",
     title: "MongoDB",
@@ -135,13 +129,7 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Language", "Web Development"],
     color: "#3178C6",
   },
-  {
-    key: "react",
-    title: "React",
-    href: "https://react.dev/",
-    categories: ["Library", "Web Development"],
-    color: "#61DAFB",
-  },
+
   {
     key: "streamlit",
     title: "Streamlit",
