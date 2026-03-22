@@ -111,6 +111,27 @@ export const PROJECTS: Project[] = [
     logo: "/static/images/projects/supermarket-loyalty.png",
   },
   {
+    id: "t20-world-cup-2026-predictor",
+    title: "T20 World Cup 2026 Match Predictor",
+    period: {
+      start: "2026",
+    },
+    repoUrl: "https://github.com/iNSRawat/T20-World-Cup-2026-Predictor",
+    demoUrl: "https://t20-world-cup-2026-predictors.streamlit.app",
+    skills: [
+      "Data Science",
+      "Python",
+      "XGBoost",
+      "LightGBM",
+      "Machine Learning",
+      "Streamlit",
+    ],
+    description: `Problem: Predict T20 World Cup 2026 match outcomes given two teams, venue, toss result, and recent form — simulating a production-grade analytics tool for broadcasters and fantasy platforms.
+- Approach: Built an end-to-end ML pipeline with multi-source data ingestion (ESPN, Cricbuzz, ICC), feature engineering (team strength, venue profiles, toss and form metrics), and model comparison across Logistic Regression, Random Forest, XGBoost, and LightGBM
+- Result: Delivered win probability predictions with a premium dark-mode Streamlit dashboard showing match predictor, key drivers, venue insights, tournament standings, and top performers`,
+    logo: "/static/images/projects/t20-predictor.png",
+  },
+  {
     id: "house-price-prediction",
     title: "House Sale Price Prediction",
     period: {
@@ -180,5 +201,26 @@ export const PROJECTS: Project[] = [
 - Approach: Built a full-stack React + TypeScript app integrating LLM-powered chat for real-time, context-aware meditation coaching
 - Result: Delivers personalized meditation sessions with natural conversation flow and real-time AI responses`,
     logo: "/static/images/projects/zenith-ai.png",
+  },
+  {
+    id: "ai-exposure-indian-tech-market",
+    title: "AI Exposure of the Indian Tech Job Market",
+    period: {
+      start: "2026",
+    },
+    repoUrl: "https://github.com/iNSRawat/jobs-Indian-Tech-Market",
+    demoUrl: "https://insrawat.github.io/jobs-Indian-Tech-Market",
+    skills: [
+      "Data Science",
+      "Python",
+      "AI/ML",
+      "Data Visualization",
+      "Labour Economics",
+      "Gemini AI",
+    ],
+    description: `Problem: India lacks a centralized, data-driven view of how AI and automation are impacting tech and data science occupations — unlike the US BLS system.
+- Approach: Modeled 22 core Tech & Data Science roles using NASSCOM 2025-26 workforce estimates, aggregated salary data from AmbitionBox, Glassdoor India, and Payscale, and scored AI exposure (0-10) using Gemini Flash reasoning. Visualized as an interactive treemap where area = employment and color = AI exposure
+- Result: Open-source analysis exposing which Indian tech roles are most vulnerable to AI displacement, deployed as an interactive site on GitHub Pages`,
+    logo: "/static/images/projects/ai-exposure-indian-tech.png",
   },
 ];
