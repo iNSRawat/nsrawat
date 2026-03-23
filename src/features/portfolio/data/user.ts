@@ -7,10 +7,10 @@ export const USER = {
   username: "iNSRawat",
   gender: "male",
   pronouns: "he/him",
-  bio: "Data Scientist | Specializing in Marketing Analytics. Transforming data into insights.",
+  bio: "Data Scientist | Ex-Digital Marketer | Turning marketing data into business decisions.",
   flipSentences: [
-    "Data Scientist | Specializing in Marketing Analytics",
-    "Transforming data into insights",
+    "Data Scientist | Ex-Digital Marketer",
+    "Turning marketing data into business decisions",
     "Building ML models & Data Pipelines",
     "Passionate about predictive modeling",
   ],
@@ -18,7 +18,7 @@ export const USER = {
   phoneNumber: "", // Not provided
   email: "ZGlnaXRhbEBuc3Jhd2F0Lmlu", // base64 encoded: digital@nsrawat.in
   website: "https://www.nsrawat.in",
-  jobTitle: "Data Scientist | Specializing in Marketing Analytics",
+  jobTitle: "Data Scientist | Ex-Digital Marketer",
   jobs: [
     {
       title: "Freelance Data Scientist",
@@ -27,7 +27,7 @@ export const USER = {
     },
   ],
   about: `
-I'm Nagendra Singh Rawat, a **Data Scientist | Specializing in Marketing Analytics** who transitioned from 5 years in Digital Marketing to building data-driven solutions. I work with **Python**, **SQL**, **TensorFlow**, **PyTorch**, and **Scikit-learn** to build [predictive models](https://github.com/iNSRawat/recipe-site-traffic-prediction), [data pipelines](https://github.com/iNSRawat/customer-behavior-prediction), and [interactive dashboards](https://github.com/iNSRawat/marketing-analytics-dashboard). With [8+ certifications](/certifications) from DataCamp, Google, and IBM, I'm passionate about turning complex datasets into actionable insights.
+I'm Nagendra Singh Rawat, a **Data Scientist | Ex-Digital Marketer**. After spending 5 years in Digital Marketing optimizing campaigns by gut + spreadsheets, I transitioned to building data-driven solutions. Now I use machine learning to do it properly. I work with **Python**, **SQL**, **TensorFlow**, **PyTorch**, and **Scikit-learn** to build [predictive models](https://github.com/iNSRawat/recipe-site-traffic-prediction), [data pipelines](https://github.com/iNSRawat/customer-behavior-prediction), and [interactive dashboards](https://github.com/iNSRawat/marketing-analytics-dashboard). With [8+ certifications](/certifications) from DataCamp, Google, and IBM, I'm passionate about turning complex datasets into actionable business decisions.
 `,
   avatar: "/static/images/avatar.png",
   ogImage: "/static/images/og-image.png",
