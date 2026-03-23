@@ -63,7 +63,7 @@ export function Snippets() {
                 />
               </div>
 
-              <h2 className="shrink-0 whitespace-nowrap tracking-tight text-[13px] sm:text-sm font-medium underline-offset-4 group-hover/post:underline">
+              <h2 className="truncate font-medium underline-offset-4 group-hover/post:underline">
                 {comp.title}
               </h2>
             </Link>

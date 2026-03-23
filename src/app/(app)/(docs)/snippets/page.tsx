@@ -67,7 +67,7 @@ export default function SnippetsPage() {
             <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
               <ComponentIcon variant={component.name} className="size-4" />
             </div>
-            <span className="shrink-0 whitespace-nowrap tracking-tight text-[13px] sm:text-sm font-medium text-foreground/80 transition-colors group-hover:text-foreground">
+            <span className="truncate font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
               {component.title}
             </span>
           </Link>
@@ -90,7 +90,7 @@ export default function SnippetsPage() {
               <ComponentIcon variant={snippet.slug} className="size-4" />
             </div>
             <div className="flex min-w-0 flex-1 items-center justify-between">
-              <span className="shrink-0 whitespace-nowrap tracking-tight text-[13px] sm:text-sm font-medium text-foreground/80 transition-colors group-hover:text-foreground">
+              <span className="truncate font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
                 {snippet.metadata.title}
               </span>
             </div>
