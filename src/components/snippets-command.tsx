@@ -108,7 +108,7 @@ export function ComponentCommand() {
 
   return (
     <div className="relative">
-      <div className="flex flex-wrap items-center justify-between gap-y-2 border-b -mx-4 px-4 pt-1 pb-0">
+      <div className="flex flex-wrap items-center justify-between gap-y-2 border-b screen-line-after -mx-4 px-4 pt-1 pb-0">
         <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
           <TerminalSquareIcon className="size-4 mb-2 text-muted-foreground hidden sm:block" />
           <div className="flex gap-0.5 sm:gap-1 overflow-x-auto no-scrollbar pb-2 -mb-2">
@@ -225,7 +225,7 @@ export function ComponentCommand() {
           </Button>
         </div>
       </div>
-      <div className="-mx-4 px-4 py-2 border-b font-mono text-sm text-muted-foreground">
+      <div className="-mx-4 px-4 py-2 border-b screen-line-after font-mono text-sm text-muted-foreground">
         {command}
       </div>
     </div>

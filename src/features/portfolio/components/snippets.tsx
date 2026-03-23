@@ -35,12 +35,13 @@ export function Snippets() {
       </PanelHeader>
 
       <div className="relative py-2">
-        <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-2 max-sm:hidden sm:grid-cols-2">
+        <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-2 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
           <div className="border-r border-edge"></div>
-          <div className="border-l border-edge"></div>
+          <div className="border-l border-edge md:border-x"></div>
+          <div className="hidden border-l border-edge md:block"></div>
         </div>
 
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
           {dsComponents.map((comp) => (
             <Link
               key={comp.slug}
@@ -48,7 +49,8 @@ export function Snippets() {
               className={cn(
                 "group/post flex items-center gap-4 p-4 transition-[background-color] ease-out hover:bg-accent2",
                 "max-sm:screen-line-before max-sm:screen-line-after",
-                "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after",
+                "sm:max-md:nth-[2n+1]:screen-line-before sm:max-md:nth-[2n+1]:screen-line-after",
+                "md:nth-[3n+1]:screen-line-before md:nth-[3n+1]:screen-line-after",
               )}
             >
               <div
@@ -61,7 +63,7 @@ export function Snippets() {
                 />
               </div>
 
-              <h2 className="leading-snug font-medium text-balance underline-offset-4 group-hover/post:underline">
+              <h2 className="shrink-0 whitespace-nowrap tracking-tight text-[13px] sm:text-sm font-medium underline-offset-4 group-hover/post:underline">
                 {comp.title}
               </h2>
             </Link>

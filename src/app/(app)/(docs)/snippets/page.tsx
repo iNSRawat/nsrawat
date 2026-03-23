@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { ComponentCommand } from "@/components/component-command";
 import { ComponentIcon } from "@/components/icons";
+import { ComponentCommand } from "@/components/snippets-command";
 import { getAllSnippets } from "@/features/snippets/data/snippets";
 import { cn } from "@/lib/utils";
 import { components } from "@/registry/registry-components";
@@ -30,7 +30,7 @@ export default function SnippetsPage() {
   const snippets = getAllSnippets();
 
   return (
-    <div className="min-h-svh overflow-hidden">
+    <div className="min-h-svh">
       <div className="screen-line-after px-2 sm:px-4">
         <h1 className="text-2xl font-semibold sm:text-3xl">Snippets</h1>
       </div>
@@ -51,21 +51,23 @@ export default function SnippetsPage() {
 
       <Separator />
 
-      <div className="grid grid-cols-1 border-t border-edge md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-3">
         {/* Registry Components */}
         {components.map((component, i) => (
           <Link
             key={component.name}
             href={`/snippets/${component.name}`}
             className={cn(
-              "group flex items-center gap-3 border-b border-edge bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
-              i % 2 === 0 ? "md:border-r" : "",
+              "group flex items-center gap-2 border-b border-edge bg-background/50 px-2 py-3 transition-colors hover:bg-muted/50 sm:px-3 sm:py-3",
+              i % 3 !== 2 ? "md:border-r" : "",
+              "max-md:screen-line-before max-md:screen-line-after",
+              "md:nth-[3n+1]:screen-line-before md:nth-[3n+1]:screen-line-after",
             )}
           >
-            <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
-              <ComponentIcon variant={component.name} className="size-5" />
+            <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={component.name} className="size-4" />
             </div>
-            <span className="font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+            <span className="shrink-0 whitespace-nowrap tracking-tight text-[13px] sm:text-sm font-medium text-foreground/80 transition-colors group-hover:text-foreground">
               {component.title}
             </span>
           </Link>
@@ -77,40 +79,42 @@ export default function SnippetsPage() {
             key={snippet.slug}
             href={`/snippets/${snippet.slug}`}
             className={cn(
-              "group flex items-center gap-3 border-b border-edge bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
+              "group flex items-center gap-2 border-b border-edge bg-background/50 px-2 py-3 transition-colors hover:bg-muted/50 sm:px-3 sm:py-3",
               // Continue the parity check from the previous list
-              (i + components.length) % 2 === 0 ? "md:border-r" : "",
+              (i + components.length) % 3 !== 2 ? "md:border-r" : "",
+              "max-md:screen-line-before max-md:screen-line-after",
+              "md:nth-[3n+1]:screen-line-before md:nth-[3n+1]:screen-line-after",
             )}
           >
-            <div className="flex size-10 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
-              <ComponentIcon variant={snippet.slug} className="size-5" />
+            <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={snippet.slug} className="size-4" />
             </div>
-            <div className="flex flex-1 items-center justify-between">
-              <span className="font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+            <div className="flex min-w-0 flex-1 items-center justify-between">
+              <span className="shrink-0 whitespace-nowrap tracking-tight text-[13px] sm:text-sm font-medium text-foreground/80 transition-colors group-hover:text-foreground">
                 {snippet.metadata.title}
               </span>
             </div>
           </Link>
         ))}
 
-        {/* Fill empty grid cell if total is odd */}
-        {(components.length + snippets.length) % 2 !== 0 && (
-          <div className="hidden border-b border-r border-edge md:block" />
-        )}
+        {/* Fill empty grid cells to complete the 3-column row */}
+        {Array.from({
+          length: (3 - ((components.length + snippets.length) % 3)) % 3,
+        }).map((_, i) => (
+          <div
+            key={`empty-${i}`}
+            className={cn(
+              "hidden border-b border-edge md:block",
+              (components.length + snippets.length + i) % 3 !== 2
+                ? "md:border-r"
+                : "",
+              "md:nth-[3n+1]:screen-line-after",
+            )}
+          />
+        ))}
       </div>
 
-      <div className="py-10 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-edge bg-background px-3 py-1 text-xs text-muted-foreground">
-          <span>Built for</span>
-          <span className="flex items-center gap-1 font-medium text-foreground">
-            <ComponentIcon variant="react" className="size-3" /> React 19
-          </span>
-          <span className="flex items-center gap-1 font-medium text-foreground">
-            <ComponentIcon variant="tailwindcss" className="size-3" /> Tailwind
-            CSS v4
-          </span>
-        </div>
-      </div>
+      <div className="h-12 sm:h-20" />
     </div>
   );
 }

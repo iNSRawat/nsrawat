@@ -3,7 +3,6 @@ import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 import { About } from "@/features/portfolio/components/about";
 // import { Awards } from "@/features/portfolio/components/awards"; // Removed for now
 import { Blog } from "@/features/portfolio/components/blog";
-import { Snippets } from "@/features/portfolio/components/components";
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
 import { LetsTalk } from "@/features/portfolio/components/lets-talk";
@@ -11,6 +10,7 @@ import { Overview } from "@/features/portfolio/components/overview";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 import { Projects } from "@/features/portfolio/components/projects";
+import { Snippets } from "@/features/portfolio/components/snippets";
 import { TeckStack } from "@/features/portfolio/components/teck-stack";
 import { Testimonials } from "@/features/portfolio/components/testimonials";
 import { USER } from "@/features/portfolio/data/user";
