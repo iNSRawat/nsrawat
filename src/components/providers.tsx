@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Provider as JotaiProvider } from "jotai";
 import { ThemeProvider } from "next-themes";
 
+import { CursorFollower } from "./cursor-follower";
 import { SoundProvider } from "./sound-provider";
 import { Toaster } from "./ui/sonner";
 
@@ -34,6 +35,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <Toaster position="top-center" />
         <Analytics />
         <SpeedInsights />
+        <CursorFollower />
       </ThemeProvider>
     </JotaiProvider>
   );
