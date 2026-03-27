@@ -66,7 +66,9 @@ export function SiteHeader() {
             >
               <TerminalIcon className="h-4 w-4" />
             </Link>
-            <CommandMenu posts={posts} snippets={snippets} />
+            <div className="hidden sm:block">
+              <CommandMenu posts={posts} snippets={snippets} />
+            </div>
             <NavItemGitHub />
             <span className="mx-2 flex h-4 w-px bg-border" />
             <ThemeToggle />
