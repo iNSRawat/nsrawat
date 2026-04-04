@@ -10,7 +10,7 @@
 [![Issues Badge](https://img.shields.io/github/issues/iNSRawat/nsrawat)](https://github.com/iNSRawat/nsrawat/issues)
 [![GitHub contributors](https://img.shields.io/github/contributors/iNSRawat/nsrawat?color=2b9348)](https://github.com/iNSRawat/nsrawat/graphs/contributors)
 [![License Badge](https://img.shields.io/github/license/iNSRawat/nsrawat?color=2b9348)](https://github.com/iNSRawat/nsrawat/blob/main/LICENSE)
-<a href="https://github.com/iNSRawat/nsrawat"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FiNSRawat%2Fnsrawat&count_bg=%2379C83D&title_bg=%23555555&title=Repo+Views&edge_flat=false" alt="Views"/></a>
+[![Repo Views](https://vbr.nathanchung.dev/badge?page_id=iNSRawat.nsrawat&color=blue&style=flat)](https://github.com/iNSRawat/nsrawat)
 
 </div>
 
