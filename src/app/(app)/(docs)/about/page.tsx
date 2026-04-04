@@ -8,7 +8,7 @@ import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Nagendra Singh Rawat",
   description: `Learn more about ${USER.displayName} - Data Scientist | Specializing in Marketing Analytics based in ${USER.address}.`,
 };
 
@@ -218,7 +218,7 @@ export default function AboutPage() {
               analysis for my new career path.
             </li>
             <li>
-              Creator of data science projects on{" "}
+              Creating data science projects on{" "}
               <a
                 href="https://github.com/iNSRawat"
                 className="link"
