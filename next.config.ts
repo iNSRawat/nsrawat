@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
       "cmdk",
       "react-fast-marquee",
       "jotai",
+      "posthog-js",
+      "react-markdown",
+      "@c15t/nextjs",
+      "geist",
+      "schema-dts",
+      "@base-ui/react",
     ],
     // Cache client-side navigations to reduce refetches
     staleTimes: {

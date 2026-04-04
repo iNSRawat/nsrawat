@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { USER } from "@/features/portfolio/data/user";
 
 import { Panel } from "./panel";
@@ -15,10 +17,13 @@ export function LetsTalk() {
           href="mailto:nsrawatdigital@gmail.com"
           className="group inline-flex items-center gap-2.5 rounded-full border border-border bg-accent2 px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-foreground/20 hover:bg-accent2/80 hover:shadow-lg active:scale-[0.98] sm:px-6 sm:py-3 sm:text-base"
         >
-          <img
+          <Image
             src={USER.avatar}
             alt={USER.displayName}
+            width={32}
+            height={32}
             className="size-7 rounded-full ring-1 ring-border sm:size-8"
+            loading="lazy"
           />
           Let&apos;s talk
         </a>

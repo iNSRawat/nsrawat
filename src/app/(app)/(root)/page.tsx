@@ -1,20 +1,78 @@
+import dynamic from "next/dynamic";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 import { About } from "@/features/portfolio/components/about";
-// import { Awards } from "@/features/portfolio/components/awards"; // Removed for now
-import { Blog } from "@/features/portfolio/components/blog";
-import { Experiences } from "@/features/portfolio/components/experiences";
-import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
-import { LetsTalk } from "@/features/portfolio/components/lets-talk";
 import { Overview } from "@/features/portfolio/components/overview";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
-import { Projects } from "@/features/portfolio/components/projects";
-import { Snippets } from "@/features/portfolio/components/snippets";
-import { TeckStack } from "@/features/portfolio/components/teck-stack";
-import { Testimonials } from "@/features/portfolio/components/testimonials";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
+
+// Lazy load below-fold sections to reduce initial JS bundle
+const Testimonials = dynamic(
+  () =>
+    import("@/features/portfolio/components/testimonials").then(
+      (mod) => mod.Testimonials,
+    ),
+  { loading: () => <SectionSkeleton /> },
+);
+
+const GitHubContributions = dynamic(
+  () =>
+    import("@/features/portfolio/components/github-contributions").then(
+      (mod) => mod.GitHubContributions,
+    ),
+  { loading: () => <SectionSkeleton /> },
+);
+
+const TeckStack = dynamic(
+  () =>
+    import("@/features/portfolio/components/teck-stack").then(
+      (mod) => mod.TeckStack,
+    ),
+  { loading: () => <SectionSkeleton /> },
+);
+
+const Snippets = dynamic(
+  () =>
+    import("@/features/portfolio/components/snippets").then(
+      (mod) => mod.Snippets,
+    ),
+  { loading: () => <SectionSkeleton /> },
+);
+
+const Blog = dynamic(
+  () => import("@/features/portfolio/components/blog").then((mod) => mod.Blog),
+  { loading: () => <SectionSkeleton /> },
+);
+
+const Experiences = dynamic(
+  () =>
+    import("@/features/portfolio/components/experiences").then(
+      (mod) => mod.Experiences,
+    ),
+  { loading: () => <SectionSkeleton /> },
+);
+
+const Projects = dynamic(
+  () =>
+    import("@/features/portfolio/components/projects").then(
+      (mod) => mod.Projects,
+    ),
+  { loading: () => <SectionSkeleton /> },
+);
+
+const LetsTalk = dynamic(
+  () =>
+    import("@/features/portfolio/components/lets-talk").then(
+      (mod) => mod.LetsTalk,
+    ),
+  { loading: () => <SectionSkeleton /> },
+);
+
+function SectionSkeleton() {
+  return <div className="h-32 w-full animate-pulse bg-muted/30" />;
+}
 
 export default function Page() {
   return (

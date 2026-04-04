@@ -204,7 +204,7 @@
   --selection-foreground: oklch(0.985 0 0);
 
   --shadow-popover: 0 6px 24px rgba(0, 0, 0, 0.25);
-  --z-cursor: 100;
+
 }
 
 .dark {
@@ -321,9 +321,7 @@
     /* cursor: none; */ /* We keep the normal cursor but add a follower */
   }
 
-  .cursor-follower {
-    @apply pointer-events-none fixed top-0 left-0 z-(--z-cursor) hidden size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white mix-blend-difference transition-transform duration-100 ease-out md:block;
-  }
+
 
   /* Custom scrollbar styling. Thanks @shadcn-ui */
   ::-webkit-scrollbar {
