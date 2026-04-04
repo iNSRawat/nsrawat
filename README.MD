@@ -10,7 +10,7 @@
 [![Issues Badge](https://img.shields.io/github/issues/iNSRawat/nsrawat)](https://github.com/iNSRawat/nsrawat/issues)
 [![GitHub contributors](https://img.shields.io/github/contributors/iNSRawat/nsrawat?color=2b9348)](https://github.com/iNSRawat/nsrawat/graphs/contributors)
 [![License Badge](https://img.shields.io/github/license/iNSRawat/nsrawat?color=2b9348)](https://github.com/iNSRawat/nsrawat/blob/main/LICENSE)
-![Views](https://komarev.com/ghpvc/?username=iNSRawat&label=Views&color=blue&style=flat)
+[![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FiNSRawat%2Fnsrawat&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false)](https://hits.seeyoufarm.com)
 
 </div>
 
