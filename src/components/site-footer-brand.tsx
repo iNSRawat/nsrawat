@@ -39,7 +39,7 @@ export function SiteFooterBrand() {
       onMouseLeave={handleMouseLeave}
       className="relative flex w-full flex-col items-center justify-center overflow-hidden"
     >
-      <div className="pointer-events-none relative w-full max-w-7xl translate-y-[35%] scale-50 select-none px-4 transition-transform duration-500 sm:translate-y-[37.5%] sm:scale-75 md:scale-100 md:px-8">
+      <div className="pointer-events-none relative w-full max-w-7xl translate-y-[35%] select-none px-4 transition-transform duration-500 md:px-8">
         <svg
           viewBox="0 0 1120 160"
           fill="none"
