@@ -2,8 +2,7 @@ import type { Testimonial } from "@/features/portfolio/types/testimonials";
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    authorAvatar:
-      "https://pbs.twimg.com/profile_images/2033467452575952896/zH8Kod3t_bigger.jpg",
+    authorAvatar: "https://unavatar.io/twitter/AKirtesh",
     authorName: "Kirtesh",
     authorTagline: "Full-Stack Developer | Java · React · Microservices",
     url: "https://x.com/AKirtesh/status/2034266066063708663",

@@ -5,6 +5,7 @@ import type { LucideProps } from "lucide-react";
 import {
   BookmarkIcon,
   BoxIcon,
+  BracesIcon,
   BriefcaseBusinessIcon,
   CornerDownLeftIcon,
   DownloadIcon,
@@ -75,7 +76,7 @@ const MENU_LINKS: CommandLinkItem[] = [
   {
     title: "Snippets",
     href: "/snippets",
-    icon: Icons.react,
+    icon: BracesIcon,
   },
   {
     title: "Blog",
@@ -330,7 +331,7 @@ export function CommandMenu({
           <CommandLinkGroup
             heading="Snippets"
             links={[...componentLinks, ...snippetLinks]}
-            fallbackIcon={Icons.react}
+            fallbackIcon={BracesIcon}
             onLinkSelect={handleOpenLink}
           />
 
