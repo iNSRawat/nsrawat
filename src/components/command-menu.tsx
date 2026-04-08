@@ -12,6 +12,7 @@ import {
   FileTextIcon,
   HeartIcon,
   LayersIcon,
+  MailIcon,
   MoonStarIcon,
   NewspaperIcon,
   QuoteIcon,
@@ -87,6 +88,11 @@ const MENU_LINKS: CommandLinkItem[] = [
     title: "Sponsors",
     href: "/sponsors",
     icon: HeartIcon,
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+    icon: MailIcon,
   },
 ];
 
