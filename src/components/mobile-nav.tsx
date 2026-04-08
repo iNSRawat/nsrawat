@@ -5,6 +5,7 @@ import {
   BracesIcon,
   FolderOpenIcon,
   HomeIcon,
+  MailIcon,
   NewspaperIcon,
   SearchIcon,
   TerminalIcon,
@@ -29,6 +30,7 @@ const NAV_ICONS: Record<string, LucideIcon> = {
   "/projects": FolderOpenIcon,
   "/blog": NewspaperIcon,
   "/snippets": BracesIcon,
+  "/contact": MailIcon,
 };
 
 export function MobileNav({
