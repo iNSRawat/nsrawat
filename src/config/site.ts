@@ -35,6 +35,10 @@ export const MAIN_NAV: NavItem[] = [
     title: "Snippets",
     href: "/snippets",
   },
+  {
+    title: "Contact",
+    href: "/contact",
+  },
 ];
 
 export const GITHUB_USERNAME = "iNSRawat";
