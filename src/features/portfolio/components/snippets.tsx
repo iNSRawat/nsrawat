@@ -3,11 +3,15 @@ import Link from "next/link";
 
 import { ComponentIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { getAllSnippets } from "@/features/snippets/data/snippets";
 import { cn } from "@/lib/utils";
+import { components } from "@/registry/registry-components";
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel";
 
 export function Snippets() {
+  const totalSnippets = getAllSnippets().length + components.length;
+
   const dsComponents = [
     { title: "Confusion Matrix", slug: "confusion-matrix", icon: "chart-area" },
     { title: "Model Metrics", slug: "model-metrics", icon: "calculator" },
@@ -30,7 +34,7 @@ export function Snippets() {
       <PanelHeader>
         <PanelTitle>
           Snippets
-          <PanelTitleSup>({dsComponents.length})</PanelTitleSup>
+          <PanelTitleSup>({totalSnippets})</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
 
