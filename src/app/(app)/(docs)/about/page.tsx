@@ -538,6 +538,8 @@ export default function AboutPage() {
         </div>
       </div>
 
+      <Separator className="my-4 sm:my-8" />
+
       <div className="h-2 sm:h-4" />
     </div>
   );
