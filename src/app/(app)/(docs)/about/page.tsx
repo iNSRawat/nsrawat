@@ -526,11 +526,11 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <Separator className="my-4 sm:my-8" />
+      <Separator />
 
       {/* Contact Form Section */}
-      <div className="flex flex-col items-center justify-center p-2 sm:p-4">
-        <h2 className="mb-4 sm:mb-6 text-lg sm:text-xl font-semibold text-center">
+      <div className="flex flex-col items-center justify-center py-4">
+        <h2 className="mb-3 text-lg font-semibold text-center">
           ✉️ Send a Message
         </h2>
         <div className="w-full max-w-xl rounded-xl border border-border bg-card/50 p-4 sm:p-6 shadow-sm">
@@ -538,7 +538,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <Separator className="my-4 sm:my-8" />
+      <Separator />
 
       <div className="h-2 sm:h-4" />
     </div>
