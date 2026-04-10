@@ -31,7 +31,7 @@ const registryItemNames = components
   .sort((a, b) =>
     a.localeCompare(b, "en", {
       sensitivity: "base",
-    })
+    }),
   );
 
 export function RegistryCommandAnimated() {
@@ -55,7 +55,7 @@ export function RegistryCommandAnimated() {
       >
         <div className="px-4 shadow-[inset_0_-1px_0_0] shadow-edge">
           <TabsList className="h-10 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
-            {getIconForPackageManager(packageManager)}
+            {React.createElement(getIconForPackageManager(packageManager))}
 
             {Object.entries(pmCommands).map(([key]) => {
               return (
