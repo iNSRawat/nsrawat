@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "training-progress",
+  "title": "Training Progress",
+  "author": "N S Rawat",
+  "description": "Line chart visualization of model training loss and accuracy over epochs.",
+  "dependencies": [
+    "recharts"
+  ],
+  "files": [
+    {
+      "path": "src/registry/ds-components/training-progress.tsx",
+      "content": "\"use client\";\n\nimport {\n  CartesianGrid,\n  Line,\n  LineChart,\n  ResponsiveContainer,\n  Tooltip,\n  XAxis,\n  YAxis,\n} from \"recharts\";\n\nconst data = Array.from({ length: 20 }, (_, i) => ({\n  epoch: i * 5,\n  loss: Math.max(0.1, 1 - Math.log(i + 1) * 0.3 + Math.random() * 0.05),\n  accuracy: Math.min(0.98, 0.4 + Math.log(i + 1) * 0.18 + Math.random() * 0.02),\n}));\n\nexport default function TrainingProgress() {\n  return (\n    <div className=\"flex h-[350px] w-full max-w-2xl flex-col gap-4 rounded-lg border bg-card p-6 shadow-sm\">\n      <div className=\"flex items-center justify-between\">\n        <h3 className=\"text-lg font-semibold\">Training History</h3>\n        <div className=\"flex gap-4 text-xs\">\n          <div className=\"flex items-center gap-1\">\n            <div className=\"size-2 rounded-full bg-blue-500\" />\n            <span>Accuracy</span>\n          </div>\n          <div className=\"flex items-center gap-1\">\n            <div className=\"size-2 rounded-full bg-red-500\" />\n            <span>Loss</span>\n          </div>\n        </div>\n      </div>\n\n      <div className=\"flex-1\">\n        <ResponsiveContainer width=\"100%\" height=\"100%\">\n          <LineChart data={data}>\n            <CartesianGrid\n              strokeDasharray=\"3 3\"\n              vertical={false}\n              stroke=\"var(--border)\"\n            />\n            <XAxis\n              dataKey=\"epoch\"\n              stroke=\"var(--muted-foreground)\"\n              fontSize={12}\n              tickLine={false}\n              axisLine={false}\n              label={{\n                value: \"Epoch\",\n                position: \"insideBottom\",\n                offset: -5,\n                fontSize: 10,\n                fill: \"var(--muted-foreground)\",\n              }}\n            />\n            <YAxis\n              yAxisId=\"left\"\n              stroke=\"var(--muted-foreground)\"\n              fontSize={12}\n              tickLine={false}\n              axisLine={false}\n              domain={[0, 1]}\n            />\n            <YAxis\n              yAxisId=\"right\"\n              orientation=\"right\"\n              stroke=\"var(--muted-foreground)\"\n              fontSize={12}\n              tickLine={false}\n              axisLine={false}\n            />\n            <Tooltip\n              contentStyle={{\n                backgroundColor: \"var(--popover)\",\n                borderColor: \"var(--border)\",\n                borderRadius: \"8px\",\n              }}\n              itemStyle={{ fontSize: \"12px\" }}\n            />\n            <Line\n              yAxisId=\"left\"\n              type=\"monotone\"\n              dataKey=\"accuracy\"\n              stroke=\"#3b82f6\"\n              strokeWidth={2}\n              dot={false}\n              activeDot={{ r: 4 }}\n            />\n            <Line\n              yAxisId=\"left\"\n              type=\"monotone\"\n              dataKey=\"loss\"\n              stroke=\"#ef4444\"\n              strokeWidth={2}\n              dot={false}\n              activeDot={{ r: 4 }}\n            />\n          </LineChart>\n        </ResponsiveContainer>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,26 @@
+---
+title: PySpark Basic Setup
+description: Initialize a Spark session and read a CSV file.
+language: python
+createdAt: 2025-01-10
+---
+
+```python
+from pyspark.sql import SparkSession
+
+# Initialize Spark Session
+spark = SparkSession.builder \
+    .appName("DataScienceWorkspace") \
+    .config("spark.executor.memory", "4g") \
+    .getOrCreate()
+
+# Read CSV with schema inference
+df = spark.read.csv("data.csv", header=True, inferSchema=True)
+
+# Basic exploration
+df.show(5)
+df.printSchema()
+
+# Stop session
+# spark.stop()
+```

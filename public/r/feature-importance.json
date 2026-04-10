@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-importance",
+  "title": "Feature Importance",
+  "author": "N S Rawat",
+  "description": "Horizontal bar chart showing the relative importance of model features.",
+  "dependencies": [
+    "recharts"
+  ],
+  "files": [
+    {
+      "path": "src/registry/ds-components/feature-importance.tsx",
+      "content": "\"use client\";\n\nimport {\n  Bar,\n  BarChart,\n  CartesianGrid,\n  ResponsiveContainer,\n  Tooltip,\n  XAxis,\n  YAxis,\n} from \"recharts\";\n\nconst data = [\n  { feature: \"Income\", importance: 0.35 },\n  { feature: \"Age\", importance: 0.25 },\n  { feature: \"Education\", importance: 0.15 },\n  { feature: \"Occupation\", importance: 0.1 },\n  { feature: \"Marital\", importance: 0.08 },\n  { feature: \"Children\", importance: 0.05 },\n];\n\nexport default function FeatureImportance() {\n  return (\n    <div className=\"flex h-[350px] w-full max-w-2xl flex-col gap-4 rounded-lg border bg-card p-6 shadow-sm\">\n      <div className=\"flex items-center justify-between\">\n        <h3 className=\"text-lg font-semibold\">Feature Importance</h3>\n      </div>\n\n      <div className=\"flex-1\">\n        <ResponsiveContainer width=\"100%\" height=\"100%\">\n          <BarChart\n            layout=\"vertical\"\n            data={data}\n            margin={{ top: 0, right: 20, left: 40, bottom: 0 }}\n          >\n            <CartesianGrid\n              strokeDasharray=\"3 3\"\n              horizontal={false}\n              stroke=\"var(--border)\"\n            />\n            <XAxis\n              type=\"number\"\n              domain={[0, 0.4]}\n              stroke=\"var(--muted-foreground)\"\n              fontSize={12}\n              tickLine={false}\n              axisLine={false}\n            />\n            <YAxis\n              dataKey=\"feature\"\n              type=\"category\"\n              stroke=\"var(--muted-foreground)\"\n              fontSize={12}\n              tickLine={false}\n              axisLine={false}\n              width={80}\n            />\n            <Tooltip\n              cursor={{ fill: \"var(--accent)\", opacity: 0.2 }}\n              contentStyle={{\n                backgroundColor: \"var(--popover)\",\n                borderColor: \"var(--border)\",\n                borderRadius: \"8px\",\n              }}\n              itemStyle={{ fontSize: \"12px\" }}\n            />\n            <Bar\n              dataKey=\"importance\"\n              fill=\"#f59e0b\"\n              radius={[0, 4, 4, 0]}\n              barSize={24}\n            />\n          </BarChart>\n        </ResponsiveContainer>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

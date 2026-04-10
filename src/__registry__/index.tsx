@@ -37,105 +37,66 @@ export const Index: Record<string, any> = {
       type: "registry:hook",
     }],
   },
-  "theme-switcher": {
-    name: "theme-switcher",
-    description: "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.",
+  "confusion-matrix": {
+    name: "confusion-matrix",
+    description: "Interactive confusion matrix to visualize classifier performance.",
     type: "registry:component",
     files: [{
-      path: "src/registry/theme-switcher/theme-switcher.tsx",
+      path: "src/registry/src/registry/ds-components/confusion-matrix.tsx",
       type: "registry:component",
     }],
   },
-  "flip-sentences": {
-    name: "flip-sentences",
-    description: "",
+  "model-metrics": {
+    name: "model-metrics",
+    description: "Visual dashboard for key machine learning performance metrics.",
     type: "registry:component",
     files: [{
-      path: "src/registry/flip-sentences/flip-sentences.tsx",
+      path: "src/registry/src/registry/ds-components/model-metrics.tsx",
       type: "registry:component",
     }],
   },
-  "apple-hello-effect": {
-    name: "apple-hello-effect",
-    description: "Create a Xin chào and Hello writing effect inspired by Apple using Motion for React.",
+  "training-progress": {
+    name: "training-progress",
+    description: "Line chart visualization of model training loss and accuracy over epochs.",
     type: "registry:component",
     files: [{
-      path: "src/registry/apple-hello-effect/apple-hello-effect.tsx",
+      path: "src/registry/src/registry/ds-components/training-progress.tsx",
       type: "registry:component",
     }],
   },
-  "wheel-picker": {
-    name: "wheel-picker",
-    description: "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
+  "roc-curve": {
+    name: "roc-curve",
+    description: "Receiver Operating Characteristic (ROC) curve with Area Under Curve (AUC) metric.",
     type: "registry:component",
     files: [{
-      path: "src/registry/wheel-picker/wheel-picker.tsx",
+      path: "src/registry/src/registry/ds-components/roc-curve.tsx",
       type: "registry:component",
     }],
   },
-  "work-experience": {
-    name: "work-experience",
-    description: "Displays a list of work experiences with role details and durations.",
+  "feature-importance": {
+    name: "feature-importance",
+    description: "Horizontal bar chart showing the relative importance of model features.",
     type: "registry:component",
     files: [{
-      path: "src/registry/work-experience/work-experience.tsx",
+      path: "src/registry/src/registry/ds-components/feature-importance.tsx",
       type: "registry:component",
     }],
   },
-  "shimmering-text": {
-    name: "shimmering-text",
-    description: "Smooth shimmering text animation built with Motion.",
+  "data-distribution": {
+    name: "data-distribution",
+    description: "Histogram visualization showing the frequency distribution of data points.",
     type: "registry:component",
     files: [{
-      path: "src/registry/shimmering-text/shimmering-text.tsx",
+      path: "src/registry/src/registry/ds-components/data-distribution.tsx",
       type: "registry:component",
     }],
   },
-  "slide-to-unlock": {
-    name: "slide-to-unlock",
-    description: "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
+  "correlation-heatmap": {
+    name: "correlation-heatmap",
+    description: "Grid-based heat map visualizing correlation coefficients between features.",
     type: "registry:component",
     files: [{
-      path: "src/registry/slide-to-unlock/slide-to-unlock.tsx",
-      type: "registry:component",
-    }],
-  },
-  "testimonials-marquee": {
-    name: "testimonials-marquee",
-    description: "A testimonials marquee component for showcasing user feedback in a scrolling format.",
-    type: "registry:component",
-    files: [{
-      path: "src/registry/testimonials-marquee/testimonials-marquee.tsx",
-      type: "registry:component",
-    }],
-  },
-  "github-stars": {
-    name: "github-stars",
-    description: "Display GitHub repository star count with formatted numbers and a tooltip showing the full count.",
-    type: "registry:component",
-    files: [{
-      path: "src/registry/github-stars/github-stars.tsx",
-      type: "registry:component",
-    }],
-  },
-  "scroll-fade-effect": {
-    name: "scroll-fade-effect",
-    description: "A React component that adds a fade effect to content as you scroll.",
-    type: "registry:component",
-    files: [{
-      path: "src/registry/scroll-fade-effect/scroll-fade-effect.tsx",
-      type: "registry:component",
-    }],
-  },
-  "consent-manager": {
-    name: "consent-manager",
-    description: "A React component for managing user consent for cookies and tracking in Next.js applications.",
-    type: "registry:component",
-    files: [{
-      path: "src/registry/src/components/consent-manager.tsx",
-      type: "registry:component",
-    },{
-      path: "src/registry/consent-manager/consent-manager-client.tsx",
+      path: "src/registry/src/registry/ds-components/correlation-heatmap.tsx",
       type: "registry:component",
     }],
   },

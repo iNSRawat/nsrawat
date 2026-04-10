@@ -1,9 +1,9 @@
 "use client";
 
-import { CheckIcon, CopyIcon, TerminalSquareIcon } from "lucide-react";
+import { CheckIcon, CopyIcon } from "lucide-react";
 import * as React from "react";
 
-import { Icons } from "@/components/icons";
+import { getIconForPackageManager, Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -110,7 +110,11 @@ export function ComponentCommand() {
     <div className="relative">
       <div className="flex flex-wrap items-center justify-between gap-y-2 border-b screen-line-after -mx-4 px-4 pt-1 pb-0">
         <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
-          <TerminalSquareIcon className="size-4 mb-2 text-muted-foreground hidden sm:block" />
+          <div className="size-4 mb-2 text-muted-foreground hidden sm:flex items-center justify-center translate-y-0.5">
+            {React.createElement(getIconForPackageManager(packageManager), {
+              className: "size-full",
+            })}
+          </div>
           <div className="flex gap-0.5 sm:gap-1 overflow-x-auto no-scrollbar pb-2 -mb-2">
             {(
               [

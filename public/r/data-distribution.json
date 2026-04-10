@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-distribution",
+  "title": "Data Distribution",
+  "author": "N S Rawat",
+  "description": "Histogram visualization showing the frequency distribution of data points.",
+  "dependencies": [
+    "recharts"
+  ],
+  "files": [
+    {
+      "path": "src/registry/ds-components/data-distribution.tsx",
+      "content": "\"use client\";\n\nimport {\n  Bar,\n  BarChart,\n  CartesianGrid,\n  ResponsiveContainer,\n  Tooltip,\n  XAxis,\n  YAxis,\n} from \"recharts\";\n\nconst data = [\n  { range: \"0-10\", count: 20 },\n  { range: \"11-20\", count: 35 },\n  { range: \"21-30\", count: 60 },\n  { range: \"31-40\", count: 80 },\n  { range: \"41-50\", count: 95 },\n  { range: \"51-60\", count: 75 },\n  { range: \"61-70\", count: 50 },\n  { range: \"71-80\", count: 30 },\n  { range: \"81-90\", count: 15 },\n  { range: \"91-100\", count: 5 },\n];\n\nexport default function DataDistribution() {\n  return (\n    <div className=\"flex h-[350px] w-full max-w-2xl flex-col gap-4 rounded-lg border bg-card p-6 shadow-sm\">\n      <div className=\"flex items-center justify-between\">\n        <h3 className=\"text-lg font-semibold\">Data Distribution</h3>\n      </div>\n\n      <div className=\"flex-1\">\n        <ResponsiveContainer width=\"100%\" height=\"100%\">\n          <BarChart\n            data={data}\n            margin={{ top: 10, right: 10, left: 0, bottom: 0 }}\n          >\n            <CartesianGrid\n              strokeDasharray=\"3 3\"\n              vertical={false}\n              stroke=\"var(--border)\"\n            />\n            <XAxis\n              dataKey=\"range\"\n              stroke=\"var(--muted-foreground)\"\n              fontSize={12}\n              tickLine={false}\n              axisLine={false}\n            />\n            <YAxis\n              stroke=\"var(--muted-foreground)\"\n              fontSize={12}\n              tickLine={false}\n              axisLine={false}\n            />\n            <Tooltip\n              cursor={{ fill: \"var(--accent)\", opacity: 0.2 }}\n              contentStyle={{\n                backgroundColor: \"var(--popover)\",\n                borderColor: \"var(--border)\",\n                borderRadius: \"8px\",\n              }}\n              itemStyle={{ fontSize: \"12px\" }}\n            />\n            <Bar dataKey=\"count\" fill=\"#3b82f6\" radius={[4, 4, 0, 0]} />\n          </BarChart>\n        </ResponsiveContainer>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
 import { USER } from "@/features/portfolio/data/user";
 
-import { Panel, PanelContent } from "./panel";
+import { Panel } from "./panel";
 
 export function LetsTalk() {
   return (
