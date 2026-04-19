@@ -36,7 +36,7 @@ export default function TestimonialsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2">
         {TESTIMONIALS.map((item, index) => (
           <a
-            key={item.url}
+            key={`${item.authorName}-${index}`}
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"

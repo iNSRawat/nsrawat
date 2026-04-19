@@ -23,7 +23,44 @@ import {
 import { TESTIMONIALS } from "../data/testimonials";
 import { Panel } from "./panel";
 
+function TestimonialCard({ item }: { item: (typeof TESTIMONIALS)[number] }) {
+  return (
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full transition-colors hover:bg-accent2"
+    >
+      <Testimonial>
+        <TestimonialQuote>
+          <p className="line-clamp-3 whitespace-pre-line">{item.quote}</p>
+        </TestimonialQuote>
+
+        <TestimonialAuthor>
+          <TestimonialAvatar>
+            <TestimonialAvatarImg
+              src={item.authorAvatar}
+              alt={item.authorName}
+            />
+            <TestimonialAvatarRing />
+          </TestimonialAvatar>
+
+          <TestimonialAuthorName>{item.authorName}</TestimonialAuthorName>
+
+          <TestimonialAuthorTagline>
+            {item.authorTagline}
+          </TestimonialAuthorTagline>
+        </TestimonialAuthor>
+      </Testimonial>
+    </a>
+  );
+}
+
 export function Testimonials() {
+  const midpoint = Math.ceil(TESTIMONIALS.length / 2);
+  const topRow = TESTIMONIALS.slice(0, midpoint);
+  const bottomRow = TESTIMONIALS.slice(midpoint);
+
   return (
     <Panel id="testimonials">
       <div className="overflow-hidden">
@@ -31,42 +68,29 @@ export function Testimonials() {
           <MarqueeFade side="left" />
           <MarqueeFade side="right" />
 
-          <MarqueeContent>
-            {TESTIMONIALS.map((item) => (
+          <MarqueeContent direction="left">
+            {topRow.map((item, index) => (
               <MarqueeItem
-                key={item.url}
+                key={`top-${item.authorName}-${index}`}
                 className="mx-0 h-full w-xs border-r border-edge"
               >
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block h-full transition-colors hover:bg-accent2"
-                >
-                  <Testimonial>
-                    <TestimonialQuote>
-                      <p className="whitespace-pre-line">{item.quote}</p>
-                    </TestimonialQuote>
+                <TestimonialCard item={item} />
+              </MarqueeItem>
+            ))}
+          </MarqueeContent>
+        </Marquee>
 
-                    <TestimonialAuthor>
-                      <TestimonialAvatar>
-                        <TestimonialAvatarImg
-                          src={item.authorAvatar}
-                          alt={item.authorName}
-                        />
-                        <TestimonialAvatarRing />
-                      </TestimonialAvatar>
+        <Marquee className="border-b border-edge [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
+          <MarqueeFade side="left" />
+          <MarqueeFade side="right" />
 
-                      <TestimonialAuthorName>
-                        {item.authorName}
-                      </TestimonialAuthorName>
-
-                      <TestimonialAuthorTagline>
-                        {item.authorTagline}
-                      </TestimonialAuthorTagline>
-                    </TestimonialAuthor>
-                  </Testimonial>
-                </a>
+          <MarqueeContent direction="right">
+            {bottomRow.map((item, index) => (
+              <MarqueeItem
+                key={`bottom-${item.authorName}-${index}`}
+                className="mx-0 h-full w-xs border-r border-edge"
+              >
+                <TestimonialCard item={item} />
               </MarqueeItem>
             ))}
           </MarqueeContent>
