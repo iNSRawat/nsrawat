@@ -22,7 +22,7 @@ export const TESTIMONIALS: Testimonial[] = [
     authorTagline: "Fiverr - Search Engine Marketing Management",
     url: "https://www.fiverr.com/ns_rawat",
     quote:
-      "He has optimised the campaign and cost of client acquisition through ad campaign has gone significantly. Thanks Nagendra",
+      "He has optimised the campaign and cost of client acquisition through ad campaign has gone down significantly. Thanks Nagendra",
   },
   {
     authorAvatar: "https://api.dicebear.com/9.x/initials/svg?seed=S",
@@ -54,7 +54,7 @@ export const TESTIMONIALS: Testimonial[] = [
     authorTagline: "Upwork - Google Ads Consultant Expert",
     url: "https://www.upwork.com/freelancers/~01f39aa89efa0e1a94",
     quote:
-      "He is a good freelancer and did a good analyst and keyword research",
+      "He is a good freelancer and did a good analysis and keyword research",
   },
   {
     authorAvatar: "https://api.dicebear.com/9.x/initials/svg?seed=UC",

@@ -32,22 +32,25 @@ function TestimonialCard({ item }: { item: (typeof TESTIMONIALS)[number] }) {
       className="block h-full transition-colors hover:bg-accent2"
     >
       <Testimonial>
-        <TestimonialQuote>
+        <TestimonialQuote className="px-3 py-2 text-[13px]">
           <p className="line-clamp-3 whitespace-pre-line">{item.quote}</p>
         </TestimonialQuote>
 
-        <TestimonialAuthor>
-          <TestimonialAvatar>
+        <TestimonialAuthor className="gap-x-2.5 px-3 pb-2">
+          <TestimonialAvatar className="size-6">
             <TestimonialAvatarImg
+              className="size-6"
               src={item.authorAvatar}
               alt={item.authorName}
             />
             <TestimonialAvatarRing />
           </TestimonialAvatar>
 
-          <TestimonialAuthorName>{item.authorName}</TestimonialAuthorName>
+          <TestimonialAuthorName className="text-[13px]">
+            {item.authorName}
+          </TestimonialAuthorName>
 
-          <TestimonialAuthorTagline>
+          <TestimonialAuthorTagline className="text-[11px]">
             {item.authorTagline}
           </TestimonialAuthorTagline>
         </TestimonialAuthor>
@@ -72,7 +75,7 @@ export function Testimonials() {
             {topRow.map((item, index) => (
               <MarqueeItem
                 key={`top-${item.authorName}-${index}`}
-                className="mx-0 h-full w-xs border-r border-edge"
+                className="mx-0 h-full w-56 border-r border-edge"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
@@ -88,7 +91,7 @@ export function Testimonials() {
             {bottomRow.map((item, index) => (
               <MarqueeItem
                 key={`bottom-${item.authorName}-${index}`}
-                className="mx-0 h-full w-xs border-r border-edge"
+                className="mx-0 h-full w-56 border-r border-edge"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
