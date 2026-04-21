@@ -32,7 +32,7 @@ function TestimonialCard({ item }: { item: (typeof TESTIMONIALS)[number] }) {
       className="block h-full transition-colors hover:bg-accent2"
     >
       <Testimonial>
-        <TestimonialQuote className="px-3 py-2 text-[13px]">
+        <TestimonialQuote className="px-3 py-2">
           <p className="line-clamp-3 whitespace-pre-line">{item.quote}</p>
         </TestimonialQuote>
 
@@ -46,11 +46,9 @@ function TestimonialCard({ item }: { item: (typeof TESTIMONIALS)[number] }) {
             <TestimonialAvatarRing />
           </TestimonialAvatar>
 
-          <TestimonialAuthorName className="text-[13px]">
-            {item.authorName}
-          </TestimonialAuthorName>
+          <TestimonialAuthorName>{item.authorName}</TestimonialAuthorName>
 
-          <TestimonialAuthorTagline className="text-[11px]">
+          <TestimonialAuthorTagline>
             {item.authorTagline}
           </TestimonialAuthorTagline>
         </TestimonialAuthor>
@@ -65,7 +63,7 @@ export function Testimonials() {
   const bottomRow = TESTIMONIALS.slice(midpoint);
 
   return (
-    <Panel id="testimonials">
+    <Panel id="testimonials" className="relative">
       <div className="overflow-hidden">
         <Marquee className="border-y border-edge [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
           <MarqueeFade side="left" />
@@ -100,11 +98,11 @@ export function Testimonials() {
         </Marquee>
       </div>
 
-      <div className="screen-line-before flex justify-end px-4 py-2">
+      <div className="absolute bottom-3 right-3 z-10">
         <Link
           href="/testimonials"
           aria-label="View all testimonials"
-          className="flex size-7 items-center justify-center rounded-full border border-edge bg-background text-muted-foreground transition-colors hover:bg-accent2 hover:text-foreground"
+          className="flex size-8 items-center justify-center rounded-lg border border-edge bg-background text-muted-foreground transition-colors hover:bg-accent2 hover:text-foreground"
         >
           <ArrowUpRightIcon className="size-3.5" />
         </Link>

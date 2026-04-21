@@ -96,7 +96,6 @@ export default function Page() {
         <Separator />
 
         <Testimonials />
-        <Separator />
 
         <GitHubContributions />
         <Separator />
