@@ -100,9 +100,15 @@ export const COMMANDS: Record<string, string | (() => string)> = {
 
   blog: () =>
     "Blog Posts:\n\n" +
-    "▸ Read my latest articles on Data Science, Python, and ML\n" +
-    "▸ Tutorials, guides, and insights from my journey\n\n" +
-    `Visit the blog: ${USER.website}/blog`,
+    "\u25b8 Best Tools for Data Science Web Apps\n" +
+    "\u25b8 How to Prevent Overbooking in SQL\n" +
+    "\u25b8 Introduction to Machine Learning Algorithms\n" +
+    "\u25b8 Machine Learning Workflow\n" +
+    "\u25b8 Mathematics for Data Science\n" +
+    "\u25b8 NSRawat Brand\n" +
+    "\u25b8 Python Data Analysis Essentials\n" +
+    "\u25b8 Top Data Scientist Skills\n\n" +
+    `Read more: ${USER.website}/blog`,
 
   social: () =>
     "Social Links:\n\n" +
