@@ -97,13 +97,11 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
   }, []);
 
   useEffect(() => {
-    const artLines = isMobile
-      ? []
-      : ASCII_ART.split("\n").filter((line) => line.trim().length > 0);
+    const artLines = ASCII_ART.split("\n").filter(
+      (line) => line.trim().length > 0,
+    );
 
-    const welcomeMsg = isMobile
-      ? "Welcome to nsrawat.in CLI! 👋"
-      : "Welcome to my portfolio CLI! 👋";
+    const welcomeMsg = "Welcome to my portfolio CLI! 👋";
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOutput([
@@ -115,7 +113,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       'Type "help" or "?" to see available commands.',
       "",
     ]);
-  }, [isMobile]);
+  }, [isMobile]); // ASCII_ART is a constant, but we add a comment to force HMR if needed
 
   // Scroll to bottom on output change
   useEffect(() => {
@@ -289,61 +287,78 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       {/* Terminal Content */}
       <div className="flex-1 overflow-y-auto" ref={outputRef}>
         <div className="mx-auto max-w-3xl space-y-1 p-4 pb-2 pt-14 md:pt-24 md:px-8">
-          {output.map((line, i) => (
-            <div
-              key={i}
-              className={`group relative selection:bg-cyan-500/30 ${
-                line.trim().startsWith("█") ||
-                line.trim().startsWith("╚") ||
-                line.trim().startsWith("╔") ||
-                line.trim().startsWith("_") ||
-                line.trim().startsWith("|")
-                  ? "whitespace-pre text-zinc-50 font-bold leading-none tracking-normal text-[10px] sm:text-xs md:text-sm overflow-x-auto scrollbar-hide [&::-webkit-scrollbar]:hidden"
-                  : "whitespace-pre-wrap leading-relaxed"
-              }`}
-              style={
-                line.trim().startsWith("█") ||
-                line.trim().startsWith("╚") ||
-                line.trim().startsWith("╔") ||
-                line.trim().startsWith("_") ||
-                line.trim().startsWith("|")
-                  ? { scrollbarWidth: "none", msOverflowStyle: "none" }
-                  : undefined
-              }
-            >
-              <span className="text-zinc-200">
-                {line.startsWith("http") ? (
-                  <a
-                    href={line}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 underline underline-offset-4 transition-all hover:text-cyan-300"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {line}
-                  </a>
-                ) : (
-                  formatLine(line)
-                )}
-              </span>
-              {line.trim() && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    copyToClipboard(line, i);
-                  }}
-                  className="absolute right-0 top-0 opacity-0 transition-opacity group-hover:opacity-100"
-                  title="Copy to clipboard"
-                >
-                  {copiedIndex === i ? (
-                    <span className="text-xs text-emerald-400">Copied!</span>
+          {output.map((line, i) => {
+            const isAsciiArt =
+              line.trim().startsWith("█") ||
+              line.trim().startsWith("░") ||
+              line.trim().startsWith("_") ||
+              line.trim().startsWith("|");
+
+            return (
+              <div
+                key={i}
+                className={`group relative selection:bg-cyan-500/30 ${
+                  isAsciiArt
+                    ? "whitespace-pre font-bold leading-none tracking-normal text-[5px] min-[400px]:text-[7px] sm:text-[9px] md:text-xs lg:text-sm overflow-hidden flex justify-center"
+                    : "whitespace-pre-wrap leading-relaxed"
+                }`}
+                style={
+                  isAsciiArt
+                    ? { scrollbarWidth: "none", msOverflowStyle: "none" }
+                    : undefined
+                }
+              >
+                <span className="text-zinc-200">
+                  {line.startsWith("http") ? (
+                    <a
+                      href={line}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cyan-400 underline underline-offset-4 transition-all hover:text-cyan-300"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {line}
+                    </a>
+                  ) : isAsciiArt ? (
+                    <>
+                      {line.split("").map((char, ci) => (
+                        <span
+                          key={ci}
+                          className={
+                            char === "█"
+                              ? "text-[#98c379]"
+                              : char === "░"
+                                ? "text-[#4a6340]"
+                                : ""
+                          }
+                        >
+                          {char}
+                        </span>
+                      ))}
+                    </>
                   ) : (
-                    <Copy className="h-3.5 w-3.5 text-zinc-500 hover:text-zinc-300" />
+                    formatLine(line)
                   )}
-                </button>
-              )}
-            </div>
-          ))}
+                </span>
+                {line.trim() && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      copyToClipboard(line, i);
+                    }}
+                    className="absolute right-0 top-0 opacity-0 transition-opacity group-hover:opacity-100"
+                    title="Copy to clipboard"
+                  >
+                    {copiedIndex === i ? (
+                      <span className="text-xs text-emerald-400">Copied!</span>
+                    ) : (
+                      <Copy className="h-3.5 w-3.5 text-zinc-500 hover:text-zinc-300" />
+                    )}
+                  </button>
+                )}
+              </div>
+            );
+          })}
           <div ref={bottomRef} className="h-4" />
 
           {/* Terminal Input */}

@@ -7,19 +7,21 @@ import { USER } from "./user";
 
 export const ASCII_ART = `
 
-███╗   ██╗███████╗██████╗  █████╗ ██╗    ██╗ █████╗ ████████╗     ██████╗██╗     ██╗
-████╗  ██║██╔════╝██╔══██╗██╔══██╗██║    ██║██╔══██╗╚══██╔══╝    ██╔════╝██║     ██║
-██╔██╗ ██║███████╗██████╔╝███████║██║ █╗ ██║███████║   ██║       ██║     ██║     ██║
-██║╚██╗██║╚════██║██╔══██╗██╔══██║██║███╗██║██╔══██║   ██║       ██║     ██║     ██║
-██║ ╚████║███████║██║  ██║██║  ██║╚███╔███╔╝██║  ██║   ██║       ╚██████╗███████╗██║
-╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝        ╚═════╝╚══════╝╚═╝
+███░   ██░███████░██████░  █████░ ██░    ██░ █████░ ████████░     ██████░██░     ██░
+████░  ██░██░░░░░░██░░░██░██░░░██░██░    ██░██░░░██░░░░██░░░░    ██░░░░░░██░     ██░
+██░██░ ██░███████░██████░░███████░██░ █░ ██░███████░   ██░       ██░     ██░     ██░
+██░░██░██░░░░░░██░██░░░██░██░░░██░██░███░██░██░░░██░   ██░       ██░     ██░     ██░
+██░ ░████░███████░██░  ██░██░  ██░░███░███░░██░  ██░   ██░       ░██████░███████░██░
+░░░  ░░░░░░░░░░░░░░░░  ░░░░░░  ░░░ ░░░░░░░░ ░░░  ░░░   ░░░        ░░░░░░░░░░░░░░░░░░
 `;
 
 export const MOBILE_ASCII_ART = `
- _  _ ___ ___    ___ _    ___
-| \\| / __| _ \\  / __| |  |_ _|
-| .\` \\__ \\   / | (__| |__ | |
-|_|\\_|___/_|_\\  \\___|____|___|
+███░   ██░███████░██████░  █████░ ██░    ██░ █████░ ████████░     ██████░██░     ██░
+████░  ██░██░░░░░░██░░░██░██░░░██░██░    ██░██░░░██░░░░██░░░░    ██░░░░░░██░     ██░
+██░██░ ██░███████░██████░░███████░██░ █░ ██░███████░   ██░       ██░     ██░     ██░
+██░░██░██░░░░░░██░██░░░██░██░░░██░██░███░██░██░░░██░   ██░       ██░     ██░     ██░
+██░ ░████░███████░██░  ██░██░  ██░░███░███░░██░  ██░   ██░       ░██████░███████░██░
+░░░  ░░░░░░░░░░░░░░░░  ░░░░░░  ░░░ ░░░░░░░░ ░░░  ░░░   ░░░        ░░░░░░░░░░░░░░░░░░
 `;
 
 export const ALIASES: Record<string, string> = {
@@ -33,6 +35,7 @@ export const ALIASES: Record<string, string> = {
   e: "exp",
   p: "projects",
   c: "contact",
+  b: "blog",
 };
 
 export const COMMANDS: Record<string, string | (() => string)> = {
@@ -43,6 +46,7 @@ export const COMMANDS: Record<string, string | (() => string)> = {
     "skills     (s)      - List my technical skills\n" +
     "projects   (p, ls)  - List my projects\n" +
     "exp        (e)      - Show my experience\n" +
+    "blog       (b)      - List recent blog posts\n" +
     "certs               - Show my certifications\n" +
     "contact    (c)      - Display contact information\n" +
     "social              - Show social media links\n" +
@@ -93,6 +97,12 @@ export const COMMANDS: Record<string, string | (() => string)> = {
     `Website: ${USER.website}\n` +
     `Location: ${USER.address}\n\n` +
     `Send a direct message: ${USER.website}/contact`,
+
+  blog: () =>
+    "Blog Posts:\n\n" +
+    "▸ Read my latest articles on Data Science, Python, and ML\n" +
+    "▸ Tutorials, guides, and insights from my journey\n\n" +
+    `Visit the blog: ${USER.website}/blog`,
 
   social: () =>
     "Social Links:\n\n" +
