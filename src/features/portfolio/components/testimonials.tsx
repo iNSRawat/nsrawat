@@ -29,7 +29,7 @@ function TestimonialCard({ item }: { item: (typeof TESTIMONIALS)[number] }) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block h-full transition-colors hover:bg-accent2"
+      className="block h-full rounded-xl border border-edge transition-colors hover:bg-accent2"
     >
       <Testimonial>
         <TestimonialQuote>
@@ -63,8 +63,8 @@ export function Testimonials() {
 
   return (
     <Panel id="testimonials" className="relative">
-      <div className="overflow-hidden [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
-        <Marquee className="border-y border-edge">
+      <div className="flex flex-col gap-2.5 overflow-hidden py-2.5 [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
+        <Marquee>
           <MarqueeFade side="left" />
           <MarqueeFade side="right" />
 
@@ -72,7 +72,7 @@ export function Testimonials() {
             {topRow.map((item, index) => (
               <MarqueeItem
                 key={`top-${item.authorName}-${index}`}
-                className="mx-0 h-full w-xs border-r border-edge"
+                className="mx-1 h-full w-xs"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
@@ -80,7 +80,7 @@ export function Testimonials() {
           </MarqueeContent>
         </Marquee>
 
-        <Marquee className="border-b border-edge">
+        <Marquee>
           <MarqueeFade side="left" />
           <MarqueeFade side="right" />
 
@@ -88,7 +88,7 @@ export function Testimonials() {
             {bottomRow.map((item, index) => (
               <MarqueeItem
                 key={`bottom-${item.authorName}-${index}`}
-                className="mx-0 h-full w-xs border-r border-edge"
+                className="mx-1 h-full w-xs"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
