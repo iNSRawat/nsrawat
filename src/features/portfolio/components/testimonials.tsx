@@ -32,23 +32,27 @@ function TestimonialCard({ item }: { item: (typeof TESTIMONIALS)[number] }) {
       className="block h-full transition-colors hover:bg-accent2"
     >
       <Testimonial>
-        <TestimonialQuote className="px-3 py-2">
-          <p className="line-clamp-3 whitespace-pre-line">{item.quote}</p>
+        <TestimonialQuote className="px-3 py-1.5">
+          <p className="line-clamp-2 whitespace-pre-line text-sm leading-snug sm:line-clamp-3">
+            {item.quote}
+          </p>
         </TestimonialQuote>
 
-        <TestimonialAuthor className="gap-x-2.5 px-3 pb-2">
-          <TestimonialAvatar className="size-6">
+        <TestimonialAuthor className="gap-x-2 px-3 pb-1.5 pt-0">
+          <TestimonialAvatar className="size-5 overflow-hidden rounded-full">
             <TestimonialAvatarImg
-              className="size-6"
+              className="size-5 rounded-full"
               src={item.authorAvatar}
               alt={item.authorName}
             />
             <TestimonialAvatarRing />
           </TestimonialAvatar>
 
-          <TestimonialAuthorName>{item.authorName}</TestimonialAuthorName>
+          <TestimonialAuthorName className="text-xs leading-tight">
+            {item.authorName}
+          </TestimonialAuthorName>
 
-          <TestimonialAuthorTagline>
+          <TestimonialAuthorTagline className="truncate text-[11px] leading-tight">
             {item.authorTagline}
           </TestimonialAuthorTagline>
         </TestimonialAuthor>
@@ -73,7 +77,7 @@ export function Testimonials() {
             {topRow.map((item, index) => (
               <MarqueeItem
                 key={`top-${item.authorName}-${index}`}
-                className="mx-0 h-full w-56 border-r border-edge"
+                className="mx-0 h-full w-44 border-r border-edge sm:w-52"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
@@ -89,7 +93,7 @@ export function Testimonials() {
             {bottomRow.map((item, index) => (
               <MarqueeItem
                 key={`bottom-${item.authorName}-${index}`}
-                className="mx-0 h-full w-56 border-r border-edge"
+                className="mx-0 h-full w-44 border-r border-edge sm:w-52"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
@@ -102,7 +106,7 @@ export function Testimonials() {
         <Link
           href="/testimonials"
           aria-label="View all testimonials"
-          className="flex size-8 items-center justify-center rounded-lg border border-edge bg-background text-muted-foreground transition-colors hover:bg-accent2 hover:text-foreground"
+          className="flex size-8 items-center justify-center rounded-full border border-edge bg-background text-muted-foreground transition-colors hover:bg-accent2 hover:text-foreground"
         >
           <ArrowUpRightIcon className="size-3.5" />
         </Link>
