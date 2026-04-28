@@ -32,27 +32,22 @@ function TestimonialCard({ item }: { item: (typeof TESTIMONIALS)[number] }) {
       className="block h-full transition-colors hover:bg-accent2"
     >
       <Testimonial>
-        <TestimonialQuote className="px-3 py-1.5">
-          <p className="line-clamp-2 whitespace-pre-line text-sm leading-snug sm:line-clamp-3">
-            {item.quote}
-          </p>
+        <TestimonialQuote>
+          <p className="line-clamp-3 whitespace-pre-line">{item.quote}</p>
         </TestimonialQuote>
 
-        <TestimonialAuthor className="gap-x-2 px-3 pb-1.5 pt-0">
-          <TestimonialAvatar className="size-5 overflow-hidden rounded-full">
+        <TestimonialAuthor>
+          <TestimonialAvatar className="overflow-hidden rounded-full">
             <TestimonialAvatarImg
-              className="size-5 rounded-full"
               src={item.authorAvatar}
               alt={item.authorName}
             />
             <TestimonialAvatarRing />
           </TestimonialAvatar>
 
-          <TestimonialAuthorName className="text-xs leading-tight">
-            {item.authorName}
-          </TestimonialAuthorName>
+          <TestimonialAuthorName>{item.authorName}</TestimonialAuthorName>
 
-          <TestimonialAuthorTagline className="truncate text-[11px] leading-tight">
+          <TestimonialAuthorTagline>
             {item.authorTagline}
           </TestimonialAuthorTagline>
         </TestimonialAuthor>
@@ -68,8 +63,8 @@ export function Testimonials() {
 
   return (
     <Panel id="testimonials" className="relative">
-      <div className="overflow-hidden">
-        <Marquee className="border-y border-edge [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
+      <div className="overflow-hidden [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
+        <Marquee className="border-y border-edge">
           <MarqueeFade side="left" />
           <MarqueeFade side="right" />
 
@@ -77,7 +72,7 @@ export function Testimonials() {
             {topRow.map((item, index) => (
               <MarqueeItem
                 key={`top-${item.authorName}-${index}`}
-                className="mx-0 h-full w-44 border-r border-edge sm:w-52"
+                className="mx-0 h-full w-xs border-r border-edge"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
@@ -85,7 +80,7 @@ export function Testimonials() {
           </MarqueeContent>
         </Marquee>
 
-        <Marquee className="border-b border-edge [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!">
+        <Marquee className="border-b border-edge">
           <MarqueeFade side="left" />
           <MarqueeFade side="right" />
 
@@ -93,7 +88,7 @@ export function Testimonials() {
             {bottomRow.map((item, index) => (
               <MarqueeItem
                 key={`bottom-${item.authorName}-${index}`}
-                className="mx-0 h-full w-44 border-r border-edge sm:w-52"
+                className="mx-0 h-full w-xs border-r border-edge"
               >
                 <TestimonialCard item={item} />
               </MarqueeItem>
