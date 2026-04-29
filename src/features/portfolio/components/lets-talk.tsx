@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 
-import { ContactForm } from "@/components/contact-form";
+import { ContactTabs } from "@/components/contact-tabs";
 import { USER } from "@/features/portfolio/data/user";
 
 import { Panel } from "./panel";
@@ -29,8 +31,8 @@ export function LetsTalk() {
           Let&apos;s talk
         </a>
 
-        <div className="w-full max-w-xl mx-auto rounded-xl border border-border bg-card/50 p-4 sm:p-6 shadow-sm">
-          <ContactForm compact />
+        <div className="w-full mx-auto">
+          <ContactTabs />
         </div>
       </div>
     </Panel>

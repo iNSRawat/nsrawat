@@ -2,7 +2,7 @@ import { DownloadIcon, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { ContactForm } from "@/components/contact-form";
+import { ContactTabs } from "@/components/contact-tabs";
 import { Icons } from "@/components/icons";
 import { EXPERIENCES } from "@/features/portfolio/data/experiences";
 import { USER } from "@/features/portfolio/data/user";
@@ -529,13 +529,8 @@ export default function AboutPage() {
       <Separator />
 
       {/* Contact Form Section */}
-      <div className="flex flex-col items-center justify-center py-4">
-        <h2 className="mb-3 text-lg font-semibold text-center">
-          ✉️ Send a Message
-        </h2>
-        <div className="w-full max-w-xl rounded-xl border border-border bg-card/50 p-4 sm:p-6 shadow-sm">
-          <ContactForm compact />
-        </div>
+      <div className="py-4 px-2 sm:px-4">
+        <ContactTabs />
       </div>
 
       <Separator />
