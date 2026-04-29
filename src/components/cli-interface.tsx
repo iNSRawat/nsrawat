@@ -2,7 +2,6 @@
 
 import { ArrowLeft, Check, Copy } from "lucide-react";
 import { motion } from "motion/react";
-import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ALIASES, ASCII_ART, COMMANDS } from "@/features/portfolio/data/cli";
@@ -17,7 +16,7 @@ function makeLinkClickable(text: string) {
           href={part}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-cyan-400 underline underline-offset-4 transition-colors hover:text-cyan-300"
+          className="text-cyan-600 underline underline-offset-4 transition-colors hover:text-cyan-500 dark:text-cyan-400 dark:hover:text-cyan-300"
           onClick={(e) => e.stopPropagation()}
         >
           {part}
@@ -33,12 +32,12 @@ function formatLine(line: string) {
   if (line.startsWith("$")) {
     return (
       <>
-        <span className="text-emerald-400">nsrawat</span>
-        <span className="text-zinc-500">@</span>
-        <span className="text-sky-400">cli</span>
-        <span className="text-zinc-500">:</span>
-        <span className="text-purple-400">~</span>
-        <span className="text-zinc-400">$ </span>
+        <span className="text-emerald-600 dark:text-emerald-400">nsrawat</span>
+        <span className="text-zinc-400 dark:text-zinc-500">@</span>
+        <span className="text-sky-600 dark:text-sky-400">cli</span>
+        <span className="text-zinc-400 dark:text-zinc-500">:</span>
+        <span className="text-purple-600 dark:text-purple-400">~</span>
+        <span className="text-zinc-500 dark:text-zinc-400">$ </span>
         {line.slice(2)}
       </>
     );
@@ -63,19 +62,6 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
-  const { setTheme, theme: currentTheme } = useTheme();
-  const previousThemeRef = useRef<string | undefined>(undefined);
-
-  // Store previous theme & force dark
-  useEffect(() => {
-    previousThemeRef.current = currentTheme;
-    setTheme("dark");
-    return () => {
-      if (previousThemeRef.current && previousThemeRef.current !== "dark") {
-        setTheme(previousThemeRef.current);
-      }
-    };
-  }, [setTheme, currentTheme]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -245,11 +231,11 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-950 font-mono"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-50 font-mono dark:bg-zinc-950"
       onClick={focusInput}
     >
       {/* Scanline overlay for retro feel */}
-      <div className="pointer-events-none fixed inset-0 z-50 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.03)_0px,rgba(0,0,0,0.03)_1px,transparent_1px,transparent_2px)] opacity-50" />
+      <div className="pointer-events-none fixed inset-0 z-50 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.03)_0px,rgba(0,0,0,0.03)_1px,transparent_1px,transparent_2px)] opacity-50 dark:opacity-50" />
 
       {/* Back Button */}
       <div className="absolute left-4 top-3 z-50">
@@ -258,7 +244,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
             e.stopPropagation();
             onGuiCommand();
           }}
-          className="group flex items-center gap-2 rounded-md border border-zinc-800/50 bg-zinc-900/50 px-3 py-2 text-zinc-400 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700/50 hover:bg-zinc-800/50 hover:text-zinc-200"
+          className="group flex items-center gap-2 rounded-md border border-zinc-200 bg-white/50 px-3 py-2 text-zinc-500 backdrop-blur-sm transition-all duration-300 hover:border-zinc-300 hover:bg-zinc-100/50 hover:text-zinc-800 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:border-zinc-700/50 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
           title="Back to GUI"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
@@ -273,11 +259,11 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
             e.stopPropagation();
             copyAll();
           }}
-          className="group flex items-center justify-center rounded-md border border-zinc-800/50 bg-zinc-900/50 p-2.5 text-zinc-400 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700/50 hover:bg-zinc-800/50 hover:text-zinc-200"
+          className="group flex items-center justify-center rounded-md border border-zinc-200 bg-white/50 p-2.5 text-zinc-500 backdrop-blur-sm transition-all duration-300 hover:border-zinc-300 hover:bg-zinc-100/50 hover:text-zinc-800 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:border-zinc-700/50 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
           title="Copy all output"
         >
           {copiedAll ? (
-            <Check className="h-4 w-4 text-emerald-400" />
+            <Check className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
           ) : (
             <Copy className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
           )}
@@ -308,13 +294,13 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                     : undefined
                 }
               >
-                <span className="text-zinc-200">
+                <span className="text-zinc-800 dark:text-zinc-200">
                   {line.startsWith("http") ? (
                     <a
                       href={line}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cyan-400 underline underline-offset-4 transition-all hover:text-cyan-300"
+                      className="text-cyan-600 underline underline-offset-4 transition-all hover:text-cyan-500 dark:text-cyan-400 dark:hover:text-cyan-300"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {line}
@@ -326,9 +312,9 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                           key={ci}
                           className={
                             char === "█"
-                              ? "text-[#98c379]"
+                              ? "text-emerald-600 dark:text-[#98c379]"
                               : char === "░"
-                                ? "text-[#4a6340]"
+                                ? "text-emerald-300 dark:text-[#4a6340]"
                                 : ""
                           }
                         >
@@ -350,9 +336,11 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                     title="Copy to clipboard"
                   >
                     {copiedIndex === i ? (
-                      <span className="text-xs text-emerald-400">Copied!</span>
+                      <span className="text-xs text-emerald-500 dark:text-emerald-400">
+                        Copied!
+                      </span>
                     ) : (
-                      <Copy className="h-3.5 w-3.5 text-zinc-500 hover:text-zinc-300" />
+                      <Copy className="h-3.5 w-3.5 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300" />
                     )}
                   </button>
                 )}
@@ -364,21 +352,23 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
           {/* Terminal Input */}
           <form
             onSubmit={handleSubmit}
-            className="sticky bottom-0 flex items-center bg-zinc-950/80 py-2 backdrop-blur-sm"
+            className="sticky bottom-0 flex items-center bg-zinc-50/80 py-2 backdrop-blur-sm dark:bg-zinc-950/80"
           >
-            <span className="text-emerald-400">nsrawat</span>
-            <span className="text-zinc-500">@</span>
-            <span className="text-sky-400">cli</span>
-            <span className="text-zinc-500">:</span>
-            <span className="text-purple-400">~</span>
-            <span className="text-zinc-400">$ </span>
+            <span className="text-emerald-600 dark:text-emerald-400">
+              nsrawat
+            </span>
+            <span className="text-zinc-400 dark:text-zinc-500">@</span>
+            <span className="text-sky-600 dark:text-sky-400">cli</span>
+            <span className="text-zinc-400 dark:text-zinc-500">:</span>
+            <span className="text-purple-600 dark:text-purple-400">~</span>
+            <span className="text-zinc-500 dark:text-zinc-400">$ </span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="ml-1 flex-1 bg-transparent text-zinc-200 caret-zinc-200 outline-none selection:bg-cyan-500/30"
+              className="ml-1 flex-1 bg-transparent text-zinc-800 caret-zinc-800 outline-none selection:bg-cyan-500/30 dark:text-zinc-200 dark:caret-zinc-200"
               autoFocus
               spellCheck={false}
               autoCapitalize="off"
