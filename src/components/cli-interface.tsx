@@ -385,18 +385,22 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
 }
 
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <button
       onClick={(e) => {
         e.stopPropagation();
-        setTheme(theme === "dark" ? "light" : "dark");
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
       }}
-      className="group flex items-center justify-center rounded-md border border-zinc-200 bg-white/50 p-2.5 text-zinc-500 backdrop-blur-sm transition-all duration-300 hover:border-zinc-300 hover:bg-zinc-100/50 hover:text-zinc-800 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:border-zinc-700/50 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
-      title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      className="group flex items-center justify-center rounded-md bg-transparent p-2.5 text-zinc-500 transition-all duration-300 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+      title={
+        resolvedTheme === "dark"
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      }
     >
-      {theme === "dark" ? (
+      {resolvedTheme === "dark" ? (
         <Sun className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
       ) : (
         <Moon className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-12" />

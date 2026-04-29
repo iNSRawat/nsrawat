@@ -22,7 +22,7 @@ export const TESTIMONIALS: Testimonial[] = [
     authorTagline: "Fiverr - Search Engine Marketing Management",
     url: "https://www.fiverr.com/ns_rawat",
     quote:
-      "He has optimised the campaign and the cost of client acquisition through ad campaign has gone down significantly. Thanks Nagendra",
+      "He has optimised the campaign and the cost of client acquisition through the ad campaign has gone down significantly. Thanks Nagendra",
   },
   {
     authorAvatar: "https://api.dicebear.com/9.x/initials/svg?seed=S",
