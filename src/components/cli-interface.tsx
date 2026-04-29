@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowLeft, Check, Copy } from "lucide-react";
+import { ArrowLeft, Check, Copy, Moon, Sun } from "lucide-react";
 import { motion } from "motion/react";
+import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ALIASES, ASCII_ART, COMMANDS } from "@/features/portfolio/data/cli";
@@ -252,8 +253,9 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
         </button>
       </div>
 
-      {/* Global Copy Button */}
-      <div className="absolute right-4 top-3 z-50">
+      {/* Theme Toggle & Copy Buttons */}
+      <div className="absolute right-4 top-3 z-50 flex items-center gap-2">
+        <ThemeToggle />
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -379,5 +381,26 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        setTheme(theme === "dark" ? "light" : "dark");
+      }}
+      className="group flex items-center justify-center rounded-md border border-zinc-200 bg-white/50 p-2.5 text-zinc-500 backdrop-blur-sm transition-all duration-300 hover:border-zinc-300 hover:bg-zinc-100/50 hover:text-zinc-800 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:border-zinc-700/50 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
+      title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      {theme === "dark" ? (
+        <Sun className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+      ) : (
+        <Moon className="h-4 w-4 transition-transform duration-300 group-hover:-rotate-12" />
+      )}
+    </button>
   );
 }
