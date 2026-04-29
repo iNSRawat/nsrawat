@@ -261,7 +261,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
             e.stopPropagation();
             copyAll();
           }}
-          className="group flex items-center justify-center rounded-md border border-zinc-200 bg-white/50 p-2.5 text-zinc-500 backdrop-blur-sm transition-all duration-300 hover:border-zinc-300 hover:bg-zinc-100/50 hover:text-zinc-800 dark:border-zinc-800/50 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:border-zinc-700/50 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
+          className="group flex items-center justify-center rounded-md bg-transparent p-2.5 text-zinc-500 transition-all duration-300 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
           title="Copy all output"
         >
           {copiedAll ? (
