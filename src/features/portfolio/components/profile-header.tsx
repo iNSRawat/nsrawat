@@ -12,9 +12,14 @@ export function ProfileHeader() {
   return (
     <div className="screen-line-after flex border-x border-edge">
       <div className="shrink-0 border-r border-edge">
-        <div className="mx-0.5 my-0.75">
+        <div className="group relative mx-0.5 my-0.75 flex items-center justify-center">
+          {/* Glowing Aura (visible on hover) */}
+          <div className="pointer-events-none absolute inset-[-4px] z-0 rounded-full bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 opacity-0 blur-md transition-opacity duration-300 group-hover:animate-spin group-hover:[animation-duration:3s] group-hover:opacity-60" />
+          {/* Glowing Border (visible on hover) */}
+          <div className="pointer-events-none absolute inset-[-2px] z-0 rounded-full bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 opacity-0 transition-opacity duration-300 group-hover:animate-spin group-hover:[animation-duration:3s] group-hover:opacity-100" />
+
           <Image
-            className="size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
+            className="relative z-10 size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
             alt={`${USER.displayName}'s avatar`}
             src={USER.avatar}
             width={160}
@@ -63,16 +68,6 @@ export function ProfileHeader() {
             >
               {USER.flipSentences}
             </FlipSentences>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-1.5 border-t border-edge px-2 py-1.5 pl-3 sm:gap-2 sm:pl-4">
-            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-600 sm:gap-1.5 sm:px-2.5 sm:text-xs dark:text-emerald-400">
-              <span className="relative flex size-1.5 sm:size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex size-full rounded-full bg-emerald-500" />
-              </span>
-              Open to Data Science roles
-            </span>
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5 border-t border-edge p-2 pl-4 sm:gap-2">

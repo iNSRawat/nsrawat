@@ -32,14 +32,19 @@ export default function AboutPage() {
       <div className="space-y-3 sm:space-y-6 p-2 sm:p-4">
         {/* Avatar Section */}
         <div className="flex flex-col items-center gap-3 sm:gap-6 sm:flex-row">
-          <div className="relative">
+          <div className="group relative flex items-center justify-center">
+            {/* Glowing Aura (visible on hover) */}
+            <div className="pointer-events-none absolute inset-[-6px] z-0 rounded-full bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 opacity-0 blur-lg transition-opacity duration-300 group-hover:animate-spin group-hover:[animation-duration:3s] group-hover:opacity-60" />
+            {/* Glowing Border (visible on hover) */}
+            <div className="pointer-events-none absolute inset-[-3px] z-0 rounded-full bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 opacity-0 transition-opacity duration-300 group-hover:animate-spin group-hover:[animation-duration:3s] group-hover:opacity-100" />
+
             <Image
               src="/static/images/avatar.png"
               alt={USER.displayName}
               width={120}
               height={120}
               priority
-              className="rounded-full border-4 border-edge sm:w-[150px] sm:h-[150px]"
+              className="relative z-10 rounded-full border-4 border-edge sm:w-[150px] sm:h-[150px]"
             />
           </div>
           <div>
