@@ -1,7 +1,14 @@
 "use client";
 
-import { BoxIcon, ExternalLink, InfinityIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  BoxIcon,
+  ExternalLink,
+  Globe,
+  InfinityIcon,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 import { Icons } from "@/components/icons";
@@ -22,6 +29,34 @@ import { ProseMono } from "@/components/ui/typography";
 import { UTM_PARAMS } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { addQueryParams } from "@/utils/url";
+
+const getSkillIcon = (skill: string) => {
+  const s = skill.toLowerCase();
+  if (s.includes("python")) return Icons.python;
+  if (s.includes("pandas")) return Icons.pandas;
+  if (s.includes("scikit")) return Icons.scikitlearn;
+  if (s.includes("streamlit")) return Icons.streamlit;
+  if (s.includes("matplotlib")) return Icons.matplotlib;
+  if (s.includes("seaborn")) return Icons.seaborn;
+  if (s.includes("react")) return Icons.react;
+  if (s.includes("next.js")) return Icons.nextjs;
+  if (s.includes("tailwind")) return Icons.tailwindcss;
+  if (s.includes("typescript") || s === "ts") return Icons.ts;
+  if (s.includes("javascript") || s === "js") return Icons.js;
+  if (s.includes("datacamp")) return Icons.datacamp;
+  if (s.includes("sql") || s.includes("database")) return Icons.mysql;
+  if (s.includes("jupyter")) return Icons.jupyter;
+  if (s.includes("tensorflow")) return Icons.tensorflow;
+  if (s.includes("pytorch")) return Icons.pytorch;
+  if (s.includes("numpy")) return Icons.numpy;
+  if (s.includes("tableau")) return Icons.tableau;
+  if (s.includes("powerbi")) return Icons.powerbi;
+  if (s.includes("spark")) return Icons.apachespark;
+  if (s.includes("hugging")) return Icons.huggingface;
+  if (s.includes("kaggle")) return Icons.kaggle;
+  if (s.includes("markdown")) return Icons.markdown;
+  return null;
+};
 
 import type { Project } from "../../types/projects";
 
@@ -175,12 +210,12 @@ export function ProjectItem({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 gap-3 rounded-xl border bg-card p-3 text-card-foreground shadow-sm sm:gap-4 sm:p-4",
+        "flex flex-col gap-3 rounded-xl border bg-card p-3 text-card-foreground shadow-sm sm:gap-4 sm:p-4",
         className,
       )}
     >
       {project.logo ? (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted">
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted shrink-0">
           <Image
             src={project.logo}
             alt={project.title}
@@ -201,77 +236,89 @@ export function ProjectItem({
         </div>
       )}
 
-      <div className="flex flex-col gap-3">
-        <div className="space-y-1">
-          <h3 className="text-lg font-bold leading-none tracking-tight hover:underline sm:text-xl">
+      <div className="flex flex-col flex-1 gap-4">
+        <div className="flex items-start justify-between gap-2">
+          <div className="space-y-1">
+            <h3 className="text-lg font-bold leading-tight tracking-tight sm:text-xl">
+              <a
+                href={addQueryParams(project.repoUrl, UTM_PARAMS)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {project.title}
+              </a>
+            </h3>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0 pt-1">
+            {project.demoUrl && (
+              <a
+                href={addQueryParams(project.demoUrl, UTM_PARAMS)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+                aria-label="Live Demo"
+              >
+                <Globe className="size-5" />
+              </a>
+            )}
             <a
               href={addQueryParams(project.repoUrl, UTM_PARAMS)}
               target="_blank"
               rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="GitHub Repository"
             >
-              {project.title}
+              <Icons.github className="size-5" />
             </a>
-          </h3>
-          <p className="text-xs text-muted-foreground">
-            {project.period.start} - {project.period.end ?? "Present"}
-          </p>
+          </div>
         </div>
 
         {project.description && (
           <div className="text-sm text-muted-foreground">
-            <div
-              className={cn(
-                "prose prose-sm dark:prose-invert",
-                !isExpanded && "line-clamp-2",
+            <div className="line-clamp-3">
+              {project.description.replace(
+                /^Problem: |- Approach: |- Result: /gm,
+                "",
               )}
-            >
-              <Markdown>{project.description}</Markdown>
             </div>
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-1 text-xs font-medium text-blue-500 hover:underline focus:outline-none"
-            >
-              {isExpanded ? "Read less" : "Read more"}
-            </button>
           </div>
         )}
 
         <div className="flex flex-col gap-2">
-          <span className="text-sm font-semibold text-foreground">
-            Technologies Used:
-          </span>
+          <span className="text-xs text-muted-foreground">Technologies</span>
           {project.skills.length > 0 && (
-            <ul className="flex flex-wrap gap-1.5 sm:gap-2">
-              {project.skills.map((skill, index) => (
-                <li key={index}>
-                  <Tag className="text-xs px-2 py-0.5">{skill}</Tag>
-                </li>
-              ))}
+            <ul className="flex flex-wrap gap-3 items-center">
+              {project.skills.map((skill, index) => {
+                const Icon = getSkillIcon(skill);
+                return Icon ? (
+                  <li key={index} title={skill}>
+                    <Icon className="size-5 text-muted-foreground hover:text-foreground transition-colors" />
+                  </li>
+                ) : (
+                  <li key={index}>
+                    <Tag className="px-2 py-0.5 text-[10px]">{skill}</Tag>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
 
-        <div className="flex items-center gap-4 border-t border-edge pt-3">
-          <a
-            href={addQueryParams(project.repoUrl, UTM_PARAMS)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        <div className="flex items-center justify-between pt-2 mt-auto">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-500">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            All Systems Operational
+          </div>
+          <Link
+            href={`/projects/${project.id}`}
+            className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Icons.github className="size-4" />
-            GitHub
-          </a>
-          {project.demoUrl && (
-            <a
-              href={addQueryParams(project.demoUrl, UTM_PARAMS)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <ExternalLink className="size-4" />
-              Live
-            </a>
-          )}
+            View Details <ArrowRightIcon className="size-4" />
+          </Link>
         </div>
       </div>
     </div>

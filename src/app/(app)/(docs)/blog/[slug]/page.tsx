@@ -1,6 +1,7 @@
 import { getTableOfContents } from "fumadocs-core/content/toc";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
@@ -206,12 +207,29 @@ export default async function Page({
           className={cn(
             "h-8",
             "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
-            "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56"
+            "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
           )}
         />
       </div>
 
       <Prose className="px-4">
+        {post.metadata.image && (
+          <div className="not-prose relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl mb-8 mt-6 flex items-center justify-center bg-[#050505] ring-1 ring-white/10 group">
+            <div className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-cyan-500/30 blur-[120px] rounded-full pointer-events-none" />
+            <div className="relative w-[85%] h-[85%] sm:w-[75%] sm:h-[85%] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 z-10 transition-transform duration-500 group-hover:scale-[1.02]">
+              <Image
+                src={post.metadata.image}
+                alt={post.metadata.title}
+                fill
+                className="object-cover object-top"
+                quality={100}
+                priority
+                unoptimized
+              />
+            </div>
+          </div>
+        )}
+
         <h1 className="screen-line-after text-3xl font-semibold">
           {post.metadata.title}
         </h1>

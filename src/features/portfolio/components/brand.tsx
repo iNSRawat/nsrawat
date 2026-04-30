@@ -6,7 +6,7 @@ import { NSRawatWordmark } from "@/components/nsr-wordmark";
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 const BrandContextMenu = dynamic(() =>
-  import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
+  import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu),
 );
 
 export function Brand() {

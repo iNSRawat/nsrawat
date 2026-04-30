@@ -16,7 +16,7 @@ async function fetchContributors(): Promise<string[]> {
         "X-GitHub-Api-Version": "2022-11-28",
       },
       next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
-    }
+    },
   );
 
   if (!response.ok) {

@@ -24,4 +24,26 @@ export type Project = {
   logo: string;
   /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean;
+
+  /** Detailed Case Study Fields */
+  /** Project overview section (supports markdown) */
+  overview?: string;
+  /** Key features section (supports markdown) */
+  keyFeatures?: string;
+  /** Key challenges faced (supports markdown) */
+  keyChallenges?: string;
+  /** Key learnings from the project (supports markdown) */
+  keyLearnings?: string;
+  /** Duration of the project (e.g. "2 Weeks") */
+  duration?: string;
+  /** Role played in the project (e.g. "Full Stack Developer", "Data Scientist") */
+  role?: string;
+  /** Team size or type (e.g. "Solo", "Team of 4") */
+  teamSize?: string;
+  /** Main category (e.g. "Full Stack", "Data Science") */
+  category?: string;
+  /** Status of the project (e.g. "Completed", "In Progress") */
+  status?: string;
+  /** Motivation behind the project (supports markdown) */
+  whyIBuiltThis?: string;
 };

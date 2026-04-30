@@ -7,13 +7,13 @@ import type { ChevronsDownUpIconHandle } from "../animated-icons/chevrons-down-u
 import { ChevronsDownUpIcon } from "../animated-icons/chevrons-down-up-icon";
 
 function Collapsible(
-  props: React.ComponentProps<typeof CollapsiblePrimitive.Root>
+  props: React.ComponentProps<typeof CollapsiblePrimitive.Root>,
 ) {
   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />;
 }
 
 function CollapsibleTrigger(
-  props: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>
+  props: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>,
 ) {
   return (
     <CollapsiblePrimitive.CollapsibleTrigger
@@ -24,7 +24,7 @@ function CollapsibleTrigger(
 }
 
 function CollapsibleContent(
-  props: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>
+  props: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>,
 ) {
   return (
     <CollapsiblePrimitive.CollapsibleContent
@@ -45,7 +45,7 @@ const useCollapsible = () => {
 
   if (!context) {
     throw new Error(
-      "Collapsible components must be used within a CollapsibleWithContext"
+      "Collapsible components must be used within a CollapsibleWithContext",
     );
   }
 

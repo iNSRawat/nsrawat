@@ -1,10 +1,10 @@
 export async function fetchAvatarAsBase64(
   username: string,
-  size = 128
+  size = 128,
 ): Promise<string | null> {
   try {
     const response = await fetch(
-      `https://github.com/${username}.png?size=${size}`
+      `https://github.com/${username}.png?size=${size}`,
     );
     if (!response.ok) return null;
 
@@ -92,7 +92,7 @@ export async function generateGitHubAvatarsSVG({
   const height = rows * (size + spacing) - spacing;
 
   const avatarPromises = usernames.map((username) =>
-    fetchAvatarAsBase64(username)
+    fetchAvatarAsBase64(username),
   );
   const avatarDataUrls = await Promise.all(avatarPromises);
 

@@ -11,7 +11,7 @@ function Panel({ className, ...props }: React.ComponentProps<"section">) {
       data-slot="panel"
       className={cn(
         "screen-line-before screen-line-after border-x border-edge",
-        className
+        className,
       )}
       {...props}
     />
@@ -49,7 +49,7 @@ function PanelTitleSup({ className, ...props }: React.ComponentProps<"sup">) {
     <sup
       className={cn(
         "-top-[0.75em] ml-1 text-sm font-medium text-muted-foreground select-none",
-        className
+        className,
       )}
       {...props}
     />

@@ -60,7 +60,7 @@ export function remarkComponent() {
           const title = getNodeAttributeByName(node, "title");
           const showLineNumbers = getNodeAttributeByName(
             node,
-            "showLineNumbers"
+            "showLineNumbers",
           );
 
           const codeBlock = {

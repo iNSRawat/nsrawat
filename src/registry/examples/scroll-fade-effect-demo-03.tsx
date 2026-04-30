@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 const tags = Array.from({ length: 50 }).map(
-  (_, i, a) => `v1.2.0-beta.${a.length - i}`
+  (_, i, a) => `v1.2.0-beta.${a.length - i}`,
 );
 
 export default function ScrollAreaDemo() {
@@ -13,7 +13,7 @@ export default function ScrollAreaDemo() {
     <ScrollArea
       className={cn(
         "h-72 w-48 rounded-lg border",
-        "**:data-[slot=scroll-area-viewport]:scroll-fade-effect-y"
+        "**:data-[slot=scroll-area-viewport]:scroll-fade-effect-y",
         // "**:data-[slot=scroll-area-viewport]:[--mask-offset-top:8px]",
         // "**:data-[slot=scroll-area-viewport]:[--mask-offset-bottom:8px]"
       )}

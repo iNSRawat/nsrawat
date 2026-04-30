@@ -70,7 +70,7 @@ export function CopyButton({
                       code: value,
                     },
                   }
-                : undefined
+                : undefined,
             );
           } catch {
             setState("failed");

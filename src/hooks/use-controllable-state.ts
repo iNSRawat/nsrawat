@@ -45,7 +45,7 @@ export function useControllableState<T>({
         const from = wasControlled ? "controlled" : "uncontrolled";
         const to = isControlled ? "controlled" : "uncontrolled";
         console.warn(
-          `${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`
+          `${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`,
         );
       }
       isControlledRef.current = isControlled;
@@ -64,7 +64,7 @@ export function useControllableState<T>({
         setUncontrolledProp(nextValue);
       }
     },
-    [isControlled, prop, setUncontrolledProp, onChangeRef]
+    [isControlled, prop, setUncontrolledProp, onChangeRef],
   );
 
   return [value, setValue];

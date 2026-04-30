@@ -9,16 +9,16 @@ export function GET() {
   const escapeXml = (unsafe: string) =>
     unsafe.replace(/[<>&'"]/g, (c) => {
       switch (c) {
-        case '<':
-          return '&lt;';
-        case '>':
-          return '&gt;';
-        case '&':
-          return '&amp;';
+        case "<":
+          return "&lt;";
+        case ">":
+          return "&gt;";
+        case "&":
+          return "&amp;";
         case "'":
-          return '&apos;';
+          return "&apos;";
         case '"':
-          return '&quot;';
+          return "&quot;";
         default:
           return c;
       }
@@ -32,7 +32,7 @@ export function GET() {
           <link>${SITE_INFO.url}/blog/${post.slug}</link>
           <description>${escapeXml(post.metadata.description || "")}</description>
           <pubDate>${new Date(post.metadata.createdAt).toISOString()}</pubDate>
-        </item>`
+        </item>`,
     )
     .join("\n");
 

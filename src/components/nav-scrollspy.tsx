@@ -38,7 +38,7 @@ function useActiveItem(itemIds: string[], enabled = true) {
           }
         });
       },
-      { rootMargin: `0% 0% -80% 0%` }
+      { rootMargin: `0% 0% -80% 0%` },
     );
 
     itemIds?.forEach((id) => {

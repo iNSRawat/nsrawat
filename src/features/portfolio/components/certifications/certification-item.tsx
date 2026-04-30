@@ -19,7 +19,7 @@ export function CertificationItem({
     <a
       className={cn(
         "group/cert flex items-center pr-2 hover:bg-accent2",
-        className
+        className,
       )}
       href={certification.credentialURL}
       target="_blank"
@@ -41,7 +41,7 @@ export function CertificationItem({
           className={cn(
             "mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg select-none",
             "border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background",
-            "bg-muted text-muted-foreground [&_svg]:size-4"
+            "bg-muted text-muted-foreground [&_svg]:size-4",
           )}
           aria-hidden
         >

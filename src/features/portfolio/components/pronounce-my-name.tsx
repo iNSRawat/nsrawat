@@ -20,7 +20,7 @@ export function PronounceMyName({
       className={cn(
         "relative text-muted-foreground transition-[color,scale] select-none hover:text-foreground active:scale-[0.9]",
         "after:absolute after:-inset-1",
-        className
+        className,
       )}
       onClick={() => {
         play();

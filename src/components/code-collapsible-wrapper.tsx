@@ -18,7 +18,7 @@ export function CodeCollapsibleWrapper({
     <CollapsibleWithContext
       className={cn(
         "group/collapsible not-prose relative my-[1.25em] overflow-hidden rounded-xl",
-        className
+        className,
       )}
       {...props}
     >

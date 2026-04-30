@@ -45,7 +45,7 @@ export function NavItem({
     <Link
       className={cn(
         "font-mono text-sm font-medium text-muted-foreground transition-[color] duration-300",
-        active && "text-foreground"
+        active && "text-foreground",
       )}
       {...props}
     />

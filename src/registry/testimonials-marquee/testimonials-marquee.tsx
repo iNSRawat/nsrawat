@@ -26,7 +26,7 @@ export function TestimonialQuote({
       data-slot="quote"
       className={cn(
         "grow px-4 py-3 text-base text-balance text-foreground italic",
-        className
+        className,
       )}
       {...props}
     >
@@ -45,7 +45,7 @@ export function TestimonialAuthor({
       data-slot="author"
       className={cn(
         "grid grid-cols-[auto_1fr] grid-rows-2 items-center gap-x-3.5 px-4 pt-1 pb-3",
-        className
+        className,
       )}
       {...props}
     >
@@ -96,7 +96,7 @@ export function TestimonialAvatarRing({
       data-slot="avatar-ring"
       className={cn(
         "pointer-events-none absolute inset-0 rounded-full ring-1 ring-black/10 ring-inset dark:ring-white/15",
-        className
+        className,
       )}
       {...props}
     />
@@ -113,7 +113,7 @@ export function TestimonialAuthorName({
       data-slot="author-name"
       className={cn(
         "text-sm leading-4 font-semibold text-foreground",
-        className
+        className,
       )}
       {...props}
     >
@@ -132,7 +132,7 @@ export function TestimonialAuthorTagline({
       data-slot="author-tagline"
       className={cn(
         "text-xs leading-4 text-balance text-muted-foreground",
-        className
+        className,
       )}
       {...props}
     >
@@ -150,7 +150,7 @@ export function TestimonialVerifiedBadge({
       data-slot="verified-badge"
       className={cn(
         "ml-1.5 inline-block size-3 -translate-y-px text-info",
-        className
+        className,
       )}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

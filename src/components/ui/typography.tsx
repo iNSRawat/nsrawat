@@ -26,7 +26,7 @@ function Prose({
         "prose-strong:font-medium",
         "prose-hr:border-edge",
         "prose-blockquote:border-s-border prose-blockquote:[&_p:first-of-type]:before:content-none prose-blockquote:[&_p:last-of-type]:after:content-none",
-        className
+        className,
       )}
       {...props}
     />
@@ -54,7 +54,7 @@ function Code({ className, ...props }: React.ComponentProps<"code">) {
       className={cn(
         !isCodeBlock &&
           "not-prose rounded-md border bg-muted/50 px-1.5 py-0.5 font-mono text-sm",
-        className
+        className,
       )}
       {...props}
     />

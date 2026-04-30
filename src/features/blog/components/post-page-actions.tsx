@@ -192,7 +192,7 @@ export function LLMCopyButtonWithViewOptions({
           variant: "secondary",
           className:
             "gap-0 divide-x px-0 font-sans active:scale-none dark:divide-white/10",
-        })
+        }),
       )}
     >
       <LLMCopyButton markdownUrl={markdownUrl} />

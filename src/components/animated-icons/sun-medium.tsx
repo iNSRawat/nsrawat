@@ -46,7 +46,7 @@ const SunMediumIcon = forwardRef<SunMediumIconHandle, SunMediumIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -57,7 +57,7 @@ const SunMediumIcon = forwardRef<SunMediumIconHandle, SunMediumIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
 
     return (
@@ -100,7 +100,7 @@ const SunMediumIcon = forwardRef<SunMediumIconHandle, SunMediumIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 SunMediumIcon.displayName = "SunMediumIcon";

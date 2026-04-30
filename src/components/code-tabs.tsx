@@ -18,7 +18,7 @@ export function CodeTabs({
     <Tabs
       className={cn(
         "gap-0 **:data-rehype-pretty-code-figure:last:mb-0",
-        className
+        className,
       )}
       value={installationType}
       onValueChange={(value) => {

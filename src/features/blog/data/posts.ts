@@ -48,7 +48,7 @@ export function getAllPosts() {
         new Date(b.metadata.createdAt).getTime() -
         new Date(a.metadata.createdAt).getTime()
       );
-    }
+    },
   );
 }
 

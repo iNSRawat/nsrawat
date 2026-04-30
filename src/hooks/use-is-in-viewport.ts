@@ -8,10 +8,10 @@ export function useIsInViewport(ref: React.RefObject<HTMLElement | null>) {
     () =>
       typeof window !== "undefined"
         ? new IntersectionObserver(([entry]) =>
-            setIsIntersecting(entry.isIntersecting)
+            setIsIntersecting(entry.isIntersecting),
           )
         : null,
-    []
+    [],
   );
 
   useEffect(() => {

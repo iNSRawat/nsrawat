@@ -32,7 +32,7 @@ export const ImageZoom = ({
       '[&_[data-rmiz-content="found"]_svg]:cursor-zoom-in',
       '[&_[data-rmiz-content="found"]_[role="img"]]:cursor-zoom-in',
       '[&_[data-rmiz-content="found"]_[data-zoom]]:cursor-zoom-in',
-      className
+      className,
     )}
   >
     <Zoom
@@ -45,7 +45,7 @@ export const ImageZoom = ({
         "**:data-rmiz-modal-content:relative **:data-rmiz-modal-content:size-full",
         "**:data-rmiz-modal-img:absolute **:data-rmiz-modal-img:origin-top-left **:data-rmiz-modal-img:cursor-zoom-out **:data-rmiz-modal-img:transition-transform",
         "motion-reduce:**:data-rmiz-modal-img:transition-none motion-reduce:**:data-rmiz-modal-overlay:transition-none",
-        backdropClassName
+        backdropClassName,
       )}
       {...props}
     />

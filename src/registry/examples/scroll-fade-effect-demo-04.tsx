@@ -28,7 +28,7 @@ export default function ScrollAreaHorizontalDemo() {
     <ScrollArea
       className={cn(
         "w-72 rounded-lg border whitespace-nowrap sm:w-96",
-        "**:data-[slot=scroll-area-viewport]:scroll-fade-effect-x"
+        "**:data-[slot=scroll-area-viewport]:scroll-fade-effect-x",
         // "**:data-[slot=scroll-area-viewport]:[--mask-offset-left:8px]",
         // "**:data-[slot=scroll-area-viewport]:[--mask-offset-right:8px]"
       )}
