@@ -215,38 +215,41 @@ export function ProjectItem({
       )}
     >
       {project.logo ? (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted shrink-0">
+        <Link
+          href={`/projects/${project.id}`}
+          className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted shrink-0 block group"
+        >
           <Image
             src={project.logo}
             alt={project.title}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             quality={100}
             unoptimized
             aria-hidden="true"
           />
           <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-inset ring-black/10 dark:ring-white/10" />
-        </div>
+        </Link>
       ) : (
-        <div
-          className="flex aspect-video w-full shrink-0 select-none items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background"
+        <Link
+          href={`/projects/${project.id}`}
+          className="flex aspect-video w-full shrink-0 select-none items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background hover:bg-muted/80 transition-colors"
           aria-hidden="true"
         >
           <BoxIcon className="size-12" />
-        </div>
+        </Link>
       )}
 
       <div className="flex flex-col flex-1 gap-4">
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
             <h3 className="text-lg font-bold leading-tight tracking-tight sm:text-xl">
-              <a
-                href={addQueryParams(project.repoUrl, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={`/projects/${project.id}`}
+                className="hover:underline"
               >
                 {project.title}
-              </a>
+              </Link>
             </h3>
           </div>
 
