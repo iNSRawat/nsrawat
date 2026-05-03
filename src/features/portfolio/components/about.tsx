@@ -1,4 +1,8 @@
+import { MailIcon, UserIcon } from "lucide-react";
+import Link from "next/link";
+
 import { Markdown } from "@/components/markdown";
+import { Button } from "@/components/ui/button";
 import { ProseMono } from "@/components/ui/typography";
 import { USER } from "@/features/portfolio/data/user";
 
@@ -15,14 +19,20 @@ export function About() {
         <ProseMono>
           <Markdown>{USER.about}</Markdown>
         </ProseMono>
-        <a
-          href="/about"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 inline-block font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Read more about me →
-        </a>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Button asChild variant="outline" size="sm">
+            <Link href="/about">
+              <UserIcon className="size-4" />
+              More About Me
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/contact">
+              <MailIcon className="size-4" />
+              Contact Me
+            </Link>
+          </Button>
+        </div>
       </PanelContent>
     </Panel>
   );

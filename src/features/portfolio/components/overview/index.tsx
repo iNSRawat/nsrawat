@@ -1,6 +1,6 @@
 import {
-  BarChart3Icon,
   GlobeIcon,
+  HandshakeIcon,
   MapPinIcon,
   MarsIcon,
   NonBinaryIcon,
@@ -58,14 +58,11 @@ export function Overview() {
 
           <IntroItem>
             <IntroItemIcon>
-              <BarChart3Icon />
+              <HandshakeIcon />
             </IntroItemIcon>
             <IntroItemContent>
-              <IntroItemLink
-                href="https://analytics.nsrawat.in/share/qTtlFjdcSXvVIupG/nsrawat.in"
-                aria-label="Traffic and Insights"
-              >
-                📊 Traffic & Insights
+              <IntroItemLink href="/contact" aria-label="Let's connect">
+                🤝 Let&apos;s connect
               </IntroItemLink>
             </IntroItemContent>
           </IntroItem>

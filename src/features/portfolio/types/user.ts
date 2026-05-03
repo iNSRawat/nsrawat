@@ -41,4 +41,6 @@ export type User = {
   timeZone: string;
   /** Profile/site start date in YYYY-MM-DD */
   dateCreated: string;
+  /** Analytics public dashboard URL */
+  analyticsUrl?: string;
 };

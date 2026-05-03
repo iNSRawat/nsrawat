@@ -488,7 +488,16 @@ export default function AboutPage() {
                   >
                     umami
                   </a>
-                  .
+                  . (
+                  <a
+                    href={USER.analyticsUrl}
+                    className="link font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    📊 Traffic & Insights
+                  </a>
+                  )
                 </span>
               </li>
               <li className="flex items-start gap-2">

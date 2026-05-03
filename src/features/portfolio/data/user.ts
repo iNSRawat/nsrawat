@@ -46,4 +46,6 @@ I'm Nagendra Singh Rawat, a **Data Scientist | Ex-Digital Marketer**. After spen
     "delhi ncr",
   ],
   dateCreated: "2025-09-01", // YYYY-MM-DD
+  analyticsUrl:
+    "https://analytics.nsrawat.in/share/qTtlFjdcSXvVIupG/nsrawat.in",
 } satisfies User;
