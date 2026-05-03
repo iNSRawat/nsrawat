@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 import { Icons } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
@@ -30,34 +29,6 @@ import { UTM_PARAMS } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { addQueryParams } from "@/utils/url";
 
-const getSkillIcon = (skill: string) => {
-  const s = skill.toLowerCase();
-  if (s.includes("python")) return Icons.python;
-  if (s.includes("pandas")) return Icons.pandas;
-  if (s.includes("scikit")) return Icons.scikitlearn;
-  if (s.includes("streamlit")) return Icons.streamlit;
-  if (s.includes("matplotlib")) return Icons.matplotlib;
-  if (s.includes("seaborn")) return Icons.seaborn;
-  if (s.includes("react")) return Icons.react;
-  if (s.includes("next.js")) return Icons.nextjs;
-  if (s.includes("tailwind")) return Icons.tailwindcss;
-  if (s.includes("typescript") || s === "ts") return Icons.ts;
-  if (s.includes("javascript") || s === "js") return Icons.js;
-  if (s.includes("datacamp")) return Icons.datacamp;
-  if (s.includes("sql") || s.includes("database")) return Icons.mysql;
-  if (s.includes("jupyter")) return Icons.jupyter;
-  if (s.includes("tensorflow")) return Icons.tensorflow;
-  if (s.includes("pytorch")) return Icons.pytorch;
-  if (s.includes("numpy")) return Icons.numpy;
-  if (s.includes("tableau")) return Icons.tableau;
-  if (s.includes("powerbi")) return Icons.powerbi;
-  if (s.includes("spark")) return Icons.apachespark;
-  if (s.includes("hugging")) return Icons.huggingface;
-  if (s.includes("kaggle")) return Icons.kaggle;
-  if (s.includes("markdown")) return Icons.markdown;
-  return null;
-};
-
 import type { Project } from "../../types/projects";
 
 export function ProjectItem({
@@ -73,8 +44,6 @@ export function ProjectItem({
   const isOngoing = !end;
   const isSinglePeriod = end === start;
 
-  const [isExpanded, setIsExpanded] = useState(false);
-
   if (variant === "compact") {
     return (
       <CollapsibleWithContext defaultOpen={project.isExpanded} asChild>
@@ -88,7 +57,6 @@ export function ProjectItem({
                 height={32}
                 quality={100}
                 className="mx-4 flex size-6 shrink-0 select-none"
-                unoptimized
                 aria-hidden="true"
               />
             ) : (
@@ -225,7 +193,6 @@ export function ProjectItem({
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             quality={100}
-            unoptimized
             aria-hidden="true"
           />
           <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-inset ring-black/10 dark:ring-white/10" />
@@ -291,19 +258,14 @@ export function ProjectItem({
         <div className="flex flex-col gap-2">
           <span className="text-xs text-muted-foreground">Technologies</span>
           {project.skills.length > 0 && (
-            <ul className="flex flex-wrap gap-3 items-center">
-              {project.skills.map((skill, index) => {
-                const Icon = getSkillIcon(skill);
-                return Icon ? (
-                  <li key={index} title={skill}>
-                    <Icon className="size-5 text-muted-foreground hover:text-foreground transition-colors" />
-                  </li>
-                ) : (
-                  <li key={index}>
-                    <Tag className="px-2 py-0.5 text-[10px]">{skill}</Tag>
-                  </li>
-                );
-              })}
+            <ul className="flex flex-wrap gap-1.5 items-center">
+              {project.skills.map((skill, index) => (
+                <li key={index}>
+                  <Tag className="px-2 py-0.5 text-[10px] whitespace-nowrap">
+                    {skill}
+                  </Tag>
+                </li>
+              ))}
             </ul>
           )}
         </div>

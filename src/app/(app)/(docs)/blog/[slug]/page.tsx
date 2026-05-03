@@ -224,7 +224,6 @@ export default async function Page({
                 className="object-cover object-top"
                 quality={100}
                 priority
-                unoptimized
               />
             </div>
           </div>

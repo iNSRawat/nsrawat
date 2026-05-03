@@ -25,10 +25,10 @@ const GitHubContributions = dynamic(
   { loading: () => <SectionSkeleton /> },
 );
 
-const TeckStack = dynamic(
+const TechStack = dynamic(
   () =>
-    import("@/features/portfolio/components/teck-stack").then(
-      (mod) => mod.TeckStack,
+    import("@/features/portfolio/components/tech-stack").then(
+      (mod) => mod.TechStack,
     ),
   { loading: () => <SectionSkeleton /> },
 );
@@ -100,7 +100,7 @@ export default function Page() {
         <GitHubContributions />
         <Separator />
 
-        <TeckStack />
+        <TechStack />
         <Separator />
 
         <Snippets />
@@ -114,10 +114,6 @@ export default function Page() {
 
         <Projects projectItemVariant="compact" />
         <Separator />
-
-        {/* Awards section removed for now */}
-        {/* <Awards /> */}
-        {/* <Separator /> */}
 
         <LetsTalk />
         <Separator />

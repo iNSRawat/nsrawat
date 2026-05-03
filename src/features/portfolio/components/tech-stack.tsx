@@ -37,7 +37,7 @@ const ICON_MAP: Record<string, string> = {
   chatgpt: "openai", // Present
 };
 
-export function TeckStack() {
+export function TechStack() {
   return (
     <Panel id="stack">
       <PanelHeader>
