@@ -133,7 +133,7 @@ export const EXPERIENCES: Experience[] = [
         employmentPeriod: {
           start: "09.2025",
         },
-        location: "Self-Paced",
+        location: "DataCamp & Self-Paced",
         locationType: "Remote",
         icon: "education",
         description: `- Currently building skills in Python, Machine Learning, and Data Analysis.
@@ -158,8 +158,8 @@ export const EXPERIENCES: Experience[] = [
         location: "Dehradun, India",
         locationType: "On-Site",
         icon: "education",
-        description: `**H.N.B. Garhwal University**
-Dehradun, India`,
+        description: `- **H.N.B. Garhwal University**
+- Completed BSc in Physics, Chemistry & Maths`,
         skills: ["Science", "Research"],
       },
     ],
