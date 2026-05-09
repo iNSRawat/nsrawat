@@ -8,6 +8,8 @@ import { EXPERIENCES } from "@/features/portfolio/data/experiences";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
 
+import { ExperienceItem } from "./components/experience-item";
+
 export const metadata: Metadata = {
   title: "About Nagendra Singh Rawat",
   description: `Learn more about ${USER.displayName} - Data Scientist | Specializing in Marketing Analytics based in ${USER.address}.`,
@@ -341,25 +343,12 @@ export default function AboutPage() {
 
       {/* Experience Section */}
       <div className="p-2 sm:p-4">
-        <h2 className="mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
+        <h2 className="mb-4 text-xl sm:text-2xl font-bold tracking-tight">
           💼 Experience
         </h2>
-        <div className="space-y-3 sm:space-y-6">
-          {EXPERIENCES.slice(0, 5).map((exp) => (
-            <div key={exp.id} className="border-l-2 border-edge pl-4">
-              <h3 className="font-semibold">{exp.companyName}</h3>
-              {exp.positions.map((pos) => (
-                <div key={pos.id} className="mt-2">
-                  <p className="font-mono text-sm text-muted-foreground">
-                    {pos.title}
-                  </p>
-                  <p className="font-mono text-xs text-muted-foreground/70">
-                    {pos.employmentPeriod.start} -{" "}
-                    {pos.employmentPeriod.end || "Present"}
-                  </p>
-                </div>
-              ))}
-            </div>
+        <div className="space-y-4 sm:space-y-6">
+          {EXPERIENCES.map((exp) => (
+            <ExperienceItem key={exp.id} experience={exp} />
           ))}
         </div>
       </div>

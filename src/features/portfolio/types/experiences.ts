@@ -21,6 +21,9 @@ export type ExperiencePosition = {
   /** UI icon to represent the role type. */
   icon?: ExperiencePositionIcon;
   skills?: string[];
+  location?: string;
+  /** On-Site | Remote | Hybrid */
+  locationType?: string;
   /** Whether the position is expanded by default in the UI. */
   isExpanded?: boolean;
 };

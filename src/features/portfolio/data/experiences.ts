@@ -10,7 +10,7 @@ export const EXPERIENCES: Experience[] = [
         id: "freelance-data-analyst",
         title: "Freelance Data Analyst & Marketing Specialist",
         employmentPeriod: {
-          start: "04.2023",
+          start: "06.2023",
         },
         employmentType: "Freelance",
         icon: "code",
@@ -18,6 +18,8 @@ export const EXPERIENCES: Experience[] = [
 - Developed Python automation scripts for ETL processes, reducing manual data collection by **35%** and improving data quality through validation workflows.
 - Conducted consumer behavior analysis using EDA on 50,000+ records, identifying key purchase patterns and churn indicators.
 - Implemented A/B testing framework with hypothesis testing (p-values, confidence intervals) resulting in **18%** conversion improvement.`,
+        location: "Remote",
+        locationType: "Freelance",
         skills: [
           "Python",
           "SQL",
@@ -44,6 +46,8 @@ export const EXPERIENCES: Experience[] = [
           end: "06.2023",
         },
         employmentType: "Full-time",
+        location: "Gurgaon, India",
+        locationType: "On-Site",
         icon: "design",
         description: `- Analyzed sales funnel data using data-driven strategies resulting in **25% sales increase** through predictive modeling and segmentation.
 - Designed custom Excel dashboards with advanced formulas and pivot tables for management reporting, integrating Google Analytics for real-time KPI tracking.
@@ -71,6 +75,8 @@ export const EXPERIENCES: Experience[] = [
           end: "03.2023",
         },
         employmentType: "Full-time",
+        location: "Delhi, India",
+        locationType: "On-Site",
         icon: "business",
         description: `- Achieved **6x ROI** through data-driven budget optimization using statistical analysis to allocate Rs.5L+ monthly spend across channels (Google Ads, Facebook, Instagram).
 - Managed comprehensive e-commerce analytics using Google Analytics/SQL, implementing real-time dashboards tracking 20+ metrics.
@@ -100,6 +106,8 @@ export const EXPERIENCES: Experience[] = [
           end: "2021",
         },
         employmentType: "Full-time",
+        location: "Delhi, India",
+        locationType: "On-Site",
         icon: "design",
         description: `- Managed multi-channel campaigns for 5+ clients, analyzing performance data using Google Analytics/Excel to optimize SEO, PPC, social strategies.
 - Developed comprehensive ROI dashboards tracking 10+ metrics using pivot tables for client presentations.
@@ -125,6 +133,8 @@ export const EXPERIENCES: Experience[] = [
         employmentPeriod: {
           start: "09.2025",
         },
+        location: "Self-Paced",
+        locationType: "Remote",
         icon: "education",
         description: `- Currently building skills in Python, Machine Learning, and Data Analysis.
 - Completed DataCamp Data Scientist Associate certification.
@@ -145,6 +155,8 @@ export const EXPERIENCES: Experience[] = [
           start: "2014",
           end: "2017",
         },
+        location: "Dehradun, India",
+        locationType: "On-Site",
         icon: "education",
         description: `**H.N.B. Garhwal University**
 Dehradun, India`,
