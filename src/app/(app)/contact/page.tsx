@@ -1,11 +1,15 @@
 "use client";
 
+import { CalendarIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { ContactTabs } from "@/components/contact-tabs";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const ROTATING_WORDS = ["Collaborations", "Ideas", "Projects", "Solutions"];
+const CAL_URL =
+  "https://cal.com/nsrawat?utm_source=nsrawat.in&utm_medium=website&utm_campaign=contact_page";
 
 function AnimatedWord() {
   const [index, setIndex] = useState(0);
@@ -78,6 +82,14 @@ export default function ContactPage() {
           Whether you have a question, a project proposal, or just want to say
           hi, I&apos;ll try my best to get back to you!
         </p>
+        <div className="mt-4">
+          <Button asChild variant="outline" size="sm">
+            <a href={CAL_URL} target="_blank" rel="noopener noreferrer">
+              <CalendarIcon className="size-4" />
+              Book free 1:1
+            </a>
+          </Button>
+        </div>
       </div>
 
       <Separator />

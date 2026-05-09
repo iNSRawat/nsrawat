@@ -40,6 +40,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import type { Post } from "@/features/blog/types/post";
+import { BOOKMARKS } from "@/features/portfolio/data/bookmarks";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 import type { Snippet } from "@/features/snippets/types/snippet";
 import { useSound } from "@/hooks/use-sound";
@@ -70,6 +71,11 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: NSRMark,
   },
   {
+    title: "About",
+    href: "/about",
+    icon: TextInitialIcon,
+  },
+  {
     title: "Bookmarks",
     href: "/bookmarks",
     icon: BookmarkIcon,
@@ -97,11 +103,6 @@ const MENU_LINKS: CommandLinkItem[] = [
 ];
 
 const PORTFOLIO_LINKS: CommandLinkItem[] = [
-  {
-    title: "About",
-    href: "/#about",
-    icon: TextInitialIcon,
-  },
   {
     title: "Testimonials",
     href: "/testimonials",
@@ -284,6 +285,20 @@ export function CommandMenu({
     [snippets],
   );
 
+  const bookmarkLinks = useMemo(
+    () =>
+      BOOKMARKS.map((b) => ({
+        title: b.title,
+        href: b.url,
+        keywords: ["bookmark", b.category, b.author].filter(
+          (k): k is string => !!k,
+        ),
+        icon: BookmarkIcon,
+        openInNewTab: true,
+      })),
+    [],
+  );
+
   return (
     <>
       <Button
@@ -345,6 +360,12 @@ export function CommandMenu({
             heading="Blog"
             links={blogLinks}
             fallbackIcon={TextIcon}
+            onLinkSelect={handleOpenLink}
+          />
+
+          <CommandLinkGroup
+            heading="Bookmarks"
+            links={bookmarkLinks}
             onLinkSelect={handleOpenLink}
           />
 

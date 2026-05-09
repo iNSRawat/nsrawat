@@ -20,6 +20,10 @@ export const MAIN_NAV: NavItem[] = [
     href: "/",
   },
   {
+    title: "About",
+    href: "/about",
+  },
+  {
     title: "Projects",
     href: "/projects",
   },

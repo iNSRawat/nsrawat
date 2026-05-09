@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import { getIcon } from "@/components/icons";
-import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 import { USER } from "@/features/portfolio/data/user";
 import { FlipSentences } from "@/registry/flip-sentences";
 
@@ -19,7 +17,7 @@ export function ProfileHeader() {
           <div className="pointer-events-none absolute inset-[-2px] z-0 rounded-full bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 opacity-0 transition-opacity duration-300 group-hover:animate-spin group-hover:[animation-duration:3s] group-hover:opacity-100" />
 
           <Image
-            className="relative z-10 size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
+            className="relative z-10 size-24 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
             alt={`${USER.displayName}'s avatar`}
             src={USER.avatar}
             width={160}
@@ -57,7 +55,7 @@ export function ProfileHeader() {
             )}
           </div>
 
-          <div className="min-h-12.5 overflow-hidden border-t border-edge py-1 pl-4 sm:h-9 sm:min-h-0">
+          <div className="min-h-10 overflow-hidden border-t border-edge py-1 pl-4 sm:h-9 sm:min-h-0">
             <FlipSentences
               className="font-mono text-sm text-balance text-muted-foreground"
               variants={{
@@ -68,21 +66,6 @@ export function ProfileHeader() {
             >
               {USER.flipSentences}
             </FlipSentences>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-1.5 border-t border-edge p-2 pl-4 sm:gap-2">
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-accent2 hover:text-foreground sm:size-8"
-                target={link.title === "Email" ? undefined : "_blank"}
-                rel={link.title === "Email" ? undefined : "noopener noreferrer"}
-                title={link.title}
-              >
-                <div className="size-4">{getIcon(link.icon)}</div>
-              </a>
-            ))}
           </div>
         </div>
       </div>

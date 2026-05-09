@@ -58,7 +58,11 @@ function PanelTitleSup({ className, ...props }: React.ComponentProps<"sup">) {
 
 function PanelContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div data-slot="panel-body" className={cn("p-4", className)} {...props} />
+    <div
+      data-slot="panel-body"
+      className={cn("p-3 sm:p-4", className)}
+      {...props}
+    />
   );
 }
 
