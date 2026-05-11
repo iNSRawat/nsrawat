@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 
 import { Icons } from "./icons";
 import { SiteFooterBrand } from "./site-footer-brand";
-import { VisitorCount } from "./visitor-count";
 
 export function SiteFooter() {
   return (
@@ -204,13 +203,10 @@ export function SiteFooter() {
         </div>
 
         <div className="px-4 py-2">
-          <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
+          <div className="flex justify-center">
             <p className="text-sm text-muted-foreground/80">
               © {new Date().getFullYear()} Nagendra Singh Rawat (NSRawat). All
               rights reserved.
-            </p>
-            <p className="text-sm text-muted-foreground/80">
-              <VisitorCount />
             </p>
           </div>
         </div>
