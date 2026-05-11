@@ -15,7 +15,7 @@ export function About() {
     "https://cal.com/nsrawat?utm_source=nsrawat.in&utm_medium=website&utm_campaign=about_section";
 
   return (
-    <Panel id="about">
+    <Panel id="about" className="before:hidden">
       <PanelContent>
         <ProseMono>
           <Markdown>{USER.about}</Markdown>

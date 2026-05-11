@@ -97,7 +97,7 @@ export function ProfileHeader() {
   return (
     <div className="relative overflow-hidden border-x border-edge">
       {/* Content row */}
-      <div className="flex items-center justify-between gap-4 px-5 py-5 sm:gap-8 sm:px-8 sm:py-8">
+      <div className="flex items-center justify-between gap-4 px-5 pt-5 pb-2 sm:gap-8 sm:px-8 sm:pt-8 sm:pb-2">
         {/* Left: text */}
         <div className="flex min-w-0 flex-1 flex-col gap-2.5 sm:gap-3">
           {/* Availability badge */}
@@ -167,11 +167,6 @@ export function ProfileHeader() {
             priority
           />
         </div>
-      </div>
-
-      {/* Bottom divider with center dot */}
-      <div className="relative h-px w-full bg-gradient-to-r from-transparent via-border to-transparent">
-        <span className="absolute left-1/2 top-1/2 size-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-500" />
       </div>
     </div>
   );
