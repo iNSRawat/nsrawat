@@ -90,7 +90,6 @@ export default function Page() {
         <Separator />
 
         <GitHubContributions />
-        <Separator />
 
         <TechStack />
         <Separator />
