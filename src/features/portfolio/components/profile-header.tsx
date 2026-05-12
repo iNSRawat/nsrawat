@@ -126,8 +126,8 @@ export function ProfileHeader() {
           </div>
 
           {/* Typewriter role */}
-          <p className="font-mono text-xs text-muted-foreground sm:text-sm">
-            <span className="opacity-60">~/</span>
+          <p className="font-mono text-xs font-bold text-foreground sm:text-sm">
+            <span className="font-normal opacity-60">~/</span>
             {display}
             <span
               className="ml-px inline-block h-[1em] w-[2px] align-middle bg-muted-foreground transition-opacity"
