@@ -89,8 +89,6 @@ export default function Page() {
         <About />
         <Separator />
 
-        <Testimonials />
-
         <GitHubContributions />
         <Separator />
 
@@ -100,13 +98,16 @@ export default function Page() {
         <Snippets />
         <Separator />
 
-        <Blog />
-        <Separator />
-
         <Experiences />
         <Separator />
 
         <Projects projectItemVariant="compact" />
+        <Separator />
+
+        <Blog />
+        <Separator />
+
+        <Testimonials />
         <Separator />
 
         <LetsTalk />
