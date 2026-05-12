@@ -12,7 +12,7 @@ import { Panel, PanelContent } from "./panel";
 
 export function About() {
   const CAL_URL =
-    "https://cal.com/nsrawat?utm_source=nsrawat.in&utm_medium=website&utm_campaign=about_section";
+    "https://cal.com/nsrawat/15min?utm_source=nsrawat.in&utm_medium=website&utm_campaign=about_section";
 
   return (
     <Panel id="about" className="before:hidden">

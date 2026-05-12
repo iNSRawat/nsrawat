@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const ROTATING_WORDS = ["Collaborations", "Ideas", "Projects", "Solutions"];
 const CAL_URL =
-  "https://cal.com/nsrawat?utm_source=nsrawat.in&utm_medium=website&utm_campaign=contact_page";
+  "https://cal.com/nsrawat/15min?utm_source=nsrawat.in&utm_medium=website&utm_campaign=contact_page";
 
 function AnimatedWord() {
   const [index, setIndex] = useState(0);

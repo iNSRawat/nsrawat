@@ -219,29 +219,6 @@ export function ProjectItem({
               </Link>
             </h3>
           </div>
-
-          <div className="flex items-center gap-2 shrink-0 pt-1">
-            {project.demoUrl && (
-              <a
-                href={addQueryParams(project.demoUrl, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Live Demo"
-              >
-                <Globe className="size-5" />
-              </a>
-            )}
-            <a
-              href={addQueryParams(project.repoUrl, UTM_PARAMS)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="GitHub Repository"
-            >
-              <Icons.github className="size-5" />
-            </a>
-          </div>
         </div>
 
         {project.description && (
@@ -271,12 +248,42 @@ export function ProjectItem({
         </div>
 
         <div className="flex items-center justify-between pt-2 mt-auto">
-          <div className="flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-500">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            All Systems Operational
+          <div className="flex items-center gap-3 shrink-0">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a
+                  href={addQueryParams(project.repoUrl, UTM_PARAMS)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                  aria-label="GitHub Repository"
+                >
+                  <Icons.github className="size-5" />
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>GitHub</p>
+              </TooltipContent>
+            </Tooltip>
+
+            {project.demoUrl && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a
+                    href={addQueryParams(project.demoUrl, UTM_PARAMS)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    aria-label="Live Demo"
+                  >
+                    <ExternalLink className="size-5" />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Live Demo</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
           </div>
           <Link
             href={`/projects/${project.id}`}
