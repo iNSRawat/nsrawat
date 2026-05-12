@@ -20,7 +20,7 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "start:dev": "node dist/index.js",
-    "publish:release": "pnpm build && pnpm publish --access public",
+    "publish:release": "bun run build && npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -45,5 +45,5 @@
   "devDependencies": {
     "tsup": "^8.5.0"
   },
-  "packageManager": "pnpm@10.10.0"
+  "packageManager": "bun@1.2.4"
 }

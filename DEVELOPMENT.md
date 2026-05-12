@@ -7,7 +7,7 @@ This guide provides instructions on how to set up and run the project locally.
 Ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (Latest LTS version recommended)
-- [pnpm](https://pnpm.io/)
+- [bun](https://bun.sh/)
 - [Git](https://git-scm.com/)
 
 ## Setup
@@ -22,7 +22,7 @@ cd minimal-dev-portfolio
 ### 2. Install dependencies
 
 ```bash
-pnpm i
+bun install
 ```
 
 ### 3. Configure Environment Variables
@@ -38,7 +38,7 @@ Then, update the necessary environment variables inside `.env.local`.
 ### 4. Run the development server
 
 ```bash
-pnpm dev
+bun run dev
 ```
 
 The application should now be available at http://localhost:1360
@@ -46,13 +46,13 @@ The application should now be available at http://localhost:1360
 ## Building for Production
 
 ```bash
-pnpm build
+bun run build
 ```
 
 After building, start the application with:
 
 ```bash
-NODE_ENV=production pnpm start
+NODE_ENV=production bun run start
 ```
 
 ## Registry
@@ -76,7 +76,7 @@ Source files:
 Before using the registry, run the following command to build and generate the registry JSON files:
 
 ```bash
-pnpm registry:build
+bun run registry:build
 ```
 
 When running the `npx shadcn add <registry-url>` command, the selected component will be automatically downloaded and integrated into your project.

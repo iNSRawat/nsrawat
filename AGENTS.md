@@ -15,7 +15,7 @@ Next.js portfolio, blog, and component registry website with:
 - **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS v4
 - **UI Components**: shadcn/ui + custom components
-- **Package Manager**: pnpm
+- **Package Manager**: bun
 - **Language**: TypeScript
 - **Content**: MDX for blog posts
 - **Deployment**: Vercel
@@ -65,10 +65,10 @@ The project features a custom component registry built on top of shadcn/ui:
 ### Registry Build Process
 ```bash
 # Build registry internally
-pnpm registry:internal:build
+bun run registry:internal:build
 
 # Build shadcn registry
-pnpm registry:build
+bun run registry:build
 ```
 
 Auto-generated files (DO NOT EDIT):
@@ -82,13 +82,13 @@ Auto-generated files (DO NOT EDIT):
 ### Getting Started
 ```bash
 # Install dependencies
-pnpm install
+bun install
 
 # Start development server
-pnpm dev  # Runs on port 1360
+bun run dev  # Runs on port 1360
 
 # Build for production
-pnpm build
+bun run build
 ```
 
 ### Code Standards
@@ -172,7 +172,7 @@ The project uses Umami for analytics tracking. The script is loaded from `https:
 2. Implement component with proper TypeScript types
 3. Add to `src/registry/registry-components.ts`
 4. Create example in `src/registry/examples/`
-5. Build registry: `pnpm registry:build`
+5. Build registry: `bun run registry:build`
 
 ### Updating User Information
 Edit `src/features/portfolio/data/user.ts` with new:
@@ -216,10 +216,10 @@ When adapting this codebase, ensure ALL personal information is replaced. See **
 ## Build Commands
 
 ```bash
-pnpm build          # Production build
-pnpm start          # Start production server
-pnpm preview        # Build and preview locally
-pnpm lint           # Run ESLint
-pnpm format:write   # Format code with Prettier
-pnpm check-types    # TypeScript type checking
+bun run build          # Production build
+bun run start          # Start production server
+bun run preview        # Build and preview locally
+bun run lint           # Run ESLint
+bun run format:write   # Format code with Prettier
+bun run check-types    # TypeScript type checking
 ```
