@@ -4,7 +4,6 @@ import {
   ArrowRightIcon,
   BoxIcon,
   ExternalLink,
-  Globe,
   InfinityIcon,
 } from "lucide-react";
 import Image from "next/image";
