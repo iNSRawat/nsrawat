@@ -205,7 +205,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
 
           <Link
             href="/certifications"
-            className="group relative mt-2 flex items-center justify-between rounded-xl border border-edge bg-card/50 p-3 sm:p-4 transition-all hover:bg-accent hover:border-primary/30"
+            className="group relative flex items-center justify-between py-3 transition-all hover:bg-accent2 border-l-2 border-edge pl-4"
           >
             <div className="flex flex-col gap-1">
               <h4 className="text-sm font-bold text-foreground sm:text-base">
