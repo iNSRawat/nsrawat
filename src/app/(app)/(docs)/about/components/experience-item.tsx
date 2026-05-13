@@ -1,7 +1,8 @@
 "use client";
 
-import { ChevronDown, GraduationCapIcon } from "lucide-react";
+import { ArrowRight, ChevronDown, GraduationCapIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 import * as React from "react";
 
 import { Icons } from "@/components/icons";
@@ -197,10 +198,27 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
           )}
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-2">
           {experience.positions.map((position) => (
             <EducationPositionItem key={position.id} position={position} />
           ))}
+
+          <Link
+            href="/certifications"
+            className="group relative mt-2 flex items-center justify-between rounded-xl border border-edge bg-card/50 p-3 sm:p-4 transition-all hover:bg-accent hover:border-primary/30"
+          >
+            <div className="flex flex-col gap-1">
+              <h4 className="text-sm font-bold text-foreground sm:text-base">
+                Certifications
+              </h4>
+              <p className="text-[10px] text-muted-foreground sm:text-sm">
+                Professional certificates and credentials I&apos;ve earned.
+              </p>
+            </div>
+            <div className="flex size-7 shrink-0 items-center justify-center rounded-full border border-edge bg-background transition-transform group-hover:translate-x-1 group-hover:border-primary/30 sm:size-8">
+              <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-primary sm:size-4" />
+            </div>
+          </Link>
         </div>
       </div>
     );
