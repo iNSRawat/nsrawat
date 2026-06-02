@@ -13,7 +13,10 @@ import { cn } from "@/lib/utils";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase =
+  supabaseUrl && supabaseKey
+    ? createClient(supabaseUrl, supabaseKey)
+    : null;
 
 interface ContactFormProps {
   compact?: boolean;
@@ -32,7 +35,7 @@ export function ContactForm({ compact = false, className }: ContactFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!supabaseUrl || !supabaseKey) {
+    if (!supabase) {
       toast.error("Supabase environment variables are missing.");
       return;
     }

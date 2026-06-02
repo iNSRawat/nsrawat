@@ -24,7 +24,10 @@ import { cn } from "@/lib/utils";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase =
+  supabaseUrl && supabaseKey
+    ? createClient(supabaseUrl, supabaseKey)
+    : null;
 
 type EditorState = "editing" | "loading" | "success";
 type ActiveFile = "contact" | "socialLinks";
@@ -103,7 +106,7 @@ export function DeveloperContactForm() {
       return;
     }
 
-    if (!supabaseUrl || !supabaseKey) {
+    if (!supabase) {
       toast.error("Supabase environment variables are missing.");
       return;
     }

@@ -8,13 +8,21 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 import { ConsentManagerClient } from "./consent-manager-client";
-
 export function ConsentManager({ children }: { children: React.ReactNode }) {
+  const rawBackendURL = process.env.NEXT_PUBLIC_C15T_URL;
+  const isC15tEnabled =
+    typeof rawBackendURL === "string" &&
+    rawBackendURL.trim() !== "" &&
+    rawBackendURL !== "undefined" &&
+    rawBackendURL !== "null";
+  const backendURL = isC15tEnabled ? rawBackendURL : undefined;
+
   return (
     <ConsentManagerProvider
       options={{
-        mode: "c15t",
-        backendURL: process.env.NEXT_PUBLIC_C15T_URL || "",
+        mode: isC15tEnabled ? "c15t" : "offline",
+        backendURL: backendURL || "",
+        enabled: isC15tEnabled,
         consentCategories: ["necessary", "measurement"],
         // ignoreGeoLocation: process.env.NODE_ENV === "development", // Useful for development to always view the banner.
       }}
