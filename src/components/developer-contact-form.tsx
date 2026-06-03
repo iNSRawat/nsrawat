@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@supabase/supabase-js";
 import {
   Blocks,
   CheckCircle2,
@@ -20,14 +19,8 @@ import {
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 
+import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase =
-  supabaseUrl && supabaseKey
-    ? createClient(supabaseUrl, supabaseKey)
-    : null;
 
 type EditorState = "editing" | "loading" | "success";
 type ActiveFile = "contact" | "socialLinks";

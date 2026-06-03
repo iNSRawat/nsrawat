@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@supabase/supabase-js";
 import { SendIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -9,14 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase =
-  supabaseUrl && supabaseKey
-    ? createClient(supabaseUrl, supabaseKey)
-    : null;
 
 interface ContactFormProps {
   compact?: boolean;
