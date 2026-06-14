@@ -10,7 +10,7 @@ import { getAllSnippets } from "@/features/snippets/data/snippets";
 import { cn } from "@/lib/utils";
 
 import { SiteHeaderMark } from "./site-header-mark";
-import { SiteHeaderWrapper } from "./site-header-wrapper";
+import { MobileSearchTrigger, SiteHeaderWrapper } from "./site-header-wrapper";
 import { ThemeToggle } from "./theme-toggle";
 
 const BrandContextMenu = dynamic(() =>
@@ -69,15 +69,15 @@ export function SiteHeader() {
             <div className="hidden sm:block">
               <CommandMenu posts={posts} snippets={snippets} />
             </div>
+            {/* Mobile Search Trigger */}
+            <MobileSearchTrigger />
             <NavItemGitHub />
             <span className="mx-2 flex h-4 w-px bg-border" />
             <ThemeToggle />
+            <MobileNav className="sm:hidden ml-2" items={MAIN_NAV} />
           </div>
         </div>
       </SiteHeaderWrapper>
-
-      {/* Floating bottom mobile nav */}
-      <MobileNav className="sm:hidden" items={MAIN_NAV} />
     </>
   );
 }
