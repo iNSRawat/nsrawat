@@ -32,8 +32,25 @@ export const MAIN_NAV: NavItem[] = [
     href: "/blog",
   },
   {
-    title: "Snippets",
-    href: "/snippets",
+    title: "More",
+    href: "#",
+    items: [
+      {
+        title: "Snippets",
+        href: "/snippets",
+        emoji: "💻",
+      },
+      {
+        title: "Bookmarks",
+        href: "/bookmarks",
+        emoji: "🔖",
+      },
+      {
+        title: "Sponsors",
+        href: "/sponsors",
+        emoji: "💖",
+      },
+    ],
   },
 ];
 

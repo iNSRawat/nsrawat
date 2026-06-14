@@ -2,8 +2,10 @@
 
 import type { LucideIcon } from "lucide-react";
 import {
+  BookmarkIcon,
   BracesIcon,
   FolderOpenIcon,
+  HeartIcon,
   HomeIcon,
   MailIcon,
   NewspaperIcon,
@@ -14,7 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import {
   Popover,
@@ -30,6 +32,8 @@ const NAV_ICONS: Record<string, LucideIcon> = {
   "/projects": FolderOpenIcon,
   "/blog": NewspaperIcon,
   "/snippets": BracesIcon,
+  "/bookmarks": BookmarkIcon,
+  "/sponsors": HeartIcon,
   "/contact": MailIcon,
 };
 
@@ -42,6 +46,18 @@ export function MobileNav({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const flattenedItems = useMemo(() => {
+    const list: NavItem[] = [];
+    for (const item of items) {
+      if (item.items) {
+        list.push(...item.items);
+      } else {
+        list.push(item);
+      }
+    }
+    return list;
+  }, [items]);
 
   const handleSearchClick = () => {
     // Dispatch Ctrl+K / Cmd+K to open the command menu
@@ -67,7 +83,7 @@ export function MobileNav({
           className="w-48 rounded-lg border bg-popover p-1"
         >
           <nav className="flex flex-col">
-            {items.map((link) => {
+            {flattenedItems.map((link) => {
               const Icon = NAV_ICONS[link.href];
               const isActive =
                 link.href === "/"
@@ -93,6 +109,7 @@ export function MobileNav({
             })}
 
             <div className="my-1 border-t border-border" />
+
 
             <Link
               href="/cli"
