@@ -255,6 +255,49 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Attribution Row */}
+        <div className="px-6 pb-5 -mt-2 text-left border-x border-edge bg-background">
+          <p className="font-mono text-[10px] text-muted-foreground/60 leading-normal select-none">
+            Inspired by{" "}
+            <a
+              href="https://tailwindcss.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground hover:underline"
+            >
+              tailwindcss.com
+            </a>{" "}
+            &{" "}
+            <a
+              href="https://ui.shadcn.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground hover:underline"
+            >
+              ui.shadcn.com
+            </a>
+            . Built by{" "}
+            <a
+              href="https://x.com/NSRawat_in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground hover:underline"
+            >
+              NSRawat_in
+            </a>
+            . The source code is available on{" "}
+            <a
+              href={SOURCE_CODE_GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground hover:underline"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+        </div>
+
         {/* Support me row */}
         <div className="screen-line-before flex w-full before:z-1">
           <div className="mx-auto flex flex-wrap items-center justify-center gap-3 border-x border-edge bg-background px-4 py-2.5 font-mono text-xs text-muted-foreground select-none">

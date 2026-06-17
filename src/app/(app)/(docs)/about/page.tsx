@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { ContactTabs } from "@/components/contact-tabs";
 import { Icons } from "@/components/icons";
+import { SOURCE_CODE_GITHUB_URL } from "@/config/site";
 import { EXPERIENCES } from "@/features/portfolio/data/experiences";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
@@ -526,6 +527,46 @@ export default function AboutPage() {
               </li>
             </ul>
           </div>
+
+          <p className="text-sm sm:text-base leading-relaxed text-muted-foreground border-t border-edge/30 pt-3.5">
+            Inspired by{" "}
+            <a
+              href="https://tailwindcss.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link font-medium"
+            >
+              tailwindcss.com
+            </a>{" "}
+            &amp;{" "}
+            <a
+              href="https://ui.shadcn.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link font-medium"
+            >
+              ui.shadcn.com
+            </a>
+            . Built by{" "}
+            <a
+              href="https://x.com/NSRawat_in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link font-medium"
+            >
+              NSRawat_in
+            </a>
+            . The source code is available on{" "}
+            <a
+              href={SOURCE_CODE_GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link font-medium"
+            >
+              GitHub
+            </a>
+            .
+          </p>
         </div>
       </div>
 
