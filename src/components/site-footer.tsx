@@ -300,7 +300,7 @@ export function SiteFooter() {
 
         {/* Support me row */}
         <div className="screen-line-before flex w-full before:z-1">
-          <div className="mx-auto flex flex-wrap items-center justify-center gap-3 border-x border-edge bg-background px-4 py-2.5 font-mono text-xs text-muted-foreground select-none">
+          <div className="w-full md:max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 border-x border-edge bg-background px-4 py-2.5 font-mono text-xs text-muted-foreground select-none">
             <span className="font-semibold text-foreground uppercase tracking-wider mr-1">
               Support me
             </span>
@@ -341,7 +341,7 @@ export function SiteFooter() {
 
         {/* Original horizontal social icons row (circled to keep) */}
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
-          <div className="mx-auto flex flex-wrap items-center justify-center gap-3 border-x border-edge bg-background px-4 font-mono text-xs text-muted-foreground select-none">
+          <div className="w-full md:max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 border-x border-edge bg-background px-4 py-2.5 sm:py-0 font-mono text-xs text-muted-foreground select-none">
             <a
               className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
               href="https://twitter.com/NSRawat_in"
