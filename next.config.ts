@@ -1,6 +1,22 @@
+import { execSync } from "child_process";
 import type { NextConfig } from "next";
 
+let gitCommitHash = "unknown";
+let gitCommitTime = "unknown";
+try {
+  gitCommitHash = execSync("git rev-parse --short HEAD").toString().trim();
+  gitCommitTime = execSync("git log -1 --format=%cd --date=relative")
+    .toString()
+    .trim();
+} catch {
+  // Silent fallback
+}
+
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_GIT_COMMIT_HASH: gitCommitHash,
+    NEXT_PUBLIC_GIT_COMMIT_TIME: gitCommitTime,
+  },
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
 

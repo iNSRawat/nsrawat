@@ -1,5 +1,5 @@
 import { GeistMono } from "geist/font/mono";
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, Sacramento } from "next/font/google";
 
 export const fontSans = FontSans({
   weight: ["400", "500", "600"],
@@ -9,3 +9,10 @@ export const fontSans = FontSans({
 });
 
 export const fontMono = GeistMono;
+
+export const fontSignature = Sacramento({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-signature",
+  display: "swap",
+});
