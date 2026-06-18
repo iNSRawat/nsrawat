@@ -1,6 +1,6 @@
 "use client";
 
-import { TriangleDashedIcon, TypeIcon } from "lucide-react";
+import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { toast } from "sonner";
@@ -13,6 +13,7 @@ import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
+  ContextMenuSeparator,
   ContextMenuTrigger,
 } from "./ui/context-menu";
 
@@ -28,11 +29,11 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
           onClick={() => {
             const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff");
             copyText(svg);
-            toast.success("Copied Mark as SVG");
+            toast.success("Logomark as SVG copied");
           }}
         >
-          <NSRMark />
-          Copy Mark as SVG
+          <NSRMark className="h-4 w-4 mr-2" />
+          Copy Logomark as SVG
         </ContextMenuItem>
 
         <ContextMenuItem
@@ -41,18 +42,27 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
               resolvedTheme === "light" ? "#000" : "#fff",
             );
             copyText(svg);
-            toast.success("Copied Logotype as SVG");
+            toast.success("Logotype as SVG copied");
           }}
         >
-          <TypeIcon />
+          <TypeIcon className="h-4 w-4 mr-2" />
           Copy Logotype as SVG
         </ContextMenuItem>
 
+        <ContextMenuSeparator />
+
         <ContextMenuItem asChild>
-          <Link href="/about">
-            <TriangleDashedIcon />
-            About NSRawat
+          <Link href="/blog/nsrawat-brand">
+            <TriangleDashedIcon className="h-4 w-4 mr-2" />
+            Brand Guidelines
           </Link>
+        </ContextMenuItem>
+
+        <ContextMenuItem asChild>
+          <a href="/nsrawat-brand.zip" download>
+            <DownloadIcon className="h-4 w-4 mr-2" />
+            Download Brand Assets
+          </a>
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>

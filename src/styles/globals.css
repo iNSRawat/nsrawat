@@ -206,6 +206,18 @@
 
   --shadow-popover: 0 6px 24px rgba(0, 0, 0, 0.25);
 
+  /* NSR 3D Isometric Monogram Colors - Light Theme */
+  --color-hero-bg: #FAFAFA;
+  --color-stroke: #E5E5E5;
+  --color-stroke-hover: #B5B5B5;
+  --color-hatch: #F0F0F0;
+  --color-depth: rgba(245, 245, 245, 0.5);
+  --color-grid: rgba(0, 0, 0, 0.035);
+  --color-helper: rgba(0, 0, 0, 0.06);
+  --color-text-var: rgba(0, 0, 0, 0.45);
+  --color-stroke-mix: color-mix(in oklab, var(--foreground) 26%, var(--background));
+  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 45%, var(--background));
+  --color-hatch-mix: color-mix(in oklab, var(--foreground) 20%, var(--background));
 }
 
 .dark {
@@ -295,6 +307,19 @@
   --selection-foreground: oklch(0.141 0.005 285.823);
 
   --shadow-popover: 0 0 24px rgba(0, 0, 0, 0.5);
+
+  /* NSR 3D Isometric Monogram Colors - Dark Theme */
+  --color-hero-bg: #050507;
+  --color-stroke: #222225;
+  --color-stroke-hover: #3f3f46;
+  --color-hatch: #131316;
+  --color-depth: rgba(10, 10, 12, 0.5);
+  --color-grid: rgba(255, 255, 255, 0.025);
+  --color-helper: rgba(255, 255, 255, 0.04);
+  --color-text-var: rgba(255, 255, 255, 0.25);
+  --color-stroke-mix: color-mix(in oklab, var(--foreground) 16%, var(--background));
+  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 30%, var(--background));
+  --color-hatch-mix: color-mix(in oklab, var(--foreground) 12%, var(--background));
 }
 
 @layer base {
