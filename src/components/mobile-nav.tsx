@@ -7,19 +7,15 @@ import {
   HeartIcon,
   HomeIcon,
   MenuIcon,
-  MoonIcon,
   NewspaperIcon,
-  SunIcon,
   TerminalIcon,
   UserIcon,
   XIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
 
-import { Icons } from "@/components/icons";
 import { NavItemGitHub } from "@/components/nav-item-github";
 import { SiteHeaderMark } from "@/components/site-header-mark";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -31,8 +27,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { META_THEME_COLORS } from "@/config/site";
-import { useMetaColor } from "@/hooks/use-meta-color";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/types/nav";
 
@@ -55,8 +49,6 @@ export function MobileNav({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
-  const { setMetaColor } = useMetaColor();
 
   // Close menu on screen resize to desktop
   useEffect(() => {
@@ -70,14 +62,6 @@ export function MobileNav({
     media.addEventListener("change", listener);
     return () => media.removeEventListener("change", listener);
   }, []);
-
-  const switchTheme = () => {
-    const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    setMetaColor(
-      nextTheme === "dark" ? META_THEME_COLORS.dark : META_THEME_COLORS.light,
-    );
-  };
 
   const flattenedItems = useMemo(() => {
     const list: NavItem[] = [];

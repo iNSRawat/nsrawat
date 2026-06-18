@@ -1,8 +1,10 @@
 "use client";
 
 import {
+  animate,
   motion,
   useMotionValue,
+  useMotionValueEvent,
   useReducedMotion,
   useSpring,
   useTransform,
@@ -13,6 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { PronounceMyName } from "@/features/portfolio/components/pronounce-my-name";
 import { VerifiedIcon } from "@/features/portfolio/components/verified-icon";
 import { USER } from "@/features/portfolio/data/user";
+import { useSound } from "@/hooks/use-sound";
 
 // Typewriter hook — cycles through sentences with type/delete animation
 function useTypewriter(sentences: string[], speed = 60, pause = 1800) {
@@ -106,7 +109,7 @@ interface Block {
   depth: number;
   skipRightEdge?: boolean;
   skipLeftEdge?: boolean;
-  customOutline?: string;
+  customOutlineFn?: (z: number) => string;
 }
 
 // Origin centered so NSR geometry fills the viewBox "150 95 700 420"
@@ -159,14 +162,14 @@ function createSlantedBlock(
   };
 }
 
-function getTopOutlinePath(block: Block): string {
-  if (block.customOutline) {
-    return block.customOutline;
+function getTopOutlinePath(block: Block, z: number): string {
+  if (block.customOutlineFn) {
+    return block.customOutlineFn(z);
   }
-  const p1 = project(block.top[0].x, block.top[0].y, 0);
-  const p2 = project(block.top[1].x, block.top[1].y, 0);
-  const p3 = project(block.top[2].x, block.top[2].y, 0);
-  const p4 = project(block.top[3].x, block.top[3].y, 0);
+  const p1 = project(block.top[0].x, block.top[0].y, z);
+  const p2 = project(block.top[1].x, block.top[1].y, z);
+  const p3 = project(block.top[2].x, block.top[2].y, z);
+  const p4 = project(block.top[3].x, block.top[3].y, z);
 
   if (block.skipRightEdge) {
     return `M ${p3} L ${p4} L ${p1} L ${p2}`;
@@ -186,7 +189,8 @@ const blocksList: Block[] = [
       { A: { x: 96, y: 0 }, B: { x: 96, y: 106.67 } },
       { A: { x: 96, y: 160 }, B: { x: 128, y: 160 } },
     ],
-    customOutline: `M ${project(96, 106.67, 0)} L ${project(96, 0, 0)} L ${project(128, 0, 0)} L ${project(128, 160, 0)} L ${project(96, 160, 0)}`,
+    customOutlineFn: (z: number) =>
+      `M ${project(96, 106.67, z)} L ${project(96, 0, z)} L ${project(128, 0, z)} L ${project(128, 160, z)} L ${project(96, 160, z)}`,
   },
   {
     ...createSlantedBlock(
@@ -199,18 +203,21 @@ const blocksList: Block[] = [
       { A: { x: 32, y: 53.33 }, B: { x: 96, y: 160 } },
       { A: { x: 96, y: 160 }, B: { x: 128, y: 160 } },
     ],
-    customOutline: `M ${project(0, 0, 0)} L ${project(32, 0, 0)} L ${project(96, 106.67, 0)} M ${project(96, 160, 0)} L ${project(0, 0, 0)}`,
+    customOutlineFn: (z: number) =>
+      `M ${project(0, 0, z)} L ${project(32, 0, z)} L ${project(96, 106.67, z)} M ${project(96, 160, z)} L ${project(0, 0, z)}`,
   },
   {
     ...createBlock(0, 32, 0, 160),
-    customOutline: `M ${project(32, 53.33, 0)} L ${project(32, 160, 0)} L ${project(0, 160, 0)} L ${project(0, 0, 0)} L ${project(32, 0, 0)}`,
+    customOutlineFn: (z: number) =>
+      `M ${project(32, 53.33, z)} L ${project(32, 160, z)} L ${project(0, 160, z)} L ${project(0, 0, z)} L ${project(32, 0, z)}`,
   },
 
   // S (5 blocks)
   createBlock(192, 288, 0, 32),
   {
     ...createBlock(160, 192, 32, 96),
-    customOutline: `M ${project(192, 64, 0)} L ${project(192, 32, 0)} L ${project(160, 32, 0)} L ${project(160, 96, 0)} L ${project(192, 96, 0)}`,
+    customOutlineFn: (z: number) =>
+      `M ${project(192, 64, z)} L ${project(192, 32, z)} L ${project(160, 32, z)} L ${project(160, 96, z)} L ${project(192, 96, z)}`,
   },
   {
     ...createBlock(192, 256, 64, 96),
@@ -253,6 +260,24 @@ export function NsrIsometricHero() {
   const { display, blink } = useTypewriter(USER.flipSentences);
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const [isPressed, setIsPressed] = useState(false);
+  const playClick = useSound("/audio/ui-sounds/click.wav");
+  const pressOffset = useMotionValue(0);
+  const [offsetVal, setOffsetVal] = useState(0);
+
+  useMotionValueEvent(pressOffset, "change", (latest) => {
+    setOffsetVal(latest);
+  });
+
+  useEffect(() => {
+    const controls = animate(pressOffset, isPressed ? 15 : 0, {
+      type: "spring",
+      stiffness: 600,
+      damping: 15,
+      mass: 0.5,
+    });
+    return () => controls.stop();
+  }, [isPressed, pressOffset]);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -345,23 +370,16 @@ export function NsrIsometricHero() {
         </svg>
       </motion.div>
 
-      {/* Right-side status column — available badge + FIG_001 */}
-      <div className="absolute bottom-3 right-4 z-20 pointer-events-none select-none flex flex-col items-end gap-3">
+      {/* Right-side status column — available badge */}
+      <div className="absolute bottom-3 right-4 z-20 pointer-events-none select-none">
         {/* Available for work badge */}
-        <span className="inline-flex items-center gap-1.5 rounded-sm border border-edge bg-background/60 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-muted-foreground backdrop-blur-sm sm:text-[10px]">
+        <span className="inline-flex items-center gap-1 rounded-sm border border-edge bg-background/60 px-1.5 py-0.5 font-mono text-[9px] text-muted-foreground backdrop-blur-sm sm:gap-1.5 sm:px-2 sm:py-1 sm:text-[10px]">
           <span className="relative flex size-1.5 shrink-0">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
           </span>
-          Available for work
-        </span>
-
-        {/* FIG_001 label */}
-        <span
-          className="font-mono text-[9px] sm:text-[10px] tracking-[0.25em] font-light transition-colors duration-300"
-          style={{ color: "var(--text-color)" }}
-        >
-          FIG_001
+          <span className="hidden min-[380px]:inline">Available for work</span>
+          <span className="inline min-[380px]:hidden">Available</span>
         </span>
       </div>
 
@@ -434,7 +452,7 @@ export function NsrIsometricHero() {
         preserveAspectRatio="xMidYMid meet"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 h-full w-full cursor-crosshair will-change-transform z-10 overflow-hidden"
+        className="absolute inset-0 h-full w-full cursor-default will-change-transform z-10 overflow-hidden"
         color="var(--stroke-color)"
       >
         <defs>
@@ -516,18 +534,26 @@ export function NsrIsometricHero() {
         <motion.g
           animate={floatAnimate}
           transition={floatTransition}
-          className="will-change-transform"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            setIsPressed(true);
+            playClick();
+          }}
+          onPointerUp={() => setIsPressed(false)}
+          onPointerLeave={() => setIsPressed(false)}
+          onPointerCancel={() => setIsPressed(false)}
+          className="cursor-pointer will-change-transform"
         >
           {sortedBlocks.map((block, idx) => {
             const topPoints = block.top
-              .map((p) => project(p.x, p.y, 0))
+              .map((p) => project(p.x, p.y, offsetVal))
               .join(" ");
             return (
               <g key={`block-${idx}`}>
                 {block.sides.map((side, sIdx) => {
                   const sidePoints = [
-                    project(side.A.x, side.A.y, 0),
-                    project(side.B.x, side.B.y, 0),
+                    project(side.A.x, side.A.y, offsetVal),
+                    project(side.B.x, side.B.y, offsetVal),
                     project(side.B.x, side.B.y, H),
                     project(side.A.x, side.A.y, H),
                   ].join(" ");
@@ -545,7 +571,7 @@ export function NsrIsometricHero() {
                 })}
 
                 <path
-                  d={getTopOutlinePath(block)}
+                  d={getTopOutlinePath(block, offsetVal)}
                   fill="var(--hero-bg)"
                   stroke="currentColor"
                   strokeWidth="0.75"

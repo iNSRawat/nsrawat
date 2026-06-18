@@ -318,7 +318,7 @@
   --color-helper: rgba(255, 255, 255, 0.04);
   --color-text-var: rgba(255, 255, 255, 0.25);
   --color-stroke-mix: color-mix(in oklab, var(--foreground) 16%, var(--background));
-  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 30%, var(--background));
+  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 55%, var(--background));
   --color-hatch-mix: color-mix(in oklab, var(--foreground) 12%, var(--background));
 }
 
