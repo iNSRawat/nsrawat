@@ -32,9 +32,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: "https://www.kaggle.com/nsrawat?utm_source=nsrawat.in",
   },
   {
-    icon: "datacamp",
-    title: "DataCamp",
-    description: "ns-rawat",
-    href: "https://www.datacamp.com/portfolio/ns-rawat?utm_source=nsrawat.in",
+    icon: "mail",
+    title: "Email",
+    description: "nsrawatdigital@gmail.com",
+    href: "mailto:nsrawatdigital@gmail.com",
   },
 ];
