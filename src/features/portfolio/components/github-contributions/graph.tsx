@@ -32,9 +32,12 @@ export function GitHubContributionGraph({
 
   useEffect(() => {
     if (initialData.length === 0) {
-      fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`)
+      fetch(
+        `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`,
+      )
         .then((res) => {
-          if (res.ok) return res.json() as Promise<{ contributions: Activity[] }>;
+          if (res.ok)
+            return res.json() as Promise<{ contributions: Activity[] }>;
           throw new Error("Failed to fetch contributions");
         })
         .then((resData) => {

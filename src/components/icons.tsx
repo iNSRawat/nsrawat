@@ -14,6 +14,7 @@ import {
   LayoutGridIcon,
   LineChartIcon,
   ListIcon,
+  MailIcon,
   MoonStarIcon,
   SearchIcon,
   SettingsIcon,
@@ -143,6 +144,7 @@ export const Icons = {
       />
     </svg>
   ),
+  mail: (props: IconProps) => <MailIcon {...props} />,
   markdown: (props: IconProps) => (
     <svg viewBox="0 0 24 24" {...props}>
       <path

@@ -46,7 +46,9 @@ export function About() {
               rel={link.title === "Email" ? undefined : "noopener noreferrer"}
               title={link.title}
             >
-              <div className="size-4">{getIcon(link.icon)}</div>
+              <div className="size-4 [&_svg]:size-full">
+                {getIcon(link.icon)}
+              </div>
             </a>
           ))}
         </div>
