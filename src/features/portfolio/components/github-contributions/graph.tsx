@@ -2,7 +2,7 @@
 
 import { format } from "date-fns";
 import { LoaderIcon } from "lucide-react";
-import { use } from "react";
+import { use, useEffect, useState } from "react";
 
 import {
   TooltipContent,
@@ -26,7 +26,34 @@ export function GitHubContributionGraph({
 }: {
   contributions: Promise<Activity[]>;
 }) {
-  const data = use(contributions);
+  const initialData = use(contributions);
+  const [data, setData] = useState<Activity[]>(initialData);
+  const [isLoading, setIsLoading] = useState(initialData.length === 0);
+
+  useEffect(() => {
+    if (initialData.length === 0) {
+      fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`)
+        .then((res) => {
+          if (res.ok) return res.json() as Promise<{ contributions: Activity[] }>;
+          throw new Error("Failed to fetch contributions");
+        })
+        .then((resData) => {
+          if (resData && Array.isArray(resData.contributions)) {
+            setData(resData.contributions);
+          }
+        })
+        .catch((err) => {
+          console.error("Client-side contribution fetch failed:", err);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [initialData]);
+
+  if (isLoading) {
+    return <GitHubContributionFallback />;
+  }
 
   return (
     <TooltipProvider>
