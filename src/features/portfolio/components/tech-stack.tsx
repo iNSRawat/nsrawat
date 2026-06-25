@@ -52,7 +52,7 @@ export function TechStack() {
         )}
       >
         <TooltipProvider>
-          <ul className="flex flex-wrap gap-4 select-none">
+          <ul className="flex flex-wrap gap-2.5 select-none justify-center sm:justify-start">
             {TECH_STACK.map((tech) => {
               // Try to find a matching icon, or default to a generic one if not found
               // Ideally all commonly used ones should be in icons.tsx
@@ -71,12 +71,19 @@ export function TechStack() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={tech.title}
-                          className="size-8 flex items-center justify-center transition-colors hover:opacity-80"
-                          style={{
-                            color: tech.color || "currentColor",
-                          }}
+                          className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50/50 px-3 py-1 font-mono text-[11px] font-medium text-zinc-800 transition-all duration-200 hover:-translate-y-0.5 hover:bg-zinc-100 hover:border-zinc-300 dark:border-zinc-800/80 dark:bg-zinc-900/50 dark:text-zinc-200 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-750"
                         >
-                          {IconComponent}
+                          <span
+                            className="size-4 flex items-center justify-center shrink-0 [&_svg]:size-full"
+                            style={{
+                              color: tech.theme
+                                ? undefined
+                                : tech.color || "currentColor",
+                            }}
+                          >
+                            {IconComponent}
+                          </span>
+                          <span>{tech.title}</span>
                         </a>
                       }
                     />
