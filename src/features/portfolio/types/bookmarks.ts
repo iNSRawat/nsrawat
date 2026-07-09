@@ -5,4 +5,5 @@ export type Bookmark = {
   iconName?: string;
   category?: string;
   bookmarkedAt: string;
+  docUrl?: string;
 };

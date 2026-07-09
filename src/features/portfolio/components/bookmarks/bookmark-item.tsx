@@ -14,14 +14,11 @@ export function BookmarkItem({
   bookmark: Bookmark;
 }) {
   return (
-    <a
+    <div
       className={cn(
-        "group/bookmark flex items-center gap-3 bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
+        "relative group/bookmark flex items-center gap-3 bg-background/50 px-3 py-3 transition-colors hover:bg-muted/50 sm:px-6 sm:py-4",
         className,
       )}
-      href={bookmark.url}
-      target="_blank"
-      rel="noopener"
     >
       <div
         className={cn(
@@ -37,10 +34,17 @@ export function BookmarkItem({
 
       <div className="flex-1 min-w-0">
         <h3 className="font-semibold text-foreground/80 transition-colors group-hover/bookmark:text-foreground truncate">
-          {bookmark.title}
+          <a
+            href={bookmark.url}
+            target="_blank"
+            rel="noopener"
+            className="focus:outline-none after:absolute after:inset-0"
+          >
+            {bookmark.title}
+          </a>
         </h3>
 
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-muted-foreground mt-0.5">
+        <div className="relative z-10 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-muted-foreground mt-0.5">
           {bookmark.author && (
             <>
               <dl>
@@ -55,7 +59,7 @@ export function BookmarkItem({
             </>
           )}
 
-          <dl>
+          <dl className="flex items-center gap-2">
             <dt className="sr-only">Bookmarked on</dt>
             <dd>
               <time dateTime={new Date(bookmark.bookmarkedAt).toISOString()}>
@@ -63,6 +67,24 @@ export function BookmarkItem({
               </time>
             </dd>
           </dl>
+
+          {bookmark.docUrl && (
+            <>
+              <Separator
+                className="data-[orientation=vertical]:h-3"
+                orientation="vertical"
+              />
+              <a
+                href={bookmark.docUrl}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-0.5 font-medium text-foreground/60 hover:text-foreground transition-colors"
+              >
+                Documentation
+                <ArrowUpRightIcon className="size-3" />
+              </a>
+            </>
+          )}
         </div>
       </div>
 
@@ -70,6 +92,6 @@ export function BookmarkItem({
         className="size-4 shrink-0 text-muted-foreground transition-colors group-hover/bookmark:text-foreground"
         aria-hidden
       />
-    </a>
+    </div>
   );
 }
