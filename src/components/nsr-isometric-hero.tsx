@@ -329,7 +329,7 @@ export function NsrIsometricHero() {
   return (
     <div
       ref={containerRef}
-      className="group relative aspect-[5/3] w-full border-x border-edge select-none transition-colors duration-300"
+      className="group relative aspect-[2/1] sm:aspect-[21/9] w-full border-x border-edge select-none transition-colors duration-300"
       style={
         {
           backgroundColor: "var(--hero-bg)",
@@ -445,150 +445,152 @@ export function NsrIsometricHero() {
         </div>
       </div>
 
-      {/* SVG canvas — fills container, viewBox tightly wraps NSR geometry */}
-      <motion.svg
-        style={{ x: translateX, y: translateY }}
-        viewBox={`${VB_X} ${VB_Y} ${VB_W} ${VB_H}`}
-        preserveAspectRatio="xMidYMid meet"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 h-full w-full cursor-default will-change-transform z-10 overflow-hidden"
-        color="var(--stroke-color)"
-      >
-        <defs>
-          <pattern
-            id="nsr-top-hatch"
-            x="0"
-            y="0"
-            width="10"
-            height="10"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M-1 1l2 -2M0 10l10 -10M9 11l2 -2"
-              stroke="var(--hatch-color)"
-              strokeWidth="1"
+      {/* SVG canvas wrapper to scale size responsively */}
+      <div className="absolute inset-0 z-10 scale-[0.86] sm:scale-[0.94] origin-center pointer-events-none flex items-center justify-center">
+        <motion.svg
+          style={{ x: translateX, y: translateY }}
+          viewBox={`${VB_X} ${VB_Y} ${VB_W} ${VB_H}`}
+          preserveAspectRatio="xMidYMid meet"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-full w-full cursor-default will-change-transform overflow-hidden pointer-events-auto"
+          color="var(--stroke-color)"
+        >
+          <defs>
+            <pattern
+              id="nsr-top-hatch"
+              x="0"
+              y="0"
+              width="10"
+              height="10"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M-1 1l2 -2M0 10l10 -10M9 11l2 -2"
+                stroke="var(--hatch-color)"
+                strokeWidth="1"
+                className="transition-colors duration-300"
+              />
+            </pattern>
+          </defs>
+
+          {/* Construction lines — clipped to viewBox */}
+          <g className="transition-opacity duration-300">
+            {/* Horizontal midline */}
+            <line
+              x1={VB_X}
+              y1={(gy0 + gy1) / 2}
+              x2={VB_X + VB_W}
+              y2={(gy0 + gy1) / 2}
+              stroke="var(--helper-color)"
+              strokeWidth="0.75"
+              strokeDasharray="4 8"
               className="transition-colors duration-300"
             />
-          </pattern>
-        </defs>
+            {/* Isometric diagonal axes */}
+            <line
+              x1={VB_X}
+              y1={VB_Y + VB_H}
+              x2={VB_X + VB_W}
+              y2={VB_Y}
+              stroke="var(--helper-color)"
+              strokeWidth="0.75"
+              strokeDasharray="4 8"
+              className="transition-colors duration-300"
+            />
+            <line
+              x1={VB_X}
+              y1={VB_Y}
+              x2={VB_X + VB_W}
+              y2={VB_Y + VB_H}
+              stroke="var(--helper-color)"
+              strokeWidth="0.75"
+              strokeDasharray="4 8"
+              className="transition-colors duration-300"
+            />
+            {/* Vertical registration at geometry left/right edges */}
+            <line
+              x1={gx0}
+              y1={VB_Y}
+              x2={gx0}
+              y2={VB_Y + VB_H}
+              stroke="var(--helper-color)"
+              strokeWidth="0.75"
+              strokeDasharray="4 8"
+              className="transition-colors duration-300"
+            />
+            <line
+              x1={gx1}
+              y1={VB_Y}
+              x2={gx1}
+              y2={VB_Y + VB_H}
+              stroke="var(--helper-color)"
+              strokeWidth="0.75"
+              strokeDasharray="4 8"
+              className="transition-colors duration-300"
+            />
+          </g>
 
-        {/* Construction lines — clipped to viewBox */}
-        <g className="transition-opacity duration-300">
-          {/* Horizontal midline */}
-          <line
-            x1={VB_X}
-            y1={(gy0 + gy1) / 2}
-            x2={VB_X + VB_W}
-            y2={(gy0 + gy1) / 2}
-            stroke="var(--helper-color)"
-            strokeWidth="0.75"
-            strokeDasharray="4 8"
-            className="transition-colors duration-300"
-          />
-          {/* Isometric diagonal axes */}
-          <line
-            x1={VB_X}
-            y1={VB_Y + VB_H}
-            x2={VB_X + VB_W}
-            y2={VB_Y}
-            stroke="var(--helper-color)"
-            strokeWidth="0.75"
-            strokeDasharray="4 8"
-            className="transition-colors duration-300"
-          />
-          <line
-            x1={VB_X}
-            y1={VB_Y}
-            x2={VB_X + VB_W}
-            y2={VB_Y + VB_H}
-            stroke="var(--helper-color)"
-            strokeWidth="0.75"
-            strokeDasharray="4 8"
-            className="transition-colors duration-300"
-          />
-          {/* Vertical registration at geometry left/right edges */}
-          <line
-            x1={gx0}
-            y1={VB_Y}
-            x2={gx0}
-            y2={VB_Y + VB_H}
-            stroke="var(--helper-color)"
-            strokeWidth="0.75"
-            strokeDasharray="4 8"
-            className="transition-colors duration-300"
-          />
-          <line
-            x1={gx1}
-            y1={VB_Y}
-            x2={gx1}
-            y2={VB_Y + VB_H}
-            stroke="var(--helper-color)"
-            strokeWidth="0.75"
-            strokeDasharray="4 8"
-            className="transition-colors duration-300"
-          />
-        </g>
+          {/* Floating monogram geometry */}
+          <motion.g
+            animate={floatAnimate}
+            transition={floatTransition}
+            onPointerDown={(e) => {
+              e.preventDefault();
+              setIsPressed(true);
+              playClick();
+            }}
+            onPointerUp={() => setIsPressed(false)}
+            onPointerLeave={() => setIsPressed(false)}
+            onPointerCancel={() => setIsPressed(false)}
+            className="cursor-pointer will-change-transform"
+          >
+            {sortedBlocks.map((block, idx) => {
+              const topPoints = block.top
+                .map((p) => project(p.x, p.y, offsetVal))
+                .join(" ");
+              return (
+                <g key={`block-${idx}`}>
+                  {block.sides.map((side, sIdx) => {
+                    const sidePoints = [
+                      project(side.A.x, side.A.y, offsetVal),
+                      project(side.B.x, side.B.y, offsetVal),
+                      project(side.B.x, side.B.y, H),
+                      project(side.A.x, side.A.y, H),
+                    ].join(" ");
+                    return (
+                      <polygon
+                        key={`side-${sIdx}`}
+                        points={sidePoints}
+                        fill="var(--hero-bg)"
+                        stroke="var(--stroke-color)"
+                        strokeWidth="0.75"
+                        strokeLinejoin="round"
+                        className="group-hover:stroke-[var(--stroke-hover-color)] transition-colors duration-300"
+                      />
+                    );
+                  })}
 
-        {/* Floating monogram geometry */}
-        <motion.g
-          animate={floatAnimate}
-          transition={floatTransition}
-          onPointerDown={(e) => {
-            e.preventDefault();
-            setIsPressed(true);
-            playClick();
-          }}
-          onPointerUp={() => setIsPressed(false)}
-          onPointerLeave={() => setIsPressed(false)}
-          onPointerCancel={() => setIsPressed(false)}
-          className="cursor-pointer will-change-transform"
-        >
-          {sortedBlocks.map((block, idx) => {
-            const topPoints = block.top
-              .map((p) => project(p.x, p.y, offsetVal))
-              .join(" ");
-            return (
-              <g key={`block-${idx}`}>
-                {block.sides.map((side, sIdx) => {
-                  const sidePoints = [
-                    project(side.A.x, side.A.y, offsetVal),
-                    project(side.B.x, side.B.y, offsetVal),
-                    project(side.B.x, side.B.y, H),
-                    project(side.A.x, side.A.y, H),
-                  ].join(" ");
-                  return (
-                    <polygon
-                      key={`side-${sIdx}`}
-                      points={sidePoints}
-                      fill="var(--hero-bg)"
-                      stroke="var(--stroke-color)"
-                      strokeWidth="0.75"
-                      strokeLinejoin="round"
-                      className="group-hover:stroke-[var(--stroke-hover-color)] transition-colors duration-300"
-                    />
-                  );
-                })}
+                  <path
+                    d={getTopOutlinePath(block, offsetVal)}
+                    fill="var(--hero-bg)"
+                    stroke="currentColor"
+                    strokeWidth="0.75"
+                    strokeLinejoin="round"
+                    className="group-hover:stroke-[var(--stroke-hover-color)] transition-colors duration-300"
+                  />
 
-                <path
-                  d={getTopOutlinePath(block, offsetVal)}
-                  fill="var(--hero-bg)"
-                  stroke="currentColor"
-                  strokeWidth="0.75"
-                  strokeLinejoin="round"
-                  className="group-hover:stroke-[var(--stroke-hover-color)] transition-colors duration-300"
-                />
-
-                <polygon
-                  points={topPoints}
-                  fill="url(#nsr-top-hatch)"
-                  stroke="none"
-                />
-              </g>
-            );
-          })}
-        </motion.g>
-      </motion.svg>
+                  <polygon
+                    points={topPoints}
+                    fill="url(#nsr-top-hatch)"
+                    stroke="none"
+                  />
+                </g>
+              );
+            })}
+          </motion.g>
+        </motion.svg>
+      </div>
     </div>
   );
 }

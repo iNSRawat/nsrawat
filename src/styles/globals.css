@@ -212,12 +212,12 @@
   --color-stroke-hover: #B5B5B5;
   --color-hatch: #F0F0F0;
   --color-depth: rgba(245, 245, 245, 0.5);
-  --color-grid: rgba(0, 0, 0, 0.035);
-  --color-helper: rgba(0, 0, 0, 0.06);
+  --color-grid: rgba(0, 0, 0, 0.05);
+  --color-helper: rgba(0, 0, 0, 0.12);
   --color-text-var: rgba(0, 0, 0, 0.45);
-  --color-stroke-mix: color-mix(in oklab, var(--foreground) 26%, var(--background));
-  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 45%, var(--background));
-  --color-hatch-mix: color-mix(in oklab, var(--foreground) 20%, var(--background));
+  --color-stroke-mix: color-mix(in oklab, var(--foreground) 38%, var(--background));
+  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 60%, var(--background));
+  --color-hatch-mix: color-mix(in oklab, var(--foreground) 30%, var(--background));
 }
 
 .dark {
@@ -314,12 +314,12 @@
   --color-stroke-hover: #3f3f46;
   --color-hatch: #131316;
   --color-depth: rgba(10, 10, 12, 0.5);
-  --color-grid: rgba(255, 255, 255, 0.025);
-  --color-helper: rgba(255, 255, 255, 0.04);
+  --color-grid: rgba(255, 255, 255, 0.045);
+  --color-helper: rgba(255, 255, 255, 0.1);
   --color-text-var: rgba(255, 255, 255, 0.25);
-  --color-stroke-mix: color-mix(in oklab, var(--foreground) 16%, var(--background));
-  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 55%, var(--background));
-  --color-hatch-mix: color-mix(in oklab, var(--foreground) 12%, var(--background));
+  --color-stroke-mix: color-mix(in oklab, var(--foreground) 32%, var(--background));
+  --color-stroke-hover-mix: color-mix(in oklab, var(--foreground) 65%, var(--background));
+  --color-hatch-mix: color-mix(in oklab, var(--foreground) 22%, var(--background));
 }
 
 @layer base {
