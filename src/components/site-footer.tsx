@@ -423,12 +423,12 @@ export function SiteFooter() {
       </div>
 
       {/* Grid pattern brand blocks logo (circled to keep) */}
-      <div className="-mt-8 sm:-mt-12 overflow-hidden">
+      <div className="mt-4 overflow-hidden">
         <SiteFooterBrand />
       </div>
 
       <div className="pb-[env(safe-area-inset-bottom,0px)]">
-        <div className="flex h-2" />
+        <div className="flex h-8" />
       </div>
     </footer>
   );
