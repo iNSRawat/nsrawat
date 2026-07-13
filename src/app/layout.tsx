@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { WebSite, WithContext } from "schema-dts";
 
@@ -122,12 +121,11 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        <Script
+        <script
           id="dark-mode"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
         />
-        <Script
+        <script
           id="schema-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{

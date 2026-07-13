@@ -55,6 +55,13 @@ export const BOOKMARKS: Bookmark[] = [
     category: "Learning Platforms",
     bookmarkedAt: "2026-02-01",
   },
+  {
+    title: "Introduction to Deep Learning",
+    url: "https://andrewfoongyk.github.io/#intro-to-dl",
+    author: "Andrew Y. K. Foong",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-07-13",
+  },
 
   // --- Libraries & Frameworks ---
   {
