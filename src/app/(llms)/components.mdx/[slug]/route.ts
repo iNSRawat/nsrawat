@@ -35,7 +35,10 @@ export async function GET(
     if (component.files && component.files.length > 0) {
       const filePath = component.files[0].path;
       try {
-        const absolutePath = path.join(process.cwd(), filePath);
+        const absolutePath = path.join(
+          /* turbopackIgnore: true */ process.cwd(),
+          filePath
+        );
         code = await fs.readFile(absolutePath, "utf-8");
       } catch (e) {
         console.error(`Error reading file for ${component.name}:`, e);

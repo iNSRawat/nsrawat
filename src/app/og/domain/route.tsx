@@ -10,11 +10,11 @@ export async function GET(request: Request) {
   const isForSale = searchParams.get("sale") === "true";
 
   const magistralMedium = await readFile(
-    join(process.cwd(), "src/assets/fonts/Magistral-Medium.ttf"),
+    join(/* turbopackIgnore: true */ process.cwd(), "src/assets/fonts/Magistral-Medium.ttf"),
   );
 
   const robotoMedium = await readFile(
-    join(process.cwd(), "src/assets/fonts/Roboto-Medium.ttf"),
+    join(/* turbopackIgnore: true */ process.cwd(), "src/assets/fonts/Roboto-Medium.ttf"),
   );
 
   return new ImageResponse(

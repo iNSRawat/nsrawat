@@ -31,7 +31,7 @@ export function remarkComponent() {
           let src: string;
 
           if (srcPath) {
-            src = path.join(process.cwd(), srcPath);
+            src = path.join(/* turbopackIgnore: true */ process.cwd(), srcPath);
           } else {
             const component = Index[name];
             src = fileName

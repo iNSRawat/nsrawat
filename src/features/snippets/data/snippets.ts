@@ -41,7 +41,10 @@ function getMDXData(dir: string) {
 }
 
 export function getAllSnippets() {
-  const dir = path.join(process.cwd(), "src/features/snippets/content");
+  const dir = path.join(
+    /* turbopackIgnore: true */ process.cwd(),
+    "src/features/snippets/content"
+  );
 
   // Create dir if not exists (for build safety)
   if (!fs.existsSync(dir)) {
