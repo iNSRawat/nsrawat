@@ -1,14 +1,28 @@
 import fs from "fs";
 import matter from "gray-matter";
+import yaml from "js-yaml";
 import path from "path";
 
 import type { Post, PostMetadata } from "@/features/blog/types/post";
 
 function parseFrontmatter(fileContent: string) {
-  const file = matter(fileContent);
+  const file = matter(fileContent, {
+    engines: {
+      yaml: (str) => yaml.load(str) as Record<string, unknown>,
+    },
+  });
+
+  const data = { ...file.data } as Record<string, unknown>;
+
+  if (data.createdAt instanceof Date) {
+    data.createdAt = data.createdAt.toISOString();
+  }
+  if (data.updatedAt instanceof Date) {
+    data.updatedAt = data.updatedAt.toISOString();
+  }
 
   return {
-    metadata: file.data as PostMetadata,
+    metadata: data as PostMetadata,
     content: file.content,
   };
 }
@@ -42,18 +56,17 @@ export function getAllPosts() {
   return getMDXData(
     path.join(
       /* turbopackIgnore: true */ process.cwd(),
-      "src/features/blog/content"
-    )
+      "src/features/blog/content",
+    ),
   ).sort((a, b) => {
-      if (a.metadata.pinned && !b.metadata.pinned) return -1;
-      if (!a.metadata.pinned && b.metadata.pinned) return 1;
+    if (a.metadata.pinned && !b.metadata.pinned) return -1;
+    if (!a.metadata.pinned && b.metadata.pinned) return 1;
 
-      return (
-        new Date(b.metadata.createdAt).getTime() -
-        new Date(a.metadata.createdAt).getTime()
-      );
-    },
-  );
+    return (
+      new Date(b.metadata.createdAt).getTime() -
+      new Date(a.metadata.createdAt).getTime()
+    );
+  });
 }
 
 export function getPostBySlug(slug: string) {

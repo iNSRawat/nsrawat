@@ -1,5 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
+import yaml from "js-yaml";
 import path from "path";
 
 import type {
@@ -8,10 +9,23 @@ import type {
 } from "@/features/snippets/types/snippet";
 
 function parseFrontmatter(fileContent: string) {
-  const file = matter(fileContent);
+  const file = matter(fileContent, {
+    engines: {
+      yaml: (str) => yaml.load(str) as Record<string, unknown>,
+    },
+  });
+
+  const data = { ...file.data } as Record<string, unknown>;
+
+  if (data.createdAt instanceof Date) {
+    data.createdAt = data.createdAt.toISOString();
+  }
+  if (data.updatedAt instanceof Date) {
+    data.updatedAt = data.updatedAt.toISOString();
+  }
 
   return {
-    metadata: file.data as SnippetMetadata,
+    metadata: data as SnippetMetadata,
     content: file.content,
   };
 }
@@ -43,7 +57,7 @@ function getMDXData(dir: string) {
 export function getAllSnippets() {
   const dir = path.join(
     /* turbopackIgnore: true */ process.cwd(),
-    "src/features/snippets/content"
+    "src/features/snippets/content",
   );
 
   // Create dir if not exists (for build safety)
