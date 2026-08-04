@@ -28,6 +28,9 @@ function parseFrontmatter(fileContent: string) {
 }
 
 function getMDXFiles(dir: string) {
+  if (!fs.existsSync(dir)) {
+    return [];
+  }
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
@@ -53,20 +56,17 @@ function getMDXData(dir: string) {
 }
 
 export function getAllPosts() {
-  return getMDXData(
-    path.join(
-      /* turbopackIgnore: true */ process.cwd(),
-      "src/features/blog/content",
-    ),
-  ).sort((a, b) => {
-    if (a.metadata.pinned && !b.metadata.pinned) return -1;
-    if (!a.metadata.pinned && b.metadata.pinned) return 1;
+  return getMDXData(path.join(process.cwd(), "src/features/blog/content")).sort(
+    (a, b) => {
+      if (a.metadata.pinned && !b.metadata.pinned) return -1;
+      if (!a.metadata.pinned && b.metadata.pinned) return 1;
 
-    return (
-      new Date(b.metadata.createdAt).getTime() -
-      new Date(a.metadata.createdAt).getTime()
-    );
-  });
+      return (
+        new Date(b.metadata.createdAt).getTime() -
+        new Date(a.metadata.createdAt).getTime()
+      );
+    },
+  );
 }
 
 export function getPostBySlug(slug: string) {

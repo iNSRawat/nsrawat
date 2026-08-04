@@ -20,8 +20,7 @@ export function remarkComponent() {
       if (node.name === "ComponentSource") {
         const name = getNodeAttributeByName(node, "name")?.value as string;
         const fileName = getNodeAttributeByName(node, "fileName")?.value as
-          | string
-          | undefined;
+          string | undefined;
 
         if (!name && !srcPath) {
           return null;
@@ -31,7 +30,7 @@ export function remarkComponent() {
           let src: string;
 
           if (srcPath) {
-            src = path.join(/* turbopackIgnore: true */ process.cwd(), srcPath);
+            src = path.join(process.cwd(), srcPath);
           } else {
             const component = Index[name];
             src = fileName

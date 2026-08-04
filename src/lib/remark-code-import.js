@@ -13,7 +13,7 @@ function extractLines(
   fromLine,
   hasDash,
   toLine,
-  preserveTrailingNewline = false
+  preserveTrailingNewline = false,
 ) {
   const lines = content.split(EOL);
   const start = fromLine || 1;
@@ -34,9 +34,7 @@ function extractLines(
 
 export function remarkCodeImport(options = {}) {
   // Default rootDir is the "src" directory in the current working directory
-  const rootDir =
-    options.rootDir ||
-    path.join(/* turbopackIgnore: true */ process.cwd(), "src");
+  const rootDir = options.rootDir || path.join(process.cwd(), "src");
 
   if (!path.isAbsolute(rootDir)) {
     throw new Error(`"rootDir" has to be an absolute path`);
@@ -61,7 +59,7 @@ export function remarkCodeImport(options = {}) {
 
       const res =
         /^file=(?<path>.+?)(?:(?:#(?:L(?<from>\d+)(?<dash>-)?)?)(?:L(?<to>\d+))?)?$/.exec(
-          fileMeta
+          fileMeta,
         );
 
       if (!res || !res.groups || !res.groups.path) {
@@ -92,7 +90,7 @@ export function remarkCodeImport(options = {}) {
         path.isAbsolute(relativePathFromRootDir)
       ) {
         throw new Error(
-          `Attempted to import code from "${fileAbsPath}", which is outside from the rootDir "${rootDir}"`
+          `Attempted to import code from "${fileAbsPath}", which is outside from the rootDir "${rootDir}"`,
         );
       }
 
@@ -103,7 +101,7 @@ export function remarkCodeImport(options = {}) {
         fromLine,
         hasDash,
         toLine,
-        options.preserveTrailingNewline
+        options.preserveTrailingNewline,
       );
 
       if (options.removeRedundantIndentations) {
