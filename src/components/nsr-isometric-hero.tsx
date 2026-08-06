@@ -3,6 +3,7 @@
 import {
   animate,
   motion,
+  useInView,
   useMotionValue,
   useMotionValueEvent,
   useReducedMotion,
@@ -10,7 +11,7 @@ import {
   useTransform,
 } from "motion/react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import { PronounceMyName } from "@/features/portfolio/components/pronounce-my-name";
 import { VerifiedIcon } from "@/features/portfolio/components/verified-icon";
@@ -257,9 +258,12 @@ const [, gy0] = projectXY(448, 0, 0); // top edge y
 const [, gy1] = projectXY(0, 160, H); // bottom edge y
 
 export function NsrIsometricHero() {
+  const id = useId();
+  const radialGradientId = `nsr-spotlight-radial-gradient-${id}`;
   const { display, blink } = useTypewriter(USER.flipSentences);
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const isInView = useInView(containerRef, { margin: "80px" });
   const [isPressed, setIsPressed] = useState(false);
   const playClick = useSound("/audio/ui-sounds/click.wav");
   const pressOffset = useMotionValue(0);
@@ -282,6 +286,19 @@ export function NsrIsometricHero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  const normX = useTransform(mouseX, [-0.5, 0.5], [0, 1]);
+  const normY = useTransform(mouseY, [-0.5, 0.5], [0, 1]);
+
+  const spotlightCx = useSpring(
+    useTransform(normX, [0, 1], [VB_X, VB_X + VB_W]),
+    { stiffness: 300, damping: 30, mass: 0.1 },
+  );
+
+  const spotlightCy = useSpring(
+    useTransform(normY, [0, 1], [VB_Y, VB_Y + VB_H]),
+    { stiffness: 300, damping: 30, mass: 0.1 },
+  );
+
   const springConfig = { damping: 25, stiffness: 120, mass: 0.8 };
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
@@ -293,17 +310,25 @@ export function NsrIsometricHero() {
   const gridTranslateY = useTransform(springY, [-0.5, 0.5], [4, -4]);
 
   useEffect(() => {
+    if (shouldReduceMotion || !isInView) return;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: none)").matches
+    )
+      return;
+
     const handleMouseMove = (event: MouseEvent) => {
-      if (shouldReduceMotion) return;
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
       mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
     };
+
     const handleMouseLeave = () => {
       mouseX.set(0);
       mouseY.set(0);
     };
+
     const el = containerRef.current;
     el?.addEventListener("mousemove", handleMouseMove);
     el?.addEventListener("mouseleave", handleMouseLeave);
@@ -311,7 +336,7 @@ export function NsrIsometricHero() {
       el?.removeEventListener("mousemove", handleMouseMove);
       el?.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [mouseX, mouseY, shouldReduceMotion]);
+  }, [mouseX, mouseY, shouldReduceMotion, isInView]);
 
   const floatAnimate = shouldReduceMotion ? {} : { y: [-4, 4] };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -472,6 +497,25 @@ export function NsrIsometricHero() {
                 className="transition-colors duration-300"
               />
             </pattern>
+
+            <motion.radialGradient
+              id={radialGradientId}
+              cx={spotlightCx}
+              cy={spotlightCy}
+              r="220"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop
+                className="dark:[stop-color:#ffffff]"
+                stopColor="var(--color-zinc-800)"
+              />
+              <stop
+                className="dark:[stop-color:var(--color-zinc-500)]"
+                offset="1"
+                stopColor="var(--color-zinc-400)"
+                stopOpacity="0"
+              />
+            </motion.radialGradient>
           </defs>
 
           {/* Construction lines — clipped to viewBox */}
@@ -584,6 +628,36 @@ export function NsrIsometricHero() {
                     points={topPoints}
                     fill="url(#nsr-top-hatch)"
                     stroke="none"
+                  />
+
+                  {/* Spotlight cursor-tracking gradient highlight strokes */}
+                  {block.sides.map((side, sIdx) => {
+                    const sidePoints = [
+                      project(side.A.x, side.A.y, offsetVal),
+                      project(side.B.x, side.B.y, offsetVal),
+                      project(side.B.x, side.B.y, H),
+                      project(side.A.x, side.A.y, H),
+                    ].join(" ");
+                    return (
+                      <polygon
+                        key={`side-spotlight-${sIdx}`}
+                        points={sidePoints}
+                        fill="none"
+                        stroke={`url(#${radialGradientId})`}
+                        strokeWidth="1.25"
+                        strokeLinejoin="round"
+                        className="pointer-events-none"
+                      />
+                    );
+                  })}
+
+                  <path
+                    d={getTopOutlinePath(block, offsetVal)}
+                    fill="none"
+                    stroke={`url(#${radialGradientId})`}
+                    strokeWidth="1.25"
+                    strokeLinejoin="round"
+                    className="pointer-events-none"
                   />
                 </g>
               );

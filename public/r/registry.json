@@ -159,6 +159,22 @@
       "type": "registry:component"
     },
     {
+      "name": "spotlight-logo",
+      "title": "Spotlight Logo",
+      "author": "N S Rawat",
+      "description": "SVG logo with a cursor-tracking gradient highlight and tactile press.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/registry/spotlight-logo/spotlight-logo.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:component"
+    },
+    {
       "name": "wheel-picker-block-01",
       "registryDependencies": [
         "@ncdai/wheel-picker"

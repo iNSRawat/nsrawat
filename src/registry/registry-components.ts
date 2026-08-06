@@ -106,4 +106,19 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "spotlight-logo",
+    type: "registry:component",
+    title: "Spotlight Logo",
+    author: "N S Rawat",
+    description:
+      "SVG logo with a cursor-tracking gradient highlight and tactile press.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "src/registry/spotlight-logo/spotlight-logo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

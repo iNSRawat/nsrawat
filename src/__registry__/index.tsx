@@ -100,6 +100,15 @@ export const Index: Record<string, any> = {
       type: "registry:component",
     }],
   },
+  "spotlight-logo": {
+    name: "spotlight-logo",
+    description: "SVG logo with a cursor-tracking gradient highlight and tactile press.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/src/registry/spotlight-logo/spotlight-logo.tsx",
+      type: "registry:component",
+    }],
+  },
   "wheel-picker-block-01": {
     name: "wheel-picker-block-01",
     description: "",
