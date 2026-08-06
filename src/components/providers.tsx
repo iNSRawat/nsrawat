@@ -14,6 +14,11 @@ const SoundProvider = dynamic(
   { ssr: false },
 );
 
+const LaniakeaBackground = dynamic(
+  () => import("./laniakea-background").then((mod) => mod.LaniakeaBackground),
+  { ssr: false },
+);
+
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <JotaiProvider>
@@ -25,6 +30,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         defaultTheme="system"
         attribute="class"
       >
+        <LaniakeaBackground />
         <SoundProvider>
           <AppProgressProvider
             color="var(--foreground)"

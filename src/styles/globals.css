@@ -207,7 +207,7 @@
   --shadow-popover: 0 6px 24px rgba(0, 0, 0, 0.25);
 
   /* NSR 3D Isometric Monogram Colors - Light Theme */
-  --color-hero-bg: #FAFAFA;
+  --color-hero-bg: color-mix(in oklab, var(--background) 80%, transparent);
   --color-stroke: #E5E5E5;
   --color-stroke-hover: #B5B5B5;
   --color-hatch: #F0F0F0;
@@ -309,7 +309,7 @@
   --shadow-popover: 0 0 24px rgba(0, 0, 0, 0.5);
 
   /* NSR 3D Isometric Monogram Colors - Dark Theme */
-  --color-hero-bg: #050507;
+  --color-hero-bg: color-mix(in oklab, var(--background) 80%, transparent);
   --color-stroke: #222225;
   --color-stroke-hover: #3f3f46;
   --color-hatch: #131316;
@@ -337,8 +337,12 @@
 
   /* scroll-smooth disabled: causes issues with Next.js 16 client-side nav */
 
+  html {
+    background-color: var(--background);
+  }
+
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-transparent font-sans text-foreground antialiased;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }

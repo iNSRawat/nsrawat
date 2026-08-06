@@ -354,7 +354,7 @@ export function NsrIsometricHero() {
   return (
     <div
       ref={containerRef}
-      className="group relative aspect-[2/1] sm:aspect-[21/9] w-full border-x border-edge select-none transition-colors duration-300"
+      className="group relative aspect-[2/1] sm:aspect-[21/9] w-full border-x border-edge select-none transition-colors duration-300 backdrop-blur-sm"
       style={
         {
           backgroundColor: "var(--hero-bg)",

@@ -1,3 +1,8 @@
+"use client";
+
+import { Code2Icon } from "lucide-react";
+import React from "react";
+
 import {
   TooltipContent,
   TooltipProvider,
@@ -13,7 +18,7 @@ import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
 // Map tech keys to local icon keys
 const ICON_MAP: Record<string, string> = {
   python: "python",
-  sql: "mysql", // utilizing mysql icon for sql
+  sql: "mysql",
   pandas: "pandas",
   numpy: "numpy",
   "scikit-learn": "scikitlearn",
@@ -25,16 +30,23 @@ const ICON_MAP: Record<string, string> = {
   tableau: "tableau",
   powerbi: "powerbi",
   git: "git",
+  github: "github",
   docker: "docker",
-  mysql: "mysql",
-  mongodb: "mongodb",
-  nextjs: "nextjs",
-  tailwindcss: "tailwindcss", // Present
-  typescript: "ts", // Present
-  react: "react", // Present
+  snowflake: "snowflake",
   streamlit: "streamlit",
   kaggle: "kaggle",
-  chatgpt: "openai", // Present
+  apachehadoop: "hadoop",
+  apachespark: "spark",
+  keras: "keras",
+  scipy: "scipy",
+  plotly: "plotly",
+  databricks: "databricks",
+  mlflow: "mlflow",
+  opencv: "opencv",
+  huggingface: "huggingface",
+  apachekafka: "kafka",
+  poetry: "poetry",
+  mamba: "mamba",
 };
 
 export function TechStack() {
@@ -48,21 +60,17 @@ export function TechStack() {
         className={cn(
           "[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5",
           "bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center",
-          "bg-zinc-950/0.75 dark:bg-white/0.75",
+          "bg-background/40 p-2.5 sm:p-4 md:p-5 backdrop-blur-xs",
         )}
       >
         <TooltipProvider>
-          <ul className="flex flex-wrap gap-2.5 select-none justify-center sm:justify-start">
+          <ul className="flex flex-wrap items-stretch justify-start gap-1.5 sm:gap-2 select-none w-full">
             {TECH_STACK.map((tech) => {
-              // Try to find a matching icon, or default to a generic one if not found
-              // Ideally all commonly used ones should be in icons.tsx
               const IconComponent =
                 getIcon(tech.key) || getIcon(ICON_MAP[tech.key]);
 
-              if (!IconComponent) return null; // Or render fallback
-
               return (
-                <li key={tech.key} className="flex">
+                <li key={tech.key} className="flex grow sm:grow-0">
                   <TooltipRoot>
                     <TooltipTrigger
                       render={
@@ -71,25 +79,27 @@ export function TechStack() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={tech.title}
-                          className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50/50 px-3 py-1 font-mono text-[11px] font-medium text-zinc-800 transition-all duration-200 hover:-translate-y-0.5 hover:bg-zinc-100 hover:border-zinc-300 dark:border-zinc-800/80 dark:bg-zinc-900/50 dark:text-zinc-200 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-750"
+                          className="flex w-full sm:w-auto items-center justify-center sm:justify-start gap-1.5 sm:gap-2 rounded-full border border-edge bg-background/70 px-2 py-0.5 sm:px-2.5 sm:py-1 font-mono text-[10px] sm:text-[11px] font-medium text-foreground/90 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent/80 hover:border-foreground/30 hover:text-foreground backdrop-blur-sm whitespace-nowrap shadow-xs"
                         >
                           <span
-                            className="size-4 flex items-center justify-center shrink-0 [&_svg]:size-full"
+                            className="size-3.5 sm:size-4 flex items-center justify-center shrink-0 [&_svg]:size-full"
                             style={{
                               color: tech.theme
                                 ? undefined
                                 : tech.color || "currentColor",
                             }}
                           >
-                            {IconComponent}
+                            {IconComponent || (
+                              <Code2Icon className="size-3.5 sm:size-4" />
+                            )}
                           </span>
-                          <span>{tech.title}</span>
+                          <span className="truncate">{tech.title}</span>
                         </a>
                       }
                     />
 
                     <TooltipContent>
-                      <p>{tech.title}</p>
+                      <p className="font-mono text-xs">{tech.title}</p>
                     </TooltipContent>
                   </TooltipRoot>
                 </li>
