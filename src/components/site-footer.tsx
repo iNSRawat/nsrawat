@@ -308,7 +308,7 @@ export function SiteFooter() {
               href="https://buymeacoffee.com/nsrawat?ref=NSRawat.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               ☕ Buy Me a Coffee
             </a>
@@ -316,7 +316,7 @@ export function SiteFooter() {
               href="https://paypal.me/NRawat710?ref=NSRawat.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               💳 PayPal
             </a>
@@ -324,7 +324,7 @@ export function SiteFooter() {
               href="https://withupi.com/@nsrawat?ref=NSRawat.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               💸 UPI
             </a>
@@ -332,7 +332,7 @@ export function SiteFooter() {
               href="https://github.com/sponsors/iNSRawat"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-background px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               💖 Sponsor
             </a>

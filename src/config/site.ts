@@ -10,7 +10,7 @@ export const SITE_INFO = {
 };
 
 export const META_THEME_COLORS = {
-  light: "#ffffff",
+  light: "#FAF8F5",
   dark: "#09090b",
 };
 

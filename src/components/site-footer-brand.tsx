@@ -44,9 +44,18 @@ export function SiteFooterBrand() {
           viewBox="0 -2 1120 164"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full"
+          className="w-full text-foreground"
         >
-          <path d={pathD} className="stroke-foreground/10" strokeWidth="1" />
+          {/* Subtle base box fill and crisp border */}
+          <path
+            d={pathD}
+            fill="currentColor"
+            fillOpacity="0.035"
+            stroke="currentColor"
+            strokeOpacity="0.12"
+            strokeWidth="1"
+          />
+          {/* Smooth depth gradient */}
           <path d={pathD} fill="url(#footer-brand-gradient)" />
           <defs>
             <motion.linearGradient
@@ -57,8 +66,9 @@ export function SiteFooterBrand() {
               y2="160"
               gradientUnits="userSpaceOnUse"
             >
-              <stop offset="0.625" stopColor="currentColor" stopOpacity="0" />
-              <stop offset="1" stopColor="currentColor" />
+              <stop offset="0.2" stopColor="currentColor" stopOpacity="0" />
+              <stop offset="0.65" stopColor="currentColor" stopOpacity="0.3" />
+              <stop offset="1" stopColor="currentColor" stopOpacity="0.85" />
             </motion.linearGradient>
           </defs>
         </svg>

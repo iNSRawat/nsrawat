@@ -35,7 +35,7 @@ export function MobileSearchTrigger() {
     <button
       type="button"
       onClick={handleSearchClick}
-      className="mr-2 sm:hidden flex h-7 gap-1.5 items-center rounded-full border border-input bg-white px-2.5 text-muted-foreground shadow-xs select-none hover:bg-white dark:bg-input/30 dark:hover:bg-input/30 cursor-pointer"
+      className="mr-2 sm:hidden flex h-7 gap-1.5 items-center rounded-full border border-input bg-card px-2.5 text-muted-foreground shadow-xs select-none hover:bg-accent hover:text-foreground dark:bg-input/30 dark:hover:bg-input/30 cursor-pointer"
       title="Search"
       aria-label="Search"
     >

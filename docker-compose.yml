@@ -1,0 +1,39 @@
+services:
+  web:
+    image: nsrawat-portfolio:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        APP_URL: ${APP_URL:-https://nsrawat.in}
+        REGISTRY_NAMESPACE: ${REGISTRY_NAMESPACE:-@nsrawat}
+        REGISTRY_NAMESPACE_URL: ${REGISTRY_NAMESPACE_URL:-https://nsrawat.in/r/{name}.json}
+        NEXT_PUBLIC_DMCA_URL: ${NEXT_PUBLIC_DMCA_URL:-}
+        UMAMI_WEBSITE_ID: ${UMAMI_WEBSITE_ID:-}
+        NEXT_PUBLIC_C15T_URL: ${NEXT_PUBLIC_C15T_URL:-}
+    container_name: nsrawat-portfolio
+    restart: unless-stopped
+    ports:
+      - "${PORT:-1360}:1360"
+    environment:
+      - NODE_ENV=production
+      - PORT=1360
+      - HOSTNAME=0.0.0.0
+      - APP_URL=${APP_URL:-https://nsrawat.in}
+      - REGISTRY_NAMESPACE=${REGISTRY_NAMESPACE:-@nsrawat}
+      - REGISTRY_NAMESPACE_URL=${REGISTRY_NAMESPACE_URL:-https://nsrawat.in/r/{name}.json}
+      - GITHUB_API_TOKEN=${GITHUB_API_TOKEN:-}
+      - NEXT_PUBLIC_DMCA_URL=${NEXT_PUBLIC_DMCA_URL:-}
+      - UMAMI_WEBSITE_ID=${UMAMI_WEBSITE_ID:-}
+      - NEXT_PUBLIC_C15T_URL=${NEXT_PUBLIC_C15T_URL:-}
+    env_file:
+      - path: .env.local
+        required: false
+      - path: .env
+        required: false
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:' + (process.env.PORT || 1360)).then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

@@ -1,0 +1,44 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Next.js build output
+.next
+out
+
+# Environment files (sensitive)
+.env*.local
+.env.development
+
+# Version control
+.git
+.gitignore
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Agent and temporary files
+.agent
+.agents
+.gemini
+.gsd
+.husky
+.devcontainer
+adapters
+docs
+
+# Logs and debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun.lockb
+*.tsbuildinfo
+coverage

@@ -36,6 +36,11 @@
     "generate-libphonenumber-metadata": "libphonenumber-metadata-generator ./src/assets/libphonenumber.metadata.json --countries VN --extended",
     "upgrade:next": "npx @next/codemod@latest upgrade latest",
     "upgrade:tailwind": "npx @tailwindcss/upgrade@latest",
+    "docker:build": "docker build -t nsrawat-portfolio .",
+    "docker:run": "docker run -p 1360:1360 --env-file .env.local nsrawat-portfolio",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:dev": "docker compose -f docker-compose.dev.yml up",
     "prepare": "husky"
   },
   "dependencies": {

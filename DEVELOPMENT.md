@@ -55,6 +55,64 @@ After building, start the application with:
 NODE_ENV=production bun run start
 ```
 
+## Running with Docker
+
+You can run the application containerized using Docker or Docker Compose.
+
+### Using Docker Compose (Recommended)
+
+Start the production container:
+
+```bash
+docker compose up -d
+# or using bun script
+bun run docker:up
+```
+
+The application will be accessible at `http://localhost:1360`.
+
+To view logs:
+
+```bash
+docker compose logs -f
+```
+
+To stop the container:
+
+```bash
+docker compose down
+# or using bun script
+bun run docker:down
+```
+
+### Development with Docker Compose
+
+To run a development container with live hot-reloading:
+
+```bash
+docker compose -f docker-compose.dev.yml up
+# or using bun script
+bun run docker:dev
+```
+
+### Using Standalone Docker Commands
+
+Build the Docker image:
+
+```bash
+docker build -t nsrawat-portfolio .
+# or using bun script
+bun run docker:build
+```
+
+Run the container:
+
+```bash
+docker run -p 1360:1360 --env-file .env.local nsrawat-portfolio
+# or using bun script
+bun run docker:run
+```
+
 ## Registry
 
 This project utilizes **shadcn Registry**, which allows you to manage and distribute custom components, hooks, pages, and other files across multiple React projects. By hosting a registry, you can reuse UI components easily without manually copying code between projects.

@@ -13,6 +13,7 @@ try {
 }
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   env: {
     NEXT_PUBLIC_GIT_COMMIT_HASH: gitCommitHash,
     NEXT_PUBLIC_GIT_COMMIT_TIME: gitCommitTime,

@@ -303,7 +303,7 @@ export function CommandMenu({
     <>
       <Button
         variant="secondary"
-        className="h-7 gap-1 rounded-full border border-input bg-white px-2 text-muted-foreground shadow-xs select-none hover:bg-white dark:bg-input/30 dark:hover:bg-input/30 sm:h-8 sm:gap-1.5 sm:px-2.5"
+        className="h-7 gap-1 rounded-full border border-input bg-card px-2 text-muted-foreground shadow-xs select-none hover:bg-accent hover:text-foreground dark:bg-input/30 dark:hover:bg-input/30 sm:h-8 sm:gap-1.5 sm:px-2.5"
         onClick={() => {
           setOpen(true);
           trackEvent({

@@ -133,8 +133,7 @@ export type SlideToUnlockTextProps = Omit<
   "children"
 > & {
   children:
-    | React.ReactNode
-    | ((props: { isDragging: boolean }) => React.ReactNode);
+    React.ReactNode | ((props: { isDragging: boolean }) => React.ReactNode);
 };
 
 export function SlideToUnlockText({

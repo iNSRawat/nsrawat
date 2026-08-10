@@ -1,0 +1,22 @@
+services:
+  web-dev:
+    image: oven/bun:1-slim
+    container_name: nsrawat-portfolio-dev
+    working_dir: /app
+    command: sh -c "bun install && bun run dev"
+    ports:
+      - "${PORT:-1360}:1360"
+    environment:
+      - NODE_ENV=development
+      - PORT=1360
+      - HOSTNAME=0.0.0.0
+      - APP_URL=${APP_URL:-http://localhost:1360}
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    env_file:
+      - path: .env.local
+        required: false
+      - path: .env
+        required: false
