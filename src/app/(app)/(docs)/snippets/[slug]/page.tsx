@@ -99,7 +99,10 @@ export default async function ComponentPage({
     if (component.files && component.files.length > 0) {
       const filePath = component.files[0].path;
       try {
-        const absolutePath = path.join(process.cwd(), filePath);
+        const absolutePath = path.join(
+          /*turbopackIgnore: true*/ process.cwd(),
+          filePath,
+        );
         code = await fs.readFile(absolutePath, "utf-8");
         code = "```tsx\n" + code + "\n```";
       } catch (e) {

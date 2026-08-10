@@ -13,7 +13,8 @@ try {
 }
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Use standalone output for Docker, but default output for Vercel deployment
+  output: process.env.VERCEL ? undefined : "standalone",
   env: {
     NEXT_PUBLIC_GIT_COMMIT_HASH: gitCommitHash,
     NEXT_PUBLIC_GIT_COMMIT_TIME: gitCommitTime,
