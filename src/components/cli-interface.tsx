@@ -232,7 +232,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-50 font-mono dark:bg-zinc-950"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-50/75 font-mono backdrop-blur-sm dark:bg-zinc-950/75"
       onClick={focusInput}
     >
       {/* Scanline overlay for retro feel */}
