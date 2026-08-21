@@ -51,9 +51,9 @@
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
 
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-sans-font);
   --font-mono: var(--font-geist-mono);
-  --font-signature: var(--font-signature);
+  --font-signature: var(--font-sacramento), "Sacramento", cursive;
 
   --shadow-popover: var(--shadow-popover);
 

@@ -5,7 +5,7 @@ export const fontSans = FontSans({
   weight: ["400", "500", "600"],
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-sans-font",
 });
 
 export const fontMono = GeistMono;
@@ -13,6 +13,6 @@ export const fontMono = GeistMono;
 export const fontSignature = Sacramento({
   weight: ["400"],
   subsets: ["latin"],
-  variable: "--font-signature",
+  variable: "--font-sacramento",
   display: "swap",
 });
