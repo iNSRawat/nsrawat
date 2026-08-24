@@ -74,6 +74,54 @@ const RESOURCES: ResourceCategory[] = [
         description:
           "The podcast about AI engineering, infrastructure, and the people building it.",
       },
+      {
+        name: "Data Skeptic",
+        url: "https://dataskeptic.com/",
+        description:
+          "Accessible explanations of data science, statistics, and machine learning topics.",
+      },
+      {
+        name: "DataFramed",
+        url: "https://www.datacamp.com/podcast",
+        description:
+          "DataCamp's podcast on data science careers, tools, and industry trends.",
+      },
+      {
+        name: "SuperDataScience",
+        url: "https://www.superdatascience.com/podcast",
+        description:
+          "Weekly interviews with data scientists, analysts, and ML engineers by Jon Krohn.",
+      },
+      {
+        name: "Not So Standard Deviations",
+        url: "https://nssdeviations.com/",
+        description:
+          "Roger Peng and Hilary Parker discuss the practice of data science and statistics.",
+      },
+      {
+        name: "Lex Fridman Podcast",
+        url: "https://lexfridman.com/podcast/",
+        description:
+          "Long-form conversations on AI, science, philosophy, and the nature of intelligence.",
+      },
+      {
+        name: "TWIML AI Podcast",
+        url: "https://twimlai.com/podcast/twimlai/",
+        description:
+          "Interviews with top ML and AI researchers and practitioners by Sam Charrington.",
+      },
+      {
+        name: "Practical AI",
+        url: "https://changelog.com/practicalai",
+        description:
+          "Making AI practical, productive, and accessible to everyone.",
+      },
+      {
+        name: "Gradient Dissent",
+        url: "https://wandb.ai/fully-connected/gradient-dissent",
+        description:
+          "ML practitioners share real-world lessons from building AI systems at Weights & Biases.",
+      },
     ],
   },
   {
@@ -121,6 +169,30 @@ const RESOURCES: ResourceCategory[] = [
         url: "https://discord.gg/aimlcareerlaunchpad",
         description:
           "A community for aspiring and practicing AI/ML professionals.",
+      },
+      {
+        name: "Kaggle",
+        url: "https://www.kaggle.com/",
+        description:
+          "The largest data science community with competitions, datasets, and notebooks.",
+      },
+      {
+        name: "r/datascience",
+        url: "https://www.reddit.com/r/datascience/",
+        description:
+          "Reddit community for data science discussions, career advice, and industry news.",
+      },
+      {
+        name: "MLOps Community",
+        url: "https://mlops.community/",
+        description:
+          "A community focused on ML in production, MLOps tools, and best practices.",
+      },
+      {
+        name: "DataTalks.Club",
+        url: "https://datatalks.club/",
+        description:
+          "Free courses, events, and a Slack community for data engineers and scientists.",
       },
     ],
   },
