@@ -226,6 +226,14 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <Link
+                    href="/ds-resources"
+                    className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    ds resources
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/bookmarks"
                     className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
                   >

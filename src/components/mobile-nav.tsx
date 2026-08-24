@@ -3,6 +3,8 @@
 import {
   BookmarkIcon,
   BracesIcon,
+  BrainIcon,
+  ChevronDownIcon,
   FolderOpenIcon,
   HeartIcon,
   HomeIcon,
@@ -36,6 +38,7 @@ const NAV_ICONS: Record<string, typeof HomeIcon> = {
   "/projects": FolderOpenIcon,
   "/blog": NewspaperIcon,
   "/snippets": BracesIcon,
+  "/ds-resources": BrainIcon,
   "/bookmarks": BookmarkIcon,
   "/sponsors": HeartIcon,
 };
@@ -49,6 +52,7 @@ export function MobileNav({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   // Close menu on screen resize to desktop
   useEffect(() => {
@@ -63,17 +67,12 @@ export function MobileNav({
     return () => media.removeEventListener("change", listener);
   }, []);
 
-  const flattenedItems = useMemo(() => {
-    const list: NavItem[] = [];
-    for (const item of items) {
-      if (item.items) {
-        list.push(...item.items);
-      } else {
-        list.push(item);
-      }
-    }
-    return list;
-  }, [items]);
+  const topLevelItems = useMemo(
+    () => items.filter((item) => !item.items),
+    [items],
+  );
+
+  const moreItem = useMemo(() => items.find((item) => item.items), [items]);
 
   return (
     <div className={className}>
@@ -123,7 +122,7 @@ export function MobileNav({
 
           {/* Nav Items */}
           <nav className="flex flex-col gap-0.5 p-2 bg-background md:max-w-3xl mx-auto w-full">
-            {flattenedItems.map((link) => {
+            {topLevelItems.map((link) => {
               const Icon = NAV_ICONS[link.href];
               const isActive =
                 link.href === "/"
@@ -147,6 +146,63 @@ export function MobileNav({
                 </SheetClose>
               );
             })}
+
+            {/* Collapsible More Section */}
+            {moreItem?.items && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setMoreOpen(!moreOpen)}
+                  className={cn(
+                    "flex items-center justify-between gap-3 rounded-lg px-3 h-9 font-mono text-sm font-medium transition-colors w-full cursor-pointer",
+                    moreItem.items.some(
+                      (sub) =>
+                        pathname === sub.href || pathname.startsWith(sub.href),
+                    )
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                  )}
+                >
+                  <span>{moreItem.title}</span>
+                  <ChevronDownIcon
+                    className={cn(
+                      "size-4 transition-transform duration-200",
+                      moreOpen && "rotate-180",
+                    )}
+                  />
+                </button>
+
+                {moreOpen && (
+                  <div className="flex flex-col gap-0.5 pl-3">
+                    {moreItem.items.map((subLink) => {
+                      const SubIcon = NAV_ICONS[subLink.href];
+                      const isSubActive =
+                        pathname === subLink.href ||
+                        pathname.startsWith(subLink.href);
+
+                      return (
+                        <SheetClose key={subLink.href} asChild>
+                          <Link
+                            href={subLink.href}
+                            className={cn(
+                              "flex items-center gap-3 rounded-lg px-3 h-9 font-mono text-sm font-medium transition-colors",
+                              isSubActive
+                                ? "bg-accent text-foreground"
+                                : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                            )}
+                          >
+                            {SubIcon && (
+                              <SubIcon className="h-4 w-4 shrink-0" />
+                            )}
+                            <span>{subLink.title}</span>
+                          </Link>
+                        </SheetClose>
+                      );
+                    })}
+                  </div>
+                )}
+              </>
+            )}
 
             <div className="h-px bg-edge/30 my-1" />
 
