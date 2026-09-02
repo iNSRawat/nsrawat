@@ -62,6 +62,20 @@ export const BOOKMARKS: Bookmark[] = [
     category: "Learning Platforms",
     bookmarkedAt: "2026-07-13",
   },
+  {
+    title: "The Principles of Learning Fast",
+    url: "https://notion.moontowermeta.com/principles-of-learning-fast",
+    author: "Kris Abdelmessih",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-09-02",
+  },
+  {
+    title: "Google Machine Learning",
+    url: "https://developers.google.com/machine-learning",
+    author: "Google",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-09-02",
+  },
 
   // --- Libraries & Frameworks ---
   {
