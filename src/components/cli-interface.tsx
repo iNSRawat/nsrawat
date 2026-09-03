@@ -1,11 +1,56 @@
 "use client";
 
 import { ArrowLeft, Check, Copy, Moon, Sun } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ALIASES, ASCII_ART, COMMANDS } from "@/features/portfolio/data/cli";
+
+const ASCII_BANNER_COLORS = [
+  "text-sky-300 dark:text-sky-100",
+  "text-sky-400 dark:text-sky-200",
+  "text-cyan-500 dark:text-cyan-300",
+  "text-sky-600 dark:text-sky-400",
+  "text-indigo-600 dark:text-indigo-400",
+  "text-violet-600 dark:text-violet-400",
+] as const;
+
+const ASCII_BANNER_SHADOW_COLORS = [
+  "text-sky-200 dark:text-sky-200/35",
+  "text-sky-300 dark:text-sky-300/35",
+  "text-cyan-300 dark:text-cyan-300/35",
+  "text-sky-400 dark:text-sky-400/35",
+  "text-indigo-400 dark:text-indigo-400/35",
+  "text-violet-400 dark:text-violet-400/35",
+] as const;
+
+function getAsciiBannerColor(char: string, lineIndex: number) {
+  const colorIndex = Math.min(lineIndex, ASCII_BANNER_COLORS.length - 1);
+
+  if (char === "█") {
+    return ASCII_BANNER_COLORS[colorIndex];
+  }
+
+  if (char === "░") {
+    return ASCII_BANNER_SHADOW_COLORS[colorIndex];
+  }
+
+  return "";
+}
+
+function isAsciiArtLine(line: string) {
+  return (
+    line.trim().startsWith("█") ||
+    line.trim().startsWith("░") ||
+    line.trim().startsWith("_") ||
+    line.trim().startsWith("|")
+  );
+}
+
+function isAsciiPixel(char: string) {
+  return char === "█" || char === "░";
+}
 
 function makeLinkClickable(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -59,6 +104,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [copiedAll, setCopiedAll] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -184,11 +230,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       }
     } else if (e.key === "Tab") {
       e.preventDefault();
-      const availableCommands = [
-        ...Object.keys(COMMANDS),
-        ...Object.keys(ALIASES),
-      ];
-      const matches = availableCommands.filter((c) =>
+      const matches = Object.keys(COMMANDS).filter((c) =>
         c.startsWith(input.toLowerCase()),
       );
       if (matches.length === 1) {
@@ -225,6 +267,21 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     }
   };
 
+  const inputCommand = input.trim().toLowerCase().split(/\s+/)[0];
+  const commandSuggestions = inputCommand
+    ? Object.keys(COMMANDS)
+        .filter(
+          (command) =>
+            command !== inputCommand && command.startsWith(inputCommand),
+        )
+        .slice(0, 6)
+    : [];
+
+  const completeCommand = (command: string) => {
+    setInput(command);
+    requestAnimationFrame(() => inputRef.current?.focus());
+  };
+
   if (!isMounted) return null;
 
   return (
@@ -232,7 +289,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-50/75 font-mono backdrop-blur-sm dark:bg-zinc-950/75"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-50/60 font-mono dark:bg-zinc-950/60"
       onClick={focusInput}
     >
       {/* Scanline overlay for retro feel */}
@@ -276,11 +333,10 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       <div className="flex-1 overflow-y-auto" ref={outputRef}>
         <div className="mx-auto max-w-3xl space-y-1 p-4 pb-2 pt-14 md:pt-24 md:px-8">
           {output.map((line, i) => {
-            const isAsciiArt =
-              line.trim().startsWith("█") ||
-              line.trim().startsWith("░") ||
-              line.trim().startsWith("_") ||
-              line.trim().startsWith("|");
+            const isAsciiArt = isAsciiArtLine(line);
+            const asciiLineIndex = isAsciiArt
+              ? output.slice(0, i).filter(isAsciiArtLine).length
+              : 0;
 
             return (
               <div
@@ -296,7 +352,22 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                     : undefined
                 }
               >
-                <span className="text-zinc-800 dark:text-zinc-200">
+                {isAsciiArt && !shouldReduceMotion && (
+                  <motion.span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-y-0 z-10 w-1/3 bg-linear-to-r from-transparent via-white/40 to-transparent mix-blend-screen"
+                    initial={{ x: "-140%" }}
+                    animate={{ x: "420%" }}
+                    transition={{
+                      duration: 2.8,
+                      delay: 1.2,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                      repeatDelay: 1.8,
+                    }}
+                  />
+                )}
+                <span className="relative z-0 text-zinc-800 dark:text-zinc-200">
                   {line.startsWith("http") ? (
                     <a
                       href={line}
@@ -309,20 +380,36 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                     </a>
                   ) : isAsciiArt ? (
                     <>
-                      {line.split("").map((char, ci) => (
-                        <span
-                          key={ci}
-                          className={
-                            char === "█"
-                              ? "text-emerald-600 dark:text-[#98c379]"
-                              : char === "░"
-                                ? "text-emerald-300 dark:text-[#4a6340]"
-                                : ""
-                          }
-                        >
-                          {char}
-                        </span>
-                      ))}
+                      {line.split("").map((char, ci) => {
+                        const className = getAsciiBannerColor(
+                          char,
+                          asciiLineIndex,
+                        );
+
+                        if (isAsciiPixel(char) && !shouldReduceMotion) {
+                          return (
+                            <motion.span
+                              key={ci}
+                              className={`inline-block ${className}`}
+                              initial={{ opacity: 0, scaleY: 0.35 }}
+                              animate={{ opacity: 1, scaleY: 1 }}
+                              transition={{
+                                duration: 0.14,
+                                delay: ci * 0.008 + asciiLineIndex * 0.05,
+                                ease: "easeOut",
+                              }}
+                            >
+                              {char}
+                            </motion.span>
+                          );
+                        }
+
+                        return (
+                          <span key={ci} className={className}>
+                            {char}
+                          </span>
+                        );
+                      })}
                     </>
                   ) : (
                     formatLine(line)
@@ -356,6 +443,35 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
             onSubmit={handleSubmit}
             className="sticky bottom-0 flex items-center bg-zinc-50/80 py-2 backdrop-blur-sm dark:bg-zinc-950/80"
           >
+            {commandSuggestions.length > 0 && (
+              <div className="absolute bottom-full left-0 mb-2 w-full max-w-sm overflow-hidden rounded-md border border-zinc-200 bg-zinc-50/95 shadow-lg backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/95">
+                <div className="border-b border-zinc-200 px-3 py-1.5 text-[10px] tracking-widest text-zinc-500 uppercase dark:border-zinc-800 dark:text-zinc-400">
+                  Commands · Tab to complete
+                </div>
+                <div className="p-1">
+                  {commandSuggestions.map((command) => (
+                    <button
+                      key={command}
+                      type="button"
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                        completeCommand(command);
+                      }}
+                      className="flex w-full items-center justify-between rounded-sm px-2 py-1.5 text-left text-sm text-zinc-600 transition-colors hover:bg-zinc-200/70 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
+                    >
+                      <span className="text-emerald-600 dark:text-emerald-400">
+                        {command}
+                      </span>
+                      <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                        {Object.keys(ALIASES)
+                          .filter((alias) => ALIASES[alias] === command)
+                          .join(", ")}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             <span className="text-emerald-600 dark:text-emerald-400">
               nsrawat
             </span>

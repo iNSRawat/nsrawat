@@ -690,6 +690,10 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
     case "pandas-cheatsheet":
     case "pandas-dataframe-cheatsheet":
       return <TableIcon {...props} />;
+    case "linux-commands-cheatsheet":
+      return <TerminalIcon {...props} />;
+    case "python-cheatsheet":
+      return <Icons.python {...props} />;
     case "pnpm-aliases":
       return <TerminalIcon {...props} />;
     case "pyspark-setup":

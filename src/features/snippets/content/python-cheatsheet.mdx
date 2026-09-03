@@ -1,0 +1,1014 @@
+---
+title: Python Cheatsheet
+description: Essential Python syntax, data structures, and patterns.
+language: python
+createdAt: 2026-09-03
+---
+
+## Package Management
+
+Manage dependencies (Registry: pypi.org):
+
+```bash
+pip install <package>                                  # Install a package
+pip install -r requirements.txt                        # Install from file
+pip uninstall <package>                                # Remove a package
+pip freeze > requirements.txt                          # Save dependencies
+pip list                                               # List installed packages
+```
+
+## Basic Syntax
+
+Python code structure:
+
+```python
+# Single line comment
+"""
+Multi-line comment
+or docstring
+"""
+
+# Print output
+print("Hello World")
+print("Hello", "World")                                # Multiple items
+print("Hello", "World", sep=", ")                      # Custom separator
+
+# Indentation matters (use 4 spaces, no semicolons needed)
+if True:
+    print("Indented code block")
+```
+
+## Variables
+
+Store and use data:
+
+```python
+# Variable assignment (no need to declare type)
+name = "John"
+age = 25
+price = 9.99
+is_active = True
+
+# Multiple assignment
+x, y, z = 1, 2, 3
+a = b = c = 0
+
+# Check type
+type(name)                                             # <class 'str'>
+
+# Type conversion
+int("42")                                              # 42
+float("3.14")                                          # 3.14
+str(42)                                                # "42"
+bool(1)                                                # True
+
+# Constants (by convention, use uppercase)
+PI = 3.14159
+MAX_SIZE = 100
+```
+
+## Data Types
+
+Different types of values:
+
+```python
+# String
+text = "Hello World"
+text2 = 'Single quotes work too'
+text3 = """Multi-line
+string"""
+
+# Integer
+number = 42
+negative = -10
+
+# Float
+decimal = 3.14
+scientific = 1.5e3                                     # 1500.0
+
+# Boolean
+is_true = True
+is_false = False
+
+# List (mutable, ordered)
+fruits = ["apple", "banana", "orange"]
+
+# Tuple (immutable, ordered)
+coordinates = (10, 20)
+
+# Dictionary (key-value pairs)
+person = {"name": "John", "age": 30}
+
+# Set (unique values, unordered)
+unique_numbers = {1, 2, 3, 4}
+
+# None (represents null/empty)
+empty = None
+
+# Check type
+isinstance(name, str)                                  # True
+isinstance(age, int)                                   # True
+```
+
+## Strings
+
+Working with text:
+
+```python
+text = "Hello World"
+
+# String length
+len(text)                                              # 11
+
+# Uppercase and lowercase
+text.upper()                                           # "HELLO WORLD"
+text.lower()                                           # "hello world"
+text.title()                                           # "Hello World"
+text.capitalize()                                      # "Hello world"
+
+# Trim whitespace
+"  hello  ".strip()                                    # "hello"
+"  hello  ".lstrip()                                   # "hello  "
+"  hello  ".rstrip()                                   # "  hello"
+
+# Check content
+text.startswith("Hello")                               # True
+text.endswith("World")                                 # True
+"World" in text                                        # True (contains)
+
+# Find position
+text.find("World")                                     # 6
+text.index("World")                                    # 6 (raises error if not found)
+
+# Replace text
+text.replace("World", "Python")                        # "Hello Python"
+
+# Split string into list
+text.split(" ")                                        # ["Hello", "World"]
+"a,b,c".split(",")                                     # ["a", "b", "c"]
+
+# Join list into string
+" ".join(["Hello", "World"])                           # "Hello World"
+",".join(["a", "b", "c"])                              # "a,b,c"
+
+# String formatting (f-strings, modern way)
+name = "John"
+age = 30
+f"My name is {name} and I am {age} years old"
+
+# Format method
+"My name is {} and I am {}".format(name, age)
+
+# % formatting (older way)
+"My name is %s and I am %d" % (name, age)
+
+# String repetition
+"Ha" * 3                                               # "HaHaHa"
+
+# Reverse string
+text[::-1]
+
+# Slicing
+text[0:5]                                              # "Hello"
+text[6:]                                               # "World"
+text[:5]                                               # "Hello"
+text[-5:]                                              # "World"
+
+# Check if numeric/alpha
+"123".isdigit()                                        # True
+"abc".isalpha()                                        # True
+"abc123".isalnum() # True
+```
+
+## Numbers
+
+Working with numbers:
+
+```python
+# Math operations
+sum_result = 5 + 3                                     # 8
+diff = 5 - 3                                           # 2
+product = 5 * 3                                        # 15
+quotient = 6 / 3                                       # 2.0 (always returns float)
+floor_div = 7 // 2                                     # 3 (integer division)
+remainder = 7 % 3                                      # 1 (modulus)
+power = 2 ** 3                                         # 8 (exponent)
+
+# Increment (no ++ in Python)
+count = 0
+count += 1                                             # 1
+count -= 1                                             # 0
+count *= 2                                             # 0
+count /= 2                                             # 0.0
+
+# Built-in math functions
+abs(-5)                                                # 5
+round(3.7)                                             # 4
+round(3.14159, 2)                                      # 3.14
+max(1, 5, 3)                                           # 5
+min(1, 5, 3)                                           # 1
+sum([1, 2, 3])                                         # 6
+pow(2, 3)                                              # 8
+
+# Math module
+import math
+math.sqrt(16)                                          # 4.0
+math.floor(4.7)                                        # 4
+math.ceil(4.3)                                         # 5
+math.pi                                                # 3.14159...
+
+# Random numbers
+import random
+random.random()                                        # Random float 0-1
+random.randint(1, 10)                                  # Random int between 1-10
+random.choice([1, 2, 3])                               # Random item from list
+```
+
+## Lists
+
+Working with ordered, mutable collections:
+
+```python
+fruits = ["apple", "banana", "orange"]
+
+# Access elements
+fruits[0]                                              # "apple"
+fruits[-1]                                             # "orange" (last item)
+
+# List length
+len(fruits)                                            # 3
+
+# Add elements
+fruits.append("grape")                                 # Add to end
+fruits.insert(0, "mango")                              # Add at specific index
+
+# Remove elements
+fruits.remove("banana")                                # Remove by value
+fruits.pop()                                           # Remove and return last item
+fruits.pop(0)                                          # Remove and return item at index
+del fruits[0]                                          # Delete by index
+
+# Check existence
+"apple" in fruits                                      # True
+
+# Find index
+fruits.index("apple")                                  # 0
+
+# Sort
+fruits.sort()                                          # Sort ascending
+fruits.sort(reverse=True)                              # Sort descending
+sorted(fruits)                                         # Return new sorted list
+
+# Reverse
+fruits.reverse()
+
+# Copy list
+fruits_copy = fruits.copy()
+fruits_copy = fruits[:]
+
+# Slicing
+fruits[0:2]                                            # First 2 items
+fruits[1:]                                             # From index 1 to end
+fruits[:2]                                             # From start to index 2
+fruits[::-1]                                           # Reversed list
+
+# List comprehension (create list from loop)
+squares = [x**2 for x in range(5)]                     # [0, 1, 4, 9, 16]
+evens = [x for x in range(10) if x % 2 == 0]           # [0, 2, 4, 6, 8]
+
+# Combine lists
+combined = fruits + ["kiwi", "pear"]
+fruits.extend(["kiwi", "pear"])
+
+# Count occurrences
+fruits.count("apple")
+
+# Clear list
+fruits.clear()
+
+# Loop through list
+for fruit in fruits:
+    print(fruit)
+
+# Loop with index
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
+```
+
+## Tuples
+
+Immutable ordered collections:
+
+```python
+coordinates = (10, 20)
+
+# Access elements
+coordinates[0]                                         # 10
+
+# Unpacking
+x, y = coordinates
+
+# Tuple with one item (needs comma)
+single = (5,)
+
+# Cannot modify (immutable)
+# coordinates[0] = 5  # Error!
+
+# Convert list to tuple
+tuple([1, 2, 3])
+
+# Convert tuple to list
+list((1, 2, 3))
+```
+
+## Dictionaries
+
+Key-value pair collections:
+
+```python
+person = {"name": "John", "age": 30, "city": "New York"}
+
+# Access values
+person["name"]                                         # "John"
+person.get("name")                                     # "John"
+person.get("email", "N/A")                             # "N/A" (default if not found)
+
+# Add or update
+person["email"] = "john@example.com"
+person["age"] = 31
+
+# Remove key
+del person["city"]
+person.pop("city")
+
+# Check if key exists
+"name" in person                                       # True
+
+# Get all keys, values, items
+person.keys()                                          # dict_keys(['name', 'age', 'email'])
+person.values()                                        # dict_values(['John', 31, 'john@example.com'])
+person.items()                                         # dict_items([('name', 'John'), ...])
+
+# Loop through dictionary
+for key in person:
+    print(key, person[key])
+
+for key, value in person.items():
+    print(key, value)
+
+# Dictionary comprehension
+squares = {x: x**2 for x in range(5)}
+
+# Merge dictionaries
+person2 = {"country": "USA"}
+merged = {**person, **person2}
+person.update(person2)
+
+# Nested dictionary
+data = {
+    "user": {
+        "name": "John",
+        "age": 30
+    }
+}
+data["user"]["name"]                                   # "John"
+
+# Copy dictionary
+person_copy = person.copy()
+
+# Clear dictionary
+person.clear()
+```
+
+## Sets
+
+Unordered collections of unique items:
+
+```python
+numbers = {1, 2, 3, 4}
+
+# Add items
+numbers.add(5)
+
+# Remove items
+numbers.remove(1)                                      # Error if not found
+numbers.discard(1)                                     # No error if not found
+
+# Check existence
+3 in numbers                                           # True
+
+# Set operations
+set1 = {1, 2, 3}
+set2 = {2, 3, 4}
+
+set1.union(set2)                                       # {1, 2, 3, 4}
+set1.intersection(set2)                                # {2, 3}
+set1.difference(set2)                                  # {1}
+set1 | set2                                            # Union (shorthand)
+set1 & set2                                            # Intersection (shorthand)
+
+# Convert list to set (removes duplicates)
+unique = set([1, 2, 2, 3, 3])                          # {1, 2, 3}
+```
+
+## Conditionals
+
+Make decisions in code:
+
+```python
+# If statement
+age = 18
+if age >= 18:
+    print("Adult")
+
+# If-elif-else
+score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("F")
+
+# Comparison operators
+5 == 5                                                 # True (equal)
+5 != 3                                                 # True (not equal)
+5 > 3                                                  # True (greater than)
+5 < 3                                                  # False (less than)
+5 >= 5                                                 # True (greater or equal)
+5 <= 3                                                 # False (less or equal)
+
+# Logical operators
+age >= 18 and age < 65                                 # AND
+age < 18 or is_citizen                                 # OR
+not is_student                                         # NOT
+
+# Ternary operator (conditional expression)
+status = "Adult" if age >= 18 else "Minor"
+
+# Membership test
+"apple" in fruits
+"grape" not in fruits
+
+# Multiple conditions with chaining
+if 18 <= age < 65:
+    print("Working age")
+
+# Check for None
+if value is None:
+    print("No value")
+
+if value is not None:
+    print("Has value")
+```
+
+## Loops
+
+Repeat code multiple times:
+
+```python
+# For loop
+for i in range(5):
+    print(i)                                           # 0, 1, 2, 3, 4
+
+# Range with start, stop, step
+for i in range(2, 10, 2):
+    print(i)                                           # 2, 4, 6, 8
+
+# Loop through list
+fruits = ["apple", "banana", "orange"]
+for fruit in fruits:
+    print(fruit)
+
+# Loop with index
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
+
+# Loop through string
+for char in "Hello":
+    print(char)
+
+# Loop through dictionary
+person = {"name": "John", "age": 30}
+for key, value in person.items():
+    print(key, value)
+
+# While loop
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+# Break (exit loop)
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+
+# Continue (skip iteration)
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)                                           # 0, 1, 3, 4
+
+# Else clause (runs if loop completes without break)
+for i in range(5):
+    print(i)
+else:
+    print("Loop completed")
+
+# Nested loops
+for i in range(3):
+    for j in range(3):
+        print(i, j)
+```
+
+## Functions
+
+Reusable blocks of code:
+
+```python
+# Basic function
+def greet():
+    print("Hello!")
+
+greet()
+
+# Function with parameters
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("John")
+
+# Function with return value
+def add(a, b):
+    return a + b
+
+result = add(5, 3)                                     # 8
+
+# Default parameters
+def greet(name="Guest"):
+    return f"Hello, {name}!"
+
+greet()                                                # "Hello, Guest!"
+greet("John")                                          # "Hello, John!"
+
+# Multiple return values
+def get_coordinates():
+    return 10, 20
+
+x, y = get_coordinates()
+
+# Variable number of arguments (*args)
+def sum_all(*numbers):
+    return sum(numbers)
+
+sum_all(1, 2, 3, 4)                                    # 10
+
+# Keyword arguments (**kwargs)
+def print_info(**info):
+    for key, value in info.items():
+        print(key, value)
+
+print_info(name="John", age=30)
+
+# Combining *args and **kwargs
+def function(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+# Type hints (optional but helpful)
+def add(a: int, b: int) -> int:
+    return a + b
+
+# Lambda function (anonymous function)
+square = lambda x: x ** 2
+square(5)                                              # 25
+
+add = lambda a, b: a + b
+add(3, 5)                                              # 8
+
+# Using lambda with map, filter
+numbers = [1, 2, 3, 4, 5]
+doubled = list(map(lambda x: x * 2, numbers))
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+
+# Docstring
+def greet(name):
+    """This function greets a person by name."""
+    return f"Hello, {name}!"
+```
+
+## Classes & OOP
+
+Object-oriented programming:
+
+```python
+# Define class
+class Person:
+    # Constructor
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    # Method
+    def greet(self):
+        return f"Hello, my name is {self.name}"
+
+    # String representation
+    def __str__(self):
+        return f"Person({self.name}, {self.age})"
+
+# Create object
+person = Person("John", 30)
+print(person.name)                                     # "John"
+print(person.greet())                                  # "Hello, my name is John"
+
+# Inheritance
+class Student(Person):
+    def __init__(self, name, age, school):
+        super().__init__(name, age)                    # Call parent constructor
+        self.school = school
+
+    def study(self):
+        return f"{self.name} is studying"
+
+student = Student("Jane", 20, "MIT")
+print(student.greet())                                 # Inherited method
+print(student.study())                                 # New method
+
+# Class variables (shared across instances)
+class Counter:
+    count = 0                                          # Class variable
+
+    def __init__(self):
+        Counter.count += 1
+
+# Private attributes (convention: prefix with underscore)
+class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance                        # "Private" by convention
+
+    def get_balance(self):
+        return self._balance
+
+# Property decorator (getter/setter)
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("Radius cannot be negative")
+        self._radius = value
+
+circle = Circle(5)
+circle.radius = 10                                     # Uses setter
+
+# Static method (doesn't need instance)
+class MathHelper:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+MathHelper.add(3, 5)                                   # Can call without creating instance
+
+# Class method
+class Person:
+    count = 0
+
+    @classmethod
+    def get_count(cls):
+        return cls.count
+
+# Check instance type
+isinstance(person, Person)                             # True
+```
+
+## Error Handling
+
+Handle errors gracefully:
+
+```python
+# Try-except
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+# Multiple exceptions
+try:
+    value = int("abc")
+except ValueError:
+    print("Invalid value")
+except TypeError:
+    print("Type error")
+
+# Catch all exceptions
+try:
+    risky_operation()
+except Exception as e:
+    print(f"Error: {e}")
+
+# Finally (always runs)
+try:
+    file = open("file.txt")
+except FileNotFoundError:
+    print("File not found")
+finally:
+    print("This always runs")
+
+# Else (runs if no exception)
+try:
+    result = 10 / 2
+except ZeroDivisionError:
+    print("Error")
+else:
+    print("Success:", result)
+
+# Raise custom exception
+def check_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+    return age
+
+# Custom exception class
+class CustomError(Exception):
+    pass
+
+raise CustomError("Something went wrong")
+```
+
+## File Handling
+
+Read and write files:
+
+```python
+# Read entire file
+with open("file.txt", "r") as file:
+    content = file.read()
+
+# Read line by line
+with open("file.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+
+# Read all lines into list
+with open("file.txt", "r") as file:
+    lines = file.readlines()
+
+# Write to file (overwrites)
+with open("file.txt", "w") as file:
+    file.write("Hello World")
+
+# Append to file
+with open("file.txt", "a") as file:
+    file.write("New line\n")
+
+# Write multiple lines
+with open("file.txt", "w") as file:
+    file.writelines(["Line 1\n", "Line 2\n"])
+
+# Check if file exists
+import os
+os.path.exists("file.txt")
+
+# Delete file
+os.remove("file.txt")
+
+# Working with CSV
+import csv
+
+with open("data.csv", "r") as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+
+with open("data.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Name", "Age"])
+    writer.writerow(["John", 30])
+```
+
+## JSON
+
+Work with JSON data:
+
+```python
+import json
+
+# Python dict to JSON string
+data = {"name": "John", "age": 30}
+json_string = json.dumps(data)
+
+# Pretty print JSON
+json_string = json.dumps(data, indent=4)
+
+# JSON string to Python dict
+json_data = '{"name": "John", "age": 30}'
+data = json.loads(json_data)
+
+# Read JSON file
+with open("data.json", "r") as file:
+    data = json.load(file)
+
+# Write JSON file
+with open("data.json", "w") as file:
+    json.dump(data, file, indent=4)
+```
+
+## Modules & Imports
+
+Organize and reuse code:
+
+```python
+# Import entire module
+import math
+math.sqrt(16)
+
+# Import specific function
+from math import sqrt
+sqrt(16)
+
+# Import multiple items
+from math import sqrt, pi
+
+# Import with alias
+import numpy as np
+import pandas as pd
+
+# Import all (not recommended)
+from math import *
+
+# Custom module (mymodule.py)
+def greet(name):
+    return f"Hello, {name}"
+
+# Import custom module
+import mymodule
+mymodule.greet("John")
+
+from mymodule import greet
+greet("John")
+
+# Common standard library modules
+import os                                              # Operating system interface
+import sys                                             # System-specific parameters
+import datetime                                        # Date and time
+import random                                          # Random numbers
+import re                                              # Regular expressions
+import time                                            # Time-related functions
+```
+
+## Working with Dates
+
+Handle dates and times:
+
+```python
+from datetime import datetime, date, timedelta
+
+# Current date and time
+now = datetime.now()
+today = date.today()
+
+# Create specific date
+specific_date = datetime(2024, 12, 25)
+
+# Format date
+now.strftime("%Y-%m-%d")                               # "2024-12-10"
+now.strftime("%Y-%m-%d %H:%M:%S")                      # "2024-12-10 15:30:45"
+now.strftime("%B %d, %Y")                              # "December 10, 2024"
+
+# Parse string to date
+date_obj = datetime.strptime("2024-12-10", "%Y-%m-%d")
+
+# Date arithmetic
+tomorrow = today + timedelta(days=1)
+next_week = today + timedelta(weeks=1)
+difference = date(2024, 12, 31) - date(2024, 1, 1)
+print(difference.days)                                 # Number of days
+
+# Get specific parts
+now.year
+now.month
+now.day
+now.hour
+now.minute
+```
+
+## Regular Expressions
+
+Pattern matching in strings:
+
+```python
+import re
+
+# Search for pattern
+text = "My email is john@example.com"
+match = re.search(r'\w+@\w+\.\w+', text)
+if match:
+    print(match.group())                               # "john@example.com"
+
+# Find all matches
+numbers = re.findall(r'\d+', "I have 5 apples and 3 oranges")
+# ['5', '3']
+
+# Replace pattern
+result = re.sub(r'\d+', 'X', "I have 5 apples")
+# "I have X apples"
+
+# Split by pattern
+parts = re.split(r'\s+', "Hello   World")
+# ['Hello', 'World']
+
+# Check if matches
+if re.match(r'^\d+$', "12345"):
+    print("Valid number")
+
+# Common patterns
+r'\d'                                                  # Digit
+r'\w'                                                  # Word character
+r'\s'                                                  # Whitespace
+r'.'                                                   # Any character
+r'+'                                                   # One or more
+r'*'                                                   # Zero or more
+r'?'                                                   # Optional
+r'^'                                                   # Start of string
+r'$'                                                   # End of string
+```
+
+## List/Dict Comprehensions
+
+Concise way to create collections:
+
+```python
+# List comprehension
+squares = [x**2 for x in range(10)]
+evens = [x for x in range(20) if x % 2 == 0]
+
+# With if-else
+labels = ["even" if x % 2 == 0 else "odd" for x in range(5)]
+
+# Nested comprehension
+matrix = [[i*j for j in range(3)] for i in range(3)]
+
+# Dictionary comprehension
+squares_dict = {x: x**2 for x in range(5)}
+
+# Set comprehension
+unique_squares = {x**2 for x in [-2, -1, 0, 1, 2]}
+
+# Generator expression (memory efficient)
+gen = (x**2 for x in range(10))
+```
+
+## Common Built-in Functions
+
+Frequently used functions:
+
+```python
+len([1, 2, 3])                                         # 3 (length)
+type(42)                                               # <class 'int'>
+range(5)                                               # 0, 1, 2, 3, 4
+enumerate(['a', 'b'])                                  # (0, 'a'), (1, 'b')
+zip([1, 2], ['a', 'b'])                                # (1, 'a'), (2, 'b')
+sorted([3, 1, 2])                                      # [1, 2, 3]
+reversed([1, 2, 3])                                    # 3, 2, 1
+sum([1, 2, 3])                                         # 6
+max([1, 5, 3])                                         # 5
+min([1, 5, 3])                                         # 1
+abs(-5)                                                # 5
+all([True, True, False])                               # False
+any([True, False, False])                              # True
+map(str, [1, 2, 3])                                    # ['1', '2', '3']
+filter(lambda x: x > 2, [1, 2, 3, 4])                  # [3, 4]
+input("Enter name: ")                                  # Get user input
+```
+
+## Working with Multiple Values
+
+Common patterns for handling data:
+
+```python
+# Unpacking
+a, b, c = [1, 2, 3]
+first, *rest = [1, 2, 3, 4]                            # first=1, rest=[2,3,4]
+*start, last = [1, 2, 3, 4]                            # start=[1,2,3], last=4
+
+# Swap values
+a, b = 1, 2
+a, b = b, a
+
+# Multiple assignments
+x = y = z = 0
+
+# Ignore values with underscore
+_, value = (1, "important")
+```

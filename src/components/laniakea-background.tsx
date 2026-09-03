@@ -40,7 +40,11 @@ interface MilkyWayStar3D {
   colorIndex: number;
 }
 
-export function LaniakeaBackground() {
+export function LaniakeaBackground({
+  className = "-z-10",
+}: {
+  className?: string;
+}) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { resolvedTheme } = useTheme();
   const themeRef = useRef<string>("dark");
@@ -620,7 +624,7 @@ export function LaniakeaBackground() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      className={`pointer-events-none fixed inset-0 overflow-hidden ${className}`}
       aria-hidden="true"
     >
       <canvas ref={canvasRef} className="block h-full w-full" />

@@ -10,6 +10,42 @@ import {
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 
+export function SidebarTOC({ items }: { items: TOCItemType[] }) {
+  if (!items.length) {
+    return null;
+  }
+
+  return (
+    <nav
+      aria-label="Table of contents"
+      className="max-h-[calc(100vh-7rem)] overflow-y-auto border border-edge bg-background/80 font-mono shadow-sm backdrop-blur-sm"
+    >
+      <div className="flex items-center gap-2 border-b border-edge px-3 py-2 text-[11px] font-medium tracking-widest text-muted-foreground uppercase">
+        <TextIcon className="size-3.5" />
+        On this page
+      </div>
+      <ul className="space-y-0.5 p-1.5 text-xs text-muted-foreground">
+        {items.map((item) => (
+          <li
+            key={item.url}
+            style={{ paddingInlineStart: 12 * Math.max(item.depth - 2, 0) }}
+          >
+            <a
+              className="group flex items-center gap-1.5 rounded-sm px-2 py-1.5 transition-colors hover:bg-muted/60 hover:text-foreground"
+              href={item.url}
+            >
+              <span className="text-muted-foreground/50 transition-colors group-hover:text-foreground">
+                #
+              </span>
+              <span className="truncate">{item.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 export function InlineTOC({
   items,
   className,

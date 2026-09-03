@@ -17,7 +17,7 @@ import {
   TooltipRoot,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip";
-import { InlineTOC } from "@/components/inline-toc";
+import { InlineTOC, SidebarTOC } from "@/components/inline-toc";
 import { MDX } from "@/components/mdx";
 import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
@@ -337,21 +337,29 @@ export default async function ComponentPage({
           />
         </div>
 
-        <Prose className="px-4">
-          <h1 className="screen-line-after text-3xl font-semibold">
-            {snippet.metadata.title}
-          </h1>
+        <div className="relative">
+          <aside className="absolute top-0 right-full mr-8 hidden w-52 xl:block">
+            <div className="sticky top-24">
+              <SidebarTOC items={toc} />
+            </div>
+          </aside>
 
-          <p className="text-muted-foreground">
-            {snippet.metadata.description}
-          </p>
+          <Prose className="px-4">
+            <h1 className="screen-line-after text-3xl font-semibold">
+              {snippet.metadata.title}
+            </h1>
 
-          <InlineTOC items={toc} />
+            <p className="text-muted-foreground">
+              {snippet.metadata.description}
+            </p>
 
-          <div>
-            <MDX code={snippet.content} />
-          </div>
-        </Prose>
+            <InlineTOC items={toc} className="xl:hidden" />
+
+            <div>
+              <MDX code={snippet.content} />
+            </div>
+          </Prose>
+        </div>
 
         <div className="screen-line-before h-4 w-full" />
       </>

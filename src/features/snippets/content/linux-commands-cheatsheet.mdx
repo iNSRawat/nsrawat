@@ -1,0 +1,455 @@
+---
+title: Linux Commands Cheatsheet
+description: Essential Linux and Bash commands for navigating, managing, and working from the command line.
+language: bash
+createdAt: 2026-09-03
+---
+
+## Navigation
+
+```bash
+pwd                                                    # Print working directory
+ls                                                     # List files/folders
+ls -l                                                  # Long format (permissions, size, date)
+ls -la                                                 # Include hidden files
+ls -lh                                                 # Human-readable sizes (KB, MB, GB)
+ls -R                                                  # Recursive listing
+
+cd folder                                              # Change directory
+cd ..                                                  # Go up one level
+cd ~                                                   # Go to home directory
+cd -                                                   # Go to previous directory
+cd /                                                   # Go to root directory
+```
+
+## File & Directory Operations
+
+```bash
+# Create
+touch file.txt                                         # Create empty file
+mkdir folder                                           # Create directory
+mkdir -p a/b/c                                         # Create nested directories
+
+# Copy
+cp file.txt copy.txt                                   # Copy file
+cp -r folder newfolder                                 # Copy directory recursively
+
+# Move / Rename
+mv file.txt newname.txt                                # Rename file
+mv file.txt folder/                                    # Move file into folder
+
+# Delete
+rm file.txt                                            # Delete file
+rm -r folder                                           # Delete directory recursively
+rm -rf folder                                          # Force delete (no confirmation, careful!)
+rmdir folder                                           # Delete empty directory
+
+# Create symbolic link
+ln -s /path/to/original /path/to/link
+```
+
+## Viewing File Contents
+
+```bash
+cat file.txt                                           # Print entire file
+cat -n file.txt                                        # Print with line numbers
+tac file.txt                                           # Print file in reverse (line order)
+
+less file.txt                                          # View file page by page (q to quit)
+more file.txt                                          # Similar to less, older tool
+
+head file.txt                                          # First 10 lines
+head -n 20 file.txt                                    # First 20 lines
+tail file.txt                                          # Last 10 lines
+tail -n 20 file.txt                                    # Last 20 lines
+tail -f file.txt                                       # Follow file (live updates, e.g. logs)
+
+wc file.txt                                            # Word/line/byte count
+wc -l file.txt                                         # Line count only
+```
+
+## Searching
+
+```bash
+# Find files by name
+find . -name "*.txt"                                   # Search current dir recursively
+find / -name "file.txt"                                # Search entire filesystem
+find . -type d -name "src"                             # Find directories only
+find . -type f -mtime -7                               # Files modified in last 7 days
+find . -size +100M                                     # Files larger than 100MB
+
+# grep (search text inside files)
+grep "search" file.txt                                 # Search for text in file
+grep -i "search" file.txt                              # Case-insensitive
+grep -r "search" .                                     # Recursive search in directory
+grep -n "search" file.txt                              # Show line numbers
+grep -v "search" file.txt                              # Invert match (lines NOT containing)
+grep -c "search" file.txt                              # Count matching lines
+grep -E "regex_pattern" file.txt                       # Extended regex
+
+# Combine find and grep
+find . -name "*.js" | xargs grep "TODO"
+
+# locate (faster, uses prebuilt index)
+locate file.txt
+updatedb                                               # Update the locate database
+
+# which / whereis (find command location)
+which python
+whereis python
+```
+
+## File Permissions
+
+```bash
+# View permissions
+ls -l file.txt                                         # -rwxr-xr-- format
+
+# Change permissions (chmod)
+chmod 755 file.txt                                     # rwxr-xr-x (owner: all, group/others: read+execute)
+chmod 644 file.txt                                     # rw-r--r-- (owner: read+write, others: read)
+chmod +x script.sh                                     # Add execute permission
+chmod -x script.sh                                     # Remove execute permission
+chmod -R 755 folder                                    # Apply recursively
+
+# Permission numbers: 4=read, 2=write, 1=execute (sum them: 7=rwx, 5=r-x, etc.)
+
+# Change ownership (chown)
+chown user file.txt
+chown user:group file.txt
+chown -R user:group folder                             # Recursive
+
+# Change group
+chgrp group file.txt
+```
+
+## Process Management
+
+```bash
+ps                                                     # Show your running processes
+ps aux                                                 # Show all processes (detailed)
+ps aux | grep node                                     # Find specific process
+
+top                                                    # Live process monitor (q to quit)
+htop                                                   # Better interactive process monitor
+
+kill PID                                               # Terminate process by ID
+kill -9 PID                                            # Force kill
+killall firefox                                        # Kill by process name
+pkill -f "pattern"                                     # Kill by matching command
+
+jobs                                                   # List background jobs
+bg                                                     # Resume job in background
+fg                                                     # Bring job to foreground
+command &                                              # Run command in background
+nohup command &                                        # Run command, survive terminal close
+
+disown                                                 # Detach job from shell
+```
+
+## Disk & System Info
+
+```bash
+df -h                                                  # Disk space usage (human-readable)
+du -h file.txt                                         # Size of a file
+du -sh folder                                          # Total size of folder
+du -sh */                                              # Size of each folder in current dir
+gdu                                                    # Interactive disk usage analyzer (install: apt/dnf/pacman install gdu)
+
+free -h                                                # Memory usage (human-readable)
+
+uname -a                                               # System/kernel info
+uptime                                                 # System uptime and load
+whoami                                                 # Current user
+hostname                                               # Machine name
+lscpu                                                  # CPU info
+lsblk                                                  # List block devices/disks
+```
+
+## Networking
+
+```bash
+ping google.com                                        # Test connectivity
+ping -c 4 google.com                                   # Ping 4 times then stop
+
+curl https://api.example.com                           # Make HTTP request
+curl -X POST -d "data" https://api.example.com
+curl -o file.zip https://example.com/file.zip          # Download file
+curl -I https://example.com                            # Headers only
+
+wget https://example.com/file.zip                      # Download file
+
+ifconfig                                               # Network interfaces (older)
+ip addr                                                # Network interfaces (modern)
+ip a                                                   # Shorthand
+
+netstat -tulpn                                         # Show listening ports (older)
+ss -tulpn                                              # Show listening ports (modern)
+
+nslookup example.com                                   # DNS lookup
+dig example.com                                        # Detailed DNS lookup
+
+ssh user@hostname                                      # Connect via SSH
+ssh -i key.pem user@hostname                           # SSH with key
+scp file.txt user@host:/path/                          # Copy file over SSH
+scp -r folder user@host:/path/                         # Copy folder over SSH
+
+hostname -I                                            # Show local IP
+```
+
+## Archives & Compression
+
+```bash
+# tar (most common archive format)
+tar -cvf archive.tar folder/                           # Create archive
+tar -xvf archive.tar                                   # Extract archive
+tar -czvf archive.tar.gz folder/                       # Create compressed (gzip) archive
+tar -xzvf archive.tar.gz                               # Extract .tar.gz
+tar -tzvf archive.tar.gz                               # List contents without extracting
+
+# zip / unzip
+zip archive.zip file1 file2                            # Create zip
+zip -r archive.zip folder/                             # Zip a folder recursively
+unzip archive.zip                                      # Extract zip
+unzip -l archive.zip                                   # List contents
+
+# gzip
+gzip file.txt                                          # Compress (creates file.txt.gz, removes original)
+gunzip file.txt.gz                                     # Decompress
+```
+
+## Package Management
+
+```bash
+# Debian/Ubuntu (apt)
+sudo apt update                                        # Refresh package list
+sudo apt upgrade                                       # Upgrade all packages
+sudo apt install package_name                          # Install package
+sudo apt remove package_name                           # Remove package
+sudo apt search package_name                           # Search for package
+
+# Red Hat/CentOS/Fedora (dnf/yum)
+sudo dnf update                                        # Update packages
+sudo dnf install package_name                          # Install package
+sudo dnf remove package_name                           # Remove package
+sudo dnf search package_name                           # Search for package
+
+# Arch Linux (pacman)
+sudo pacman -Syu                                       # Update all packages
+sudo pacman -S package_name                            # Install package
+sudo pacman -R package_name                            # Remove package
+sudo pacman -Ss package_name                           # Search for package
+
+# openSUSE (zypper)
+sudo zypper refresh                                    # Refresh repositories
+sudo zypper update                                     # Update packages
+sudo zypper install package_name                       # Install package
+sudo zypper remove package_name                        # Remove package
+
+# Alpine Linux (apk)
+apk update                                             # Update package index
+apk upgrade                                            # Upgrade packages
+apk add package_name                                   # Install package
+apk del package_name                                   # Remove package
+
+# Flatpak (Universal Linux Packages)
+flatpak install flathub package_name                   # Install package
+flatpak uninstall package_name                         # Remove package
+flatpak update                                         # Update all packages
+flatpak search package_name                            # Search for package
+flatpak list                                           # List installed packages
+
+# macOS (Homebrew)
+brew install package_name                              # Install package
+brew update                                            # Update brew
+brew upgrade                                           # Upgrade packages
+brew uninstall package_name                            # Remove package
+brew list                                              # List installed packages
+```
+
+## Environment Variables
+
+```bash
+echo $PATH                                             # Print a variable
+export VAR_NAME=value                                  # Set variable for current session
+env                                                    # List all environment variables
+printenv                                               # Same as env
+
+# Persist across sessions (add to ~/.bashrc or ~/.zshrc)
+export PATH="$PATH:/new/path"
+source ~/.bashrc                                       # Reload shell config
+```
+
+## Redirection & Pipes
+
+```bash
+command > file.txt                                     # Redirect output to file (overwrite)
+command >> file.txt                                    # Redirect output to file (append)
+command < file.txt                                     # Use file as input
+command 2> error.txt                                   # Redirect errors only
+command > out.txt 2>&1                                 # Redirect both output and errors
+command &> all.txt                                     # Shorthand for above
+
+command1 | command2                                    # Pipe output of command1 into command2
+cat file.txt | grep "search" | wc -l                   # Chain multiple pipes
+
+command > /dev/null                                    # Discard output
+command > /dev/null 2>&1                               # Discard output and errors
+```
+
+## Text Processing
+
+```bash
+# sed (stream editor, find/replace)
+sed 's/old/new/' file.txt                              # Replace first occurrence per line
+sed 's/old/new/g' file.txt                             # Replace all occurrences
+sed -i 's/old/new/g' file.txt                          # Edit file in place
+sed -n '2,4p' file.txt                                 # Print lines 2-4
+
+# awk (pattern scanning and processing)
+awk '{print $1}' file.txt                              # Print first column
+awk -F',' '{print $2}' file.txt                        # Use comma as delimiter
+awk '{print NR, $0}' file.txt                          # Print with line numbers
+awk '$3 > 100' file.txt                                # Filter rows by condition
+
+# sort
+sort file.txt                                          # Sort lines alphabetically
+sort -n file.txt                                       # Sort numerically
+sort -r file.txt                                       # Reverse order
+sort -u file.txt                                       # Sort and remove duplicates
+sort -k 2 file.txt                                     # Sort by 2nd column
+
+# uniq (remove duplicate adjacent lines, usually after sort)
+uniq file.txt
+sort file.txt | uniq
+sort file.txt | uniq -c                                # Count occurrences
+
+# cut (extract columns)
+cut -d',' -f1 file.txt                                 # Extract 1st comma-separated field
+cut -c1-5 file.txt                                     # Extract characters 1-5
+
+# tr (translate/replace characters)
+echo "hello" | tr 'a-z' 'A-Z'                          # Convert to uppercase
+tr -d '\n' < file.txt                                  # Remove newlines
+
+# diff (compare files)
+diff file1.txt file2.txt
+diff -u file1.txt file2.txt                            # Unified format (like git diff)
+```
+
+## File Editing (Nano & Vim Basics)
+
+```bash
+# Nano (simple, beginner-friendly)
+nano file.txt
+# Ctrl+O to save, Ctrl+X to exit, Ctrl+K to cut line, Ctrl+U to paste
+
+# Vim (powerful, steeper learning curve)
+vim file.txt
+# i           - enter insert mode
+# Esc         - exit insert mode (back to normal mode)
+# :w          - save
+# :q          - quit
+# :wq         - save and quit
+# :q!         - quit without saving
+# dd          - delete line
+# yy          - copy (yank) line
+# p           - paste
+# /search     - search for text
+# :%s/old/new/g   - find and replace in whole file
+```
+
+## System Services (systemd)
+
+```bash
+sudo systemctl start service_name                      # Start service
+sudo systemctl stop service_name                       # Stop service
+sudo systemctl restart service_name                    # Restart service
+sudo systemctl status service_name                     # Check status
+sudo systemctl enable service_name                     # Enable on boot
+sudo systemctl disable service_name                    # Disable on boot
+systemctl list-units --type=service                    # List all services
+
+journalctl -u service_name                             # View logs for a service
+journalctl -f                                          # Follow logs live
+journalctl --since "1 hour ago"                        # Logs from a time range
+```
+
+## User Management
+
+```bash
+sudo useradd username                                  # Create user
+sudo passwd username                                   # Set/change password
+sudo userdel username                                  # Delete user
+sudo userdel -r username                               # Delete user and home directory
+
+sudo usermod -aG groupname username                    # Add user to group
+groups username                                        # Show user's groups
+id username                                            # Show user/group IDs
+
+su username                                            # Switch user
+sudo command                                           # Run command as root
+sudo -i                                                # Start root shell
+```
+
+## Aliases & Shell Customization
+
+```bash
+# Create an alias (add to ~/.bashrc or ~/.zshrc for persistence)
+alias ll='ls -la'
+alias gs='git status'
+alias ..='cd ..'
+
+# Remove alias
+unalias ll
+
+# History
+history                                                # Show command history
+!123                                                   # Run command number 123 from history
+!!                                                     # Run last command
+Ctrl+R                                                 # Search command history interactively
+```
+
+## Common Patterns
+
+```bash
+# Find and delete files matching pattern
+find . -name "*.log" -delete
+
+# Find large files
+find / -type f -size +100M 2>/dev/null
+
+# Count files in directory
+ls -1 | wc -l
+
+# Watch a command run repeatedly
+watch -n 2 "ls -la"                                    # Runs every 2 seconds
+
+# Check what's using a port
+lsof -i :8080
+sudo netstat -tulpn | grep 8080
+
+# Background a long-running task and log output
+nohup long_command > output.log 2>&1 &
+
+# Chain commands: run second only if first succeeds
+command1 && command2
+
+# Chain commands: run second regardless
+command1 ; command2
+
+# Run second only if first fails
+command1 || command2
+
+# Repeat a command N times
+for i in {1..5}; do echo "Run $i"; done
+
+# Quickly create a backup
+cp file.txt file.txt.bak
+
+# Check exit status of last command
+echo $?
+
+# Combine multiple grep filters
+cat log.txt | grep "ERROR" | grep -v "test"
+```
