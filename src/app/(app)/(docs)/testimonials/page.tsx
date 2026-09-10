@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { StripedSeparator } from "@/components/striped-separator";
 import { TESTIMONIALS } from "@/features/portfolio/data/testimonials";
 import { cn } from "@/lib/utils";
 import {
@@ -31,7 +32,7 @@ export default function TestimonialsPage() {
         </p>
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       <div className="grid grid-cols-1 sm:grid-cols-2">
         {TESTIMONIALS.map((item, index) => (
@@ -71,22 +72,9 @@ export default function TestimonialsPage() {
         ))}
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       <div className="h-4" />
     </div>
-  );
-}
-
-function Separator({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "relative flex h-8 w-full",
-        "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
-        "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className,
-      )}
-    />
   );
 }

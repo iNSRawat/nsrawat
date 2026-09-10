@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
+import { StripedSeparator } from "@/components/striped-separator";
 import { ProjectItem } from "@/features/portfolio/components/projects/project-item";
 import { PROJECTS } from "@/features/portfolio/data/projects";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -23,7 +23,7 @@ export default function ProjectsPage() {
         </p>
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       <div className="grid grid-cols-1 gap-3 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">
         {PROJECTS.map((project) => (
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         ))}
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       <div className="p-4 text-center">
         <p className="font-mono text-sm text-muted-foreground">
@@ -49,18 +49,5 @@ export default function ProjectsPage() {
 
       <div className="h-4" />
     </div>
-  );
-}
-
-function Separator({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "relative flex h-8 w-full",
-        "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
-        "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className,
-      )}
-    />
   );
 }

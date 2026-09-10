@@ -4,12 +4,11 @@ import Image from "next/image";
 
 import { ContactTabs } from "@/components/contact-tabs";
 import { Icons } from "@/components/icons";
+import { StripedSeparator } from "@/components/striped-separator";
 import { SOURCE_CODE_GITHUB_URL } from "@/config/site";
+import { ExperienceItem } from "@/features/portfolio/components/experiences/experience-item";
 import { EXPERIENCES } from "@/features/portfolio/data/experiences";
 import { USER } from "@/features/portfolio/data/user";
-import { cn } from "@/lib/utils";
-
-import { ExperienceItem } from "./components/experience-item";
 
 export const metadata: Metadata = {
   title: "About Nagendra Singh Rawat",
@@ -29,7 +28,7 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       {/* About Content */}
       <div className="space-y-3 sm:space-y-6 p-2 sm:p-4">
@@ -340,7 +339,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       {/* Experience Section */}
       <div className="p-2 sm:p-4">
@@ -354,7 +353,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       {/* Tech Stack Section */}
       <div className="p-2 sm:p-4">
@@ -572,29 +571,16 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       {/* Contact Form Section */}
       <div className="py-4 px-2 sm:px-4">
         <ContactTabs />
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       <div className="h-2 sm:h-4" />
     </div>
-  );
-}
-
-function Separator({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "relative flex h-8 w-full",
-        "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
-        "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className,
-      )}
-    />
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { ComponentIcon } from "@/components/icons";
 import { ComponentCommand } from "@/components/snippets-command";
+import { StripedSeparator } from "@/components/striped-separator";
 import { getAllSnippets } from "@/features/snippets/data/snippets";
 import { cn } from "@/lib/utils";
 import { components } from "@/registry/registry-components";
@@ -12,19 +13,6 @@ export const metadata: Metadata = {
   description:
     "My personal stash of data science components & code snippets that make my life easier. They're simple and reusable. Feel free to copy, tweak, and use them as you like.",
 };
-
-function Separator({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "relative flex h-8 w-full",
-        "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
-        "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className,
-      )}
-    />
-  );
-}
 
 export default function SnippetsPage() {
   const snippets = getAllSnippets();
@@ -49,7 +37,7 @@ export default function SnippetsPage() {
         <ComponentCommand />
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       <div className="grid grid-cols-1 md:grid-cols-3">
         {/* Registry Components */}

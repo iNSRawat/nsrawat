@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
+import { StripedSeparator } from "@/components/striped-separator";
 import { About } from "@/features/portfolio/components/about";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { USER } from "@/features/portfolio/data/user";
-import { cn } from "@/lib/utils";
 
 // Lazy load below-fold sections to reduce initial JS bundle
 const Testimonials = dynamic(
@@ -88,30 +88,30 @@ export default function Page() {
           <ProfileCover />
         </div>
         <About />
-        <Separator />
+        <StripedSeparator />
 
         <GitHubContributions />
 
         <TechStack />
-        <Separator />
+        <StripedSeparator />
 
         <Snippets />
-        <Separator />
+        <StripedSeparator />
 
         <Experiences />
-        <Separator />
+        <StripedSeparator />
 
         <Projects projectItemVariant="compact" />
-        <Separator />
+        <StripedSeparator />
 
         <Blog />
-        <Separator />
+        <StripedSeparator />
 
         <Testimonials />
-        <Separator />
+        <StripedSeparator />
 
         <LetsTalk />
-        <Separator />
+        <StripedSeparator />
       </div>
     </>
   );
@@ -130,17 +130,4 @@ function getPageJsonLd(): WithContext<PageSchema> {
       image: USER.avatar,
     },
   };
-}
-
-function Separator({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "relative flex h-8 w-full border-x border-edge",
-        "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
-        "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className,
-      )}
-    />
-  );
 }

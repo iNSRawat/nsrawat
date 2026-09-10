@@ -30,7 +30,6 @@ export function PostItem({
             alt={post.metadata.title}
             width={1200}
             height={630}
-            quality={100}
             priority={shouldPreloadImage}
           />
 

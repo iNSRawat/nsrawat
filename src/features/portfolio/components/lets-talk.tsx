@@ -17,7 +17,7 @@ export function LetsTalk() {
         </p>
 
         <a
-          href="mailto:nsrawatdigital@gmail.com"
+          href={`mailto:digital@nsrawat.in`}
           className="group inline-flex items-center gap-2.5 rounded-full border border-border bg-accent2 px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-foreground/20 hover:bg-accent2/80 hover:shadow-lg active:scale-[0.98] sm:px-6 sm:py-3 sm:text-base mb-4"
         >
           <Image

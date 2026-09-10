@@ -180,7 +180,6 @@ export default async function ProjectDetailsPage({ params }: Props) {
                 alt={project.title}
                 fill
                 className="object-cover object-top"
-                quality={100}
                 priority
                 unoptimized
               />

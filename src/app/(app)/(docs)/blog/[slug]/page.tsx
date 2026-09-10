@@ -222,7 +222,6 @@ export default async function Page({
                 alt={post.metadata.title}
                 fill
                 className="object-cover object-top"
-                quality={100}
                 priority
               />
             </div>

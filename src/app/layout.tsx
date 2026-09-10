@@ -111,15 +111,8 @@ export default function RootLayout({
     >
       <head>
         {/* Preconnect to external resources for faster loading */}
-        <link rel="preconnect" href="https://api.github.com" />
-        <link rel="dns-prefetch" href="https://api.github.com" />
         <link rel="preconnect" href="https://analytics.nsrawat.in" />
         <link rel="dns-prefetch" href="https://analytics.nsrawat.in" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
 
         <script
           id="dark-mode"

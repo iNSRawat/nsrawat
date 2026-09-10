@@ -54,7 +54,6 @@ export function ProjectItem({
                 alt={project.title}
                 width={32}
                 height={32}
-                quality={100}
                 className="mx-4 flex size-6 shrink-0 select-none"
                 aria-hidden="true"
               />
@@ -191,7 +190,6 @@ export function ProjectItem({
             alt={project.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
-            quality={100}
             aria-hidden="true"
           />
           <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-inset ring-black/10 dark:ring-white/10" />

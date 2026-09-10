@@ -1,11 +1,15 @@
 "use client";
 
 import { Code2, Monitor } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
 import { ContactForm } from "@/components/contact-form";
-import { DeveloperContactForm } from "@/components/developer-contact-form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const DeveloperContactForm = dynamic(() =>
+  import("./developer-contact-form").then((mod) => mod.DeveloperContactForm),
+);
 
 const ROTATING_WORDS = ["Collaborations", "Ideas", "Projects", "Solutions"];
 

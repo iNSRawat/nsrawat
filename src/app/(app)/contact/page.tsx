@@ -4,6 +4,7 @@ import { CalendarIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { ContactTabs } from "@/components/contact-tabs";
+import { StripedSeparator } from "@/components/striped-separator";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -44,19 +45,6 @@ function AnimatedWord() {
   );
 }
 
-function Separator({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "relative flex h-8 w-full",
-        "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
-        "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        className,
-      )}
-    />
-  );
-}
-
 export default function ContactPage() {
   return (
     <div className="mx-auto border-x border-edge md:max-w-3xl">
@@ -92,14 +80,14 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <Separator />
+      <StripedSeparator />
 
       {/* Tabs Section - no header since page already has one */}
       <div className="p-2 sm:p-4">
         <ContactTabs showHeader={false} showFormDescription />
       </div>
 
-      <Separator />
+      <StripedSeparator />
     </div>
   );
 }
