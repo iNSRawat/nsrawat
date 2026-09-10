@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 
 interface ContactFormProps {
@@ -27,24 +26,29 @@ export function ContactForm({ compact = false, className }: ContactFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!supabase) {
-      toast.error("Supabase environment variables are missing.");
-      return;
-    }
-
     setLoading(true);
 
-    const { error } = await supabase.from("contacts").insert([form]);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    setLoading(false);
+      const data = (await res.json()) as { success?: boolean; error?: string };
+      setLoading(false);
 
-    if (error) {
-      toast.error("Error submitting form. Please try again.");
-      console.error(error);
-    } else {
-      toast.success("Message sent successfully!");
-      setForm({ name: "", email: "", message: "" });
+      if (!res.ok || !data.success) {
+        toast.error(data.error || "Error submitting form. Please try again.");
+        console.error("Contact form submission error:", data);
+      } else {
+        toast.success("Message sent successfully!");
+        setForm({ name: "", email: "", message: "" });
+      }
+    } catch (err) {
+      setLoading(false);
+      toast.error("Network error. Please try again or email directly.");
+      console.error("Contact form network error:", err);
     }
   };
 

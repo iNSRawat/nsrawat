@@ -19,7 +19,6 @@ import {
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 
-import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 
 type EditorState = "editing" | "loading" | "success";
@@ -99,21 +98,28 @@ export function DeveloperContactForm() {
       return;
     }
 
-    if (!supabase) {
-      toast.error("Supabase environment variables are missing.");
-      return;
-    }
-
     setEditorState("loading");
 
-    const { error } = await supabase.from("contacts").insert([form]);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    if (error) {
+      const data = (await res.json()) as { success?: boolean; error?: string };
+
+      if (!res.ok || !data.success) {
+        setEditorState("editing");
+        toast.error(data.error || "Error submitting form. Please try again.");
+        console.error("Developer contact form submission error:", data);
+      } else {
+        setEditorState("success");
+      }
+    } catch (err) {
       setEditorState("editing");
-      toast.error("Error submitting form. Please try again.");
-      console.error(error);
-    } else {
-      setEditorState("success");
+      toast.error("Network error. Please try again or email directly.");
+      console.error("Developer contact form network error:", err);
     }
   }, [form]);
 
