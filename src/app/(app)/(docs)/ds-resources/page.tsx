@@ -195,6 +195,12 @@ const RESOURCES: ResourceCategory[] = [
         description:
           "Free courses, events, and a Slack community for data engineers and scientists.",
       },
+      {
+        name: "Building LLMs from First Principles",
+        url: "https://ttsugriy.github.io/llm-first-principles/",
+        description:
+          "A comprehensive guide covering tokenization, embeddings, transformers, and training LLMs from scratch.",
+      },
     ],
   },
 ];
