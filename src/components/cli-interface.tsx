@@ -9,8 +9,11 @@ import { ALIASES, ASCII_ART, COMMANDS } from "@/features/portfolio/data/cli";
 
 const ASCII_BANNER_COLORS = [
   "text-sky-300 dark:text-sky-100",
+  "text-sky-300 dark:text-sky-100",
   "text-sky-400 dark:text-sky-200",
+  "text-cyan-400 dark:text-cyan-200",
   "text-cyan-500 dark:text-cyan-300",
+  "text-sky-500 dark:text-sky-400",
   "text-sky-600 dark:text-sky-400",
   "text-indigo-600 dark:text-indigo-400",
   "text-violet-600 dark:text-violet-400",
@@ -18,9 +21,12 @@ const ASCII_BANNER_COLORS = [
 
 const ASCII_BANNER_SHADOW_COLORS = [
   "text-sky-200 dark:text-sky-200/35",
+  "text-sky-200 dark:text-sky-200/35",
   "text-sky-300 dark:text-sky-300/35",
   "text-cyan-300 dark:text-cyan-300/35",
+  "text-cyan-400 dark:text-cyan-300/35",
   "text-sky-400 dark:text-sky-400/35",
+  "text-sky-500 dark:text-sky-400/35",
   "text-indigo-400 dark:text-indigo-400/35",
   "text-violet-400 dark:text-violet-400/35",
 ] as const;
@@ -28,7 +34,7 @@ const ASCII_BANNER_SHADOW_COLORS = [
 function getAsciiBannerColor(char: string, lineIndex: number) {
   const colorIndex = Math.min(lineIndex, ASCII_BANNER_COLORS.length - 1);
 
-  if (char === "█") {
+  if (char === "█" || char === "▀" || char === "▄" || char === "▌") {
     return ASCII_BANNER_COLORS[colorIndex];
   }
 
@@ -40,16 +46,22 @@ function getAsciiBannerColor(char: string, lineIndex: number) {
 }
 
 function isAsciiArtLine(line: string) {
+  const trimmed = line.trim();
   return (
-    line.trim().startsWith("█") ||
-    line.trim().startsWith("░") ||
-    line.trim().startsWith("_") ||
-    line.trim().startsWith("|")
+    trimmed.startsWith("█") ||
+    trimmed.startsWith("▀") ||
+    trimmed.startsWith("▄") ||
+    trimmed.startsWith("▌") ||
+    trimmed.startsWith("░") ||
+    trimmed.startsWith("_") ||
+    trimmed.startsWith("|")
   );
 }
 
 function isAsciiPixel(char: string) {
-  return char === "█" || char === "░";
+  return (
+    char === "█" || char === "▀" || char === "▄" || char === "▌" || char === "░"
+  );
 }
 
 function makeLinkClickable(text: string) {
@@ -331,7 +343,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
 
       {/* Terminal Content */}
       <div className="flex-1 overflow-y-auto" ref={outputRef}>
-        <div className="mx-auto max-w-3xl space-y-1 p-4 pb-2 pt-14 md:pt-24 md:px-8">
+        <div className="mx-auto max-w-3xl md:max-w-4xl lg:max-w-5xl space-y-1 p-4 pb-2 pt-14 md:pt-24 md:px-8">
           {output.map((line, i) => {
             const isAsciiArt = isAsciiArtLine(line);
             const asciiLineIndex = isAsciiArt
@@ -343,7 +355,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                 key={i}
                 className={`group relative selection:bg-cyan-500/30 ${
                   isAsciiArt
-                    ? "whitespace-pre font-bold leading-none tracking-normal text-[5px] min-[400px]:text-[7px] sm:text-[9px] md:text-xs lg:text-sm overflow-hidden flex justify-center"
+                    ? "whitespace-pre font-bold leading-none tracking-normal text-[3.5px] min-[360px]:text-[4.5px] min-[440px]:text-[5.5px] min-[540px]:text-[7px] sm:text-[8px] md:text-[9.5px] lg:text-[11px] xl:text-xs overflow-hidden flex justify-center"
                     : "whitespace-pre-wrap leading-relaxed"
                 }`}
                 style={
@@ -390,7 +402,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                           return (
                             <motion.span
                               key={ci}
-                              className={`inline-block ${className}`}
+                              className={`inline-block leading-none ${className}`}
                               initial={{ opacity: 0, scaleY: 0.35 }}
                               animate={{ opacity: 1, scaleY: 1 }}
                               transition={{
@@ -405,7 +417,10 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                         }
 
                         return (
-                          <span key={ci} className={className}>
+                          <span
+                            key={ci}
+                            className={`inline-block leading-none ${className}`}
+                          >
                             {char}
                           </span>
                         );
