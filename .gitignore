@@ -45,3 +45,4 @@ scripts/
 PROJECT_RULES.md
 GSD-STYLE.md
 model_capabilities.yaml
+.fuse_hidden*
