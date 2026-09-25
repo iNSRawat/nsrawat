@@ -148,6 +148,12 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => {
 
 const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   {
+    title: "index.md",
+    href: "/index.md",
+    icon: FileTextIcon,
+    openInNewTab: true,
+  },
+  {
     title: "llms.txt",
     href: "/llms.txt",
     icon: FileTextIcon,

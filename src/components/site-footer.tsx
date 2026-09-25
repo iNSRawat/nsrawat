@@ -199,6 +199,16 @@ export function SiteFooter() {
                     llms.txt
                   </a>
                 </li>
+                <li>
+                  <a
+                    href={`${SITE_INFO.url}/index.md`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    index.md
+                  </a>
+                </li>
               </ul>
             </div>
 

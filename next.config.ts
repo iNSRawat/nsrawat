@@ -68,12 +68,36 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/blog/:slug.md",
+        destination: "/blog.mdx/:slug",
+      },
+      {
         source: "/blog/:slug.mdx",
         destination: "/blog.mdx/:slug",
       },
       {
+        source: "/components/:slug.md",
+        destination: "/components.mdx/:slug",
+      },
+      {
         source: "/components/:slug.mdx",
-        destination: "/blog.mdx/:slug",
+        destination: "/components.mdx/:slug",
+      },
+      {
+        source: "/snippets/:slug.md",
+        destination: "/components.mdx/:slug",
+      },
+      {
+        source: "/snippets/:slug.mdx",
+        destination: "/components.mdx/:slug",
+      },
+      {
+        source: "/projects/:slug.md",
+        destination: "/projects.mdx/:slug",
+      },
+      {
+        source: "/projects/:slug.mdx",
+        destination: "/projects.mdx/:slug",
       },
       {
         source: "/rss",
