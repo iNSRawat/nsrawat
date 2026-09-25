@@ -301,7 +301,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-50/60 font-mono dark:bg-zinc-950/60"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-zinc-50/25 font-mono backdrop-blur-[1.5px] dark:bg-zinc-950/35"
       onClick={focusInput}
     >
       {/* Scanline overlay for retro feel */}
@@ -456,7 +456,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
           {/* Terminal Input */}
           <form
             onSubmit={handleSubmit}
-            className="sticky bottom-0 flex items-center bg-zinc-50/80 py-2 backdrop-blur-sm dark:bg-zinc-950/80"
+            className="sticky bottom-0 flex items-center bg-zinc-50/45 py-2 backdrop-blur-md dark:bg-zinc-950/50"
           >
             {commandSuggestions.length > 0 && (
               <div className="absolute bottom-full left-0 mb-2 w-full max-w-sm overflow-hidden rounded-md border border-zinc-200 bg-zinc-50/95 shadow-lg backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/95">

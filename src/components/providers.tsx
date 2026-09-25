@@ -20,6 +20,14 @@ const LaniakeaBackground = dynamic(
   { ssr: false },
 );
 
+const HolographicBackground = dynamic(
+  () =>
+    import("./holographic-background").then(
+      (mod) => mod.HolographicBackground || mod.default,
+    ),
+  { ssr: false },
+);
+
 export function Providers({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
@@ -33,7 +41,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
         defaultTheme="system"
         attribute="class"
       >
-        {pathname !== "/cli" && <LaniakeaBackground />}
+        {pathname !== "/cli" && pathname !== "/about" && <LaniakeaBackground />}
+        {pathname === "/about" && <HolographicBackground />}
         <SoundProvider>
           <AppProgressProvider
             color="var(--foreground)"
