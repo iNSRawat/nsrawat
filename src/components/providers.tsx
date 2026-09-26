@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Provider as JotaiProvider } from "jotai";
 import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
 import { ThemeProvider } from "next-themes";
 
 import { Toaster } from "./ui/sonner";
@@ -20,17 +19,7 @@ const LaniakeaBackground = dynamic(
   { ssr: false },
 );
 
-const HolographicBackground = dynamic(
-  () =>
-    import("./holographic-background").then(
-      (mod) => mod.HolographicBackground || mod.default,
-    ),
-  { ssr: false },
-);
-
 export function Providers({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-
   return (
     <JotaiProvider>
       <ThemeProvider
@@ -41,8 +30,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         defaultTheme="system"
         attribute="class"
       >
-        {pathname !== "/cli" && pathname !== "/about" && <LaniakeaBackground />}
-        {pathname === "/about" && <HolographicBackground />}
+        <LaniakeaBackground />
         <SoundProvider>
           <AppProgressProvider
             color="var(--foreground)"
