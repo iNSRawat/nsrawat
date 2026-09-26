@@ -46,8 +46,8 @@ This portfolio site takes inspiration from [chanhdai.com](https://github.com/ncd
 
 ### Tech & Features
 
-- ⚛️ Upgrade to **React 19**, **Next.js 16**, **Shadcn/UI**
-- 🎉 Adopting **TypeScript**, committing with [Tailwind CSS v4](https://tailwindcss.com)
+- ⚛️ Built with **React 19.3**, **Next.js 16.3**, and **shadcn/ui 4.21**
+- 🎉 Powered by **TypeScript 7** and [Tailwind CSS v4.3](https://tailwindcss.com)
 - 👀 Theming in dark mode with [shadcn/ui Dark Mode](https://ui.shadcn.com/docs/dark-mode/next) colors for better contrast.
 - 📊 Website analytics with [umami](https://umami.is/).
 - 👨‍💻 My website refers to the design and code from the [chanhdai.com](https://github.com/ncdai/chanhdai.com) repository and incorporates [shadcn/ui](https://ui.shadcn.com/).
@@ -95,4 +95,4 @@ Extending sincere thanks for these exceptional resources 🙏
 
 <br>
 
-Copyright © 2025 - N S Rawat (NSRawat)
+Copyright © 2025-2026 - N S Rawat (NSRawat)

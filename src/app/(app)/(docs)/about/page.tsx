@@ -432,21 +432,22 @@ export default function AboutPage() {
               <li className="flex items-start gap-2">
                 <span>⚛️</span>
                 <span>
-                  Upgrade to <strong>React 19</strong>,{" "}
-                  <strong>Next.js 16</strong>, <strong>Shadcn/UI</strong>
+                  Built with <strong>React 19.3</strong>,{" "}
+                  <strong>Next.js 16.3</strong>, and{" "}
+                  <strong>shadcn/ui 4.21</strong>
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span>🎉</span>
                 <span>
-                  Adopting <strong>TypeScript</strong>, committing with{" "}
+                  Powered by <strong>TypeScript 7</strong> and{" "}
                   <a
                     href="https://tailwindcss.com"
                     className="link font-medium"
                     target="_blank"
                     rel="noopener"
                   >
-                    Tailwind CSS v4
+                    Tailwind CSS v4.3
                   </a>
                 </span>
               </li>

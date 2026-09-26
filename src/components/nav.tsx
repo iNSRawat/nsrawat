@@ -9,14 +9,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import type { NavItem } from "@/types/nav";
+import type { NavItem as NavItemData } from "@/types/nav";
 
 export function Nav({
   items,
   activeId,
   className,
 }: {
-  items: NavItem[];
+  items: NavItemData[];
   activeId?: string;
   className?: string;
 }) {
