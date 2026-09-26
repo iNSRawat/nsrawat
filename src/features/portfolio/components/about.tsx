@@ -16,7 +16,7 @@ export function About() {
 
   return (
     <Panel id="about" className="before:hidden">
-      <PanelContent>
+      <PanelContent className="relative">
         <ProseMono>
           <Markdown>{USER.about}</Markdown>
         </ProseMono>
@@ -36,21 +36,46 @@ export function About() {
           </Button>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center gap-1.5 sm:gap-2">
-          {SOCIAL_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-accent2 hover:text-foreground sm:size-8"
-              target={link.title === "Email" ? undefined : "_blank"}
-              rel={link.title === "Email" ? undefined : "noopener noreferrer"}
-              title={link.title}
+        {/* Social Links Row with handwritten "follow me" note outside the container */}
+        <div className="relative mt-4">
+          {/* Handwritten "follow me" note positioned in the left margin outside the panel */}
+          <div
+            className="pointer-events-none absolute -left-20 sm:-left-24 md:-left-26 bottom-0 hidden md:flex flex-col items-center select-none font-signature text-muted-foreground/80 z-20"
+            aria-hidden="true"
+          >
+            <span className="-rotate-6 text-lg tracking-wide text-muted-foreground/90">
+              follow me
+            </span>
+            <svg
+              className="size-6 text-muted-foreground/60 -scale-x-100 -rotate-6 ml-4"
+              viewBox="0 0 40 40"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <div className="size-4 [&_svg]:size-full">
-                {getIcon(link.icon)}
-              </div>
-            </a>
-          ))}
+              <path d="M34 4c1 15-5 26-21 30" />
+              <path d="m22 37-9-3 7.5-8" />
+            </svg>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-accent2 hover:text-foreground sm:size-8"
+                target={link.title === "Email" ? undefined : "_blank"}
+                rel={link.title === "Email" ? undefined : "noopener noreferrer"}
+                title={link.title}
+              >
+                <div className="size-4 [&_svg]:size-full">
+                  {getIcon(link.icon)}
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </PanelContent>
     </Panel>

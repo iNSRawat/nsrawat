@@ -4,6 +4,7 @@ import { useScroll } from "motion/react";
 import { useEffect, useState } from "react";
 
 import { Icons } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 
 export function SiteHeaderWrapper(props: React.ComponentProps<"header">) {
   const { scrollY } = useScroll();
@@ -32,15 +33,16 @@ export function MobileSearchTrigger() {
   };
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
+      size="icon"
       onClick={handleSearchClick}
-      className="mr-2 sm:hidden flex h-7 gap-1.5 items-center rounded-full border border-input bg-card px-2.5 text-muted-foreground shadow-xs select-none hover:bg-accent hover:text-foreground dark:bg-input/30 dark:hover:bg-input/30 cursor-pointer"
+      className="sm:hidden size-8 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground shrink-0 cursor-pointer select-none"
       title="Search"
       aria-label="Search"
     >
-      <Icons.search className="size-3.5" aria-hidden />
-      <span className="font-sans text-[10px] font-medium">Search</span>
-    </button>
+      <Icons.search className="size-4 shrink-0" aria-hidden />
+    </Button>
   );
 }

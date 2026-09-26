@@ -51,7 +51,11 @@ export function useSound(url: string) {
   }, [url]);
 
   const play = useCallback((volume: number = 1) => {
-    if (audioCtxRef.current && bufferRef.current) {
+    if (!audioCtxRef.current) return;
+    if (audioCtxRef.current.state === "suspended") {
+      audioCtxRef.current.resume();
+    }
+    if (bufferRef.current) {
       const source = audioCtxRef.current.createBufferSource();
       const gainNode = audioCtxRef.current.createGain();
 

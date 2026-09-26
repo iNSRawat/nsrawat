@@ -440,7 +440,7 @@ export default function AboutPage() {
               <li className="flex items-start gap-2">
                 <span>🎉</span>
                 <span>
-                  Powered by <strong>TypeScript 7</strong> and{" "}
+                  Powered by <strong>TypeScript</strong> and{" "}
                   <a
                     href="https://tailwindcss.com"
                     className="link font-medium"

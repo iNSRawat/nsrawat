@@ -83,10 +83,8 @@ export default function Page() {
       />
 
       <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
-        {/* Hero — overlay hangs below border via translate-y-1/2, needs bottom margin */}
-        <div className="mb-10 sm:mb-12">
-          <ProfileCover />
-        </div>
+        <ProfileCover />
+        <StripedSeparator />
         <About />
         <StripedSeparator />
 

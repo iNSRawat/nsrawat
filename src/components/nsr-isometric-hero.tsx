@@ -19,7 +19,7 @@ import { USER } from "@/features/portfolio/data/user";
 import { useSound } from "@/hooks/use-sound";
 
 // Typewriter hook — cycles through sentences with type/delete animation
-function useTypewriter(sentences: string[], speed = 60, pause = 1800) {
+function useTypewriter(sentences: string[], speed = 60, pause = 2000) {
   const [display, setDisplay] = useState("");
   const [sentenceIdx, setSentenceIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
@@ -33,7 +33,8 @@ function useTypewriter(sentences: string[], speed = 60, pause = 1800) {
 
   useEffect(() => {
     if (!sentences.length) return;
-    const current = sentences[sentenceIdx] ?? "";
+    const current = sentences[sentenceIdx % sentences.length] ?? "";
+
     if (!deleting && charIdx < current.length) {
       const id = setTimeout(() => {
         setDisplay(current.slice(0, charIdx + 1));
@@ -41,23 +42,31 @@ function useTypewriter(sentences: string[], speed = 60, pause = 1800) {
       }, speed);
       return () => clearTimeout(id);
     }
+
     if (!deleting && charIdx === current.length) {
       const id = setTimeout(() => setDeleting(true), pause);
       return () => clearTimeout(id);
     }
+
     if (deleting && charIdx > 0) {
-      const id = setTimeout(() => {
-        setDisplay(current.slice(0, charIdx - 1));
-        setCharIdx((c) => c - 1);
-      }, speed / 2);
+      const id = setTimeout(
+        () => {
+          setDisplay(current.slice(0, charIdx - 1));
+          setCharIdx((c) => c - 1);
+        },
+        Math.max(25, speed / 2),
+      );
       return () => clearTimeout(id);
     }
+
     if (deleting && charIdx === 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setDeleting(false);
-      setSentenceIdx((i) => (i + 1) % sentences.length);
+      const id = setTimeout(() => {
+        setDeleting(false);
+        setSentenceIdx((i) => (i + 1) % sentences.length);
+      }, 250);
+      return () => clearTimeout(id);
     }
-  }, [charIdx, deleting, sentenceIdx, sentences, speed, pause]);
+  }, [charIdx, deleting, sentenceIdx, speed, pause, sentences]);
 
   return { display, blink };
 }
@@ -86,10 +95,12 @@ function LiveClock({ timeZone }: { timeZone: string }) {
     day: "numeric",
   });
   return (
-    <span className="tabular-nums">
-      {time}
-      <span className="mx-1.5 opacity-40">·</span>
-      {date}
+    <span className="tabular-nums inline-flex items-center shrink-0">
+      <span>{time}</span>
+      <span className="hidden sm:inline">
+        <span className="mx-1 opacity-40">·</span>
+        {date}
+      </span>
     </span>
   );
 }
@@ -113,9 +124,7 @@ interface Block {
   customOutlineFn?: (z: number) => string;
 }
 
-// Origin centered so NSR geometry fills the viewBox "150 95 700 420"
-// Geometry spans: x:[237,764], y:[132,478] → center (500,305)
-// ViewBox center: (150+350, 95+210) = (500, 305) — perfect match.
+// Original NSR isometric projection parameters
 const originX = 237;
 const originY = 356;
 const cos30 = 0.8660254;
@@ -181,7 +190,7 @@ function getTopOutlinePath(block: Block, z: number): string {
   return `M ${p1} L ${p2} L ${p3} L ${p4} Z`;
 }
 
-// NSR blocks — same geometry as before
+// Complete original intact NSR 3D isometric monogram blocks
 const blocksList: Block[] = [
   // N (3 blocks)
   {
@@ -243,29 +252,28 @@ const blocksList: Block[] = [
 
 const sortedBlocks = [...blocksList].sort((a, b) => a.depth - b.depth);
 
-// Tight viewBox: geometry spans x:[237,764], y:[132,478]
-// Add ~30px padding → viewBox centered on (500, 305) at 5:3 ratio
-// width=700, height=420 → x:[150,850], y:[95,515] → center (500,305) ✓
+// SVG viewBox centered around (500, 305)
 const VB_X = 150;
 const VB_Y = 95;
 const VB_W = 700;
 const VB_H = 420;
 
-// Compute construction lines within tight viewBox extents
-const [gx0] = projectXY(0, 0, 0); // left edge x
-const [gx1] = projectXY(448, 160, 0); // right edge x
-const [, gy0] = projectXY(448, 0, 0); // top edge y
-const [, gy1] = projectXY(0, 160, H); // bottom edge y
+const [gx0, gy0] = projectXY(0, 0, 0);
+const [gx1, gy1] = projectXY(448, 160, H);
 
 export function NsrIsometricHero() {
-  const id = useId();
-  const radialGradientId = `nsr-spotlight-radial-gradient-${id}`;
-  const { display, blink } = useTypewriter(USER.flipSentences);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef);
   const shouldReduceMotion = useReducedMotion();
-  const isInView = useInView(containerRef, { margin: "80px" });
-  const [isPressed, setIsPressed] = useState(false);
+  const rawId = useId();
+  const radialGradientId = `nsr-spotlight-${rawId.replace(/:/g, "")}`;
+  const hatchPatternId = `nsr-top-hatch-${rawId.replace(/:/g, "")}`;
+
+  // Interactive UI sound
   const playClick = useSound("/audio/ui-sounds/click.wav");
+
+  // 3D physical block press animation
+  const [isPressed, setIsPressed] = useState(false);
   const pressOffset = useMotionValue(0);
   const [offsetVal, setOffsetVal] = useState(0);
 
@@ -274,7 +282,7 @@ export function NsrIsometricHero() {
   });
 
   useEffect(() => {
-    const controls = animate(pressOffset, isPressed ? 15 : 0, {
+    const controls = animate(pressOffset, isPressed ? 14 : 0, {
       type: "spring",
       stiffness: 600,
       damping: 15,
@@ -283,207 +291,101 @@ export function NsrIsometricHero() {
     return () => controls.stop();
   }, [isPressed, pressOffset]);
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  // Spotlight mouse & touch tracking in SVG coordinates
+  const mouseX = useMotionValue(500);
+  const mouseY = useMotionValue(305);
+  const springConfig = { damping: 25, stiffness: 200 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
 
-  const normX = useTransform(mouseX, [-0.5, 0.5], [0, 1]);
-  const normY = useTransform(mouseY, [-0.5, 0.5], [0, 1]);
+  const spotlightCx = useTransform(smoothX, (v) => v.toFixed(2));
+  const spotlightCy = useTransform(smoothY, (v) => v.toFixed(2));
 
-  const spotlightCx = useSpring(
-    useTransform(normX, [0, 1], [VB_X, VB_X + VB_W]),
-    { stiffness: 300, damping: 30, mass: 0.1 },
-  );
+  // Parallax tilt based on cursor movement
+  const translateX = useTransform(smoothX, [VB_X, VB_X + VB_W], [-8, 8]);
+  const translateY = useTransform(smoothY, [VB_Y, VB_Y + VB_H], [-5, 5]);
 
-  const spotlightCy = useSpring(
-    useTransform(normY, [0, 1], [VB_Y, VB_Y + VB_H]),
-    { stiffness: 300, damping: 30, mass: 0.1 },
-  );
+  // Gentle idle floating animation
+  const floatAnimate = shouldReduceMotion ? { y: 0 } : { y: [-3, 3] };
 
-  const springConfig = { damping: 25, stiffness: 120, mass: 0.8 };
-  const springX = useSpring(mouseX, springConfig);
-  const springY = useSpring(mouseY, springConfig);
+  const floatTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : {
+        repeat: Number.POSITIVE_INFINITY,
+        repeatType: "mirror" as const,
+        ease: "easeInOut" as const,
+        duration: 3.5,
+      };
 
-  const translateX = useTransform(springX, [-0.5, 0.5], [-10, 10]);
-  const translateY = useTransform(springY, [-0.5, 0.5], [-10, 10]);
+  const { display, blink } = useTypewriter(USER.flipSentences, 50, 2000);
 
-  const gridTranslateX = useTransform(springX, [-0.5, 0.5], [4, -4]);
-  const gridTranslateY = useTransform(springY, [-0.5, 0.5], [4, -4]);
-
+  // Mouse & Touch movement tracking
   useEffect(() => {
-    if (shouldReduceMotion || !isInView) return;
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(hover: none)").matches
-    )
-      return;
+    if (shouldReduceMotion) return;
+    const el = containerRef.current;
+    if (!el) return;
 
-    const handleMouseMove = (event: MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
-      mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
+    const updateCoords = (clientX: number, clientY: number) => {
+      if (!isInView) return;
+      const rect = el.getBoundingClientRect();
+      const x = (clientX - rect.left) / rect.width;
+      const y = (clientY - rect.top) / rect.height;
+      mouseX.set(VB_X + Math.max(0, Math.min(1, x)) * VB_W);
+      mouseY.set(VB_Y + Math.max(0, Math.min(1, y)) * VB_H);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      updateCoords(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        updateCoords(e.touches[0].clientX, e.touches[0].clientY);
+      }
     };
 
     const handleMouseLeave = () => {
-      mouseX.set(0);
-      mouseY.set(0);
+      mouseX.set(500);
+      mouseY.set(305);
     };
 
-    const el = containerRef.current;
-    el?.addEventListener("mousemove", handleMouseMove);
-    el?.addEventListener("mouseleave", handleMouseLeave);
+    el.addEventListener("mousemove", handleMouseMove, { passive: true });
+    el.addEventListener("touchmove", handleTouchMove, { passive: true });
+    el.addEventListener("mouseleave", handleMouseLeave);
+
     return () => {
-      el?.removeEventListener("mousemove", handleMouseMove);
-      el?.removeEventListener("mouseleave", handleMouseLeave);
+      el.removeEventListener("mousemove", handleMouseMove);
+      el.removeEventListener("touchmove", handleTouchMove);
+      el.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [mouseX, mouseY, shouldReduceMotion, isInView]);
-
-  const floatAnimate = shouldReduceMotion ? {} : { y: [-4, 4] };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const floatTransition: any = shouldReduceMotion
-    ? {}
-    : {
-        y: {
-          duration: 9,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "reverse" as const,
-        },
-      };
 
   return (
     <div
       ref={containerRef}
-      className="group relative aspect-[2/1] sm:aspect-[21/9] w-full border-x border-edge select-none transition-colors duration-300 backdrop-blur-sm"
-      style={
-        {
-          backgroundColor: "var(--hero-bg)",
-          "--hero-bg": "var(--color-hero-bg)",
-          "--stroke-color": "var(--color-stroke-mix)",
-          "--stroke-hover-color": "var(--color-stroke-hover-mix)",
-          "--hatch-color": "var(--color-hatch-mix)",
-          "--depth-fill": "var(--color-depth)",
-          "--grid-color": "var(--color-grid)",
-          "--helper-color": "var(--color-helper)",
-          "--text-color": "var(--color-text-var)",
-        } as React.CSSProperties
-      }
+      className="group relative h-[250px] xs:h-[270px] sm:h-[290px] md:h-[310px] w-full border-x border-edge border-b bg-background screen-line-after select-none transition-colors duration-300"
     >
-      {/* Isometric grid background */}
-      <motion.div
-        style={{ x: gridTranslateX, y: gridTranslateY }}
-        className="absolute inset-0 pointer-events-none z-1 overflow-hidden"
-      >
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="iso-grid-react"
-              width="40"
-              height="23.094"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 0 0 L 20 11.547 L 40 0 M 0 23.094 L 20 11.547 L 40 23.094 M 20 0 L 20 23.094"
-                fill="none"
-                stroke="var(--grid-color)"
-                strokeWidth="0.75"
-                className="transition-colors duration-300"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#iso-grid-react)" />
-        </svg>
-      </motion.div>
-
-      {/* Right-side status column — available badge */}
-      <div className="absolute bottom-3 right-4 z-20 pointer-events-none select-none">
-        {/* Available for work badge */}
-        <span className="inline-flex items-center gap-1 rounded-sm border border-edge bg-background/60 px-1.5 py-0.5 font-mono text-[9px] text-muted-foreground backdrop-blur-sm sm:gap-1.5 sm:px-2 sm:py-1 sm:text-[10px]">
-          <span className="relative flex size-1.5 shrink-0">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
-          </span>
-          <span className="hidden min-[380px]:inline">Available for work</span>
-          <span className="inline min-[380px]:hidden">Available</span>
-        </span>
-      </div>
-
-      {/* Profile overlay — bottom-left, avatar half-clipped by hero bottom border (chanhdai.com style) */}
-      <div className="absolute bottom-0 left-0 z-30 flex translate-y-1/2 items-center gap-3 px-4 sm:gap-5 sm:px-6 pointer-events-auto">
-        {/* Avatar — bottom half bleeds below the hero container */}
-        <div className="relative shrink-0">
-          <Image
-            className="size-16 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-24"
-            alt={`${USER.displayName}'s avatar`}
-            src={USER.avatar}
-            width={96}
-            height={96}
-            priority
-          />
-        </div>
-
-        {/* Name + verified + audio / typewriter / location + clock */}
-        <div className="flex flex-col gap-0.5 sm:gap-1">
-          {/* Row 1: Name + verified badge + audio icon */}
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <h1 className="font-mono text-sm font-bold tracking-tight text-foreground [word-spacing:-0.15em] sm:text-base">
-              {USER.displayName}
-            </h1>
-            <VerifiedIcon
-              className="size-4 shrink-0 text-info sm:size-4.5"
-              aria-label="Verified"
-            />
-            {USER.namePronunciationUrl && (
-              <PronounceMyName
-                namePronunciationUrl={USER.namePronunciationUrl}
-              />
-            )}
-          </div>
-
-          {/* Row 2: Typewriter rotating headline */}
-          <p className="font-mono text-[10px] font-bold text-foreground sm:text-xs">
-            <span className="font-normal opacity-60">~/</span>
-            {display}
-            <span
-              className="ml-px inline-block h-[1em] w-[2px] align-middle bg-muted-foreground transition-opacity"
-              style={{ opacity: blink ? 1 : 0 }}
-            />
-          </p>
-
-          {/* Row 3: Location + live clock */}
-          <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5 font-mono text-[10px] text-muted-foreground sm:text-xs">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              className="size-3 shrink-0"
-            >
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" />
-              <circle cx="12" cy="9" r="2.5" />
-            </svg>
-            <span>{USER.address}</span>
-            <span className="mx-1 opacity-40">·</span>
-            <LiveClock timeZone={USER.timeZone} />
-          </div>
-        </div>
-      </div>
-
-      {/* SVG canvas wrapper to scale size responsively */}
-      <div className="absolute inset-0 z-10 scale-[0.86] sm:scale-[0.94] origin-center pointer-events-none flex items-center justify-center">
+      {/* SVG Canvas with Clean Dark Background and 3D Isometric NSR Spotlight Logo */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none scale-[0.70] xs:scale-[0.80] sm:scale-[0.90] md:scale-100 -translate-y-5 sm:-translate-y-3 origin-center overflow-hidden">
         <motion.svg
           style={{ x: translateX, y: translateY }}
           viewBox={`${VB_X} ${VB_Y} ${VB_W} ${VB_H}`}
           preserveAspectRatio="xMidYMid meet"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-full w-full cursor-default will-change-transform overflow-hidden pointer-events-auto"
-          color="var(--stroke-color)"
+          className="h-full w-full cursor-pointer will-change-transform overflow-visible pointer-events-auto"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            setIsPressed(true);
+            playClick();
+          }}
+          onPointerUp={() => setIsPressed(false)}
+          onPointerLeave={() => setIsPressed(false)}
+          onPointerCancel={() => setIsPressed(false)}
         >
           <defs>
             <pattern
-              id="nsr-top-hatch"
+              id={hatchPatternId}
               x="0"
               y="0"
               width="10"
@@ -492,9 +394,8 @@ export function NsrIsometricHero() {
             >
               <path
                 d="M-1 1l2 -2M0 10l10 -10M9 11l2 -2"
-                stroke="var(--hatch-color)"
+                stroke="color-mix(in oklab, var(--foreground) 15%, transparent)"
                 strokeWidth="1"
-                className="transition-colors duration-300"
               />
             </pattern>
 
@@ -504,89 +405,47 @@ export function NsrIsometricHero() {
               cy={spotlightCy}
               r="220"
               gradientUnits="userSpaceOnUse"
+              gradientTransform="rotate(-30 500 305) translate(0 35)"
             >
               <stop
                 className="dark:[stop-color:#ffffff]"
-                stopColor="var(--color-zinc-800)"
+                stopColor="var(--color-zinc-800, #27272a)"
               />
               <stop
-                className="dark:[stop-color:var(--color-zinc-500)]"
+                className="dark:[stop-color:var(--color-zinc-500, #71717a)]"
                 offset="1"
-                stopColor="var(--color-zinc-400)"
+                stopColor="var(--color-zinc-400, #a1a1aa)"
                 stopOpacity="0"
               />
             </motion.radialGradient>
           </defs>
 
-          {/* Construction lines — clipped to viewBox */}
-          <g className="transition-opacity duration-300">
+          {/* Clean construction guide lines (chanhdai style) */}
+          <g
+            className="stroke-muted-foreground/15 dark:stroke-muted-foreground/20"
+            strokeWidth="0.75"
+            strokeDasharray="4 8"
+          >
             {/* Horizontal midline */}
             <line
               x1={VB_X}
               y1={(gy0 + gy1) / 2}
               x2={VB_X + VB_W}
               y2={(gy0 + gy1) / 2}
-              stroke="var(--helper-color)"
-              strokeWidth="0.75"
-              strokeDasharray="4 8"
-              className="transition-colors duration-300"
             />
             {/* Isometric diagonal axes */}
-            <line
-              x1={VB_X}
-              y1={VB_Y + VB_H}
-              x2={VB_X + VB_W}
-              y2={VB_Y}
-              stroke="var(--helper-color)"
-              strokeWidth="0.75"
-              strokeDasharray="4 8"
-              className="transition-colors duration-300"
-            />
-            <line
-              x1={VB_X}
-              y1={VB_Y}
-              x2={VB_X + VB_W}
-              y2={VB_Y + VB_H}
-              stroke="var(--helper-color)"
-              strokeWidth="0.75"
-              strokeDasharray="4 8"
-              className="transition-colors duration-300"
-            />
-            {/* Vertical registration at geometry left/right edges */}
-            <line
-              x1={gx0}
-              y1={VB_Y}
-              x2={gx0}
-              y2={VB_Y + VB_H}
-              stroke="var(--helper-color)"
-              strokeWidth="0.75"
-              strokeDasharray="4 8"
-              className="transition-colors duration-300"
-            />
-            <line
-              x1={gx1}
-              y1={VB_Y}
-              x2={gx1}
-              y2={VB_Y + VB_H}
-              stroke="var(--helper-color)"
-              strokeWidth="0.75"
-              strokeDasharray="4 8"
-              className="transition-colors duration-300"
-            />
+            <line x1={VB_X} y1={VB_Y + VB_H} x2={VB_X + VB_W} y2={VB_Y} />
+            <line x1={VB_X} y1={VB_Y} x2={VB_X + VB_W} y2={VB_Y + VB_H} />
+            {/* Vertical registration markers */}
+            <line x1={gx0} y1={VB_Y} x2={gx0} y2={VB_Y + VB_H} />
+            <line x1={gx1} y1={VB_Y} x2={gx1} y2={VB_Y + VB_H} />
           </g>
 
-          {/* Floating monogram geometry */}
+          {/* Floating intact NSR 3D monogram — rotated 30 deg and shifted so N is lifted up and baseline is straight */}
           <motion.g
+            transform="translate(0 -35) rotate(30 500 305)"
             animate={floatAnimate}
             transition={floatTransition}
-            onPointerDown={(e) => {
-              e.preventDefault();
-              setIsPressed(true);
-              playClick();
-            }}
-            onPointerUp={() => setIsPressed(false)}
-            onPointerLeave={() => setIsPressed(false)}
-            onPointerCancel={() => setIsPressed(false)}
             className="cursor-pointer will-change-transform"
           >
             {sortedBlocks.map((block, idx) => {
@@ -595,6 +454,7 @@ export function NsrIsometricHero() {
                 .join(" ");
               return (
                 <g key={`block-${idx}`}>
+                  {/* Extruded side faces with dark fill */}
                   {block.sides.map((side, sIdx) => {
                     const sidePoints = [
                       project(side.A.x, side.A.y, offsetVal),
@@ -606,31 +466,38 @@ export function NsrIsometricHero() {
                       <polygon
                         key={`side-${sIdx}`}
                         points={sidePoints}
-                        fill="var(--hero-bg)"
-                        stroke="var(--stroke-color)"
+                        className="fill-background stroke-muted-foreground/30 transition-colors duration-200"
                         strokeWidth="0.75"
                         strokeLinejoin="round"
-                        className="group-hover:stroke-[var(--stroke-hover-color)] transition-colors duration-300"
                       />
                     );
                   })}
 
-                  <path
-                    d={getTopOutlinePath(block, offsetVal)}
-                    fill="var(--hero-bg)"
-                    stroke="currentColor"
-                    strokeWidth="0.75"
-                    strokeLinejoin="round"
-                    className="group-hover:stroke-[var(--stroke-hover-color)] transition-colors duration-300"
-                  />
-
+                  {/* Top face polygon background */}
                   <polygon
                     points={topPoints}
-                    fill="url(#nsr-top-hatch)"
+                    className="fill-background stroke-muted-foreground/40 transition-colors duration-200"
+                    strokeWidth="0.75"
+                    strokeLinejoin="round"
+                  />
+
+                  {/* Top face isometric hatch pattern */}
+                  <polygon
+                    points={topPoints}
+                    fill={`url(#${hatchPatternId})`}
                     stroke="none"
                   />
 
-                  {/* Spotlight cursor-tracking gradient highlight strokes */}
+                  {/* Top face clean boundary outline */}
+                  <path
+                    d={getTopOutlinePath(block, offsetVal)}
+                    fill="none"
+                    className="stroke-muted-foreground/50 transition-colors duration-200"
+                    strokeWidth="0.75"
+                    strokeLinejoin="round"
+                  />
+
+                  {/* Spotlight cursor-tracking dynamic glow strokes */}
                   {block.sides.map((side, sIdx) => {
                     const sidePoints = [
                       project(side.A.x, side.A.y, offsetVal),
@@ -644,7 +511,7 @@ export function NsrIsometricHero() {
                         points={sidePoints}
                         fill="none"
                         stroke={`url(#${radialGradientId})`}
-                        strokeWidth="1.25"
+                        strokeWidth="1.5"
                         strokeLinejoin="round"
                         className="pointer-events-none"
                       />
@@ -655,7 +522,7 @@ export function NsrIsometricHero() {
                     d={getTopOutlinePath(block, offsetVal)}
                     fill="none"
                     stroke={`url(#${radialGradientId})`}
-                    strokeWidth="1.25"
+                    strokeWidth="1.5"
                     strokeLinejoin="round"
                     className="pointer-events-none"
                   />
@@ -664,6 +531,102 @@ export function NsrIsometricHero() {
             })}
           </motion.g>
         </motion.svg>
+      </div>
+
+      {/* Outer handwritten note in right margin (chanhdai.com style) */}
+      <div
+        className="pointer-events-none absolute -right-24 sm:-right-28 md:-right-32 top-14 sm:top-18 hidden md:flex flex-col items-start select-none font-signature text-muted-foreground/85 z-20"
+        aria-hidden="true"
+      >
+        <svg
+          className="size-5 text-muted-foreground/60 -rotate-12 mb-0.5 ml-1"
+          viewBox="0 0 40 40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M30 35c-2-12-8-22-22-26" />
+          <path d="M18 6l-10 3 3 10" />
+        </svg>
+        <span className="-rotate-3 text-base leading-tight">
+          follows your cursor
+        </span>
+        <span className="-rotate-3 text-base leading-tight">
+          click for a sound
+        </span>
+      </div>
+
+      {/* Profile Photo and Name overlay — transparent, no box, responsive across mobile, tablet, and desktop */}
+      <div className="absolute bottom-2.5 sm:bottom-4 left-0 right-0 z-30 flex items-center justify-between px-3 sm:px-6 pointer-events-auto">
+        {/* Left: Avatar + Details (simple and transparent, no box) */}
+        <div className="flex items-center gap-2.5 sm:gap-4 w-full min-w-0">
+          {/* Avatar */}
+          <div className="relative shrink-0">
+            <Image
+              className="size-14 xs:size-16 sm:size-20 md:size-22 rounded-full object-cover ring-2 ring-border/80 shadow-md select-none"
+              alt={USER.displayName}
+              src={USER.avatar}
+              width={88}
+              height={88}
+              priority
+            />
+          </div>
+
+          {/* Details */}
+          <div className="flex flex-col gap-0.5 sm:gap-1 min-w-0 flex-1">
+            {/* Row 1: Name + verified + sound */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <h1 className="text-base sm:text-xl md:text-2xl font-bold tracking-tight text-foreground font-mono shrink-0">
+                {USER.displayName}
+              </h1>
+              <VerifiedIcon className="size-4 sm:size-4.5 text-blue-500 shrink-0" />
+              <PronounceMyName
+                namePronunciationUrl={USER.namePronunciationUrl}
+              />
+            </div>
+
+            {/* Row 2: Typewriter bio with terminal prompt */}
+            <p className="font-mono text-xs sm:text-sm font-bold text-foreground flex items-center min-w-0">
+              <span className="text-muted-foreground/60 mr-1 select-none shrink-0">
+                ~/
+              </span>
+              <span className="truncate">{display}</span>
+              <span
+                className="inline-block w-1.5 h-3.5 bg-foreground ml-0.5 align-middle shrink-0"
+                style={{ opacity: blink ? 1 : 0 }}
+              />
+            </p>
+
+            {/* Row 3: Location + live clock */}
+            <div className="flex items-center gap-1 sm:gap-1.5 font-mono text-[10px] xs:text-[11px] sm:text-xs text-muted-foreground whitespace-nowrap overflow-hidden text-ellipsis">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                className="size-3 shrink-0"
+              >
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <span className="shrink-0">{USER.address}</span>
+              <span className="mx-0.5 sm:mx-1 opacity-40 shrink-0">·</span>
+              <LiveClock timeZone={USER.timeZone} />
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Available for work status badge (single-line, transparent) */}
+        <div className="hidden md:inline-flex shrink-0 items-center gap-2 font-mono text-xs text-muted-foreground/90 select-none whitespace-nowrap ml-4">
+          <span className="relative flex size-2 shrink-0">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+          </span>
+          <span className="whitespace-nowrap">Available for work</span>
+        </div>
       </div>
     </div>
   );

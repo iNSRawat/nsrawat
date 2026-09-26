@@ -57,24 +57,43 @@ export function SiteHeader() {
 
           <DesktopNav items={MAIN_NAV} />
 
-          <div className="flex items-center *:first:mr-2">
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <span
+              className="hidden sm:block h-4 w-px bg-border/60 mx-1"
+              aria-hidden="true"
+            />
+
             <Link
               href="/cli"
-              className="mr-2 hidden h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground sm:inline-flex"
+              className="hidden size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:inline-flex shrink-0"
               title="CLI Mode"
               aria-label="CLI Mode"
             >
-              <TerminalIcon className="h-4 w-4" />
+              <TerminalIcon className="size-4" />
             </Link>
+
             <div className="hidden sm:block">
               <CommandMenu posts={posts} snippets={snippets} />
             </div>
+
             {/* Mobile Search Trigger */}
             <MobileSearchTrigger />
+
+            <span
+              className="hidden sm:block h-4 w-px bg-border/60 mx-1"
+              aria-hidden="true"
+            />
+
             <NavItemGitHub />
-            <span className="mx-2 flex h-4 w-px bg-border" />
+
+            <span
+              className="h-4 w-px bg-border/60 mx-0.5 sm:mx-1"
+              aria-hidden="true"
+            />
+
             <ThemeToggle />
-            <MobileNav className="sm:hidden ml-2" items={MAIN_NAV} />
+
+            <MobileNav className="sm:hidden ml-1" items={MAIN_NAV} />
           </div>
         </div>
       </SiteHeaderWrapper>
