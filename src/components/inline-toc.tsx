@@ -78,7 +78,7 @@ export function InlineTOC({
               key={item.url}
               className="flex py-1"
               style={{
-                paddingInlineStart: 16 * Math.max(item.depth - 2, 0),
+                paddingInlineStart: 16 * Math.max((item.depth ?? 2) - 2, 0),
               }}
             >
               <a

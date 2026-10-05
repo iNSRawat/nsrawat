@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import { getTableOfContents } from "fumadocs-core/content/toc";
+import type { TOCItemType } from "fumadocs-core/toc";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -17,8 +18,13 @@ import {
   TooltipRoot,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip";
-import { InlineTOC, SidebarTOC } from "@/components/inline-toc";
+import { InlineTOC } from "@/components/inline-toc";
 import { MDX } from "@/components/mdx";
+import {
+  type SidebarSnippetItem,
+  SnippetsSidebar,
+} from "@/components/snippets-sidebar";
+import { SnippetsTOC } from "@/components/snippets-toc";
 import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -73,16 +79,30 @@ export default async function ComponentPage({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
+  const allSnippets = getAllSnippets();
 
   // Get all slugs for navigation
   const allSlugs = [
     ...components.map((c) => c.name),
-    ...getAllSnippets().map((s) => s.slug),
+    ...allSnippets.map((s) => s.slug),
   ];
   const currentIndex = allSlugs.indexOf(slug);
   const previous = currentIndex > 0 ? allSlugs[currentIndex - 1] : null;
   const next =
     currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null;
+
+  const sidebarItems: SidebarSnippetItem[] = [
+    ...components.map((c) => ({
+      slug: c.name,
+      title: c.title ?? c.name,
+      isComponent: true,
+    })),
+    ...allSnippets.map((s) => ({
+      slug: s.slug,
+      title: s.metadata.title,
+      isComponent: false,
+    })),
+  ];
 
   // Check if it's a registry component
   const component = components.find((c) => c.name === slug);
@@ -113,8 +133,20 @@ export default async function ComponentPage({
 
     const toc = getTableOfContents(code);
 
+    const componentToc: TOCItemType[] = [
+      { title: "Preview", url: "#preview", depth: 2 },
+      { title: "Code", url: "#code", depth: 2 },
+      ...(toc && toc.length ? toc : []),
+    ];
+
     return (
       <>
+        {/* Left: Component & Snippet Navigation Sidebar (Desktop only) */}
+        <SnippetsSidebar items={sidebarItems} />
+
+        {/* Right: Table of Contents Minimap (Desktop only, hover to reveal) */}
+        <SnippetsTOC items={componentToc} />
+
         <div className="flex items-center justify-between p-2 pl-4">
           <Button
             className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
@@ -205,7 +237,7 @@ export default async function ComponentPage({
 
           <p className="text-muted-foreground">{component.description}</p>
 
-          <InlineTOC items={toc} />
+          <InlineTOC items={componentToc} className="xl:hidden" />
 
           <Tabs defaultValue="preview" className="gap-4">
             <TabsList>
@@ -222,7 +254,7 @@ export default async function ComponentPage({
                 Code
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="preview">
+            <TabsContent value="preview" id="preview" className="scroll-mt-24">
               <div className="flex min-h-[350px] w-full items-center justify-center rounded-xl border border-edge bg-background p-10">
                 {DemoComponent ? (
                   <DemoComponent />
@@ -233,7 +265,7 @@ export default async function ComponentPage({
                 )}
               </div>
             </TabsContent>
-            <TabsContent value="code">
+            <TabsContent value="code" id="code" className="scroll-mt-24">
               <div className="rounded-xl border border-edge p-4">
                 <MDX code={code} />
               </div>
@@ -254,6 +286,12 @@ export default async function ComponentPage({
 
     return (
       <>
+        {/* Left: Component & Snippet Navigation Sidebar (Desktop only) */}
+        <SnippetsSidebar items={sidebarItems} />
+
+        {/* Right: Table of Contents Minimap (Desktop only, hover to reveal) */}
+        <SnippetsTOC items={toc} />
+
         <div className="flex items-center justify-between p-2 pl-4">
           <Button
             className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
@@ -337,29 +375,21 @@ export default async function ComponentPage({
           />
         </div>
 
-        <div className="relative">
-          <aside className="absolute top-0 right-full mr-8 hidden w-52 xl:block">
-            <div className="sticky top-24">
-              <SidebarTOC items={toc} />
-            </div>
-          </aside>
+        <Prose className="px-4">
+          <h1 className="screen-line-after text-3xl font-semibold">
+            {snippet.metadata.title}
+          </h1>
 
-          <Prose className="px-4">
-            <h1 className="screen-line-after text-3xl font-semibold">
-              {snippet.metadata.title}
-            </h1>
+          <p className="text-muted-foreground">
+            {snippet.metadata.description}
+          </p>
 
-            <p className="text-muted-foreground">
-              {snippet.metadata.description}
-            </p>
+          <InlineTOC items={toc} className="xl:hidden" />
 
-            <InlineTOC items={toc} className="xl:hidden" />
-
-            <div>
-              <MDX code={snippet.content} />
-            </div>
-          </Prose>
-        </div>
+          <div>
+            <MDX code={snippet.content} />
+          </div>
+        </Prose>
 
         <div className="screen-line-before h-4 w-full" />
       </>
