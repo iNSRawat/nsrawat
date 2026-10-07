@@ -9,18 +9,18 @@ import { cn } from "@/lib/utils";
 import { components } from "@/registry/registry-components";
 
 export const metadata: Metadata = {
-  title: "Snippets",
+  title: "Notes",
   description:
     "My personal stash of data science components & code snippets that make my life easier. They're simple and reusable. Feel free to copy, tweak, and use them as you like.",
 };
 
-export default function SnippetsPage() {
+export default function NotesPage() {
   const snippets = getAllSnippets();
 
   return (
     <div className="min-h-svh">
       <div className="screen-line-after px-2 sm:px-4">
-        <h1 className="text-2xl font-semibold sm:text-3xl">Snippets</h1>
+        <h1 className="text-2xl font-semibold sm:text-3xl">Notes</h1>
       </div>
 
       <div className="p-2 sm:p-4">
@@ -44,7 +44,7 @@ export default function SnippetsPage() {
         {components.map((component, i) => (
           <Link
             key={component.name}
-            href={`/snippets/${component.name}`}
+            href={`/notes/${component.name}`}
             className={cn(
               "group flex items-center gap-2 border-b border-edge bg-background/50 px-2 py-3 transition-colors hover:bg-muted/50 sm:px-3 sm:py-3",
               i % 3 !== 2 ? "md:border-r" : "",
@@ -65,7 +65,7 @@ export default function SnippetsPage() {
         {snippets.map((snippet, i) => (
           <Link
             key={snippet.slug}
-            href={`/snippets/${snippet.slug}`}
+            href={`/notes/${snippet.slug}`}
             className={cn(
               "group flex items-center gap-2 border-b border-edge bg-background/50 px-2 py-3 transition-colors hover:bg-muted/50 sm:px-3 sm:py-3",
               // Continue the parity check from the previous list

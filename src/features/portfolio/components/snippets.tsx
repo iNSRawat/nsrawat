@@ -30,10 +30,10 @@ export function Snippets() {
   ];
 
   return (
-    <Panel id="snippets">
+    <Panel id="notes">
       <PanelHeader>
         <PanelTitle>
-          Snippets
+          Notes
           <PanelTitleSup>({totalSnippets})</PanelTitleSup>
         </PanelTitle>
       </PanelHeader>
@@ -49,7 +49,7 @@ export function Snippets() {
           {dsComponents.map((comp) => (
             <Link
               key={comp.slug}
-              href={`/snippets/${comp.slug}`}
+              href={`/notes/${comp.slug}`}
               className={cn(
                 "group/post flex items-center gap-4 p-4 transition-[background-color] ease-out hover:bg-accent2",
                 "max-sm:screen-line-before max-sm:screen-line-after",
@@ -77,8 +77,8 @@ export function Snippets() {
 
       <div className="screen-line-before flex justify-center py-2">
         <Button variant="default" asChild>
-          <Link href="/snippets">
-            View All Snippets
+          <Link href="/notes">
+            View All Notes
             <ArrowRightIcon />
           </Link>
         </Button>

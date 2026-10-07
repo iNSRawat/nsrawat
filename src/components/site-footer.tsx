@@ -183,10 +183,10 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <Link
-                    href="/snippets"
+                    href="/notes"
                     className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    snippets
+                    notes
                   </Link>
                 </li>
                 <li>

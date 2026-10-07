@@ -37,6 +37,7 @@ const NAV_ICONS: Record<string, typeof HomeIcon> = {
   "/about": UserIcon,
   "/projects": FolderOpenIcon,
   "/blog": NewspaperIcon,
+  "/notes": BracesIcon,
   "/snippets": BracesIcon,
   "/ds-resources": BrainIcon,
   "/bookmarks": BookmarkIcon,

@@ -36,8 +36,8 @@ export const MAIN_NAV: NavItem[] = [
     href: "#",
     items: [
       {
-        title: "Snippets",
-        href: "/snippets",
+        title: "Notes",
+        href: "/notes",
         emoji: "💻",
       },
       {

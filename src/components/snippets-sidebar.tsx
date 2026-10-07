@@ -154,7 +154,10 @@ export function SnippetsSidebar({ items }: SnippetsSidebarProps) {
           <div className="no-scrollbar grow overflow-x-hidden overflow-y-auto overscroll-contain pt-11">
             <div className="flex flex-col gap-2 py-4 pr-2 pl-3">
               {items.map((item) => {
-                const href = `/snippets/${item.slug}`;
+                const basePath = pathname?.startsWith("/notes")
+                  ? "/notes"
+                  : "/snippets";
+                const href = `${basePath}/${item.slug}`;
                 const isActive = pathname === href;
 
                 return (

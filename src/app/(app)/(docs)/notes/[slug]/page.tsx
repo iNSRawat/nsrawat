@@ -153,9 +153,9 @@ export default async function ComponentPage({
             variant="link"
             asChild
           >
-            <Link href="/snippets">
+            <Link href="/notes">
               <ArrowLeftIcon />
-              Snippets
+              Notes
             </Link>
           </Button>
 
@@ -166,7 +166,7 @@ export default async function ComponentPage({
             />
             <PostShareMenu
               title={component.title ?? component.name}
-              url={`/snippets/${slug}`}
+              url={`/notes/${slug}`}
             />
             <TooltipProvider>
               {previous && (
@@ -174,7 +174,7 @@ export default async function ComponentPage({
                   <TooltipTrigger
                     render={
                       <Button variant="secondary" size="icon-sm" asChild>
-                        <Link href={`/snippets/${previous}`} />
+                        <Link href={`/notes/${previous}`} />
                       </Button>
                     }
                   >
@@ -198,7 +198,7 @@ export default async function ComponentPage({
                   <TooltipTrigger
                     render={
                       <Button variant="secondary" size="icon-sm" asChild>
-                        <Link href={`/snippets/${next}`} />
+                        <Link href={`/notes/${next}`} />
                       </Button>
                     }
                   >
@@ -298,9 +298,9 @@ export default async function ComponentPage({
             variant="link"
             asChild
           >
-            <Link href="/snippets">
+            <Link href="/notes">
               <ArrowLeftIcon />
-              Snippets
+              Notes
             </Link>
           </Button>
 
@@ -311,7 +311,7 @@ export default async function ComponentPage({
             />
             <PostShareMenu
               title={snippet.metadata.title}
-              url={`/snippets/${slug}`}
+              url={`/notes/${slug}`}
             />
             <TooltipProvider>
               {previous && (
@@ -319,7 +319,7 @@ export default async function ComponentPage({
                   <TooltipTrigger
                     render={
                       <Button variant="secondary" size="icon-sm" asChild>
-                        <Link href={`/snippets/${previous}`} />
+                        <Link href={`/notes/${previous}`} />
                       </Button>
                     }
                   >
@@ -343,7 +343,7 @@ export default async function ComponentPage({
                   <TooltipTrigger
                     render={
                       <Button variant="secondary" size="icon-sm" asChild>
-                        <Link href={`/snippets/${next}`} />
+                        <Link href={`/notes/${next}`} />
                       </Button>
                     }
                   >

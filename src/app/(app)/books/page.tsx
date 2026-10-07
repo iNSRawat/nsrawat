@@ -28,45 +28,36 @@ export default function BooksPage() {
         )}
       />
 
-      <div className="p-4 sm:p-8 md:p-10">
-        <article className="article-content books-read-article">
-          <header className="mb-6">
-            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Books I’ve read.
-            </h1>
-          </header>
+      {/* Header matching whole website style (like ds-resources, notes, blog) */}
+      <div className="screen-line-after px-2 sm:px-4">
+        <h1 className="text-2xl font-semibold sm:text-3xl">Books I’ve read.</h1>
+      </div>
 
-          <section className="entry-section">
-            <div className="books-prose space-y-3">
-              <p className="reader-lede">
-                What I’ve read, what I’m reading and what’s next, kept with the
-                thoughts that stayed with me.
-              </p>
-              <p>
-                Inspired by{" "}
-                <a
-                  href="https://grokipedia.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-medium inline-flex items-center gap-1"
-                >
-                  grokipedia.com
-                  <ArrowIcon size={14} strokeWidth={1.5} />
-                </a>
-              </p>
-            </div>
-          </section>
-
-          <section
-            className="entry-section mt-10"
-            aria-labelledby="finished-books-heading"
+      <div className="p-2 sm:p-4">
+        <p className="font-mono text-sm text-balance text-muted-foreground">
+          What I’ve read, what I’m reading and what’s next, kept with the
+          thoughts that stayed with me.
+        </p>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
+          Inspired by{" "}
+          <a
+            href="https://grokipedia.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
           >
-            <h2 className="section-title" id="finished-books-heading">
-              On my shelves
-            </h2>
-            <BooksWall books={BOOKS} />
-          </section>
-        </article>
+            grokipedia.com
+            <ArrowIcon size={13} strokeWidth={1.5} />
+          </a>
+        </p>
+      </div>
+
+      <div className="screen-line-after px-2 pt-2 sm:px-4">
+        <h2 className="text-base font-semibold sm:text-lg">On my shelves</h2>
+      </div>
+
+      <div className="p-2 sm:p-4 md:p-6">
+        <BooksWall books={BOOKS} />
       </div>
 
       <div className="h-12" />

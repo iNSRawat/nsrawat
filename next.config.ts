@@ -63,6 +63,16 @@ const nextConfig: NextConfig = {
         destination: "/:section/apple-hello-effect:extension",
         permanent: true,
       },
+      {
+        source: "/snippets",
+        destination: "/notes",
+        permanent: true,
+      },
+      {
+        source: "/snippets/:slug",
+        destination: "/notes/:slug",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

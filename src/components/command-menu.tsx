@@ -83,9 +83,10 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: BookmarkIcon,
   },
   {
-    title: "Snippets",
-    href: "/snippets",
+    title: "Notes",
+    href: "/notes",
     icon: BracesIcon,
+    keywords: ["snippets", "notes", "code"],
   },
   {
     title: "Blog",
@@ -290,8 +291,8 @@ export function CommandMenu({
     () =>
       snippets.map((s) => ({
         title: s.metadata.title,
-        href: `/snippets/${s.slug}`,
-        keywords: ["snippet", s.metadata.language],
+        href: `/notes/${s.slug}`,
+        keywords: ["snippet", "notes", s.metadata.language],
         icon: (props: React.ComponentProps<"svg">) => (
           <ComponentIcon variant={s.slug} {...props} />
         ),
@@ -378,7 +379,7 @@ export function CommandMenu({
           />
 
           <CommandLinkGroup
-            heading="Snippets"
+            heading="Notes"
             links={[...componentLinks, ...snippetLinks]}
             fallbackIcon={BracesIcon}
             onLinkSelect={handleOpenLink}
@@ -640,8 +641,8 @@ function postToCommandLinkItem(post: Post): CommandLinkItem {
 
   return {
     title: post.metadata.title,
-    href: isComponent ? `/snippets/${post.slug}` : `/blog/${post.slug}`,
-    keywords: isComponent ? ["snippet"] : undefined,
+    href: isComponent ? `/notes/${post.slug}` : `/blog/${post.slug}`,
+    keywords: isComponent ? ["snippet", "notes"] : undefined,
     icon: IconComponent,
   };
 }
