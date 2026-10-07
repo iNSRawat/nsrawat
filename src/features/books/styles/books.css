@@ -1,0 +1,1172 @@
+.books-theme-wrapper {
+  font-family: var(--font-sans), var(--font-sans-font), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-sans-font), var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-sans-font), var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), var(--font-mono), monospace;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+
+  --panel-body-text: #1a1a1a;
+  --panel-body-muted: #666666;
+  --panel-border: rgba(0, 0, 0, 0.08);
+  --surface-muted: rgba(0, 0, 0, 0.05);
+  --surface-card: #fafaf7;
+  --surface-card-hover: #ffffff;
+  --contact-shadow-strong: rgba(0, 0, 0, 0.12);
+  --contact-shadow-soft: rgba(0, 0, 0, 0.05);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --link: #444444;
+}
+
+:is(.dark, .dark *) .books-theme-wrapper,
+.books-theme-wrapper.dark {
+  --panel-body-text: #ebebe6;
+  --panel-body-muted: #8a8a8a;
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --surface-muted: rgba(255, 255, 255, 0.06);
+  --surface-card: #18181b;
+  --surface-card-hover: #27272a;
+  --contact-shadow-strong: rgba(0, 0, 0, 0.55);
+  --contact-shadow-soft: rgba(0, 0, 0, 0.22);
+  --link: #a0a0a0;
+}
+
+.books-wall-container {
+  margin-top: var(--sp-8);
+  container: books-wall/inline-size;
+}
+
+.books-wall {
+  --shelf-scale: 1;
+  --shelf-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --shelf-part: 0.46s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --shelf-turn: 0.53s;
+  --shelf-turn-ease: cubic-bezier(0.35, 0, 0.15, 1);
+  --shelf-glide-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --shelf-lift: 10px;
+  grid-template-columns: calc(var(--wall-width) * var(--shelf-scale)) minmax(
+      0,
+      1fr
+    );
+  column-gap: var(--sp-12);
+  row-gap: 44px;
+  display: grid;
+}
+
+.books-wall-shelf {
+  grid-column: 1;
+  width: fit-content;
+  min-width: 0;
+  max-width: 100%;
+  position: relative;
+}
+
+.books-wall-shelf[data-shelf="reading"] {
+  justify-self: end;
+}
+
+.books-wall-shelf[data-shelf="read"] {
+  justify-self: start;
+}
+
+.books-wall-shelf[data-shelf="to-read"] {
+  justify-self: start;
+  margin-left: 14%;
+}
+
+.books-shelf-label {
+  align-items: baseline;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-2);
+  color: var(--panel-body-muted);
+  font-family: var(--font-sans);
+  padding-inline: 14px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  display: flex;
+}
+
+.books-shelf-label span {
+  color: var(--panel-body-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.books-shelf {
+  --shelf-headroom: 30px;
+  align-items: flex-end;
+  gap: calc(3px * var(--shelf-scale));
+  height: calc(
+    var(--shelf-height) * var(--shelf-scale) + var(--shelf-headroom)
+  );
+  margin: 0;
+  padding: 0 14px;
+  list-style: none;
+  display: flex;
+  overflow: visible;
+}
+
+.books-wall-shelf[data-shelf="reading"] .books-shelf {
+  --shelf-headroom: 44px;
+}
+
+.books-shelf-slot {
+  width: calc(var(--spine) * var(--shelf-scale));
+  height: calc(var(--book-height) * var(--shelf-scale));
+  transition:
+    width var(--shelf-part) 80ms,
+    margin var(--shelf-part) 80ms;
+  flex: none;
+  margin-inline: 0;
+  position: relative;
+}
+
+.books-shelf-slot[data-state="pulled"] {
+  width: calc(var(--cover) * var(--shelf-scale));
+  transition:
+    width var(--shelf-part),
+    margin var(--shelf-part);
+  margin-inline: 8px;
+}
+
+.books-shelf-book {
+  appearance: none;
+  cursor: pointer;
+  perspective: 1100px;
+  -webkit-tap-highlight-color: transparent;
+  background: 0 0;
+  border: 0;
+  padding: 0;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.books-shelf-book:focus-visible {
+  outline: none;
+}
+
+.books-shelf-body {
+  width: calc(var(--cover) * var(--shelf-scale));
+  height: 100%;
+  margin-left: calc(var(--cover) * var(--shelf-scale) / -2);
+  transform-style: preserve-3d;
+  transition:
+    translate 0.265s var(--shelf-ease),
+    rotate 0.42s var(--shelf-ease);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: 0;
+  rotate: y 90deg;
+}
+
+.books-shelf-face {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.books-shelf-face--cover {
+  background: var(--spine-color);
+  transform: translateZ(calc(var(--spine) * var(--shelf-scale) / 2));
+  border-radius: 1px 3px 3px 1px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.books-shelf-face--cover img {
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.books-shelf-face--cover:after {
+  content: "";
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, #00000057 0, #fff3 3%, #0000001f 6%, #0000 11%),
+    linear-gradient(115deg, #ffffff1a, #0000 40%);
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px #00000024;
+}
+
+.books-shelf-face--spine,
+.books-shelf-face--pages {
+  left: calc(50% - var(--spine) * var(--shelf-scale) / 2);
+  width: calc(var(--spine) * var(--shelf-scale));
+}
+
+.books-shelf-face--spine {
+  padding: calc(20px * var(--shelf-scale)) 0 calc(11px * var(--shelf-scale));
+  color: var(--spine-ink);
+  background:
+    linear-gradient(
+      to bottom,
+      transparent calc(6px * var(--shelf-scale)),
+      var(--spine-ink) calc(6px * var(--shelf-scale))
+        calc(7px * var(--shelf-scale)),
+      transparent calc(7px * var(--shelf-scale))
+        calc(100% - 7px * var(--shelf-scale)),
+      var(--spine-ink) calc(100% - 7px * var(--shelf-scale))
+        calc(100% - 6px * var(--shelf-scale)),
+      transparent calc(100% - 6px * var(--shelf-scale))
+    ),
+    linear-gradient(90deg, #00000038, #ffffff1a 28%, #ffffff0a 55%, #0003),
+    var(--spine-color);
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .books-shelf-face--spine {
+    background:
+      linear-gradient(
+        to bottom,
+        transparent calc(6px * var(--shelf-scale)),
+        color-mix(in srgb, var(--spine-ink) 38%, transparent)
+          calc(6px * var(--shelf-scale)) calc(7px * var(--shelf-scale)),
+        transparent calc(7px * var(--shelf-scale))
+          calc(100% - 7px * var(--shelf-scale)),
+        color-mix(in srgb, var(--spine-ink) 38%, transparent)
+          calc(100% - 7px * var(--shelf-scale))
+          calc(100% - 6px * var(--shelf-scale)),
+        transparent calc(100% - 6px * var(--shelf-scale))
+      ),
+      linear-gradient(90deg, #00000038, #ffffff1a 28%, #ffffff0a 55%, #0003),
+      var(--spine-color);
+  }
+}
+
+.books-shelf-face--spine {
+  transform: rotateY(-90deg)
+    translateZ(calc(var(--cover) * var(--shelf-scale) / 2));
+  border-radius: 2px 2px 1px 1px;
+  box-shadow:
+    inset 1px 0 #ffffff1a,
+    inset -1px 0 #00000038;
+}
+
+.books-shelf-face--pages {
+  transform: rotateY(90deg)
+    translateZ(calc(var(--cover) * var(--shelf-scale) / 2 - 2px));
+  background:
+    linear-gradient(90deg, #0000001f, #0000 30%, #0000001a),
+    repeating-linear-gradient(90deg, #f5f0e4 0 1px, #e4dccb 1px 2px);
+  top: 2px;
+  bottom: 2px;
+}
+
+.books-shelf-face--spine:before {
+  height: calc(7px * var(--shelf-scale));
+  content: "";
+  transform-origin: bottom;
+  transition: transform 0.23s var(--shelf-ease);
+  background:
+    linear-gradient(#0000, #00000024),
+    repeating-linear-gradient(90deg, #f7f2e7 0 1px, #e2d9c6 1px 2px);
+  border-radius: 1px 1px 0 0;
+  position: absolute;
+  top: 0;
+  left: 1px;
+  right: 1px;
+  transform: translateY(-100%) scaleY(0);
+}
+
+.books-shelf-spine-title {
+  max-width: 100%;
+  min-height: 0;
+  font-family: var(--font-sans);
+  font-size: calc(var(--title-size) * var(--shelf-scale));
+  letter-spacing: -0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  flex: 0 auto;
+  padding-block: 1px;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.books-shelf-spine-title[data-lines="2"] {
+  white-space: normal;
+  text-align: start;
+  text-wrap: balance;
+  line-height: 1.08;
+}
+
+.books-shelf-spine-author {
+  padding-top: calc(6px * var(--shelf-scale));
+  font-family: var(--font-sans);
+  font-size: calc(6.5px * var(--shelf-scale));
+  opacity: 0.72;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  margin-top: auto;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.books-shelf-ribbon {
+  top: calc(-5px * var(--shelf-scale));
+  width: calc(3px * var(--shelf-scale));
+  height: calc(16px * var(--shelf-scale));
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  background: linear-gradient(90deg, #8f1d17, #c4322a 50%, #8f1d17);
+  position: absolute;
+  right: calc(22% - 1px);
+}
+
+.books-shelf-gilt {
+  top: calc(11px * var(--shelf-scale));
+  width: calc(4px * var(--shelf-scale));
+  height: calc(4px * var(--shelf-scale));
+  background: radial-gradient(circle at 35% 35%, #fff2c2, #d8ad4a 55%, #9b7424);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.books-shelf-shadow {
+  z-index: -1;
+  width: calc(var(--cover) * var(--shelf-scale) * 1.1);
+  opacity: 0;
+  height: 12px;
+  transition:
+    opacity var(--shelf-turn) var(--shelf-ease),
+    transform var(--shelf-turn) var(--shelf-ease);
+  pointer-events: none;
+  background: radial-gradient(closest-side, #00000057, #0000);
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) scaleX(0.3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .books-shelf-slot[data-state="shelved"]
+    .books-shelf-book:hover
+    .books-shelf-body,
+  .books-shelf-slot[data-state="shelved"]
+    .books-shelf-book:hover
+    .books-shelf-bookmark {
+    translate: 0 calc(var(--shelf-lift) * -1) 0;
+  }
+  .books-wall-shelf[data-pose="face"]
+    .books-shelf-slot[data-state="shelved"]:hover {
+    width: calc(var(--face-hover-width) * var(--shelf-scale));
+    transition:
+      width var(--shelf-part),
+      margin var(--shelf-part);
+  }
+  .books-wall-shelf[data-pose="face"]
+    .books-shelf-slot[data-state="shelved"]:hover
+    .books-shelf-body {
+    translate: 0 calc(var(--shelf-lift) * -1) 0;
+    transform: rotate(0);
+  }
+  .books-shelf-slot[data-state="shelved"]
+    .books-shelf-book:hover
+    .books-shelf-face--spine:before {
+    transform: translateY(-100%) scaleY(1);
+  }
+}
+
+.books-shelf-slot[data-state="shelved"]
+  .books-shelf-book:focus-visible
+  .books-shelf-body {
+  translate: 0 calc(var(--shelf-lift) * -1) 0;
+}
+
+.books-wall-shelf[data-pose="face"]
+  .books-shelf-slot[data-state="shelved"]:has(.books-shelf-book:focus-visible) {
+  width: calc(var(--face-hover-width) * var(--shelf-scale));
+  transition:
+    width var(--shelf-part),
+    margin var(--shelf-part);
+}
+
+.books-wall-shelf[data-pose="face"]
+  .books-shelf-slot[data-state="shelved"]
+  .books-shelf-book:focus-visible
+  .books-shelf-body {
+  transform: rotate(0);
+}
+
+.books-shelf-slot[data-state="shelved"]
+  .books-shelf-book:focus-visible
+  .books-shelf-face--spine:before {
+  transform: translateY(-100%) scaleY(1);
+}
+
+.books-shelf-book:focus-visible .books-shelf-face--spine,
+.books-shelf-book:focus-visible .books-shelf-face--cover {
+  outline: 2px solid var(--panel-body-text);
+  outline-offset: 2px;
+}
+
+.books-shelf-slot[data-state="pulled"] .books-shelf-body {
+  transition:
+    translate 0.265s var(--shelf-ease),
+    rotate var(--shelf-turn) var(--shelf-turn-ease) 30ms;
+  translate: 0 -2px 14px;
+  rotate: y 10deg;
+}
+
+.books-shelf-slot[data-state="pulled"] .books-shelf-shadow {
+  opacity: 1;
+  transform: translate(-50%) scaleX(1);
+}
+
+.books-shelf-ledge {
+  background: linear-gradient(to bottom, var(--panel-body-text), transparent);
+  width: calc(100% - 8px);
+  height: 12px;
+  margin: -1px 0 0 4px;
+  position: relative;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .books-shelf-ledge {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--panel-body-text) 9%, transparent),
+      transparent
+    );
+  }
+}
+
+.books-shelf-ledge {
+  border-top: 1px solid var(--panel-body-text);
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .books-shelf-ledge {
+    border-top: 1px solid
+      color-mix(in srgb, var(--panel-body-text) 16%, transparent);
+  }
+}
+
+.books-shelf-ledge {
+  border-radius: 1px;
+}
+
+.books-shelf-ledge:before,
+.books-shelf-ledge:after {
+  content: "";
+  background: var(--panel-body-text);
+  width: 7px;
+  height: 9px;
+  position: absolute;
+  top: 0;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .books-shelf-ledge:before,
+  .books-shelf-ledge:after {
+    background: color-mix(in srgb, var(--panel-body-text) 16%, transparent);
+  }
+}
+
+.books-shelf-ledge:before,
+.books-shelf-ledge:after {
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.books-shelf-ledge:before {
+  left: 18px;
+}
+
+.books-shelf-ledge:after {
+  right: 18px;
+  transform: scaleX(-1);
+}
+
+.books-shelf-bookend {
+  width: calc(16px * var(--shelf-scale));
+  height: calc(64px * var(--shelf-scale));
+  clip-path: polygon(0 0, 42% 0, 42% 86%, 100% 86%, 100% 100%, 0 100%);
+  background: linear-gradient(
+    90deg,
+    #6f5f43,
+    #d2bb82 38%,
+    #a38c5b 62%,
+    #6f5f43
+  );
+  flex: none;
+}
+
+.books-shelf-bookmark {
+  z-index: 1;
+  top: calc((14px + var(--progress) * 0.35px) * var(--shelf-scale) * -1);
+  left: calc(50% + var(--spine) * var(--shelf-scale) * 0.08);
+  width: calc(6px * var(--shelf-scale));
+  height: calc((18px + var(--progress) * 0.35px) * var(--shelf-scale));
+  transition:
+    translate 0.265s var(--shelf-ease),
+    opacity 0.22s var(--shelf-ease);
+  pointer-events: none;
+  background: linear-gradient(90deg, #efe6d0, #fbf6ea 45%, #e6dcc4);
+  border-radius: 1px 1px 0 0;
+  position: absolute;
+  rotate: -3deg;
+  box-shadow: 0 1px 2px #00000040;
+}
+
+.books-shelf-slot[data-state="pulled"] .books-shelf-bookmark {
+  opacity: 0;
+}
+
+.books-wall-shelf[data-pose="face"] .books-shelf-slot {
+  --face-hover-width: calc(var(--shown) + (var(--cover) - var(--shown)) * 0.65);
+  width: calc(var(--shown) * var(--shelf-scale));
+}
+
+.books-wall-shelf[data-pose="face"] .books-shelf-slot[data-state="pulled"] {
+  z-index: 3;
+  width: calc(var(--cover) * var(--shelf-scale));
+  margin-inline: 0;
+}
+
+.books-wall-shelf[data-pose="face"] .books-shelf-body {
+  pointer-events: none;
+  width: calc(var(--cover) * var(--shelf-scale));
+  transform-origin: 50% 100%;
+  rotate: x 7deg;
+  transform: rotate(var(--lean));
+  transition:
+    translate 0.265s var(--shelf-ease),
+    rotate 0.42s var(--shelf-ease),
+    transform 0.37s var(--shelf-ease);
+  margin-left: 0;
+  left: 0;
+}
+
+.books-wall-shelf[data-pose="face"] .books-shelf-face--cover {
+  border-radius: 1px 3px 3px 1px;
+  transform: none;
+  box-shadow:
+    0 1px 1px #0003,
+    4px 8px 14px #00000047;
+}
+
+.books-wall-shelf[data-pose="face"] .books-shelf-shadow {
+  left: calc(var(--cover) * var(--shelf-scale) / 2);
+}
+
+.books-wall-shelf[data-pose="face"]
+  .books-shelf-slot[data-state="pulled"]
+  .books-shelf-body {
+  transition:
+    translate 0.265s var(--shelf-ease),
+    rotate var(--shelf-turn) var(--shelf-turn-ease) 30ms,
+    transform 0.37s var(--shelf-ease);
+  transform: rotate(0);
+}
+
+.books-thoughts {
+  grid-area: 1/2 / span 3;
+}
+
+.books-thoughts-follow {
+  transform: translate3d(0, var(--note-offset, 0px), 0);
+}
+
+.books-thoughts-follow[data-glide="true"] {
+  transition: transform 0.4s var(--shelf-glide-ease);
+}
+
+.books-thoughts-subtitle {
+  margin: var(--sp-1) 0 0;
+  color: var(--panel-body-muted);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.books-thoughts-progress {
+  align-items: center;
+  gap: var(--sp-3);
+  margin: var(--sp-4) 0 0;
+  color: var(--panel-body-muted);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  display: flex;
+}
+
+.books-thoughts-progress-track {
+  background: var(--panel-body-text);
+  width: 120px;
+  height: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .books-thoughts-progress-track {
+    background: color-mix(in srgb, var(--panel-body-text) 14%, transparent);
+  }
+}
+
+.books-thoughts-progress-track {
+  border-radius: 999px;
+}
+
+.books-thoughts-progress-track span {
+  background: var(--panel-body-text);
+  border-radius: inherit;
+  animation: books-progress-in 0.36s var(--shelf-ease) 0.14s both;
+  transform-origin: 0;
+  position: absolute;
+  inset: 0 auto 0 0;
+}
+
+@keyframes books-progress-in {
+  0% {
+    transform: scaleX(0);
+  }
+}
+
+.books-thoughts-card {
+  animation: books-thoughts-in 0.3s var(--shelf-ease) 0.14s both;
+}
+
+@keyframes books-thoughts-in {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translate(-10px);
+  }
+}
+
+.books-thoughts-count {
+  color: var(--panel-body-muted);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.books-thoughts-count strong {
+  color: var(--panel-body-text);
+  font-weight: 500;
+}
+
+.books-thoughts-title {
+  margin: var(--sp-2) 0 0;
+  color: var(--panel-body-text);
+  font-family: var(--font-sans);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.books-thoughts-author {
+  align-items: center;
+  gap: var(--sp-2);
+  margin: var(--sp-2) 0 0;
+  color: var(--panel-body-muted);
+  flex-wrap: wrap;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  display: flex;
+}
+
+.books-thoughts-rating {
+  color: var(--panel-body-text);
+  letter-spacing: 0.02em;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  display: inline-flex;
+}
+
+.books-thoughts-rating:before {
+  content: "";
+  background: #d8ad4a;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+}
+
+.books-thoughts-rating[data-rating="Excellent"]:before {
+  background: #c4322a;
+}
+
+.books-thoughts-note {
+  margin: var(--sp-5) 0 0;
+  color: var(--panel-body-text);
+  text-wrap: pretty;
+  font-size: 0.9375rem;
+  line-height: 1.62;
+}
+
+.books-thoughts-note mark {
+  color: inherit;
+  background: 0 0;
+  font-weight: 600;
+}
+
+.books-thoughts-actions {
+  gap: var(--sp-1);
+  margin: var(--sp-5) 0 0 calc(var(--sp-3) * -1);
+  display: flex;
+}
+
+.books-thoughts-actions button {
+  min-height: 36px;
+  padding: 0 var(--sp-3);
+  appearance: none;
+  color: var(--panel-body-muted);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    scale 0.15s var(--ease-out);
+  background: 0 0;
+  border: 0;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.books-thoughts-actions button:active {
+  scale: 0.97;
+}
+
+.books-thoughts-actions button:hover,
+.books-thoughts-actions button:focus-visible {
+  color: var(--panel-body-text);
+  background: var(--surface-muted);
+}
+
+.books-thoughts-actions button:focus-visible {
+  outline: 2px solid var(--panel-body-text);
+  outline-offset: 1px;
+}
+
+@container books-wall (max-width:640px) {
+  .books-wall {
+    --shelf-scale: 0.8;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 36px;
+  }
+  .books-wall-shelf {
+    grid-row: var(--shelf-row);
+  }
+  .books-wall-shelf[data-shelf="to-read"] {
+    margin-left: 8%;
+  }
+  .books-thoughts {
+    grid-column: 1;
+    grid-row: var(--thoughts-row);
+    padding-top: 0;
+  }
+  .books-thoughts-follow {
+    transform: none;
+  }
+  .books-thoughts-title {
+    font-size: 1.5rem;
+  }
+  .books-thoughts-card {
+    animation-name: books-thoughts-in-below;
+  }
+}
+
+@keyframes books-thoughts-in-below {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .books-wall {
+    --shelf-part: 0s linear;
+    --shelf-turn: 0s;
+  }
+  .books-shelf-slot,
+  .books-shelf-slot[data-state="pulled"],
+  .books-shelf-body,
+  .books-shelf-slot[data-state="pulled"] .books-shelf-body,
+  .books-wall-shelf[data-pose="face"] .books-shelf-body,
+  .books-wall-shelf[data-pose="face"]
+    .books-shelf-slot[data-state="pulled"]
+    .books-shelf-body,
+  .books-wall-shelf[data-pose="face"]
+    .books-shelf-slot[data-state="shelved"]:hover,
+  .books-shelf-bookmark {
+    transition: none;
+  }
+  .books-wall-shelf[data-pose="face"]
+    .books-shelf-slot[data-state="shelved"]:has(
+      .books-shelf-book:focus-visible
+    ) {
+    transition: none;
+  }
+  .books-thoughts-progress-track span {
+    animation: none;
+  }
+  .books-thoughts-follow[data-glide="true"],
+  .books-shelf-face--spine:before {
+    transition: none;
+  }
+  .books-thoughts-card {
+    animation: 0.2s linear both books-thoughts-fade;
+  }
+}
+
+@keyframes books-thoughts-fade {
+  0% {
+    opacity: 0;
+  }
+}
+
+.book-spin-card-cover {
+  background: var(--surface-card);
+  contain: strict;
+  pointer-events: none;
+  transition: background-color 0.2s var(--ease-out);
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: size;
+}
+
+.artifact--visual:hover .book-spin-card-cover,
+.artifact--visual:focus-visible .book-spin-card-cover {
+  background: var(--surface-card-hover);
+}
+
+.book-spin-stage {
+  --book-h: 48cqh;
+  perspective: 720px;
+  perspective-origin: 50% 40%;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.book-spin-float {
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  display: block;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+}
+
+.book-spin-pose {
+  --book-w: calc(var(--book-h) / var(--book-ratio));
+  --book-d: calc(var(--book-w) * var(--book-depth));
+  top: calc(var(--book-h) / -2);
+  left: calc(var(--book-w) / -2);
+  width: var(--book-w);
+  height: var(--book-h);
+  transform-style: preserve-3d;
+  display: block;
+  position: absolute;
+  transform: rotateX(-14deg) rotateY(30deg);
+}
+
+.book-spin-face {
+  backface-visibility: hidden;
+  display: block;
+  position: absolute;
+}
+
+.book-spin-face:after {
+  content: "";
+  border-radius: inherit;
+  opacity: var(--shade, 0);
+  background: #000;
+  position: absolute;
+  inset: 0;
+}
+
+.book-spin-face--front {
+  --shade: var(--shade-front);
+  background: var(--face-color);
+  transform: translateZ(calc(var(--book-d) / 2));
+  border-radius: 1px 3px 3px 1px;
+  inset: 0;
+  overflow: hidden;
+}
+
+.book-spin-face--front img {
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.book-spin-face--front:before {
+  z-index: 1;
+  content: "";
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, #00000057 0, #fff3 3%, #0000001f 6%, #0000 11%),
+    linear-gradient(115deg, #ffffff1f, #0000 42%);
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px #00000024;
+}
+
+.book-spin-face--front:after {
+  z-index: 2;
+}
+
+.book-spin-face--back {
+  --shade: var(--shade-back);
+  background:
+    linear-gradient(90deg, transparent 89%, #0000001f 94%, #0000004d),
+    linear-gradient(160deg, #ffffff14, transparent 45%), var(--face-color);
+  inset: 0;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .book-spin-face--back {
+    background:
+      linear-gradient(90deg, transparent 89%, #0000001f 94%, #0000004d),
+      linear-gradient(160deg, #ffffff14, transparent 45%),
+      color-mix(in srgb, var(--face-color) 84%, #000);
+  }
+}
+
+.book-spin-face--back {
+  transform: rotateY(180deg) translateZ(calc(var(--book-d) / 2));
+  border-radius: 3px 1px 1px 3px;
+  box-shadow: inset 0 0 0 1px #00000029;
+}
+
+.book-spin-face--back:before {
+  content: "";
+  opacity: 0.92;
+  background:
+    repeating-linear-gradient(
+        90deg,
+        #1a1a1a 0 1px,
+        #0000 1px 2px,
+        #1a1a1a 2px 2.6px,
+        #0000 2.6px 4px
+      )
+      content-box content-box,
+    #fbfaf6;
+  border-radius: 1px;
+  width: 26%;
+  height: 9%;
+  padding: 10% 8%;
+  position: absolute;
+  bottom: 7%;
+  right: 12%;
+}
+
+.book-spin-face--spine,
+.book-spin-face--pages {
+  top: 0;
+  left: calc(50% - var(--book-d) / 2);
+  width: var(--book-d);
+  height: 100%;
+}
+
+.book-spin-face--spine {
+  --shade: var(--shade-spine);
+  color: var(--face-ink);
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 4px,
+      var(--face-ink) 4px 5px,
+      transparent 5px calc(100% - 5px),
+      var(--face-ink) calc(100% - 5px) calc(100% - 4px),
+      transparent calc(100% - 4px)
+    ),
+    linear-gradient(90deg, #00000038, #ffffff1a 28%, #ffffff0a 55%, #0003),
+    var(--face-color);
+  justify-content: center;
+  align-items: center;
+  padding: 9% 0;
+  display: flex;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .book-spin-face--spine {
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 4px,
+        color-mix(in srgb, var(--face-ink) 38%, transparent) 4px 5px,
+        transparent 5px calc(100% - 5px),
+        color-mix(in srgb, var(--face-ink) 38%, transparent) calc(100% - 5px)
+          calc(100% - 4px),
+        transparent calc(100% - 4px)
+      ),
+      linear-gradient(90deg, #00000038, #ffffff1a 28%, #ffffff0a 55%, #0003),
+      var(--face-color);
+  }
+}
+
+.book-spin-face--spine {
+  transform: rotateY(-90deg) translateZ(calc(var(--book-w) / 2));
+  border-radius: 2px;
+}
+
+.book-spin-spine-title {
+  max-height: 100%;
+  font-family: var(--font-sans);
+  font-size: min(7px, calc(var(--book-d) * 0.52));
+  letter-spacing: 0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  font-weight: 600;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.book-spin-face--pages {
+  --shade: var(--shade-pages);
+  height: 97%;
+  transform: rotateY(90deg) translateZ(calc(var(--book-w) / 2 - 1px));
+  background:
+    linear-gradient(90deg, #00000024, #0000 30%, #0000001a),
+    repeating-linear-gradient(90deg, #f5f0e4 0 1px, #e4dccb 1px 2px);
+  top: 1.5%;
+}
+
+.book-spin-face--top {
+  top: calc(50% - var(--book-d) / 2);
+  width: calc(100% - 3px);
+  height: var(--book-d);
+  transform: rotateX(90deg) translateZ(calc(var(--book-h) / 2 - 1px));
+  background:
+    linear-gradient(#00000014, #0000 35%, #0000001a),
+    repeating-linear-gradient(0deg, #f7f2e7 0 1px, #e6decd 1px 2px);
+  left: 1px;
+}
+
+.book-spin-shadow {
+  width: var(--book-h);
+  background: radial-gradient(
+    closest-side,
+    var(--contact-shadow-strong),
+    var(--contact-shadow-soft) 60%,
+    transparent
+  );
+  height: 7cqh;
+  transform: translateX(-50%) scale(var(--shadow-scale), 1);
+  border-radius: 50%;
+  margin-top: -3.5cqh;
+  display: block;
+  position: absolute;
+  top: calc(42% + 27cqh);
+  left: 50%;
+}
+
+html:not(.light) .book-spin-shadow {
+  background: radial-gradient(closest-side, #0000008c, #00000038 60%, #0000);
+}
+
+/* Article & typography */
+.article-content {
+  overflow-wrap: break-word;
+  width: auto;
+  max-width: none;
+}
+
+.article-content .entry-section {
+  margin-top: 40px;
+}
+
+.article-content .entry-section:first-child {
+  margin-top: 16px;
+}
+
+.section-title {
+  margin: 0 0 20px;
+  color: var(--panel-body-text);
+  font-family: var(--font-sans), var(--font-sans-font), system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.reader-lede {
+  font-size: 1.125rem !important;
+  line-height: 1.65 !important;
+  color: var(--panel-body-text) !important;
+  font-family: var(--font-sans), var(--font-sans-font), system-ui, -apple-system, sans-serif;
+}
+
+.books-prose p {
+  color: var(--panel-body-text);
+  font-family: var(--font-sans), var(--font-sans-font), system-ui, -apple-system, sans-serif;
+  text-wrap: pretty;
+  margin: 0 0 16px;
+  font-size: 1.0625rem;
+  line-height: 1.68;
+}
+
+.books-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.books-prose a {
+  color: var(--panel-body-text);
+  text-underline-offset: 0.16em;
+  font-weight: 550;
+  text-decoration: underline dashed;
+  transition: color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.books-prose a:hover {
+  color: var(--link);
+}
+
+.squash-stretch-link-arrow {
+  pointer-events: none;
+  flex: none;
+  overflow: visible;
+  display: inline-block;
+  vertical-align: -0.1em;
+  margin-inline-start: 0.18em;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.books-prose a:hover .squash-stretch-link-arrow {
+  transform: translate(2px, -2px);
+}

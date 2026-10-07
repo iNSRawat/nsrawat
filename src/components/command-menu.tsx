@@ -4,6 +4,7 @@ import { useCommandState } from "cmdk";
 import type { LucideProps } from "lucide-react";
 import {
   BookmarkIcon,
+  BookOpenIcon,
   BoxIcon,
   BracesIcon,
   BriefcaseBusinessIcon,
@@ -40,6 +41,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import type { Post } from "@/features/blog/types/post";
+import { BOOKS } from "@/features/books/data/books";
 import { BOOKMARKS } from "@/features/portfolio/data/bookmarks";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 import type { Snippet } from "@/features/snippets/types/snippet";
@@ -89,6 +91,12 @@ const MENU_LINKS: CommandLinkItem[] = [
     title: "Blog",
     href: "/blog",
     icon: NewspaperIcon,
+  },
+  {
+    title: "Books",
+    href: "/books",
+    icon: BookOpenIcon,
+    keywords: ["books", "reading", "read", "library", "shelf"],
   },
   {
     title: "Sponsors",
@@ -305,6 +313,24 @@ export function CommandMenu({
     [],
   );
 
+  const bookLinks = useMemo(
+    () =>
+      BOOKS.map((b) => ({
+        title: `${b.title} — ${b.author}`,
+        href: `/books#${encodeURIComponent(b.title)}`,
+        keywords: [
+          "book",
+          "books",
+          b.title,
+          b.author,
+          b.status,
+          b.subtitle ?? "",
+        ].filter(Boolean),
+        icon: BookOpenIcon,
+      })),
+    [],
+  );
+
   return (
     <>
       <Button
@@ -368,6 +394,13 @@ export function CommandMenu({
           <CommandLinkGroup
             heading="Bookmarks"
             links={bookmarkLinks}
+            onLinkSelect={handleOpenLink}
+          />
+
+          <CommandLinkGroup
+            heading="Books"
+            links={bookLinks}
+            fallbackIcon={BookOpenIcon}
             onLinkSelect={handleOpenLink}
           />
 

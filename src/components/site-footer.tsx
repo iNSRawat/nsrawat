@@ -252,10 +252,10 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <Link
-                    href="/sponsors"
+                    href="/books"
                     className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    sponsors
+                    books
                   </Link>
                 </li>
                 <li>
