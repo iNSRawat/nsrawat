@@ -2,6 +2,7 @@
 
 import {
   BookmarkIcon,
+  BookOpenIcon,
   BracesIcon,
   BrainIcon,
   ChevronDownIcon,
@@ -41,6 +42,7 @@ const NAV_ICONS: Record<string, typeof HomeIcon> = {
   "/snippets": BracesIcon,
   "/ds-resources": BrainIcon,
   "/bookmarks": BookmarkIcon,
+  "/books": BookOpenIcon,
   "/sponsors": HeartIcon,
 };
 
