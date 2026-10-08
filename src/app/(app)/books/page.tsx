@@ -33,12 +33,12 @@ export default function BooksPage() {
         <h1 className="text-2xl font-semibold sm:text-3xl">Books I’ve read.</h1>
       </div>
 
-      <div className="p-2 sm:p-4">
+      <div className="px-2 py-2 sm:px-4 sm:pt-3 sm:pb-2">
         <p className="font-mono text-sm text-balance text-muted-foreground">
           What I’ve read, what I’m reading and what’s next, kept with the
           thoughts that stayed with me.
         </p>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-1.5 font-mono text-sm text-muted-foreground">
           Inspired by{" "}
           <a
             href="https://grokipedia.com/"
@@ -52,11 +52,11 @@ export default function BooksPage() {
         </p>
       </div>
 
-      <div className="screen-line-after px-2 pt-2 sm:px-4">
+      <div className="screen-line-after px-2 py-1.5 sm:px-4 sm:py-2">
         <h2 className="text-base font-semibold sm:text-lg">On my shelves</h2>
       </div>
 
-      <div className="p-2 sm:p-4 md:p-6">
+      <div className="p-2 sm:p-4 md:px-6 md:py-4">
         <BooksWall books={BOOKS} />
       </div>
 

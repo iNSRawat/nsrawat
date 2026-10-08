@@ -273,21 +273,6 @@ export const BOOKS: Book[] = [
     note: "A gripping insider military account of strategic planning, valor, and deep strikes in counter-terror operations. <mark>A testament to leadership under intense operational pressure and national duty.</mark>",
   },
   {
-    title: "16 Habits of a Happy Mind",
-    author: "Loretta Graziano Breuning",
-    cover: "/media/books/habits-of-a-happy-mind.jpg",
-    ratio: 1.4881,
-    pages: 256,
-    spine: {
-      color: "#319795",
-      ink: "#ffffff",
-    },
-    status: "read",
-    rating: "Great",
-    subtitle: "Retrain Your Brain",
-    note: "Unpacking brain chemistry and daily neurochemistry habits. <mark>Understanding how dopamine, serotonin, oxytocin, and endorphins work allows us to rewire old survival habits into sustained well-being.</mark>",
-  },
-  {
     title: "Chanakya Neeti",
     author: "Chanakya",
     cover: "/media/books/chanakya-neeti.jpg",
@@ -415,5 +400,19 @@ export const BOOKS: Book[] = [
     status: "to-read",
     subtitle: "An Intimate History",
     note: "The biography of the master code that defines humanity, heredity, and future biotechnology.",
+  },
+  {
+    title: "16 Habits of a Happy Mind",
+    author: "Loretta Graziano Breuning",
+    cover: "/media/books/habits-of-a-happy-mind.jpg",
+    ratio: 1.4881,
+    pages: 256,
+    spine: {
+      color: "#319795",
+      ink: "#ffffff",
+    },
+    status: "to-read",
+    subtitle: "Retrain Your Brain",
+    note: "Unpacking brain chemistry and daily neurochemistry habits. Understanding how dopamine, serotonin, oxytocin, and endorphins work allows us to rewire old survival habits into sustained well-being.",
   },
 ];

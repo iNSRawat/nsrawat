@@ -39,7 +39,7 @@
 }
 
 .books-wall-container {
-  margin-top: var(--sp-8);
+  margin-top: var(--sp-4);
   container: books-wall/inline-size;
 }
 
@@ -769,17 +769,19 @@
   outline-offset: 1px;
 }
 
-@container books-wall (max-width:640px) {
+@container books-wall (max-width:768px) {
   .books-wall {
-    --shelf-scale: 0.8;
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 36px;
+    row-gap: 32px;
   }
   .books-wall-shelf {
     grid-row: var(--shelf-row);
   }
+  .books-wall-shelf[data-shelf="reading"],
+  .books-wall-shelf[data-shelf="read"],
   .books-wall-shelf[data-shelf="to-read"] {
-    margin-left: 8%;
+    justify-self: center;
+    margin-left: 0;
   }
   .books-thoughts {
     grid-column: 1;
@@ -790,7 +792,7 @@
     transform: none;
   }
   .books-thoughts-title {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
   .books-thoughts-card {
     animation-name: books-thoughts-in-below;

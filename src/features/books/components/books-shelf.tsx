@@ -146,9 +146,13 @@ export function BooksWall({ books }: BooksShelfProps) {
 
     const handleResize = () => {
       const clientWidth = el.clientWidth;
-      setScale(
-        clientWidth <= 640 ? Math.min(0.8, clientWidth / maxWallWidth) : 1,
-      );
+      if (clientWidth <= 768) {
+        setScale(
+          Math.min(1, Math.max(0.45, (clientWidth - 16) / maxWallWidth)),
+        );
+      } else {
+        setScale(1);
+      }
     };
 
     handleResize();
@@ -178,7 +182,7 @@ export function BooksWall({ books }: BooksShelfProps) {
       activeTitle === null
         ? null
         : buttonMapRef.current.get(activeTitle)?.parentElement;
-    const isMobile = (wallContainerRef.current?.clientWidth ?? 0) <= 640;
+    const isMobile = (wallContainerRef.current?.clientWidth ?? 0) <= 768;
 
     if (!followEl || !parentEl) return;
 
