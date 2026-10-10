@@ -82,6 +82,21 @@ export const BOOKS: Book[] = [
     note: "A refreshing holistic perspective on true wealth beyond bank balances. <mark>True richness integrates financial freedom with mental peace, physical vitality, and purposeful living.</mark>",
   },
   {
+    title: "The Art of Dealing with People",
+    author: "Les Giblin",
+    cover: "/media/books/art-of-dealing-with-people.png",
+    ratio: 1.4993,
+    pages: 80,
+    spine: {
+      color: "#d42a2a",
+      ink: "#ffffff",
+    },
+    status: "reading",
+    progress: 10,
+    subtitle: "Mastering Human Relations",
+    note: "A concise, practical guide on winning people over through genuine human relations skills. <mark>The most important thing in dealing with people is to make the other person feel important.</mark>",
+  },
+  {
     title: "How to Train Your Mind",
     author: "Chris Bailey",
     cover: "/media/books/how-to-train-your-mind.jpg",
@@ -318,6 +333,21 @@ export const BOOKS: Book[] = [
     note: "Luminous prison essays and personal letters of Shahid Bhagat Singh. <mark>Reason is the guiding star in human life. Any man who stands for progress has to criticise, disbelieve and challenge every item of old faith.</mark> A profound testament to intellectual clarity and self-sacrifice.",
   },
   {
+    title: "Influence",
+    author: "Robert B. Cialdini",
+    cover: "/media/books/influence.jpg",
+    ratio: 1.5198,
+    pages: 592,
+    spine: {
+      color: "#1a1a2e",
+      ink: "#e8d44d",
+    },
+    status: "read",
+    rating: "Excellent",
+    subtitle: "The Psychology of Persuasion (New and Expanded)",
+    note: "The seminal work on the science of ethical persuasion, now expanded with a seventh principle: Unity. <mark>People say yes to those they owe, those they see as similar, and those whose authority they trust.</mark> A masterclass in understanding the automatic triggers behind human compliance.",
+  },
+  {
     title: "Principles",
     author: "Ray Dalio",
     cover: "/media/books/principles.jpg",
@@ -414,5 +444,19 @@ export const BOOKS: Book[] = [
     status: "to-read",
     subtitle: "Retrain Your Brain",
     note: "Unpacking brain chemistry and daily neurochemistry habits. Understanding how dopamine, serotonin, oxytocin, and endorphins work allows us to rewire old survival habits into sustained well-being.",
+  },
+  {
+    title: "Power of Ignored Skills",
+    author: "Manoj Tripathi",
+    cover: "/media/books/power-of-ignored-skills.png",
+    ratio: 1.5924,
+    pages: 160,
+    spine: {
+      color: "#e8600a",
+      ink: "#1a1a1a",
+    },
+    status: "to-read",
+    subtitle: "Change the Way You Think and Decide",
+    note: "Exploring the overlooked skills of observation, communication, and emotional intelligence that drive real success in personal and professional life.",
   },
 ];
