@@ -1,3 +1,5 @@
+import { BOOKS } from "@/features/books/data/books";
+
 import { CERTIFICATIONS } from "./certifications";
 import { EXPERIENCES } from "./experiences";
 import { PROJECTS } from "./projects";
@@ -29,6 +31,8 @@ export const ALIASES: Record<string, string> = {
   p: "projects",
   c: "contact",
   b: "blog",
+  bk: "books",
+  book: "books",
 };
 
 export const COMMANDS: Record<string, string | (() => string)> = {
@@ -40,6 +44,7 @@ export const COMMANDS: Record<string, string | (() => string)> = {
     "projects   (p, ls)  - List my projects\n" +
     "exp        (e)      - Show my experience\n" +
     "blog       (b)      - List recent blog posts\n" +
+    "books      (bk)     - List books I'm reading and have read\n" +
     "certs               - Show my certifications\n" +
     "contact    (c)      - Display contact information\n" +
     "social              - Show social media links\n" +
@@ -102,6 +107,28 @@ export const COMMANDS: Record<string, string | (() => string)> = {
     "\u25b8 Python Data Analysis Essentials\n" +
     "\u25b8 Top Data Scientist Skills\n\n" +
     `Read more: ${USER.website}/blog`,
+
+  books: () => {
+    const reading = BOOKS.filter((b) => b.status === "reading");
+    const read = BOOKS.filter((b) => b.status === "read");
+    const toRead = BOOKS.filter((b) => b.status === "to-read");
+
+    const formatList = (books: typeof BOOKS) =>
+      books.map((b) => `  ▸ ${b.title} - ${b.author}`).join("\n");
+
+    return (
+      "Books on my shelf:\n\n" +
+      `Currently Reading (${reading.length}):\n` +
+      formatList(reading) +
+      "\n\n" +
+      `Read (${read.length}):\n` +
+      formatList(read) +
+      "\n\n" +
+      `To Read (${toRead.length}):\n` +
+      formatList(toRead) +
+      `\n\nExplore interactive bookshelf: ${USER.website}/books`
+    );
+  },
 
   social: () =>
     "Social Links:\n\n" +
