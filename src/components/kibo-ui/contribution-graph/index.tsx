@@ -75,20 +75,20 @@ const DEFAULT_LABELS: Labels = {
 };
 
 const THEME = cn(
-  // Level 0 (Empty): Keep distinct neutral
+  // Level 0 (Empty): Subtle neutral background
   'data-[level="0"]:fill-muted-foreground/10',
 
-  // Light Mode Colors (Standard GitHub Light)
-  'data-[level="1"]:fill-[#9be9a8]',
-  'data-[level="2"]:fill-[#40c463]',
-  'data-[level="3"]:fill-[#30a14e]',
-  'data-[level="4"]:fill-[#216e39]',
+  // Light Mode Colors (Monochrome Grayscale)
+  'data-[level="1"]:fill-[#9e9e9e]',
+  'data-[level="2"]:fill-[#6e6e6e]',
+  'data-[level="3"]:fill-[#444444]',
+  'data-[level="4"]:fill-[#1a1a1a]',
 
-  // Dark Mode Colors (GitHub Dark)
-  'dark:data-[level="1"]:fill-[#0e4429]',
-  'dark:data-[level="2"]:fill-[#006d32]',
-  'dark:data-[level="3"]:fill-[#26a641]',
-  'dark:data-[level="4"]:fill-[#39d353]',
+  // Dark Mode Colors (Monochrome Grayscale)
+  'dark:data-[level="1"]:fill-[#4a4a4a]',
+  'dark:data-[level="2"]:fill-[#7a7a7a]',
+  'dark:data-[level="3"]:fill-[#aaaaaa]',
+  'dark:data-[level="4"]:fill-[#e0e0e0]',
 );
 
 type ContributionGraphContextType = {

@@ -214,7 +214,7 @@ export function SiteFooter() {
 
             {/* Personal stuff section */}
             <div className="flex flex-col gap-3.5">
-              <h4 className="font-mono text-xs font-semibold text-foreground uppercase tracking-wider">
+              <h4 className="font-mono text-xs font-semibold text-foreground uppercase tracking-wider whitespace-nowrap">
                 personal stuff
               </h4>
               <ul className="flex flex-col gap-2.5">
