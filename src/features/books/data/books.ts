@@ -22,6 +22,21 @@ export interface Book {
 
 export const BOOKS: Book[] = [
   {
+    title: "Esquire's The New Rules for Men",
+    author: "Joe Keohane",
+    cover: "/media/books/esquires-new-rules.jpg",
+    ratio: 1.2195,
+    pages: 192,
+    spine: {
+      color: "#1a1a2e",
+      ink: "#e8e8e8",
+    },
+    status: "reading",
+    progress: 5,
+    subtitle: "A Man's Guide to Life",
+    note: "A witty, practical compendium of over 800 updated rules for navigating contemporary life as a man. <mark>Times change, technology evolves, and social norms shift — meaning the old guidelines for modern men need updating.</mark> Equal parts humor and direct, actionable advice across style, grooming, relationships, and etiquette.",
+  },
+  {
     title: "The End of Science",
     author: "John Horgan",
     cover: "/media/books/the-end-of-science.jpg",
