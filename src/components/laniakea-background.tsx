@@ -122,9 +122,10 @@ export function LaniakeaBackground({
 
     // Dark mode check
     const checkIsDark = () => {
-      if (document.documentElement.classList.contains("dark")) return true;
-      if (document.documentElement.classList.contains("light")) return false;
-      return themeRef.current === "dark";
+      if (typeof document !== "undefined") {
+        return document.documentElement.classList.contains("dark");
+      }
+      return false;
     };
 
     // Arrays

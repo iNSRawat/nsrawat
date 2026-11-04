@@ -620,7 +620,7 @@ export function NsrIsometricHero() {
         </div>
 
         {/* Right: Available for work status badge (single-line, transparent) */}
-        <div className="hidden md:inline-flex shrink-0 items-center gap-2 font-mono text-xs text-muted-foreground/90 select-none whitespace-nowrap ml-4">
+        <div className="hidden md:inline-flex shrink-0 items-center gap-2 font-pixel text-xs text-muted-foreground/90 select-none whitespace-nowrap ml-4">
           <span className="relative flex size-2 shrink-0">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />

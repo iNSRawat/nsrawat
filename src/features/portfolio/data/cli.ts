@@ -54,11 +54,10 @@ export const COMMANDS: Record<string, string | (() => string)> = {
     "Tip: Use Tab for command completion and ↑↓ for command history",
 
   about: () =>
-    `Nagendra Singh Rawat | Data Scientist specializing in Marketing Analytics.\n` +
-    `Pivoted from 5 years in Digital Marketing to Data Science in Sep 2025.\n` +
-    `Expertise: Python, SQL, and ML frameworks (TensorFlow, PyTorch, Scikit-learn).\n` +
-    `Building: Models (Recipe Predictor), Pipelines (Customer Analytics, ETL), and Dashboards (Marketing KPI) with Tableau & Power BI.\n` +
-    `Learning: Currently earning 8+ certifications (DataCamp, Google, IBM) while mastering ML/EDA for actionable insights.\n\n` +
+    `I'm Nagendra Singh Rawat, a self-taught Data Scientist with a 5-year background in Digital Marketing.\n\n` +
+    `Building reliable, data-driven systems instead of vanity metrics and toy models.\n` +
+    `Focus: Robust predictive models (Recipe Predictor), reproducible data pipelines (Customer Analytics & ETL), and production-ready analytics dashboards (Marketing KPI Dashboard).\n` +
+    `Approach: Rigorous statistical evaluation and clean data processing to solve real-world business problems.\n\n` +
     `For more details, visit:\n` +
     `  ${USER.website}/about`,
 

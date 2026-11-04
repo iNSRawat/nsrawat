@@ -27,7 +27,7 @@ export const USER = {
     },
   ],
   about: `
-I'm Nagendra Singh Rawat, a **Data Scientist | Ex-Digital Marketer**. After spending 5 years in Digital Marketing optimizing campaigns by gut + spreadsheets, I transitioned to building data-driven solutions. Now I use machine learning to do it properly. I work with **Python**, **SQL**, **TensorFlow**, **PyTorch**, and **Scikit-learn** to build [predictive models](https://github.com/iNSRawat/recipe-site-traffic-prediction), [data pipelines](https://github.com/iNSRawat/customer-behavior-prediction), and [interactive dashboards](https://github.com/iNSRawat/marketing-analytics-dashboard). With [8+ certifications](/certifications) from DataCamp, Google, and IBM, I'm passionate about turning complex datasets into actionable business decisions.
+I'm Nagendra Singh Rawat, a **Data Scientist | Ex-Digital Marketer**. After spending 5 years in Digital Marketing optimizing campaigns by gut + spreadsheets, I transitioned to building data-driven solutions. Now I use machine learning to do it properly. I work with **Python**, **SQL**, **TensorFlow**, **PyTorch**, and **Scikit-learn** to build [predictive models](https://github.com/iNSRawat/recipe-site-traffic-prediction), [data pipelines](https://github.com/iNSRawat/customer-behavior-prediction), and [interactive dashboards](https://github.com/iNSRawat/marketing-analytics-dashboard). With [8+ certifications](/certifications) from DataCamp, Google, and IBM, I'm passionate about turning complex datasets into actionable business decisions. [View all](/about)
 `,
   avatar: "/static/images/avatar.png",
   ogImage: "/static/images/og-image.png",

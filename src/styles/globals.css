@@ -51,8 +51,9 @@
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
 
-  --font-sans: var(--font-sans-font);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Geist", var(--font-sans-font), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", var(--font-geist-mono), monospace;
+  --font-pixel: var(--font-pixel), monospace;
   --font-signature: var(--font-sacramento), "Sacramento", cursive;
 
   --shadow-popover: var(--shadow-popover);

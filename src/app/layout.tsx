@@ -9,7 +9,7 @@ import { ConsentManager } from "@/components/consent-manager";
 import { Providers } from "@/components/providers";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
 import { USER } from "@/features/portfolio/data/user";
-import { fontMono, fontSans, fontSignature } from "@/lib/fonts";
+import { fontMono, fontPixel, fontSans, fontSignature } from "@/lib/fonts";
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
@@ -106,7 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} ${fontMono.variable} ${fontSignature.variable}`}
+      className={`${fontSans.variable} ${fontMono.variable} ${fontPixel.variable} ${fontSignature.variable}`}
       suppressHydrationWarning
     >
       <head>

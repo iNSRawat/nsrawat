@@ -318,7 +318,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
           title="Back to GUI"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-          <span className="text-sm font-medium">Back</span>
+          <span className="font-pixel text-sm font-medium">Back</span>
         </button>
       </div>
 
@@ -440,7 +440,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                     title="Copy to clipboard"
                   >
                     {copiedIndex === i ? (
-                      <span className="text-xs text-emerald-500 dark:text-emerald-400">
+                      <span className="font-pixel text-xs text-emerald-500 dark:text-emerald-400">
                         Copied!
                       </span>
                     ) : (
@@ -487,14 +487,24 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                 </div>
               </div>
             )}
-            <span className="text-emerald-600 dark:text-emerald-400">
+            <span className="font-pixel text-emerald-600 dark:text-emerald-400">
               nsrawat
             </span>
-            <span className="text-zinc-400 dark:text-zinc-500">@</span>
-            <span className="text-sky-600 dark:text-sky-400">cli</span>
-            <span className="text-zinc-400 dark:text-zinc-500">:</span>
-            <span className="text-purple-600 dark:text-purple-400">~</span>
-            <span className="text-zinc-500 dark:text-zinc-400">$ </span>
+            <span className="font-pixel text-zinc-400 dark:text-zinc-500">
+              @
+            </span>
+            <span className="font-pixel text-sky-600 dark:text-sky-400">
+              cli
+            </span>
+            <span className="font-pixel text-zinc-400 dark:text-zinc-500">
+              :
+            </span>
+            <span className="font-pixel text-purple-600 dark:text-purple-400">
+              ~
+            </span>
+            <span className="font-pixel text-zinc-500 dark:text-zinc-400">
+              ${" "}
+            </span>
             <input
               ref={inputRef}
               type="text"

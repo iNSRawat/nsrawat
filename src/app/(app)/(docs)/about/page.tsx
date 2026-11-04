@@ -5,9 +5,11 @@ import Image from "next/image";
 import { ContactTabs } from "@/components/contact-tabs";
 import { Icons } from "@/components/icons";
 import { StripedSeparator } from "@/components/striped-separator";
+import { ProseMono } from "@/components/ui/typography";
 import { SOURCE_CODE_GITHUB_URL } from "@/config/site";
 import { ExperienceItem } from "@/features/portfolio/components/experiences/experience-item";
 import { EXPERIENCES } from "@/features/portfolio/data/experiences";
+import { SKILLS } from "@/features/portfolio/data/skills";
 import { USER } from "@/features/portfolio/data/user";
 
 export const metadata: Metadata = {
@@ -60,7 +62,7 @@ export default function AboutPage() {
               📍 {USER.address}
             </p>
             <div className="mt-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-600 sm:gap-1.5 sm:px-2.5 sm:text-xs dark:text-emerald-400">
+              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-pixel font-medium text-emerald-600 sm:gap-1.5 sm:px-2.5 sm:text-xs dark:text-emerald-400">
                 <span className="relative flex size-1.5 sm:size-2">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex size-full rounded-full bg-emerald-500" />
@@ -80,173 +82,109 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="prose max-w-none prose-zinc dark:prose-invert">
-          <p className="text-lg leading-relaxed">
-            I&apos;m <strong>{USER.displayName}</strong>, a {USER.jobTitle}{" "}
-            based in {USER.address}. After 5 years in Digital Marketing, I began
-            my Data Science journey in September 2025 to shift my career focus
-            toward leveraging data for meaningful insights.
+        <ProseMono className="max-w-none">
+          <p className="leading-relaxed">
+            Self-taught Data Scientist with a 5-year background in Digital
+            Marketing, building reliable, data-driven systems instead of vanity
+            metrics and toy models. Based in {USER.address}.
           </p>
 
-          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
-            🎯 What I Do
-          </h2>
-          <ul className="list-inside list-disc space-y-1 sm:space-y-2 text-sm sm:text-base text-muted-foreground">
-            <li>
-              Build <strong>predictive models</strong> (
-              <a
-                href="https://github.com/iNSRawat/recipe-site-traffic-prediction"
-                className="link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Recipe Predictor
-              </a>
-              ) and machine learning solutions
-            </li>
-            <li>
-              Develop <strong>data pipelines</strong> (
-              <a
-                href="https://github.com/iNSRawat/customer-behavior-prediction"
-                className="link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Customer Analytics
-              </a>{" "}
-              &{" "}
-              <a
-                href="https://github.com/iNSRawat/data-cleaning-visualization"
-                className="link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ETL Pipeline
-              </a>
-              ) for processing and analysis
-            </li>
-            <li>
-              Create <strong>interactive dashboards</strong> (
-              <a
-                href="https://github.com/iNSRawat/marketing-analytics-dashboard"
-                className="link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Marketing KPI Dashboard
-              </a>
-              ) with Tableau & Power BI
-            </li>
-            <li>
-              Perform <strong>exploratory data analysis</strong> to uncover
-              patterns
-            </li>
-            <li>
-              Conduct <strong>statistical analysis</strong> for data-driven
-              decisions
-            </li>
-          </ul>
+          <p className="mt-3 leading-relaxed">
+            Currently focusing on building robust predictive models (
+            <a
+              href="https://github.com/iNSRawat/recipe-site-traffic-prediction"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Recipe Predictor
+            </a>
+            ), developing reproducible data pipelines (
+            <a
+              href="https://github.com/iNSRawat/customer-behavior-prediction"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Customer Analytics
+            </a>{" "}
+            &amp;{" "}
+            <a
+              href="https://github.com/iNSRawat/data-cleaning-visualization"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ETL Pipeline
+            </a>
+            ), and production-ready analytics dashboards (
+            <a
+              href="https://github.com/iNSRawat/marketing-analytics-dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Marketing KPI Dashboard
+            </a>
+            ). I care deeply about rigorous statistical evaluation and clean
+            data processing because models actually need to drive business
+            decisions in the real world.
+          </p>
 
-          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
-            🛠️ Technical Skills
+          <p className="mt-3 leading-relaxed">
+            Genuinely curious about machine learning architectures, statistical
+            modeling, and workflow optimization. Always looking for better ways
+            to bring solid engineering discipline and domain context into data
+            science workflows.
+          </p>
+
+          <h2 className="mt-4 sm:mt-6 mb-2 sm:mb-3 text-lg sm:text-xl font-semibold">
+            🛠️ Skills
           </h2>
-          <div className="grid grid-cols-2 gap-1.5 sm:gap-2 md:grid-cols-3">
-            {[
-              "Python",
-              "SQL",
-              "Pandas",
-              "NumPy",
-              "Scikit-learn",
-              "TensorFlow",
-              "PyTorch",
-              "Tableau",
-              "Power BI",
-              "Excel",
-              "Matplotlib",
-              "Seaborn",
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="rounded-md bg-accent px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-xs sm:text-sm"
+          <div className="not-prose divide-y divide-border border-y border-border">
+            {SKILLS.map((category) => (
+              <div
+                key={category.title}
+                className="flex flex-col gap-0.5 py-1.5 sm:flex-row sm:items-baseline sm:gap-4 sm:py-2 md:gap-6"
               >
-                {skill}
-              </span>
+                <div className="shrink-0 sm:w-36 md:w-40">
+                  <span className="font-mono text-xs sm:text-[13px] font-semibold text-foreground">
+                    {category.title}
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-xs sm:text-[13px] leading-normal text-muted-foreground">
+                  {category.skills.map((skill, i) => (
+                    <span key={skill} className="inline-flex items-center">
+                      <span>{skill}</span>
+                      {i < category.skills.length - 1 && (
+                        <span
+                          className="ml-2 text-border select-none"
+                          aria-hidden="true"
+                        >
+                          ·
+                        </span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 
-          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
+          <h2 className="mt-4 sm:mt-6 mb-2 text-lg sm:text-xl font-semibold">
             📚 Background
           </h2>
           <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-            My journey into Data Science began after recognizing the power of
-            data in making informed decisions during my marketing career.
-            I&apos;ve since dedicated myself to mastering tools like{" "}
-            <strong>Python</strong>, <strong>SQL</strong>, and modern data
-            science frameworks to build{" "}
-            <a
-              href="https://github.com/iNSRawat/recipe-site-traffic-prediction"
-              className="link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              predictive models
-            </a>
-            ,{" "}
-            <a
-              href="https://github.com/iNSRawat/customer-behavior-prediction"
-              className="link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              data pipelines
-            </a>
-            , and{" "}
-            <a
-              href="https://github.com/iNSRawat/marketing-analytics-dashboard"
-              className="link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              interactive dashboards
-            </a>
-            . With{" "}
+            My transition into Data Science began after spending 5 years in
+            Digital Marketing, where I realized intuition and spreadsheets can
+            only take optimization so far. With{" "}
             <a href="/certifications" className="link font-medium">
               8+ certifications
             </a>{" "}
-            and a growing portfolio of hands-on projects, I&apos;m committed to
-            transforming complex datasets into actionable insights.
+            from DataCamp, Google, and IBM, I focus on turning complex datasets
+            into reliable, actionable business insights.
           </p>
-          <ul className="mt-3 list-inside list-disc space-y-1.5 sm:space-y-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-            <li>
-              Building predictive models, data pipelines, and interactive
-              dashboards with Tableau &amp; Power BI.
-            </li>
-            <li>
-              Currently deepening skills in Python, machine learning, and data
-              analysis for my new career path.
-            </li>
-            <li>
-              Creating data science projects on{" "}
-              <a
-                href="https://github.com/iNSRawat"
-                className="link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-              .
-            </li>
-            <li>
-              Passionate about exploratory data analysis and finding patterns in
-              data.
-            </li>
-          </ul>
 
-          <h2 className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-lg sm:text-xl font-semibold">
+          <h2 className="mt-4 sm:mt-6 mb-2 text-base sm:text-lg font-semibold">
             🌐 Connect With Me
           </h2>
-          <p className="mb-3 text-sm sm:text-base text-muted-foreground">
+          <p className="mb-2 text-sm sm:text-base text-muted-foreground">
             Reach out to me at{" "}
             <a href="mailto:digital@nsrawat.in" className="link font-medium">
               digital@nsrawat.in
@@ -254,61 +192,62 @@ export default function AboutPage() {
             or find me on social media:
           </p>
           {/* Social Icons Row */}
-          <div className="inline-flex items-center gap-2">
+          <div className="inline-flex items-center gap-1 sm:gap-2">
             <a
               href="https://github.com/iNSRawat"
-              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              className="p-1.5 sm:p-2 text-foreground/70 transition-colors hover:text-foreground"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
             >
-              <Icons.github className="size-6" />
+              <Icons.github className="size-5 sm:size-6" />
             </a>
             <a
               href="https://twitter.com/NSRawat_in"
-              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              className="p-1.5 sm:p-2 text-foreground/70 transition-colors hover:text-foreground"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter/X"
             >
-              <Icons.x className="size-6" />
+              <Icons.x className="size-5 sm:size-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/insrawat"
-              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              className="p-1.5 sm:p-2 text-foreground/70 transition-colors hover:text-foreground"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
-              <Icons.linkedin className="size-6" />
+              <Icons.linkedin className="size-5 sm:size-6" />
             </a>
             <a
               href="https://www.kaggle.com/nsrawat"
-              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              className="p-1.5 sm:p-2 text-foreground/70 transition-colors hover:text-foreground"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Kaggle"
             >
-              <Icons.kaggle className="size-6" />
+              <Icons.kaggle className="size-5 sm:size-6" />
             </a>
             <a
               href="mailto:digital@nsrawat.in"
-              className="p-2 text-foreground/70 transition-colors hover:text-foreground"
+              className="p-1.5 sm:p-2 text-foreground/70 transition-colors hover:text-foreground"
               aria-label="Email"
             >
-              <Mail className="size-6" />
+              <Mail className="size-5 sm:size-6" />
             </a>
           </div>
-          <h2 className="mt-3 sm:mt-4 mb-1.5 sm:mb-2 text-lg sm:text-xl font-semibold">
-            Express Your Support
+
+          <h2 className="mt-4 sm:mt-6 mb-1 text-base sm:text-lg font-semibold">
+            ⭐ Express Your Support
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground">
             If you find my data science projects helpful, show your appreciation
-            with a ⭐
+            with a star on GitHub.
           </p>
 
-          <h2 className="mt-3 sm:mt-4 mb-1.5 sm:mb-2 text-lg sm:text-xl font-semibold">
-            💰 You can help me by Donating
+          <h2 className="mt-4 sm:mt-6 mb-2 text-base sm:text-lg font-semibold">
+            💰 Help Support My Work
           </h2>
           <div className="flex flex-wrap gap-1.5 sm:gap-2">
             <a
@@ -336,7 +275,7 @@ export default function AboutPage() {
               💸 UPI
             </a>
           </div>
-        </div>
+        </ProseMono>
       </div>
 
       <StripedSeparator />
