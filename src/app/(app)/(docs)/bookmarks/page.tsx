@@ -2,9 +2,8 @@ import { compareDesc } from "date-fns";
 import type { Metadata } from "next";
 
 import { StripedSeparator } from "@/components/striped-separator";
-import { BookmarkItem } from "@/features/portfolio/components/bookmarks/bookmark-item";
+import { BookmarkCategorySection } from "@/features/portfolio/components/bookmarks/bookmark-category-section";
 import { BOOKMARKS } from "@/features/portfolio/data/bookmarks";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Bookmarks",
@@ -68,26 +67,7 @@ export default function BookmarksPage() {
 
         return (
           <div key={category}>
-            <div className="screen-line-after px-2 pt-2 sm:px-4">
-              <h2 className="text-base font-semibold sm:text-lg">{category}</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {items.map((bookmark, i) => (
-                <BookmarkItem
-                  key={bookmark.url}
-                  bookmark={bookmark}
-                  className={cn(
-                    "border-b border-edge",
-                    i % 2 === 0 ? "md:border-r" : "",
-                  )}
-                />
-              ))}
-              {items.length % 2 !== 0 && (
-                <div className="hidden border-b border-edge md:block" />
-              )}
-            </div>
-
+            <BookmarkCategorySection category={category} items={items} />
             <StripedSeparator />
           </div>
         );
