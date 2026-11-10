@@ -3,6 +3,85 @@ import type { Bookmark } from "../types/bookmarks";
 export const BOOKMARKS: Bookmark[] = [
   // --- Learning Platforms ---
   {
+    title: "FreeRobotics - Learn the Math Behind Robots",
+    url: "https://freerobotics.vercel.app/",
+    author: "Martin (@0x_meden)",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "Immersive Linear Algebra",
+    url: "https://immersivemath.com/ila/",
+    author: "J. Ström, K. Åström, T. Akenine-Möller",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title:
+      "Seeing Theory - A Visual Introduction to Probability and Statistics",
+    url: "https://seeing-theory.brown.edu/",
+    author: "Daniel Kunin (Brown University)",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "Markov Chains - Explained Visually",
+    url: "https://setosa.io/ev/markov-chains/",
+    author: "Victor Powell (Setosa)",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "How a Kalman Filter Works, in Pictures",
+    url: "https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/",
+    author: "Tim Babb",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "Introduction to the A* Algorithm",
+    url: "https://www.redblobgames.com/pathfinding/a-star/introduction.html",
+    author: "Amit Patel (Red Blob Games)",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "An Interactive Guide to the Fourier Transform",
+    url: "https://jezzamon.com/fourier/",
+    author: "Jez Swanson",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "Why Momentum Really Works",
+    url: "https://distill.pub/2017/momentum/",
+    author: "Gabriel Goh (Distill)",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "REINFORCEjs - Deep Reinforcement Learning in JavaScript",
+    url: "https://cs.stanford.edu/people/karpathy/reinforcejs/",
+    author: "Andrej Karpathy",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title:
+      "Transformer Explainer - Interactive Learning of Transformer Architecture",
+    url: "https://poloclub.github.io/transformer-explainer/",
+    author: "Polo Club of Data Science",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
+    title: "Diffusion Explainer - Interactive Stable Diffusion Visualization",
+    url: "https://poloclub.github.io/diffusion-explainer/",
+    author: "Polo Club of Data Science",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-10",
+  },
+  {
     title: "Kaggle - Machine Learning Competitions",
     url: "https://www.kaggle.com/",
     author: "Google",
