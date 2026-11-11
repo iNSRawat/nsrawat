@@ -82,6 +82,34 @@ export const BOOKMARKS: Bookmark[] = [
     bookmarkedAt: "2026-11-10",
   },
   {
+    title: "LLM Visualization - 3D Animated Transformer Explainer",
+    url: "https://bbycroft.net/llm",
+    author: "Brendan Bycroft",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
+    title: "CNN Explainer - Learning Convolutional Neural Networks",
+    url: "https://poloclub.github.io/cnn-explainer/",
+    author: "Polo Club of Data Science",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
+    title: "Image Kernels - Explained Visually",
+    url: "https://setosa.io/ev/image-kernels/",
+    author: "Victor Powell (Setosa)",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
+    title: "Visualizing Quaternions - An Explorable Video Series",
+    url: "https://eater.net/quaternions",
+    author: "Grant Sanderson (3Blue1Brown) & Ben Eater",
+    category: "Learning Platforms",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
     title: "Kaggle - Machine Learning Competitions",
     url: "https://www.kaggle.com/",
     author: "Google",
@@ -245,6 +273,21 @@ export const BOOKMARKS: Bookmark[] = [
 
   // --- Visualization & Tools ---
   {
+    title: "TensorFlow Playground - A Neural Network in your Browser",
+    url: "https://playground.tensorflow.org/",
+    author: "Daniel Smilkov & Shan Carter",
+    iconName: "tensorflow",
+    category: "Visualization & Tools",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
+    title: "MuJoCo WASM - Physics Engine in WebAssembly",
+    url: "https://zalo.github.io/mujoco_wasm/",
+    author: "Johnathon Selstad (Zalo)",
+    category: "Visualization & Tools",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
     title: "Streamlit Documentation",
     url: "https://docs.streamlit.io/",
     author: "Streamlit",
@@ -269,6 +312,34 @@ export const BOOKMARKS: Bookmark[] = [
   },
 
   // --- Blogs & Communities ---
+  {
+    title: "Bicycle - Interactive Explanation of Bicycle Mechanics",
+    url: "https://ciechanow.ski/bicycle/",
+    author: "Bartosz Ciechanowski",
+    category: "Blogs & Communities",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
+    title: "Gears - Interactive Guide to Rotational Mechanics",
+    url: "https://ciechanow.ski/gears/",
+    author: "Bartosz Ciechanowski",
+    category: "Blogs & Communities",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
+    title: "Cameras and Lenses - Interactive Guide to Optics",
+    url: "https://ciechanow.ski/cameras-and-lenses/",
+    author: "Bartosz Ciechanowski",
+    category: "Blogs & Communities",
+    bookmarkedAt: "2026-11-11",
+  },
+  {
+    title: "Inverse Kinematics - Interactive Guide and Tutorial",
+    url: "https://zalo.github.io/blog/inverse-kinematics/",
+    author: "Johnathon Selstad (Zalo)",
+    category: "Blogs & Communities",
+    bookmarkedAt: "2026-11-11",
+  },
   {
     title: "Towards Data Science",
     url: "https://towardsdatascience.com/",
