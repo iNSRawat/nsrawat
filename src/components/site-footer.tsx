@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 
 import { Icons } from "./icons";
 import { SiteFooterBrand } from "./site-footer-brand";
+import { SiteSignature } from "./site-signature";
 
 // A live clock client component formatting to Asia/Kolkata and offset
 function LocalClock() {
@@ -109,10 +110,8 @@ export function SiteFooter() {
             </p>
 
             {/* Handwritten style signature */}
-            <div className="py-0">
-              <span className="font-signature text-3xl text-foreground/90 select-none">
-                N.S. Rawat
-              </span>
+            <div className="py-0.5">
+              <SiteSignature />
             </div>
 
             {/* Live site and profile status info */}
