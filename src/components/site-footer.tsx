@@ -9,7 +9,9 @@ import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
 
+import { BrandContextMenu } from "./brand-context-menu";
 import { Icons } from "./icons";
+import { NSRMark } from "./nsr-mark";
 import { SiteFooterBrand } from "./site-footer-brand";
 import { SiteSignature } from "./site-signature";
 
@@ -317,15 +319,15 @@ export function SiteFooter() {
 
         {/* Support me row */}
         <div className="screen-line-before flex w-full before:z-1">
-          <div className="w-full md:max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 border-x border-edge bg-background px-4 py-2.5 font-mono text-xs text-muted-foreground select-none">
-            <span className="font-semibold text-foreground uppercase tracking-wider mr-1">
+          <div className="w-full md:max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 border-x border-edge bg-background px-3 py-1.5 sm:py-2 font-mono text-xs text-muted-foreground select-none">
+            <span className="text-[10px] sm:text-xs font-semibold text-foreground uppercase tracking-wider mr-1">
               Support me
             </span>
             <a
               href="https://buymeacoffee.com/nsrawat?ref=NSRawat.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
+              className="inline-flex items-center gap-1 rounded-full border border-edge bg-card/80 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               ☕ Buy Me a Coffee
             </a>
@@ -333,7 +335,7 @@ export function SiteFooter() {
               href="https://paypal.me/NRawat710?ref=NSRawat.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
+              className="inline-flex items-center gap-1 rounded-full border border-edge bg-card/80 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               💳 PayPal
             </a>
@@ -341,7 +343,7 @@ export function SiteFooter() {
               href="https://withupi.com/@nsrawat?ref=NSRawat.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
+              className="inline-flex items-center gap-1 rounded-full border border-edge bg-card/80 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               💸 UPI
             </a>
@@ -349,75 +351,82 @@ export function SiteFooter() {
               href="https://github.com/sponsors/iNSRawat"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-card px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
+              className="inline-flex items-center gap-1 rounded-full border border-edge bg-card/80 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground hover:bg-accent"
             >
               💖 Sponsor
             </a>
           </div>
         </div>
 
-        {/* Original horizontal social icons row (circled to keep) */}
+        {/* Brand logo and social icons row */}
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
-          <div className="w-full md:max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 border-x border-edge bg-background px-4 py-2.5 sm:py-0 font-mono text-xs text-muted-foreground select-none">
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://twitter.com/NSRawat_in"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.x className="size-4" />
-              <span className="sr-only">X</span>
-            </a>
-            <Separator />
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://github.com/iNSRawat"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.github className="size-4" />
-              <span className="sr-only">GitHub</span>
-            </a>
-            <Separator />
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://www.linkedin.com/in/insrawat"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.linkedin className="size-4" />
-              <span className="sr-only">LinkedIn</span>
-            </a>
-            <Separator />
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://peerlist.io/nsrawat"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.peerlist className="size-4" />
-              <span className="sr-only">Peerlist</span>
-            </a>
-            <Separator />
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://huggingface.co/nsrawat"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.huggingface className="size-4" />
-              <span className="sr-only">Hugging Face</span>
-            </a>
-            <Separator />
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="/rss"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <RssIcon className="size-4" />
-              <span className="sr-only">RSS</span>
-            </a>
+          <div className="mx-auto flex h-8 sm:h-8.5 w-full items-center justify-between border-x border-edge bg-background px-3 sm:px-4 font-mono text-xs text-muted-foreground select-none md:max-w-3xl">
+            <BrandContextMenu>
+              <Link
+                className="flex items-center text-foreground transition-opacity hover:opacity-80"
+                href="/"
+                aria-label="Home"
+              >
+                <NSRMark className="h-3 sm:h-3.5 w-auto" />
+              </Link>
+            </BrandContextMenu>
+
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              <a
+                className="flex items-center p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                href="https://twitter.com/NSRawat_in"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icons.x className="size-3 sm:size-3.5" />
+                <span className="sr-only">X</span>
+              </a>
+              <a
+                className="flex items-center p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                href="https://github.com/iNSRawat"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icons.github className="size-3 sm:size-3.5" />
+                <span className="sr-only">GitHub</span>
+              </a>
+              <a
+                className="flex items-center p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                href="https://www.linkedin.com/in/insrawat"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icons.linkedin className="size-3 sm:size-3.5" />
+                <span className="sr-only">LinkedIn</span>
+              </a>
+              <a
+                className="flex items-center p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                href="https://peerlist.io/nsrawat"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icons.peerlist className="size-3 sm:size-3.5" />
+                <span className="sr-only">Peerlist</span>
+              </a>
+              <a
+                className="flex items-center p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                href="https://huggingface.co/nsrawat"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icons.huggingface className="size-3 sm:size-3.5" />
+                <span className="sr-only">Hugging Face</span>
+              </a>
+              <a
+                className="flex items-center p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                href="/rss"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <RssIcon className="size-3 sm:size-3.5" />
+                <span className="sr-only">RSS</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -448,15 +457,6 @@ export function SiteFooter() {
         <div className="flex h-8" />
       </div>
     </footer>
-  );
-}
-
-function Separator({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("hidden sm:flex h-11 w-px bg-edge", className)}
-      {...props}
-    />
   );
 }
 
