@@ -73,6 +73,11 @@ const nextConfig: NextConfig = {
         destination: "/notes/:slug",
         permanent: true,
       },
+      {
+        source: "/ds-resources",
+        destination: "/bookmarks",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

@@ -7,7 +7,6 @@ import * as React from "react";
 
 import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site";
 import { USER } from "@/features/portfolio/data/user";
-import { cn } from "@/lib/utils";
 
 import { BrandContextMenu } from "./brand-context-menu";
 import { Icons } from "./icons";
@@ -233,14 +232,6 @@ export function SiteFooter() {
                     className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
                   >
                     certifications
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/ds-resources"
-                    className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    ds resources
                   </Link>
                 </li>
                 <li>

@@ -28,7 +28,7 @@ export default function BooksPage() {
         )}
       />
 
-      {/* Header matching whole website style (like ds-resources, notes, blog) */}
+      {/* Header matching whole website style (like bookmarks, notes, blog) */}
       <div className="screen-line-after px-2 sm:px-4">
         <h1 className="text-2xl font-semibold sm:text-3xl">Books I’ve read.</h1>
       </div>

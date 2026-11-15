@@ -87,6 +87,8 @@ export const BOOKMARKS: Bookmark[] = [
     author: "Brendan Bycroft",
     category: "Learning Platforms",
     bookmarkedAt: "2026-11-11",
+    previewImage:
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
   },
   {
     title: "CNN Explainer - Learning Convolutional Neural Networks",
@@ -999,5 +1001,220 @@ export const BOOKMARKS: Bookmark[] = [
     iconName: "github",
     category: "Agents",
     bookmarkedAt: "2026-07-09",
+  },
+
+  // --- Books (from DS Resources) ---
+  {
+    title: "Fluent Python",
+    url: "https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/",
+    description:
+      "Clear, concise, and effective programming by Luciano Ramalho.",
+    category: "Books",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Fundamentals of Data Engineering",
+    url: "https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/",
+    description:
+      "Plan and build robust data systems by Joe Reis & Matt Housley.",
+    category: "Books",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Designing Machine Learning Systems",
+    url: "https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/",
+    description:
+      "An iterative process for production-ready applications by Chip Huyen.",
+    category: "Books",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "AI Engineering",
+    url: "https://www.oreilly.com/library/view/ai-engineering/9781098166298/",
+    description: "Building applications with foundation models by Chip Huyen.",
+    category: "Books",
+    bookmarkedAt: "2026-11-14",
+  },
+
+  // --- Podcasts (from DS Resources) ---
+  {
+    title: "The Dwarkesh Podcast",
+    url: "https://www.dwarkeshpatel.com/podcast",
+    description:
+      "Deep conversations with brilliant minds on technology, history, and progress.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Wading Through AI",
+    url: "https://www.wadingthroughai.com/",
+    description:
+      "Navigating the rapidly evolving world of artificial intelligence.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Latent Space",
+    url: "https://www.latent.space/podcast",
+    description:
+      "The podcast about AI engineering, infrastructure, and the people building it.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Data Skeptic",
+    url: "https://dataskeptic.com/",
+    description:
+      "Accessible explanations of data science, statistics, and machine learning topics.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "DataFramed",
+    url: "https://www.datacamp.com/podcast",
+    description:
+      "DataCamp's podcast on data science careers, tools, and industry trends.",
+    iconName: "datacamp",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "SuperDataScience",
+    url: "https://www.superdatascience.com/podcast",
+    description:
+      "Weekly interviews with data scientists, analysts, and ML engineers by Jon Krohn.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Not So Standard Deviations",
+    url: "https://nssdeviations.com/",
+    description:
+      "Roger Peng and Hilary Parker discuss the practice of data science and statistics.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Lex Fridman Podcast",
+    url: "https://lexfridman.com/podcast/",
+    description:
+      "Long-form conversations on AI, science, philosophy, and the nature of intelligence.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "TWIML AI Podcast",
+    url: "https://twimlai.com/podcast/twimlai/",
+    description:
+      "Interviews with top ML and AI researchers and practitioners by Sam Charrington.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Practical AI",
+    url: "https://changelog.com/practicalai",
+    description: "Making AI practical, productive, and accessible to everyone.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Gradient Dissent",
+    url: "https://wandb.ai/fully-connected/gradient-dissent",
+    description:
+      "ML practitioners share real-world lessons from building AI systems at Weights & Biases.",
+    category: "Podcasts",
+    bookmarkedAt: "2026-11-14",
+  },
+
+  // --- Newsletters (from DS Resources) ---
+  {
+    title: "The Batch",
+    url: "https://www.deeplearning.ai/the-batch/",
+    description:
+      "Weekly AI news and insights from DeepLearning.AI by Andrew Ng.",
+    category: "Newsletters",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "TLDR AI",
+    url: "https://tldr.tech/ai",
+    description:
+      "Daily byte-sized updates on AI research, tools, and industry news.",
+    category: "Newsletters",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "The Pragmatic Engineer",
+    url: "https://newsletter.pragmaticengineer.com/",
+    description:
+      "Insights on engineering culture, career growth, and industry trends by Gergely Orosz.",
+    category: "Newsletters",
+    bookmarkedAt: "2026-11-14",
+  },
+
+  // --- Online Communities (from DS Resources) ---
+  {
+    title: "PySlackers",
+    url: "https://pyslackers.com/",
+    description:
+      "A Slack community for Python enthusiasts of all experience levels.",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "fast.ai Forums",
+    url: "https://forums.fast.ai/",
+    description:
+      "Discussion forum for practical deep learning and the fast.ai courses.",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "AI/ML Career Launchpad",
+    url: "https://discord.gg/aimlcareerlaunchpad",
+    description: "A community for aspiring and practicing AI/ML professionals.",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Kaggle Community",
+    url: "https://www.kaggle.com/community",
+    description:
+      "The largest data science community with competitions, datasets, and notebooks.",
+    iconName: "kaggle",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "r/datascience",
+    url: "https://www.reddit.com/r/datascience/",
+    description:
+      "Reddit community for data science discussions, career advice, and industry news.",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "MLOps Community",
+    url: "https://mlops.community/",
+    description:
+      "A community focused on ML in production, MLOps tools, and best practices.",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "DataTalks.Club",
+    url: "https://datatalks.club/",
+    description:
+      "Free courses, events, and a Slack community for data engineers and scientists.",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
+  },
+  {
+    title: "Building LLMs from First Principles",
+    url: "https://ttsugriy.github.io/llm-first-principles/",
+    description:
+      "A comprehensive guide covering tokenization, embeddings, transformers, and training LLMs from scratch.",
+    category: "Online Communities",
+    bookmarkedAt: "2026-11-14",
   },
 ];

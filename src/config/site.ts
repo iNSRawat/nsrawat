@@ -41,11 +41,6 @@ export const MAIN_NAV: NavItem[] = [
         emoji: "💻",
       },
       {
-        title: "DS Resources",
-        href: "/ds-resources",
-        emoji: "🧠",
-      },
-      {
         title: "Bookmarks",
         href: "/bookmarks",
         emoji: "🔖",

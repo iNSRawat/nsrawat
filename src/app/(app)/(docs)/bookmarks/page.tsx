@@ -1,8 +1,7 @@
-import { compareDesc } from "date-fns";
 import type { Metadata } from "next";
 
 import { StripedSeparator } from "@/components/striped-separator";
-import { BookmarkCategorySection } from "@/features/portfolio/components/bookmarks/bookmark-category-section";
+import { BookmarksPageContent } from "@/features/portfolio/components/bookmarks/bookmarks-page-content";
 import { BOOKMARKS } from "@/features/portfolio/data/bookmarks";
 
 export const metadata: Metadata = {
@@ -21,65 +20,38 @@ const CATEGORY_ORDER = [
   "Tools & Libraries",
   "Agents",
   "GitHub Repos",
+  "Books",
+  "Podcasts",
+  "Newsletters",
+  "Online Communities",
 ];
 
-function groupByCategory(bookmarks: typeof BOOKMARKS) {
-  const groups: Record<string, typeof BOOKMARKS> = {};
-
-  for (const bookmark of bookmarks) {
-    const category = bookmark.category || "Other";
-    if (!groups[category]) {
-      groups[category] = [];
-    }
-    groups[category].push(bookmark);
-  }
-
-  // Sort each group by date descending
-  for (const key of Object.keys(groups)) {
-    groups[key].sort((a, b) =>
-      compareDesc(new Date(a.bookmarkedAt), new Date(b.bookmarkedAt)),
-    );
-  }
-
-  return groups;
-}
-
 export default function BookmarksPage() {
-  const grouped = groupByCategory(BOOKMARKS);
+  const categories = CATEGORY_ORDER.filter((cat) =>
+    BOOKMARKS.some((b) => b.category === cat),
+  );
 
   return (
     <div className="min-h-svh">
-      <div className="screen-line-after px-2 sm:px-4">
-        <h1 className="text-2xl font-semibold sm:text-3xl">Bookmarks</h1>
+      <div className="screen-line-after px-2 py-1 sm:px-4 sm:py-1.5">
+        <h1 className="text-xl font-semibold sm:text-2xl md:text-3xl">
+          Bookmarks
+        </h1>
       </div>
 
-      <div className="p-2 sm:p-4">
-        <p className="font-mono text-sm text-balance text-muted-foreground">
+      <div className="screen-line-after px-2 py-1 sm:px-4 sm:py-1.5">
+        <p className="font-mono text-xs sm:text-sm text-balance text-muted-foreground leading-normal sm:leading-relaxed">
           {metadata.description as string}
         </p>
       </div>
 
       <StripedSeparator />
 
-      {CATEGORY_ORDER.map((category) => {
-        const items = grouped[category];
-        if (!items || items.length === 0) return null;
-
-        return (
-          <div key={category}>
-            <BookmarkCategorySection category={category} items={items} />
-            <StripedSeparator />
-          </div>
-        );
-      })}
-
-      <div className="p-4 text-center">
-        <p className="font-mono text-sm text-muted-foreground">
-          More resources coming soon.
-        </p>
+      <div className="screen-line-after px-2 pt-1.5 pb-1 sm:px-4 sm:pt-2 sm:pb-1.5">
+        <BookmarksPageContent bookmarks={BOOKMARKS} categories={categories} />
       </div>
 
-      <div className="h-4" />
+      <StripedSeparator />
     </div>
   );
 }
