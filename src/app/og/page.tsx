@@ -5,8 +5,8 @@ import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 export default function Page() {
   return (
     <>
-      <div className="mx-auto flex h-screen flex-col justify-center md:max-w-3xl">
-        <div className="screen-line-after grow border-x border-edge after:-bottom-px">
+      <div className="screen-line-x mx-auto flex h-screen flex-col justify-center md:max-w-3xl">
+        <div className="screen-line-after grow after:-bottom-px">
           <div className="flex h-4" />
         </div>
 
@@ -15,7 +15,7 @@ export default function Page() {
 
         <Overview />
 
-        <div className="grow border-x border-edge" />
+        <div className="grow" />
       </div>
     </>
   );

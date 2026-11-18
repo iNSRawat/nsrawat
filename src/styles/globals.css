@@ -103,11 +103,60 @@
 }
 
 @utility screen-line-before {
-  @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-edge;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    width: 200vw;
+    height: 1px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x;
+  }
 }
 
 @utility screen-line-after {
-  @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-edge;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    width: 200vw;
+    height: 1px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x;
+  }
+}
+
+@utility screen-line-x {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px) 0 0 / 1px 4px repeat-y;
+    pointer-events: none;
+    z-index: 10;
+  }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
+  @media (max-width: 768px) {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
 }
 
 @utility step {
@@ -170,6 +219,10 @@
 
   /* Edge separator lines */
   --edge: color-mix(in oklab, var(--border) 64%, var(--background));
+
+  /* Minimal dotted lines (Krishna Gupta style) */
+  --line-soft: color-mix(in oklab, var(--foreground) 28%, transparent);
+  --line-dot: color-mix(in oklab, var(--foreground) 13%, transparent);
 
   /* Inputs */
   --input: oklch(0.915 0.008 85);
@@ -268,7 +321,11 @@
   /* zinc-800 */
   --border: oklch(0.274 0.006 286.033);
 
-  /* --edge: color-mix(in oklab, var(--border) 64%, var(--background)); */
+  --edge: color-mix(in oklab, var(--border) 50%, var(--background));
+
+  /* Minimal dotted lines (Krishna Gupta style) */
+  --line-soft: color-mix(in oklab, var(--foreground) 24%, transparent);
+  --line-dot: color-mix(in oklab, var(--foreground) 12%, transparent);
 
   /* zinc-800 */
   --input: oklch(0.274 0.006 286.033);
@@ -336,12 +393,14 @@
 
   html {
     background-color: var(--background);
+    overflow-x: clip;
   }
 
   body {
     @apply bg-transparent font-sans text-foreground antialiased;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
 

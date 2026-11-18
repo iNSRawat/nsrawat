@@ -4,7 +4,7 @@ import { USER } from "@/features/portfolio/data/user";
 
 export function ProfileHeader() {
   return (
-    <div className="relative border-x border-edge">
+    <div className="relative">
       <div className="px-5 pt-5 pb-4 sm:px-8 sm:pt-6 sm:pb-5">
         {/* Availability badge — only thing remaining here, rest moved into the hero */}
         <span className="inline-flex w-fit items-center gap-2 rounded-sm border border-edge px-2.5 py-1 font-pixel text-xs uppercase tracking-[0.15em] text-muted-foreground">

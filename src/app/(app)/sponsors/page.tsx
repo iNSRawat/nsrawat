@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function SponsorsPage() {
   return (
-    <div className="mx-auto md:max-w-3xl">
+    <div className="screen-line-x mx-auto md:max-w-3xl">
       <Panel>
         <PanelHeader>
           <PanelTitle>Sponsors</PanelTitle>

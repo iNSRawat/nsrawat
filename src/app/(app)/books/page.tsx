@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
+import { StripedSeparator } from "@/components/striped-separator";
 import { ArrowIcon } from "@/features/books/components/arrow-icon";
 import { BooksWall } from "@/features/books/components/books-shelf";
 import { BOOKS } from "@/features/books/data/books";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Books I’ve read",
@@ -17,16 +17,8 @@ export const metadata: Metadata = {
 
 export default function BooksPage() {
   return (
-    <div className="mx-auto min-h-svh border-x border-edge md:max-w-4xl">
-      {/* Decorative patterned top bar */}
-      <div
-        className={cn(
-          "h-8 px-2",
-          "screen-line-after",
-          "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
-          "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        )}
-      />
+    <div className="screen-line-x mx-auto min-h-svh md:max-w-4xl">
+      <StripedSeparator />
 
       {/* Header matching whole website style (like bookmarks, notes, blog) */}
       <div className="screen-line-after px-2 sm:px-4">

@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { ContactTabs } from "@/components/contact-tabs";
 import { StripedSeparator } from "@/components/striped-separator";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const ROTATING_WORDS = ["Collaborations", "Ideas", "Projects", "Solutions"];
 const CAL_URL =
@@ -47,16 +46,8 @@ function AnimatedWord() {
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto border-x border-edge md:max-w-3xl">
-      {/* Top stripe separator - matching docs layout */}
-      <div
-        className={cn(
-          "h-8 px-2",
-          "screen-line-after",
-          "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
-          "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
-        )}
-      />
+    <div className="screen-line-x mx-auto md:max-w-3xl">
+      <StripedSeparator />
 
       {/* Page Header */}
       <div className="screen-line-after px-2 sm:px-4">

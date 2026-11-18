@@ -4,9 +4,8 @@ export function StripedSeparator({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative flex h-8 w-full border-x border-edge screen-line-after",
-        "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
-        "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
+        "relative flex h-6 sm:h-8 w-full screen-line-after",
+        "bg-[radial-gradient(circle,var(--line-dot)_0.6px,transparent_1px)] bg-[size:8px_8px]",
         className,
       )}
     />

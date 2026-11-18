@@ -363,7 +363,7 @@ export function NsrIsometricHero() {
   return (
     <div
       ref={containerRef}
-      className="group relative h-[250px] xs:h-[270px] sm:h-[290px] md:h-[310px] w-full border-x border-edge border-b bg-background screen-line-after select-none transition-colors duration-300"
+      className="group relative h-[250px] xs:h-[270px] sm:h-[290px] md:h-[310px] w-full bg-background select-none transition-colors duration-300"
     >
       {/* SVG Canvas with Clean Dark Background and 3D Isometric NSR Spotlight Logo */}
       <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none scale-[0.70] xs:scale-[0.80] sm:scale-[0.90] md:scale-100 -translate-y-5 sm:-translate-y-3 origin-center overflow-hidden">

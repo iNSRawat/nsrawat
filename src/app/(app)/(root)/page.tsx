@@ -82,7 +82,7 @@ export default function Page() {
         }}
       />
 
-      <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
+      <div className="screen-line-x mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
         <ProfileCover />
         <StripedSeparator />
         <About />
