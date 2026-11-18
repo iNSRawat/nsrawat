@@ -39,61 +39,63 @@ export function SiteHeader() {
           "transition-shadow duration-300",
         )}
       >
-        <div
-          className="screen-line-before screen-line-after screen-line-x mx-auto flex h-12 items-center justify-between gap-2 px-2 after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl"
-          data-header-container
-        >
-          <BrandContextMenu>
-            <Link
-              className="has-data-[visible=false]:pointer-events-none [&_svg]:h-8"
-              href="/"
-              aria-label="Home"
-            >
-              <SiteHeaderMark />
-            </Link>
-          </BrandContextMenu>
+        <div className="screen-line-before screen-line-after">
+          <div
+            className="screen-line-x mx-auto flex h-12 items-center justify-between gap-2 px-2 after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl"
+            data-header-container
+          >
+            <BrandContextMenu>
+              <Link
+                className="has-data-[visible=false]:pointer-events-none [&_svg]:h-8"
+                href="/"
+                aria-label="Home"
+              >
+                <SiteHeaderMark />
+              </Link>
+            </BrandContextMenu>
 
-          <div className="flex-1" />
+            <div className="flex-1" />
 
-          <DesktopNav items={MAIN_NAV} />
+            <DesktopNav items={MAIN_NAV} />
 
-          <div className="flex items-center gap-1 sm:gap-1.5">
-            <span
-              className="hidden sm:block h-4 w-px bg-border/60 mx-1"
-              aria-hidden="true"
-            />
+            <div className="flex items-center gap-1 sm:gap-1.5">
+              <span
+                className="hidden sm:block h-4 w-px bg-border/60 mx-1"
+                aria-hidden="true"
+              />
 
-            <Link
-              href="/cli"
-              className="hidden size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:inline-flex shrink-0"
-              title="CLI Mode"
-              aria-label="CLI Mode"
-            >
-              <TerminalIcon className="size-4" />
-            </Link>
+              <Link
+                href="/cli"
+                className="hidden size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:inline-flex shrink-0"
+                title="CLI Mode"
+                aria-label="CLI Mode"
+              >
+                <TerminalIcon className="size-4" />
+              </Link>
 
-            <div className="hidden sm:block">
-              <CommandMenu posts={posts} snippets={snippets} />
+              <div className="hidden sm:block">
+                <CommandMenu posts={posts} snippets={snippets} />
+              </div>
+
+              {/* Mobile Search Trigger */}
+              <MobileSearchTrigger />
+
+              <span
+                className="hidden sm:block h-4 w-px bg-border/60 mx-1"
+                aria-hidden="true"
+              />
+
+              <NavItemGitHub />
+
+              <span
+                className="h-4 w-px bg-border/60 mx-0.5 sm:mx-1"
+                aria-hidden="true"
+              />
+
+              <ThemeToggle />
+
+              <MobileNav className="sm:hidden ml-1" items={MAIN_NAV} />
             </div>
-
-            {/* Mobile Search Trigger */}
-            <MobileSearchTrigger />
-
-            <span
-              className="hidden sm:block h-4 w-px bg-border/60 mx-1"
-              aria-hidden="true"
-            />
-
-            <NavItemGitHub />
-
-            <span
-              className="h-4 w-px bg-border/60 mx-0.5 sm:mx-1"
-              aria-hidden="true"
-            />
-
-            <ThemeToggle />
-
-            <MobileNav className="sm:hidden ml-1" items={MAIN_NAV} />
           </div>
         </div>
       </SiteHeaderWrapper>
