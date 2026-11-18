@@ -336,7 +336,7 @@ export function CommandMenu({
     <>
       <Button
         variant="ghost"
-        className="h-8 gap-1.5 rounded-md px-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground select-none inline-flex items-center shrink-0 cursor-pointer"
+        className="h-7 sm:h-7.5 gap-1.5 rounded-md px-1.5 sm:px-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground select-none inline-flex items-center shrink-0 cursor-pointer"
         onClick={() => {
           setOpen(true);
           trackEvent({
@@ -347,16 +347,16 @@ export function CommandMenu({
           });
         }}
       >
-        <Icons.search className="size-4 shrink-0" aria-hidden />
+        <Icons.search className="size-3.5 sm:size-4 shrink-0" aria-hidden />
 
         <KbdGroup className="hidden sm:in-[.os-macos_&]:flex">
-          <Kbd className="w-4 min-w-4 text-[10px] px-1 py-0 h-4.5">⌘</Kbd>
-          <Kbd className="w-4 min-w-4 text-[10px] px-1 py-0 h-4.5">K</Kbd>
+          <Kbd className="w-4 min-w-4 text-[10px] px-1 py-0 h-4">⌘</Kbd>
+          <Kbd className="w-4 min-w-4 text-[10px] px-1 py-0 h-4">K</Kbd>
         </KbdGroup>
 
         <KbdGroup className="hidden sm:not-[.os-macos_&]:flex">
-          <Kbd className="text-[10px] px-1 py-0 h-4.5">Ctrl</Kbd>
-          <Kbd className="w-4 min-w-4 text-[10px] px-1 py-0 h-4.5">K</Kbd>
+          <Kbd className="text-[10px] px-1 py-0 h-4">Ctrl</Kbd>
+          <Kbd className="w-4 min-w-4 text-[10px] px-1 py-0 h-4">K</Kbd>
         </KbdGroup>
       </Button>
 

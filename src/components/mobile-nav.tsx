@@ -81,10 +81,10 @@ export function MobileNav({
         <SheetTrigger asChild>
           <button
             type="button"
-            className="flex h-8 w-8 items-center justify-center rounded-md border border-edge bg-background text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            className="flex size-7 items-center justify-center rounded-md border border-edge bg-background text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             aria-label="Open menu"
           >
-            <MenuIcon className="size-4" />
+            <MenuIcon className="size-3.5" />
           </button>
         </SheetTrigger>
 

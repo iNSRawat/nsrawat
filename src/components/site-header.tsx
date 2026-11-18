@@ -33,20 +33,19 @@ export function SiteHeader() {
     <>
       <SiteHeaderWrapper
         className={cn(
-          "sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2",
+          "sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background",
           "data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]",
-          "not-dark:data-[affix=true]:**:data-header-container:after:bg-border",
           "transition-shadow duration-300",
         )}
       >
         <div className="screen-line-before screen-line-after">
           <div
-            className="screen-line-x mx-auto flex h-12 items-center justify-between gap-2 px-2 after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl"
+            className="screen-line-x mx-auto flex h-10 sm:h-11 items-center justify-between gap-2 px-3 after:z-1 after:transition-[background-color] sm:gap-3 md:max-w-3xl"
             data-header-container
           >
             <BrandContextMenu>
               <Link
-                className="has-data-[visible=false]:pointer-events-none [&_svg]:h-8"
+                className="has-data-[visible=false]:pointer-events-none shrink-0"
                 href="/"
                 aria-label="Home"
               >
@@ -60,17 +59,17 @@ export function SiteHeader() {
 
             <div className="flex items-center gap-1 sm:gap-1.5">
               <span
-                className="hidden sm:block h-4 w-px bg-border/60 mx-1"
+                className="hidden sm:block h-3.5 w-px bg-border/60 mx-0.5 sm:mx-1"
                 aria-hidden="true"
               />
 
               <Link
                 href="/cli"
-                className="hidden size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:inline-flex shrink-0"
+                className="hidden size-7 sm:size-7.5 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:inline-flex shrink-0"
                 title="CLI Mode"
                 aria-label="CLI Mode"
               >
-                <TerminalIcon className="size-4" />
+                <TerminalIcon className="size-3.5 sm:size-4" />
               </Link>
 
               <div className="hidden sm:block">
@@ -81,20 +80,20 @@ export function SiteHeader() {
               <MobileSearchTrigger />
 
               <span
-                className="hidden sm:block h-4 w-px bg-border/60 mx-1"
+                className="hidden sm:block h-3.5 w-px bg-border/60 mx-0.5 sm:mx-1"
                 aria-hidden="true"
               />
 
-              <NavItemGitHub />
+              <NavItemGitHub className="size-7 sm:size-7.5" />
 
               <span
-                className="h-4 w-px bg-border/60 mx-0.5 sm:mx-1"
+                className="h-3.5 w-px bg-border/60 mx-0.5 sm:mx-1"
                 aria-hidden="true"
               />
 
-              <ThemeToggle />
+              <ThemeToggle className="size-7 sm:size-7.5" />
 
-              <MobileNav className="sm:hidden ml-1" items={MAIN_NAV} />
+              <MobileNav className="sm:hidden ml-0.5" items={MAIN_NAV} />
             </div>
           </div>
         </div>

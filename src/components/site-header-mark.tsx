@@ -14,7 +14,7 @@ function MarkContainer({
   return (
     <div
       className={cn(
-        "group/mark-motion relative flex h-8 w-16 items-center justify-center p-1",
+        "group/mark-motion relative flex h-7 w-14 sm:h-8 sm:w-16 items-center justify-center p-0.5 sm:p-1",
         className,
       )}
     >
@@ -23,9 +23,9 @@ function MarkContainer({
   );
 }
 
-export function SiteHeaderMark() {
+export function SiteHeaderMark({ className }: { className?: string }) {
   return (
-    <MarkContainer>
+    <MarkContainer className={className}>
       <NSRMark className="relative z-10 h-full w-full" />
     </MarkContainer>
   );

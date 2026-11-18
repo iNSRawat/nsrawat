@@ -23,7 +23,7 @@ export function Nav({
   return (
     <nav
       data-active-id={activeId}
-      className={cn("flex items-center gap-4", className)}
+      className={cn("flex items-center gap-2 sm:gap-2.5 md:gap-3.5", className)}
     >
       {items.map((item) => {
         if (item.items) {
@@ -38,12 +38,12 @@ export function Nav({
                 <button
                   type="button"
                   className={cn(
-                    "group flex items-center gap-1 font-mono text-sm font-medium text-muted-foreground outline-hidden transition-[color] duration-300 hover:text-foreground cursor-pointer select-none",
+                    "group flex items-center gap-0.5 sm:gap-1 font-mono text-xs sm:text-[13px] font-medium text-muted-foreground outline-hidden transition-[color] duration-300 hover:text-foreground cursor-pointer select-none py-1",
                     active && "text-foreground",
                   )}
                 >
                   {item.title}
-                  <ChevronDownIcon className="size-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  <ChevronDownIcon className="size-3 sm:size-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-36 font-mono p-1">
@@ -87,7 +87,7 @@ export function NavItem({
   return (
     <Link
       className={cn(
-        "font-mono text-sm font-medium text-muted-foreground transition-[color] duration-300",
+        "font-mono text-xs sm:text-[13px] font-medium text-muted-foreground transition-[color] duration-300 hover:text-foreground py-1",
         active && "text-foreground",
       )}
       {...props}

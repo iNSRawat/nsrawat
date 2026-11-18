@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function SiteHeaderWrapper(props: React.ComponentProps<"header">) {
   const { scrollY } = useScroll();
@@ -20,7 +21,7 @@ export function SiteHeaderWrapper(props: React.ComponentProps<"header">) {
   return <header data-affix={affix} {...props} />;
 }
 
-export function MobileSearchTrigger() {
+export function MobileSearchTrigger({ className }: { className?: string }) {
   const handleSearchClick = () => {
     // Dispatch Ctrl+K / Cmd+K to open the command menu
     const event = new KeyboardEvent("keydown", {
@@ -38,11 +39,14 @@ export function MobileSearchTrigger() {
       variant="ghost"
       size="icon"
       onClick={handleSearchClick}
-      className="sm:hidden size-8 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground shrink-0 cursor-pointer select-none"
+      className={cn(
+        "sm:hidden size-7 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground shrink-0 cursor-pointer select-none",
+        className,
+      )}
       title="Search"
       aria-label="Search"
     >
-      <Icons.search className="size-4 shrink-0" aria-hidden />
+      <Icons.search className="size-3.5 shrink-0" aria-hidden />
     </Button>
   );
 }
