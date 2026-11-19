@@ -173,13 +173,6 @@ export const TECH_STACK: TechStack[] = [
     color: "#3F4F75",
   },
   {
-    key: "databricks",
-    title: "Databricks",
-    href: "https://databricks.com/",
-    categories: ["Platform", "Data Science"],
-    color: "#FF3621",
-  },
-  {
     key: "mlflow",
     title: "MLflow",
     href: "https://mlflow.org/",
