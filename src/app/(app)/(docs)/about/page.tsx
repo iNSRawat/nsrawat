@@ -372,8 +372,8 @@ export default function AboutPage() {
                 <span>⚛️</span>
                 <span>
                   Built with <strong>React 19.3</strong>,{" "}
-                  <strong>Next.js 16.3</strong>, and{" "}
-                  <strong>shadcn/ui 4.21</strong>
+                  <strong>Next.js 16.4</strong>, and{" "}
+                  <strong>shadcn/ui 4.23</strong>
                 </span>
               </li>
               <li className="flex items-start gap-2">

@@ -33,7 +33,7 @@ export function Nav({
           );
 
           return (
-            <DropdownMenu key={item.href}>
+            <DropdownMenu key={item.href} modal={false}>
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"

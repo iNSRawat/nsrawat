@@ -46,13 +46,12 @@ This portfolio site takes inspiration from [chanhdai.com](https://github.com/ncd
 
 ### Tech & Features
 
-- ⚛️ Built with **React 19.3**, **Next.js 16.3**, and **shadcn/ui 4.21**
+- ⚛️ Built with **React 19.3**, **Next.js 16.4**, and **shadcn/ui 4.23**
 - 🎉 Powered by **TypeScript** and [Tailwind CSS v4.3](https://tailwindcss.com)
 - 👀 Theming in dark mode with [shadcn/ui Dark Mode](https://ui.shadcn.com/docs/dark-mode/next) colors for better contrast.
 - 📊 Website analytics with [umami](https://umami.is/).
 - 👨‍💻 My website refers to the design and code from the [chanhdai.com](https://github.com/ncdai/chanhdai.com) repository and incorporates [shadcn/ui](https://ui.shadcn.com/).
 - 📝 Blog Supports MDX & Markdown, raw `.mdx` endpoints for AI readability, syntax highlighting, dynamic OG images, and RSS feed
-
 
 <br>
 
