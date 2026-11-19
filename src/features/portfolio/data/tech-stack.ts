@@ -152,20 +152,6 @@ export const TECH_STACK: TechStack[] = [
     color: "#20BEFF",
   },
   {
-    key: "apachehadoop",
-    title: "Apache Hadoop",
-    href: "https://hadoop.apache.org/",
-    categories: ["Framework", "Data Science"],
-    color: "#FFDB29",
-  },
-  {
-    key: "apachespark",
-    title: "Apache Spark",
-    href: "https://spark.apache.org/",
-    categories: ["Framework", "Data Science"],
-    color: "#E25A1C",
-  },
-  {
     key: "keras",
     title: "Keras",
     href: "https://keras.io/",
@@ -213,14 +199,6 @@ export const TECH_STACK: TechStack[] = [
     href: "https://huggingface.co/",
     categories: ["Platform", "Machine Learning"],
     color: "#FFD21E",
-  },
-  {
-    key: "apachekafka",
-    title: "Apache Kafka",
-    href: "https://kafka.apache.org/",
-    categories: ["Platform", "Data Engineering"],
-    color: "#231F20",
-    theme: true,
   },
   {
     key: "poetry",

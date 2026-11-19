@@ -10,23 +10,30 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     title: "Machine Learning",
-    skills: ["Scikit-learn", "TensorFlow", "PyTorch", "Keras"],
+    skills: ["Scikit-learn", "TensorFlow", "PyTorch", "Keras", "OpenCV"],
   },
   {
     title: "Data Analysis",
-    skills: ["Pandas", "NumPy", "SciPy"],
+    skills: ["Pandas", "NumPy", "SciPy", "Jupyter Notebook"],
   },
   {
     title: "Data Visualization",
-    skills: ["Matplotlib", "Seaborn", "Plotly", "Tableau", "Power BI"],
+    skills: [
+      "Matplotlib",
+      "Seaborn",
+      "Plotly",
+      "Tableau",
+      "Power BI",
+      "Streamlit",
+    ],
   },
   {
     title: "ML Platforms",
     skills: ["MLflow", "Hugging Face", "Kaggle"],
   },
   {
-    title: "DevOps / MLOps",
-    skills: ["Docker", "Git & GitHub", "MLflow"],
+    title: "DevOps & Tools",
+    skills: ["Docker", "Git", "GitHub", "Poetry", "Mamba"],
   },
   {
     title: "Databases",

@@ -49,6 +49,12 @@ const SKILL_MAP: Record<
     href: "https://keras.io/",
     color: "#D00000",
   },
+  opencv: {
+    key: "opencv",
+    iconKey: "opencv",
+    href: "https://opencv.org/",
+    color: "#5C3EE8",
+  },
   pandas: {
     key: "pandas",
     iconKey: "pandas",
@@ -66,6 +72,12 @@ const SKILL_MAP: Record<
     iconKey: "scipy",
     href: "https://scipy.org/",
     color: "#8CAAEE",
+  },
+  "jupyter notebook": {
+    key: "jupyter",
+    iconKey: "jupyter",
+    href: "https://jupyter.org/",
+    color: "#F37626",
   },
   matplotlib: {
     key: "matplotlib",
@@ -97,6 +109,12 @@ const SKILL_MAP: Record<
     href: "https://powerbi.microsoft.com/",
     color: "#F2C811",
   },
+  streamlit: {
+    key: "streamlit",
+    iconKey: "streamlit",
+    href: "https://streamlit.io/",
+    color: "#FF4B4B",
+  },
   mlflow: {
     key: "mlflow",
     iconKey: "mlflow",
@@ -115,11 +133,24 @@ const SKILL_MAP: Record<
     href: "https://www.kaggle.com/",
     color: "#20BEFF",
   },
-  docker: {
-    key: "docker",
-    iconKey: "docker",
-    href: "https://www.docker.com/",
-    color: "#2496ED",
+  databricks: {
+    key: "databricks",
+    iconKey: "databricks",
+    href: "https://databricks.com/",
+    color: "#FF3621",
+  },
+  git: {
+    key: "git",
+    iconKey: "git",
+    href: "https://git-scm.com/",
+    color: "#F05032",
+  },
+  github: {
+    key: "github",
+    iconKey: "github",
+    href: "https://github.com/",
+    color: "#181717",
+    theme: true,
   },
   "git & github": {
     key: "github",
@@ -127,6 +158,24 @@ const SKILL_MAP: Record<
     href: "https://github.com/",
     color: "#181717",
     theme: true,
+  },
+  docker: {
+    key: "docker",
+    iconKey: "docker",
+    href: "https://www.docker.com/",
+    color: "#2496ED",
+  },
+  poetry: {
+    key: "poetry",
+    iconKey: "poetry",
+    href: "https://python-poetry.org/",
+    color: "#60A5FA",
+  },
+  mamba: {
+    key: "mamba",
+    iconKey: "mamba",
+    href: "https://mamba.readthedocs.io/",
+    color: "#34B4E3",
   },
   mysql: {
     key: "mysql",
