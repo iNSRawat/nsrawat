@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ComponentIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { getAllSnippets } from "@/features/snippets/data/snippets";
-import { cn } from "@/lib/utils";
 import { components } from "@/registry/registry-components";
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel";
@@ -38,36 +37,67 @@ export function Snippets() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative py-2">
+      <div className="relative py-1">
         <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-2 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
           <div className="border-r border-edge"></div>
           <div className="border-l border-edge md:border-x"></div>
           <div className="hidden border-l border-edge md:block"></div>
         </div>
 
+        {/* Row dividers confined within container */}
+        <div
+          className="pointer-events-none absolute top-1/2 inset-x-0 h-px -translate-y-1/2 hidden md:block"
+          style={{
+            background:
+              "linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute top-1/3 inset-x-0 h-px -translate-y-1/2 hidden sm:max-md:block"
+          style={{
+            background:
+              "linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute top-2/3 inset-x-0 h-px -translate-y-1/2 hidden sm:max-md:block"
+          style={{
+            background:
+              "linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x",
+          }}
+          aria-hidden="true"
+        />
+
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
-          {dsComponents.map((comp) => (
+          {dsComponents.map((comp, index) => (
             <Link
               key={comp.slug}
               href={`/notes/${comp.slug}`}
-              className={cn(
-                "group/post flex items-center gap-4 p-4 transition-[background-color] ease-out hover:bg-accent2",
-                "max-sm:screen-line-before max-sm:screen-line-after",
-                "sm:max-md:nth-[2n+1]:screen-line-before sm:max-md:nth-[2n+1]:screen-line-after",
-                "md:nth-[3n+1]:screen-line-before md:nth-[3n+1]:screen-line-after",
-              )}
+              className="group/post relative flex items-center gap-2.5 px-3 py-2 sm:px-3.5 sm:py-2.5 transition-[background-color] ease-out hover:bg-accent2"
             >
+              {index < dsComponents.length - 1 && (
+                <div
+                  className="pointer-events-none absolute bottom-0 inset-x-0 h-px sm:hidden"
+                  style={{
+                    background:
+                      "linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x",
+                  }}
+                  aria-hidden="true"
+                />
+              )}
               <div
-                className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background"
+                className="flex size-5 sm:size-5.5 shrink-0 items-center justify-center rounded-md border border-muted-foreground/15 bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background"
                 aria-hidden
               >
                 <ComponentIcon
-                  className="pointer-events-none size-4 text-muted-foreground"
+                  className="pointer-events-none size-3 sm:size-3.5 text-muted-foreground"
                   variant={comp.slug}
                 />
               </div>
 
-              <h2 className="truncate font-medium underline-offset-4 group-hover/post:underline">
+              <h2 className="truncate text-xs sm:text-[13px] font-medium underline-offset-4 group-hover/post:underline">
                 {comp.title}
               </h2>
             </Link>
@@ -75,11 +105,24 @@ export function Snippets() {
         </div>
       </div>
 
-      <div className="screen-line-before flex justify-center py-2">
-        <Button variant="default" asChild>
+      <div className="relative flex justify-center py-2">
+        <div
+          className="pointer-events-none absolute top-0 inset-x-0 h-px"
+          style={{
+            background:
+              "linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x",
+          }}
+          aria-hidden="true"
+        />
+        <Button
+          variant="default"
+          size="sm"
+          asChild
+          className="h-7 text-xs px-3"
+        >
           <Link href="/notes">
             View All Notes
-            <ArrowRightIcon />
+            <ArrowRightIcon className="size-3.5" />
           </Link>
         </Button>
       </div>

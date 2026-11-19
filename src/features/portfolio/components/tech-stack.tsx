@@ -62,8 +62,17 @@ export function TechStack() {
             return (
               <div
                 key={category.title}
-                className="screen-line-after grid items-start gap-y-1.5 py-1.5 sm:py-2 sm:items-center sm:grid-cols-[var(--col-w)_1fr]"
+                className="relative grid items-start gap-y-1.5 py-1.5 sm:py-2 sm:items-center sm:grid-cols-[var(--col-w)_1fr]"
               >
+                {/* Dotted horizontal row separator confined inside the container */}
+                <div
+                  className="pointer-events-none absolute bottom-0 inset-x-0 h-px"
+                  style={{
+                    background:
+                      "linear-gradient(to right, var(--line-soft) 1px, transparent 1px) 0 0 / 4px 1px repeat-x",
+                  }}
+                  aria-hidden="true"
+                />
                 <div
                   id={categoryId}
                   className="flex items-center pl-3 sm:pl-4 text-xs sm:text-[13px] font-medium text-foreground shrink-0"
