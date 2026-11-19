@@ -46,16 +46,14 @@ export default function NotesPage() {
             key={component.name}
             href={`/notes/${component.name}`}
             className={cn(
-              "group flex items-center gap-2 border-b border-edge bg-background/50 px-2 py-3 transition-colors hover:bg-muted/50 sm:px-3 sm:py-3",
+              "group flex items-center gap-2.5 border-b border-edge bg-background/50 px-2.5 py-2 transition-colors hover:bg-muted/50 sm:px-3 sm:py-2.5",
               i % 3 !== 2 ? "md:border-r" : "",
-              "max-md:screen-line-before max-md:screen-line-after",
-              "md:nth-[3n+1]:screen-line-before md:nth-[3n+1]:screen-line-after",
             )}
           >
-            <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
-              <ComponentIcon variant={component.name} className="size-4" />
+            <div className="flex size-6 shrink-0 items-center justify-center rounded-md border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={component.name} className="size-3.5" />
             </div>
-            <span className="truncate font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+            <span className="truncate text-xs sm:text-[13px] font-medium text-foreground/85 transition-colors group-hover:text-foreground">
               {component.title}
             </span>
           </Link>
@@ -67,18 +65,16 @@ export default function NotesPage() {
             key={snippet.slug}
             href={`/notes/${snippet.slug}`}
             className={cn(
-              "group flex items-center gap-2 border-b border-edge bg-background/50 px-2 py-3 transition-colors hover:bg-muted/50 sm:px-3 sm:py-3",
+              "group flex items-center gap-2.5 border-b border-edge bg-background/50 px-2.5 py-2 transition-colors hover:bg-muted/50 sm:px-3 sm:py-2.5",
               // Continue the parity check from the previous list
               (i + components.length) % 3 !== 2 ? "md:border-r" : "",
-              "max-md:screen-line-before max-md:screen-line-after",
-              "md:nth-[3n+1]:screen-line-before md:nth-[3n+1]:screen-line-after",
             )}
           >
-            <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
-              <ComponentIcon variant={snippet.slug} className="size-4" />
+            <div className="flex size-6 shrink-0 items-center justify-center rounded-md border border-edge bg-background/50 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
+              <ComponentIcon variant={snippet.slug} className="size-3.5" />
             </div>
             <div className="flex min-w-0 flex-1 items-center justify-between">
-              <span className="truncate font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+              <span className="truncate text-xs sm:text-[13px] font-medium text-foreground/85 transition-colors group-hover:text-foreground">
                 {snippet.metadata.title}
               </span>
             </div>
@@ -96,7 +92,6 @@ export default function NotesPage() {
               (components.length + snippets.length + i) % 3 !== 2
                 ? "md:border-r"
                 : "",
-              "md:nth-[3n+1]:screen-line-after",
             )}
           />
         ))}
