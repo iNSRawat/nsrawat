@@ -3,51 +3,178 @@
 import { Code2Icon } from "lucide-react";
 import React from "react";
 
-import {
-  TooltipContent,
-  TooltipProvider,
-  TooltipRoot,
-  TooltipTrigger,
-} from "@/components/base/ui/tooltip";
 import { getIcon } from "@/components/icons";
-import { cn } from "@/lib/utils";
 
+import { SKILLS } from "../data/skills";
 import { TECH_STACK } from "../data/tech-stack";
-import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
+import { Panel, PanelHeader, PanelTitle } from "./panel";
 
-// Map tech keys to local icon keys
-const ICON_MAP: Record<string, string> = {
-  python: "python",
-  sql: "mysql",
-  pandas: "pandas",
-  numpy: "numpy",
-  "scikit-learn": "scikitlearn",
-  tensorflow: "tensorflow",
-  pytorch: "pytorch",
-  matplotlib: "matplotlib",
-  seaborn: "seaborn",
-  jupyter: "jupyter",
-  tableau: "tableau",
-  powerbi: "powerbi",
-  git: "git",
-  github: "github",
-  docker: "docker",
-  snowflake: "snowflake",
-  streamlit: "streamlit",
-  kaggle: "kaggle",
-  apachehadoop: "hadoop",
-  apachespark: "spark",
-  keras: "keras",
-  scipy: "scipy",
-  plotly: "plotly",
-  databricks: "databricks",
-  mlflow: "mlflow",
-  opencv: "opencv",
-  huggingface: "huggingface",
-  apachekafka: "kafka",
-  poetry: "poetry",
-  mamba: "mamba",
+const SKILL_MAP: Record<
+  string,
+  { key: string; iconKey: string; href: string; color: string; theme?: boolean }
+> = {
+  python: {
+    key: "python",
+    iconKey: "python",
+    href: "https://www.python.org/",
+    color: "#3776AB",
+  },
+  sql: {
+    key: "sql",
+    iconKey: "sql",
+    href: "https://www.w3schools.com/sql/",
+    color: "#4479A1",
+  },
+  "scikit-learn": {
+    key: "scikit-learn",
+    iconKey: "scikitlearn",
+    href: "https://scikit-learn.org/",
+    color: "#F7931E",
+  },
+  tensorflow: {
+    key: "tensorflow",
+    iconKey: "tensorflow",
+    href: "https://www.tensorflow.org/",
+    color: "#FF6F00",
+  },
+  pytorch: {
+    key: "pytorch",
+    iconKey: "pytorch",
+    href: "https://pytorch.org/",
+    color: "#EE4C2C",
+  },
+  keras: {
+    key: "keras",
+    iconKey: "keras",
+    href: "https://keras.io/",
+    color: "#D00000",
+  },
+  pandas: {
+    key: "pandas",
+    iconKey: "pandas",
+    href: "https://pandas.pydata.org/",
+    color: "#150458",
+  },
+  numpy: {
+    key: "numpy",
+    iconKey: "numpy",
+    href: "https://numpy.org/",
+    color: "#013243",
+  },
+  scipy: {
+    key: "scipy",
+    iconKey: "scipy",
+    href: "https://scipy.org/",
+    color: "#8CAAEE",
+  },
+  matplotlib: {
+    key: "matplotlib",
+    iconKey: "matplotlib",
+    href: "https://matplotlib.org/",
+    color: "#11557c",
+  },
+  seaborn: {
+    key: "seaborn",
+    iconKey: "seaborn",
+    href: "https://seaborn.pydata.org/",
+    color: "#ce011f",
+  },
+  plotly: {
+    key: "plotly",
+    iconKey: "plotly",
+    href: "https://plotly.com/",
+    color: "#3F4F75",
+  },
+  tableau: {
+    key: "tableau",
+    iconKey: "tableau",
+    href: "https://www.tableau.com/",
+    color: "#E97627",
+  },
+  "power bi": {
+    key: "powerbi",
+    iconKey: "powerbi",
+    href: "https://powerbi.microsoft.com/",
+    color: "#F2C811",
+  },
+  mlflow: {
+    key: "mlflow",
+    iconKey: "mlflow",
+    href: "https://mlflow.org/",
+    color: "#0194E2",
+  },
+  "hugging face": {
+    key: "huggingface",
+    iconKey: "huggingface",
+    href: "https://huggingface.co/",
+    color: "#FFD21E",
+  },
+  kaggle: {
+    key: "kaggle",
+    iconKey: "kaggle",
+    href: "https://www.kaggle.com/",
+    color: "#20BEFF",
+  },
+  docker: {
+    key: "docker",
+    iconKey: "docker",
+    href: "https://www.docker.com/",
+    color: "#2496ED",
+  },
+  "git & github": {
+    key: "github",
+    iconKey: "github",
+    href: "https://github.com/",
+    color: "#181717",
+    theme: true,
+  },
+  mysql: {
+    key: "mysql",
+    iconKey: "mysql",
+    href: "https://www.mysql.com/",
+    color: "#4479A1",
+  },
+  postgresql: {
+    key: "postgresql",
+    iconKey: "postgresql",
+    href: "https://www.postgresql.org/",
+    color: "#4169E1",
+  },
+  mongodb: {
+    key: "mongodb",
+    iconKey: "mongodb",
+    href: "https://www.mongodb.com/",
+    color: "#47A248",
+  },
+  snowflake: {
+    key: "snowflake",
+    iconKey: "snowflake",
+    href: "https://www.snowflake.com/",
+    color: "#29B5E8",
+  },
 };
+
+function getSkillMeta(skill: string) {
+  const normalized = skill.toLowerCase();
+  if (SKILL_MAP[normalized]) {
+    return SKILL_MAP[normalized];
+  }
+  const found = TECH_STACK.find(
+    (t) =>
+      t.title.toLowerCase() === normalized ||
+      t.key.toLowerCase() === normalized,
+  );
+  if (found) {
+    return {
+      key: found.key,
+      iconKey: found.key,
+      href: found.href,
+      color: found.color,
+      theme: found.theme,
+    };
+  }
+  return null;
+}
 
 export function TechStack() {
   return (
@@ -56,58 +183,80 @@ export function TechStack() {
         <PanelTitle>Stack</PanelTitle>
       </PanelHeader>
 
-      <PanelContent
-        className={cn(
-          "[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5",
-          "bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center",
-          "bg-background/40 p-2.5 sm:p-4 md:p-5 backdrop-blur-xs",
-        )}
-      >
-        <TooltipProvider>
-          <ul className="flex flex-wrap items-stretch justify-start gap-1.5 sm:gap-2 select-none w-full">
-            {TECH_STACK.map((tech) => {
-              const IconComponent =
-                getIcon(tech.key) || getIcon(ICON_MAP[tech.key]);
+      <div className="relative select-none sm:[--col-w:10rem] md:[--col-w:10.5rem]">
+        {/* Dotted vertical separator synchronized with left column */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-[var(--col-w)] -z-1 w-px max-sm:hidden"
+          style={{
+            background:
+              "linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px) 0 0 / 1px 4px repeat-y",
+          }}
+          aria-hidden="true"
+        />
 
-              return (
-                <li key={tech.key} className="flex grow sm:grow-0">
-                  <TooltipRoot>
-                    <TooltipTrigger
-                      render={
+        <div>
+          {SKILLS.map((category, index) => {
+            const categoryId = `stack-${category.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
+            return (
+              <div
+                key={category.title}
+                className="screen-line-after grid items-start gap-y-1.5 py-1.5 sm:py-2 sm:items-center sm:grid-cols-[var(--col-w)_1fr]"
+              >
+                <div
+                  id={categoryId}
+                  className="flex items-center pl-3 sm:pl-4 text-xs sm:text-[13px] font-medium text-foreground shrink-0"
+                >
+                  <span
+                    className="mr-1.5 font-mono text-[10px] sm:text-[11px] text-muted-foreground/70 select-none"
+                    aria-hidden="true"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>{category.title}</span>
+                </div>
+
+                <ul
+                  aria-labelledby={categoryId}
+                  className="flex flex-wrap items-center gap-1 sm:gap-1.5 px-3 sm:px-4"
+                >
+                  {category.skills.map((skill) => {
+                    const meta = getSkillMeta(skill);
+                    const IconComponent = (meta?.iconKey &&
+                      getIcon(meta.iconKey)) ||
+                      (meta?.key && getIcon(meta.key)) || (
+                        <Code2Icon className="size-3 sm:size-3.5" />
+                      );
+
+                    return (
+                      <li key={skill} className="flex">
                         <a
-                          href={tech.href}
+                          href={meta?.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={tech.title}
-                          className="flex w-full sm:w-auto items-center justify-center sm:justify-start gap-1.5 sm:gap-2 rounded-full border border-edge bg-background/70 px-2 py-0.5 sm:px-2.5 sm:py-1 font-mono text-[10px] sm:text-[11px] font-medium text-foreground/90 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent/80 hover:border-foreground/30 hover:text-foreground backdrop-blur-sm whitespace-nowrap shadow-xs"
+                          className="flex h-[22px] sm:h-6 items-center justify-center gap-1 sm:gap-1.5 rounded-full border border-edge bg-zinc-50/80 dark:bg-zinc-900/80 px-2 sm:px-2.5 font-mono text-[11px] sm:text-xs text-foreground transition-all duration-150 hover:bg-accent hover:border-foreground/30 hover:text-foreground [&_svg]:pointer-events-none [&_svg]:size-3 sm:[&_svg]:size-3.5 [&_svg]:shrink-0"
                         >
                           <span
-                            className="size-3.5 sm:size-4 flex items-center justify-center shrink-0 [&_svg]:size-full"
+                            className="flex items-center justify-center [&_svg]:size-3 sm:[&_svg]:size-3.5"
                             style={{
-                              color: tech.theme
+                              color: meta?.theme
                                 ? undefined
-                                : tech.color || "currentColor",
+                                : meta?.color || "currentColor",
                             }}
                           >
-                            {IconComponent || (
-                              <Code2Icon className="size-3.5 sm:size-4" />
-                            )}
+                            {IconComponent}
                           </span>
-                          <span className="truncate">{tech.title}</span>
+                          <span>{skill}</span>
                         </a>
-                      }
-                    />
-
-                    <TooltipContent>
-                      <p className="font-mono text-xs">{tech.title}</p>
-                    </TooltipContent>
-                  </TooltipRoot>
-                </li>
-              );
-            })}
-          </ul>
-        </TooltipProvider>
-      </PanelContent>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </Panel>
   );
 }

@@ -115,6 +115,27 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Database", "Data Science"],
     color: "#29B5E8",
   },
+  {
+    key: "mysql",
+    title: "MySQL",
+    href: "https://www.mysql.com/",
+    categories: ["Database"],
+    color: "#4479A1",
+  },
+  {
+    key: "postgresql",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    categories: ["Database"],
+    color: "#4169E1",
+  },
+  {
+    key: "mongodb",
+    title: "MongoDB",
+    href: "https://www.mongodb.com/",
+    categories: ["Database"],
+    color: "#47A248",
+  },
 
   {
     key: "streamlit",
