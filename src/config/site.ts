@@ -46,6 +46,11 @@ export const MAIN_NAV: NavItem[] = [
         emoji: "🔖",
       },
       {
+        title: "Favorites",
+        href: "/favorites",
+        emoji: "⭐",
+      },
+      {
         title: "Books",
         href: "/books",
       },

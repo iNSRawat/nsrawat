@@ -245,6 +245,14 @@ export function SiteFooter() {
                   </li>
                   <li>
                     <Link
+                      href="/favorites"
+                      className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      favorites
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/books"
                       className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
                     >
